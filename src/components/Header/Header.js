@@ -6,7 +6,6 @@ class Header extends Component{
         return (
             <div className="header--container">
                 <Logo />
-                <Logo />
             </div>
         );
     }

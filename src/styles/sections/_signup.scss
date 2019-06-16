@@ -1,0 +1,165 @@
+@media only screen and ($mediaMaxWidth){
+  .section--signup__container {
+    height: 100%;
+    .signup--container {
+      background-color: #fff;
+      margin: 25px;
+      padding: 40px 50px;
+      .Signup--sections__container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .signup--form {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          flex-basis:60%;
+          .signup--form__header {
+            color: $mainBlueColor;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+          .signup--form__contentcontainer {
+            border-right: 2px solid rgba(240, 240, 240, 0.5);
+            padding-right: 50px;
+            flex-basis: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .signup--form__subheader {
+              color: #989898;
+              font-size: 1rem;
+              margin-bottom: 4%;
+              flex-basis: 100%;
+            }
+            .form--control {
+              font-size: 0.7em;
+              font-family: inherit;
+              color: #989898;
+              border: 1px solid #f5f6f8;
+              background-color: #fff;
+              background-color: #f5f6f8;
+              border-radius: 2px;
+              width:100%;
+              transition: all 0.2s;
+              margin-bottom: 20px;
+              padding: 20px;
+            }
+            .signup--form__firstname {
+              flex-basis: 49%;
+            }
+            .signup--form__lastname {
+              flex-basis: 49%;
+            }
+            .signup--form__email {
+              flex-basis: 100%;
+            }
+            .signup--form__password {
+              flex-basis: 100%;
+            }
+            .signup--buttons__container {
+              flex-basis: 100%;
+              a {
+                color: $mainBlueColor;
+              }
+            }
+            .signup--buttons__container{
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              align-items: center;
+              align-self: flex-start;
+              a{  
+                color: $mainBlueColor;
+              }
+            }
+            .signup--buttons__submit {
+              flex-basis: 40%;
+              color: $whiteColor;
+              padding: 15px;
+              margin-right: 1.3rem;
+              margin-bottom: 1.2rem;
+              background-color: $mainBlueColor;
+              font-size: 1em;
+              border-radius: 4px;
+              box-shadow: 0 1px 6px $mainBlueColor;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      
+    }
+    .section--sidebar{
+      flex-basis: 40%;
+    }
+    .sidebar--list {
+      li {
+        padding-left: 1.3em;
+        color: #989898;
+        line-height: 2;
+        font-size: 1rem;
+        i {
+          color: #60dfc8;
+          display: inline-block;
+          margin-right: 1.1rem;
+        }
+      }
+    }
+    .sidebar--form__header {
+      h4 {
+        color: $mainBlueColor;
+        font-weight: 400;
+        margin-left: 53px;
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
+}
+
+@media only screen and ($mediaMediumWidth){
+  .signup--form{
+    flex-basis: 100% !important;
+  }
+  .signup--form__contentcontainer {
+    border: none !important;
+    margin-bottom: 50px;
+    padding: 0 !important;
+  }
+  .section--sidebar{
+    flex-basis: 100% !important;
+    border-top: 2px solid rgba(240,240,240,0.5);
+    padding-top: 50px; 
+  }
+}
+
+@media only screen and ($mediaSignupSmallWidth){
+  .sidebar--list{
+    li{
+      font-size: 0.7em !important;
+    }
+  }
+  .signup--form__firstname {
+    flex-basis: 100% !important;
+  }
+  .signup--form__lastname {
+    flex-basis: 100% !important;
+  }
+  .signup--buttons__submit{
+    margin-bottom: 10px !important;
+    flex-basis: 100% !important;
+  }
+  .signup--container{
+    padding: 20px 30px !important;
+  }
+  .signup--form__contentcontainer {
+    padding:0 !important;
+  }
+}
+
+
+
+
+
+

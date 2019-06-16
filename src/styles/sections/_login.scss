@@ -1,0 +1,107 @@
+@media only screen and ($mediaLoginMaxWidth){
+  .section--login__container{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+  }
+  .login--container {
+    background-color: #fff;
+    margin: 25px;
+    padding: 30px 50px;
+    .login--form__header {
+      color: $mainBlueColor;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .login--form {
+      display: flex;
+      flex-direction: column;
+      max-width:600px;
+      .field--error__badge {
+        background-color: red;
+        border-radius: 2px;
+        padding: 10px 10px;
+        width: 50%;
+        color: $whiteColor;
+        font-size: 0.7em;
+        transition: all 0.6s;
+      }
+      .form--control {
+        font-size: 0.7em;
+        font-family: inherit;
+        color: #989898;
+        border: 1px solid #f5f6f8 ;
+        background-color: rbga(#fff, 0.5);
+        background-color: #f5f6f8;
+        border-radius: 2px;
+        width: 100%;
+        transition: all 0.2s;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+      .login--form__register {
+        a {
+          color: $mainBlueColor;
+        }
+      }
+      .login--buttons__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 15px 0;
+        a {
+          color: $mainBlueColor;
+        }
+        .login--buttons__submit {
+          flex-basis: 50%;
+          margin-right: 20px;
+          color: $whiteColor;
+          padding: 15px;
+          background-color: $mainBlueColor;
+          font-size: 1em;
+          border-radius: 4px;
+          box-shadow: 0 1px 6px $mainBlueColor;
+        }
+      }
+      
+    }
+  }
+}
+
+@media only screen and ($mediaLoginMediumWidth){
+  .login--form{
+    width:400px;
+  }
+  .field--error__badge{
+    width:50% !important;
+  }
+}
+
+@media only screen and ($mediaLoginSmallWidth){
+  .login--form{
+    width:100%;
+    .field--error__badge{
+      width:100% !important;
+    }
+  }
+  .login--buttons__container{
+    a{
+      font-size: 0.65em;
+    }
+  }
+  .login--buttons__submit{
+    flex-basis: 100% !important;
+    margin-bottom:10px !important;
+    margin-right: 0px !important;
+  }
+  .login--form__register {
+    font-size: 0.7em;
+    a {
+      color: $mainBlueColor;
+    }
+  }
+
+}

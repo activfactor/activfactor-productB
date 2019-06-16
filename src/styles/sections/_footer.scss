@@ -71,7 +71,9 @@
 
 @media only screen and ($mediaSmallWidth){
   footer{
-    font-size: 0.4em;
+    p{
+      font-size: 0.5em;
+    }
     .footer--message{
       padding:1rem;
     }
@@ -79,10 +81,11 @@
       padding: 1rem;
       ul{
         li{
-          font-size: 0.4em !important;
+          font-size: 1.2em !important;
           flex-basis: 100% !important;
           border-right:none !important;
           border-bottom: 1px solid $whiteColor !important;
+          padding-bottom: 5px;
         }
       }
       

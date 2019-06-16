@@ -1,6 +1,9 @@
 @media only screen and ($mediaMaxWidth){
   .section--signup__container {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-basis: 75%;
     .signup--container {
       background-color: #fff;
       margin: 25px;
@@ -108,7 +111,7 @@
       }
     }
     .sidebar--form__header {
-      h4 {
+      p {
         color: $mainBlueColor;
         font-weight: 400;
         margin-left: 53px;
@@ -132,12 +135,16 @@
     border-top: 2px solid rgba(240,240,240,0.5);
     padding-top: 50px; 
   }
+  .signup--form__subheader{
+    font-size: 0.8em !important;
+  }
 }
 
 @media only screen and ($mediaSignupSmallWidth){
   .sidebar--list{
     li{
-      font-size: 0.7em !important;
+      font-size: 0.5em !important;
+      line-height: 1.2 !important;
     }
   }
   .signup--form__firstname {
@@ -149,12 +156,26 @@
   .signup--buttons__submit{
     margin-bottom: 10px !important;
     flex-basis: 100% !important;
+    margin-right:0 !important;
   }
   .signup--container{
     padding: 20px 30px !important;
   }
   .signup--form__contentcontainer {
     padding:0 !important;
+    margin-bottom: 10px !important;
+  }
+  .section--sidebar{
+    padding:0 !important;
+    padding-top: 1.2rem !important;
+  }
+  .sidebar--form__header {
+    p {
+      margin-left: 0px !important;
+    }
+  }
+  .signup--container{
+    margin: 10px !important;
   }
 }
 

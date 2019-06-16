@@ -3,7 +3,7 @@ import React from 'react';
 const SignupSidebar = () => {
     return (
         <section className="section--sidebar">
-            <div className="sidebar--form__header"><h4>What you will get?</h4></div>
+            <div className="sidebar--form__header"><p>What you will get?</p></div>
                         
                         <ul className="sidebar--list">
                             <li><i className="fas fa-check"></i>Premium tools for free</li>

@@ -136,6 +136,9 @@
       }
 }
 @media only screen and ($mediaMediumWidth){
+    .header--container{
+        border-bottom: 1px solid $mainBlueColor !important;
+    }
     @keyframes navigationbar {
         0%{
             transform: translateY(-100px);
@@ -176,6 +179,9 @@
 }
 
 @media only screen and ($mediaSmallWidth){
+    .header--container{
+        border-bottom: 1px solid $mainBlueColor !important;
+    }
 
     @keyframes navigationbar {
         0%{

@@ -20,11 +20,6 @@ class Login extends Component{
     renderError({ error, touched} , input ,type, placeholder){
         if (touched && error){
             styleBorder = "4px solid #a30808";
-            // return (
-            //     <div>
-            //         <div className="field--error__badge">{error}</div>
-            //     </div>
-            // );
         } else {
             styleBorder = "none";
         }

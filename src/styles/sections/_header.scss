@@ -21,7 +21,7 @@
                 text-decoration: none;
                 color:$mainBlueColor;
                 padding: 13px;
-                font-size: 0.7em;
+                font-size: 0.85em;
             }
             
             .authnav--container__notificationbtn{
@@ -78,7 +78,7 @@
                 &::placeholder{
                     font-family: "Poppins-Regular" sans-serif;
                     background:url('../assets/icons/search-solid.svg') no-repeat;
-                    font-size:0.8em;
+                    font-size:1.1em;
                 }
             }
         }
@@ -88,7 +88,7 @@
             border-radius: 3px;
             padding: 13px;
             margin: 0 8px;
-            font-size: 0.73em;
+            font-size: 0.9em;
             font-weight: 400;
             &:hover{
                 background-color:$lightBlueColor;

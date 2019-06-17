@@ -6,8 +6,17 @@ import Dashboard from "./Sections/Dashboard";
 import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Sections/Footer";
 import history from "../history";
+import { connect } from 'react-redux';
 
 class App extends React.Component {
+
+  componentDidMount(){
+    if (this.props.authenticated){
+      history.push('/login');
+    } else {
+      history.push('/dashboard');
+    }
+  }
 
   render() {
     return (
@@ -26,4 +35,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return { 
+      authenticated: state.auth.authenticated,
+  }
+}
+
+export default connect(mapStateToProps)(App);

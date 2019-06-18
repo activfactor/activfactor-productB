@@ -1,0 +1,31 @@
+@import "../../../styles/params/variables";
+
+.container{
+    color: $mainBlueColor;
+    font-weight: 600;
+    font-size: 1.6em;
+    letter-spacing: 1px;
+    margin-left: 42px;
+    cursor: pointer;
+}
+
+@media only screen and ($mediaMediumWidth){
+    .container {
+        margin-left: 37px !important;
+        font-size: 1.4em !important;
+      }
+}
+
+@media only screen and ($mediaSmallWidth){
+    .container {
+        margin-left: 20px !important;
+        font-size: 1em !important;
+      }
+}
+
+@media only screen and ($mediaXSmallWidth){
+    .container {
+        font-size: 0.9em !important;
+        margin-left: 10px !important;
+      }
+}

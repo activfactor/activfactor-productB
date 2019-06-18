@@ -2,9 +2,9 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header/Header";
 import Login from "./Sections/Login/Login";
-import Dashboard from "./Sections/Dashboard";
+import Dashboard from "./Sections/Dashboard/Dashboard";
 import Signup from "./Sections/Signup/Signup";
-import Footer from "../components/Sections/Footer";
+import Footer from "../components/Sections/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
 

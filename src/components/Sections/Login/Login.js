@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { signIn } from '../../../actions';
 import { Link } from 'react-router-dom';
+import classes from './Login.module.scss';
 
 let styleBorder = "none";
 
@@ -30,31 +31,31 @@ class Login extends Component{
         return (
             <div>
                 {/* {this.renderError(meta, input, type, placeholder)} */}
-                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className="form--control" style={{border:styleBorder}} />
+                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
             </div>
         );
     }
 
     AuthError = () => {
         if (this.props.errorMessage){
-            return <div className="form--error">{this.props.errorMessage}</div>
+            return <div className="error">{this.props.errorMessage}</div>
         }
     }
 
     render(){
         return(
-            <div className="section--login__container">
-                <div className="login--container">
-                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="login--form">
-                        <h4 className="login--form__header">Login</h4>
+            <div className={classes.section}>
+                <div className={classes.container}>
+                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
+                        <h4 className={classes.header}>Login</h4>
                         <Field name="username" component={this.renderInput} placeholder="Email Address"  />
                         <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
                         {this.AuthError()}
-                        <div className="login--buttons__container">
-                            <input className="login--buttons__submit" type="submit" value="Login" />
+                        <div className={classes.buttons}>
+                            <input className={classes.submit} type="submit" value="Login" />
                             <Link to="/reset">Forgot Password?</Link>
                         </div>
-                        <span className="login--form__register">Don't have an account? <Link to="/signup">Sign up</Link></span>
+                        <span className={classes.register}>Don't have an account? <Link to="/signup">Sign up</Link></span>
                     </form>
                     <div></div>
                     <div></div>

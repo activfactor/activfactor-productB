@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
+import classes from './SignupForm.module.scss';
 
 let styleBorder = "none";
 class Signup extends Component {
@@ -13,7 +14,7 @@ class Signup extends Component {
     return (
         <div>
             {/* {this.renderError(meta, input, type, placeholder)} */}
-            <input {...input} autoComplete='off' type={type} placeholder={placeholder} className="form--control" style={{border:styleBorder}} />
+            <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
         </div>
     );
 }
@@ -21,25 +22,25 @@ class Signup extends Component {
   render() {
     return (
       
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="signup--form">
-          <p className="signup--form__header">Sign up for free</p>
-          <div className="signup--form__contentcontainer">
-          <p className="signup--form__subheader">Get access to a wealth trading platform by just entering your Email and Password!</p>
-            <div className="signup--form__firstname">
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
+          <p className={classes.header}>Sign up for free</p>
+          <div className={classes.elements}>
+          <p className={classes.subheader}>Get access to a wealth trading platform by just entering your Email and Password!</p>
+            <div className={classes.firstname}>
             <Field  name="firstname" component={this.renderInput} placeholder="First Name" />
             </div>
-            <div className="signup--form__lastname">
+            <div className={classes.lastname}>
             <Field className="signup--form__lastname" name="lastname" component={this.renderInput} placeholder="Last Name" />
             </div>
-            <div className="signup--form__email">
+            <div className={classes.email}>
             <Field className="signup--form__email" name="email" component={this.renderInput} placeholder="Email Address" />
             </div>
-            <div className="signup--form__password">
+            <div className={classes.password}>
             <Field className="signup--form__password" name="password" type="password" component={this.renderInput} placeholder="Password" />
             </div>
-            <div className="signup--buttons__container">
-              <input className="signup--buttons__submit" type="submit" value="Sign up" />
-              <span className="signup--form__login">Already have an account?  <Link to="/login">Login</Link></span>
+            <div className={classes.buttons}>
+              <input className={classes.submit} type="submit" value="Sign up" />
+              <span>Already have an account?  <Link to="/login">Login</Link></span>
             </div>
           </div>
         </form>

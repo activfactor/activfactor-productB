@@ -1,6 +1,8 @@
 import React,{ Component } from "react";
 import { connect } from 'react-redux';
-import { toggleClicked } from '../../actions/index';
+import { toggleClicked } from '../../../actions/index';
+import classes from './ToggleButton.module.scss';
+
 
 class ToggleButton extends Component {
 
@@ -15,10 +17,10 @@ class ToggleButton extends Component {
 
     render(){
         return (
-                <div className={this.state.Clicked ? "burgerbutton--container change" : "burgerbutton--container"} onClick={this.onClickHandler}>
-                    <div className="burgerbutton--bar1" />
-                    <div className="burgerbutton--bar2" />
-                    <div className="burgerbutton--bar3" />
+                <div className={this.state.Clicked ? `${classes.container} ${classes.change}` : `${classes.container}`} onClick={this.onClickHandler}>
+                    <div className={classes.bar1} />
+                    <div className={classes.bar2} />
+                    <div className={classes.bar3} />
                 </div>  
           );
     } 

@@ -1,11 +1,12 @@
 import React from 'react';
+import classes from './SignupSidebar.module.scss';
 
 const SignupSidebar = () => {
     return (
-        <section className="section--sidebar">
-            <div className="sidebar--form__header"><p>What you will get?</p></div>
+        <section className={classes.section}>
+            <div className={classes.header}><p>What you will get?</p></div>
                         
-                        <ul className="sidebar--list">
+                        <ul className={classes.list}>
                             <li><i className="fas fa-check"></i>Premium tools for free</li>
                             <li><i className="fas fa-check"></i>Get a personalized service</li>
                             <li><i className="fas fa-check"></i>Save unlimited watchlists</li>

@@ -1,0 +1,21 @@
+@import "../../../styles/params/variables";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    color: $mainBlueColor;
+  }
+  
+  @media only screen and ($mediaMediumWidth) {
+    .container {
+      font-size: 1.8em;
+    }
+  }
+  
+  @media only screen and ($mediaSmallWidth) {
+    .container {
+      font-size: 1.5em;
+    }
+  }

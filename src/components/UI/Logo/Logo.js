@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
-import history from '../../history';
+import history from '../../../history';
+import classes from './Logo.module.scss';
 
 class Logo extends Component {
     onClickHandler(){
@@ -8,7 +9,7 @@ class Logo extends Component {
 
     render(){
         return (
-            <div className="header--container__logo" onClick={this.onClickHandler}>
+            <div className={classes.container} onClick={this.onClickHandler}>
                 <p>WealthFace</p>
             </div>
         );

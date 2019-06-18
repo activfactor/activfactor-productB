@@ -1,0 +1,111 @@
+@import "../../../../styles/params/variables";
+
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis:60%;
+    .header {
+      color: $mainBlueColor;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    .elements {
+      border-right: 2px solid rgba(240, 240, 240, 0.5);
+      padding-right: 50px;
+      flex-basis: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .subheader {
+        color: #989898;
+        font-size: 1rem;
+        margin-bottom: 4%;
+        flex-basis: 100%;
+      }
+      .input {
+        font-size: 0.7em;
+        font-family: inherit;
+        color: #989898;
+        border: 1px solid #f5f6f8;
+        background-color: #fff;
+        background-color: #f5f6f8;
+        border-radius: 2px;
+        width:100%;
+        transition: all 0.2s;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+      .firstname {
+        flex-basis: 49%;
+      }
+      .lastname {
+        flex-basis: 49%;
+      }
+      .email {
+        flex-basis: 100%;
+      }
+      .password {
+        flex-basis: 100%;
+      }
+      .buttons {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        align-self: flex-start;
+        a {
+          color: $mainBlueColor;
+        }
+      }
+      .submit {
+        flex-basis: 40%;
+        color: $whiteColor;
+        padding: 15px;
+        margin-right: 1.3rem;
+        margin-bottom: 1.2rem;
+        background-color: $mainBlueColor;
+        font-size: 1em;
+        border: 1px solid $mainBlueColor;
+        border-radius: 4px;
+        box-shadow: 0 1px 6px $mainBlueColor;
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media only screen and ($mediaMediumWidth){
+    .form{
+      flex-basis: 100% !important;
+      .elements {
+        border: none !important;
+        margin-bottom: 50px;
+        padding: 0 !important;
+      }
+      .subheader{
+        font-size: 0.8em !important;
+      }
+    }
+    
+   
+}
+
+@media only screen and ($mediaSignupSmallWidth){
+    .firstname {
+      flex-basis: 100% !important;
+    }
+    .lastname {
+      flex-basis: 100% !important;
+    }
+    .submit{
+      margin-bottom: 10px !important;
+      flex-basis: 100% !important;
+      margin-right:0 !important;
+    }
+    .elements {
+      padding:0 !important;
+      margin-bottom: 10px !important;
+    }
+  }

@@ -1,27 +1,22 @@
 import React,{ Component } from 'react';
 import NavigationItem from '../../UI/NavigationItem';
-import SearchBox from '../../UI/SearchBox';
+import SearchBox from '../../UI/SearchBox/SearchBox';
 import { connect } from 'react-redux';
+import classes from './NavigationBar.module.scss';
 
 class NavigationBar extends Component{
-    state={remove:true}
-
-    removeClass(){
-        this.setState({remove:"navigationbar--container__removebyitem"});
-    }
-
     renderNavigation(){
         return (
-            <div className={`${this.state.remove} navigationbar--container ${!this.props.toggleClicked && this.props.initialStatus ? "navigationbar--container__remove" : this.props.toggleClicked && this.props.initialStatus ? "navigationbar--container__show" : ""}`}>
-                <nav className="navigationbar--container__navitems">
-                    <NavigationItem removeClass={this.removeClass} to="/login" nameOfClass="navigationitem--link navigationitem--link__auth">Login</NavigationItem>
-                    <NavigationItem to="/signup" nameOfClass="navigationitem--link navigationitem--link__auth">Sign up</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Dashboard</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Strategy Builder</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Watch List</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Portofolio Performance</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Transactions</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass="navigationitem--link">Strategy Monitor</NavigationItem>
+            <div className={`${classes.container} ${!this.props.toggleClicked && this.props.initialStatus ? classes.remove : this.props.toggleClicked && this.props.initialStatus ? classes.show : ""}`}>
+                <nav className={classes.navitems}>
+                    <NavigationItem to="/login" nameOfClass={`${classes.link} ${classes.auth}`}>Login</NavigationItem>
+                    <NavigationItem to="/signup" nameOfClass={`${classes.link} ${classes.auth}`}>Sign up</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Dashboard</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Watch List</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Portofolio Performance</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Transactions</NavigationItem>
+                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Strategy Monitor</NavigationItem>
                 </nav>
                 <SearchBox />
             </div>

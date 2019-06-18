@@ -1,0 +1,22 @@
+@import "../../styles/params/variables";
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 15px 0;
+}
+
+
+@media only screen and ($mediaMediumWidth){
+    .container{
+        border-bottom: 1px solid $mainBlueColor !important;
+    }
+}
+
+@media only screen and ($mediaSmallWidth){
+    .container{
+        border-bottom: 1px solid $mainBlueColor !important;
+    }
+}

@@ -1,0 +1,55 @@
+@import "../../../../styles/params/variables";
+
+.section{
+    flex-basis: 40%;
+    .list {
+        li {
+          padding-left: 1.3em;
+          color: #989898;
+          line-height: 2;
+          font-size: 1rem;
+          i {
+            color: #60dfc8;
+            display: inline-block;
+            margin-right: 1.1rem;
+          }
+        }
+      }
+      .header {
+        p {
+          color: $mainBlueColor;
+          font-weight: 400;
+          margin-left: 53px;
+          margin-bottom: 1.2rem;
+        }
+      }
+  }
+  
+
+  @media only screen and ($mediaMediumWidth){
+    .section{
+      flex-basis: 100% !important;
+      border-top: 2px solid rgba(240,240,240,0.5);
+      padding-top: 50px; 
+    }
+  }
+
+  @media only screen and ($mediaSignupSmallWidth){
+    
+    .section{
+        padding:0 !important;
+        padding-top: 1.2rem !important;
+        .header {
+            p {
+              margin-left: 0px !important;
+            }
+          }
+          .list{
+            li{
+              font-size: 0.5em !important;
+              line-height: 1.2 !important;
+            }
+          }
+      }
+      
+}

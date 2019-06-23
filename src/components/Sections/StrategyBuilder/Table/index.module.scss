@@ -1,0 +1,15 @@
+@import "../../../../styles/params/variables";
+
+.container{
+    box-shadow: 2px 2px 20px rgb(228, 228, 228);
+    border-radius: 2px;
+    margin-top: 2rem;
+    flex-basis: 100%;
+    height: 400px;
+}
+
+@media only screen and ($mediaChartMedium){
+    .container{
+        flex-basis: 32% !important;
+    }
+}

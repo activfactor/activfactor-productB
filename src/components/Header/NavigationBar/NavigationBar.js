@@ -12,7 +12,7 @@ class NavigationBar extends Component{
                     <NavigationItem to="/login" nameOfClass={`${classes.link} ${classes.auth}`}>Login</NavigationItem>
                     <NavigationItem to="/signup" nameOfClass={`${classes.link} ${classes.auth}`}>Sign up</NavigationItem>
                     <NavigationItem to="/dashboard" nameOfClass={classes.link}>Dashboard</NavigationItem>
-                    <NavigationItem to="/dashboard" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
+                    <NavigationItem to="/strategy-builder" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
                     <NavigationItem to="/dashboard" nameOfClass={classes.link}>Watch List</NavigationItem>
                     <NavigationItem to="/dashboard" nameOfClass={classes.link}>Portofolio Performance</NavigationItem>
                     <NavigationItem to="/dashboard" nameOfClass={classes.link}>Transactions</NavigationItem>

@@ -7,6 +7,7 @@ import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Sections/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
+import AnalyzeResults from "./Sections/StrategyBuilder/AnalyzeResults";
 
 class App extends React.Component {
 
@@ -20,13 +21,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="main">
+      <div className="root">
         <Router history={history}>
             <Header />
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />
+            <Route PATH="/strategy-builder" component={AnalyzeResults} />
           </Switch>
             <Footer />
         </Router>

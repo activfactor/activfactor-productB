@@ -1,0 +1,73 @@
+@import "../../../../styles/params/variables";
+section{
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    .headers{
+         flex-basis: 100%;
+        p{
+            &:first-child{
+                font-size: 0.8rem;
+                color: $secondBlueColor;
+                float: left;
+            }
+            &:last-child{
+                font-size: 0.8rem;
+                color: $mainBlueColor;
+                float: left;
+            }
+            padding-left: 1.2rem;
+            padding-bottom: 1rem;
+        }
+    }
+    .container{
+        flex-basis: 100%;
+        padding: 2rem;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        p{
+            flex-basis: 100%;
+            &:first-child{
+                font-weight: bold;
+                font-size: 1rem;
+            }
+        }
+        .subheader{
+            color:$textColor;
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            flex-basis: 100%;
+        }
+        .chartcontainer{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            flex-basis: 100%;
+        }
+        .tablecontainer{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-basis: 100%;
+            justify-content: space-between;
+        }
+    }
+}
+
+.spinnerContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-basis: 100%;
+
+}

@@ -3,7 +3,7 @@
   .section{
     display: flex;
     flex-direction: column;
-    height:100%;
+    flex-basis: 100%;
   }
   .container {
     background-color: #fff;
@@ -103,6 +103,9 @@
     a {
       color: $mainBlueColor;
     }
+  }
+  .container{
+    padding: 20px 35px;
   }
 
 }

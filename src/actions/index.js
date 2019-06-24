@@ -36,6 +36,7 @@ export const getFactorScreener = props => async dispatch => {
   .get("/factor/screener", {params:props, headers: {
     'Authorization': `JWT ${localStorage.getItem('t')}`
   }});
-  dispatch({type: FACTOR_SCREENER, payload: response.data});
+  const responseData=JSON.parse(response.data.replace(/\bNaN\b/g,null))
+  dispatch({type: FACTOR_SCREENER, payload: responseData.message});
   
 }

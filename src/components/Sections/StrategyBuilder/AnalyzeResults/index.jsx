@@ -1,8 +1,10 @@
 import React,{ Component } from 'react';
 import classes from './index.module.scss';
-import PieGraph from '../PieChart';
-import LineGraph from '../LineChart';
-import Table from '../Table';
+import PieGraph from '../Charts/PieChart';
+import LineGraph from '../Charts/LineChart';
+import AreaChart from '../Charts/AreaChart';
+import BarChart from '../Charts/BarChart';
+import Table from '../Charts/Table';
 import { connect } from 'react-redux';
 import { getFactorScreener } from '../../../../actions/index';
 import Spinner from '../../../UI/Spinner';
@@ -38,27 +40,32 @@ class AnalyzeResults extends Component{
                     <p>Performance</p>
                     <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
                     <div className={classes.chartcontainer}>
-                    <PieGraph chartType="PieChart" header="Sectors" data={this.props.data.message.message.sector_allocation}/>
+                    <PieGraph 
+                        header="Sectors" 
+                        data={this.props.data.sector_allocation}/>
                     <LineGraph 
-                        chartType="LineChart" 
                         header="Historical Performance" 
-                        strategy={this.props.data.message.message.performance_strategy.cumulative_return.monthly}
-                        benchmark={this.props.data.message.message.performance_benchmark.cumulative_return.monthly}/>
-                    <LineGraph 
-                        chartType="LineChart" 
-                        header="Historical Performance" 
-                        strategy={this.props.data.message.message.performance_strategy.cumulative_return.monthly}
-                        benchmark={this.props.data.message.message.performance_benchmark.cumulative_return.monthly}/>
-                    <LineGraph 
-                        chartType="LineChart" 
-                        header="Historical Performance" 
-                        strategy={this.props.data.message.message.performance_strategy.cumulative_return.monthly}
-                        benchmark={this.props.data.message.message.performance_benchmark.cumulative_return.monthly}/>    
+                        strategy={this.props.data.culmulative_return_strategy}
+                        benchmark={this.props.data.culmulative_return_benchmark}/>
+                    <BarChart 
+                        header="Annual Return" 
+                        strategy={this.props.data.annual_return_strategy}
+                        benchmark={this.props.data.annual_return_benchmark}/>
+                    <AreaChart 
+                        header="Drawdown" 
+                        strategy={this.props.data.drawdown_strategy}
+                        benchmark={this.props.data.drawdown_benchmark}/>    
                     </div>
                     <div className={classes.tablecontainer}>
-                        <Table />
-                        <Table />
-                        <Table />
+                        <Table 
+                            strategy={this.props.data.return_strategy}
+                            benchmark={this.props.data.return_benchmark}/>
+                        <Table 
+                            strategy={this.props.data.metrics_strategy}
+                            benchmark={this.props.data.metrics_benchmark}/>
+                        <Table 
+                            strategy={this.props.data.risk_strategy}
+                            benchmark={this.props.data.risk_benchmark}/>
                     </div>
                 </div>
             );
@@ -69,8 +76,8 @@ class AnalyzeResults extends Component{
         return(
             <section>
                 <div className={classes.headers}>
-                    <p>Last Update 01 May 2019</p>
-                    <p>Next Update 01 June 2019</p>
+                    <p>{`Last Update ${this.props.data.last_update}`}</p>
+                    <p>{`Next Update ${this.props.data.next_update}`}</p>
                 </div>
                 {this.renderCharts()}
             </section>

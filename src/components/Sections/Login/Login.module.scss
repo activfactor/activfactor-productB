@@ -66,6 +66,9 @@
           border: 1px solid $mainBlueColor;
           border-radius: 4px;
           box-shadow: 0 1px 6px $mainBlueColor;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
         }
       }
       

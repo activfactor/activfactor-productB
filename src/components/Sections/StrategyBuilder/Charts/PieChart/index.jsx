@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
-import classes from './index.module.scss';
-import Spinner from '../../../UI/Spinner';
+import classes from '../chart.module.scss';
+import Spinner from '../../../../UI/Spinner';
 
 class Graph extends Component {
 
 
   getData = (obj) => {
-    var result = Object.keys(obj).map(key => {
+    const result = Object.keys(obj).map(key => {
       return [String(key), obj[key]];
     }); 
     result.unshift(["Sectors","percentage"]);
@@ -22,7 +22,7 @@ class Graph extends Component {
       <Chart
         width={"90%"}
         height={"80%"}
-        chartType={this.props.chartType}
+        chartType="PieChart"
         loader={<Spinner />}
         data={this.getData(this.props.data)}
         options={{

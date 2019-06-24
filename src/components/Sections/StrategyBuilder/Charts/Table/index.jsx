@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
 import classes from "./index.module.scss";
-import Spinner from '../../../UI/Spinner';
+import Spinner from '../../../../UI/Spinner';
 
 class Table extends Component {
+  getData(strategy,benchmark){
+    const result = Object.keys(strategy).map(key => {
+      return [String(key), strategy[key], benchmark[key]]
+    })
+    result.unshift(["return", "strategy","benchmark"]);
+    return result;
+  }
+
   render() {
     return (
       <div className={classes.container}>
@@ -12,19 +20,7 @@ class Table extends Component {
           height={"100%"}
           chartType="Table"
           loader={<Spinner />}
-          data={[
-            ["Return", "Strategy", "S&P 500"],
-            ["1 Month", -4.46, 4.46],
-            ["3 Month", 3.46, -1.46],
-            ["2 Years", 4.46, 4.46],
-            ["1 Year", -4.46, 4.46],
-            ["6 Month", 5.36, 2.46],
-            ["3 Years", 4.46, -4.46],
-            ["5 Years", -4.46, 4.46],
-            ["7 Years", 4.46, -4.46],
-            ["10 Years", 4.46, 4.46],
-            ["Since 2008", -4.46, 4.46]
-          ]}
+          data={this.getData(this.props.strategy,this.props.benchmark)}
           formatters={[
             {
               type: "ColorFormat",
@@ -33,8 +29,19 @@ class Table extends Component {
                 width: 120
               },
               ranges: [
-                [-20000, 0, "white", "red"],
-                [20000, null, "red", "#33ff33"]
+                [-20000, 0, "#FF0000"],
+                [20000, null, "red", "#109CF1"]
+              ]
+            },
+            {
+              type: "ColorFormat",
+              column: 2,
+              options: {
+                width: 120
+              },
+              ranges: [
+                [-20000, 0, "#FF0000"],
+                [20000, null, "red", "#109CF1"]
               ]
             }
           ]}

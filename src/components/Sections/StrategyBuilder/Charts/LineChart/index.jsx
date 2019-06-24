@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
-import classes from './index.module.scss';
-import Spinner from '../../../UI/Spinner';
+import classes from '../chart.module.scss';
+import Spinner from '../../../../UI/Spinner';
 
 class Graph extends Component {
 
 
   getData = (strategy,benchmark) => {
-    var result = Object.keys(strategy).map(key => {
+    const result = Object.keys(strategy).map(key => {
       return [String(key), strategy[key], benchmark[key]];
     }); 
     result.unshift(["Date","Strategy","Benchmark"]);
@@ -18,11 +18,10 @@ class Graph extends Component {
     return (
       <div className={classes.container}>
       <div className={classes.header}>{this.props.header}</div>
-      {/* <div className={classes.chartDiv}> */}
       <Chart
         width={"95%"}
         height={"80%"}
-        chartType={this.props.chartType}
+        chartType="LineChart"
         loader={<Spinner />}
         data={this.getData(this.props.strategy,this.props.benchmark)}
         options={{
@@ -38,7 +37,6 @@ class Graph extends Component {
         // For tests
         rootProps={{ "data-testid": "1" }}
       />
-      {/* </div> */}
       </div>
     );
   }

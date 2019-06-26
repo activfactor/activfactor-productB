@@ -17,23 +17,21 @@ class BarChart extends Component {
     return (
       <div className={classes.container}>
         <div className={classes.header}>{this.props.header}</div>
+        <div className={classes.chartcontainer}>
         <Chart
-          width={"95%"}
-          height={"80%"}
-          chartType="Bar"
-          loader={<Spinner />}
+          width={"90%"}
+          height={"99%"}
+          chartType="BarChart"
+          loader={<Spinner color="black"/>}
           data={this.getData(this.props.strategy,this.props.benchmark)}
           options={{
             // Material design options
             chartArea: { width: "70%",height: "70%", color:'red' },
-            chart: {
-              title: "Company Performance",
-              subtitle: "Sales, Expenses, and Profit: 2014-2017"
-            }
+            legend: {position:'top'},
+            colors: ['#b0120a', '#ffab91'],
           }}
-          // For tests
-          rootProps={{ "data-testid": "2" }}
         />
+        </div>
       </div>
     );
   }

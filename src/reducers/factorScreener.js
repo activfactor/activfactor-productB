@@ -1,6 +1,6 @@
-import { FACTOR_SCREENER } from '../actions/types';
+import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR } from '../actions/types';
 const INITIAL_STATE = {
-    message:''
+    message: ""
 };
 
 export default (state = INITIAL_STATE, action)=>{
@@ -25,6 +25,11 @@ export default (state = INITIAL_STATE, action)=>{
                 metrics_benchmark:action.payload.performance_benchmark.metrics,
                 risk_strategy:action.payload.performance_strategy.risk,
                 risk_benchmark:action.payload.performance_benchmark.risk
+            }
+        case FACTOR_SCREENER_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         default:
             return state;

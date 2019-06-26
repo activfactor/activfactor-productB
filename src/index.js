@@ -14,7 +14,8 @@ const store = createStore(
     { auth: {
         authenticated: localStorage.getItem('authenticated'),
         username: localStorage.getItem('username'),
-        regtime: localStorage.getItem('regtime')
+        regtime: localStorage.getItem('regtime'),
+        token: localStorage.getItem('t'),
     }},
     composeEnhancers(applyMiddleware(reduxThunk))
 )

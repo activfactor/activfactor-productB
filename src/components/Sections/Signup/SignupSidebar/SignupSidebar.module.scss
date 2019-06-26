@@ -2,6 +2,9 @@
 
 .section{
     flex-basis: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     .list {
         li {
           padding-left: 1.3em;
@@ -16,6 +19,7 @@
         }
       }
       .header {
+        flex-basis: 100%;
         p {
           color: $mainBlueColor;
           font-weight: 400;
@@ -30,7 +34,12 @@
     .section{
       flex-basis: 100% !important;
       border-top: 2px solid rgba(240,240,240,0.5);
-      padding-top: 50px; 
+      padding: 50px 0 !important;
+      .header{
+        p{
+          margin-left: 0 !important;
+        }
+      }
     }
   }
 

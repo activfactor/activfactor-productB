@@ -1,14 +1,16 @@
 @import "../../../styles/params/variables";
 
   .section{
+    flex-basis:100%;
     display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .container {
+    flex-basis: 100%;
     background-color: #fff;
     margin: 25px;
-    padding: 30px 50px;
+    padding: 40px 50px;
     .header {
       color: $mainBlueColor;
       font-weight: 400;
@@ -69,6 +71,7 @@
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
+          cursor: pointer;
         }
       }
       
@@ -108,7 +111,8 @@
     }
   }
   .container{
-    padding: 20px 35px;
+    padding: 0.7rem;
+    margin: 0;
   }
 
 }

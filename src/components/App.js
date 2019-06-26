@@ -12,17 +12,15 @@ import AnalyzeResults from "./Sections/StrategyBuilder/AnalyzeResults";
 class App extends React.Component {
 
   componentDidMount(){
-    if (this.props.authenticated){
+    if (!this.props.authenticated){
       history.push('/login');
-    } else {
-      history.push('/dashboard');
     }
   }
 
   render() {
     return (
-      <div className="root">
         <Router history={history}>
+          <div className="subroot">
             <Header />
           <Switch>
             <Route path="/login" component={Login} />
@@ -30,9 +28,9 @@ class App extends React.Component {
             <Route path="/signup" component={Signup} />
             <Route PATH="/strategy-builder" component={AnalyzeResults} />
           </Switch>
+          </div>
             <Footer />
         </Router>
-      </div>
     );
   }
 }

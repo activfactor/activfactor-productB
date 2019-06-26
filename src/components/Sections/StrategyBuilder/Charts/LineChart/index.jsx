@@ -18,25 +18,27 @@ class Graph extends Component {
     return (
       <div className={classes.container}>
       <div className={classes.header}>{this.props.header}</div>
-      <Chart
-        width={"95%"}
-        height={"80%"}
-        chartType="LineChart"
-        loader={<Spinner />}
-        data={this.getData(this.props.strategy,this.props.benchmark)}
-        options={{
-          chartArea: { width: "70%",height: "70%", color:'red' },
-          hAxis: {
-            title: "Date",
-            minValue: 0
-          },
-          vAxis: {
-            title: "Numbers"
-          },
-        }}
-        // For tests
-        rootProps={{ "data-testid": "1" }}
-      />
+        <div className={classes.chartcontainer}>
+        <Chart
+          width={"99%"}
+          height={"99%"}
+          chartType="LineChart"
+          loader={<Spinner color="black"/>}
+          data={this.getData(this.props.strategy,this.props.benchmark)}
+          options={{
+            chartArea: { width: "70%",height: "70%", color:'red' },
+            hAxis: {
+              title: "Date",
+              minValue: 0
+            },
+            vAxis: {
+              title: "Numbers"
+            },
+          }}
+          // For tests
+          rootProps={{ "data-testid": "1" }}
+        />
+        </div>
       </div>
     );
   }

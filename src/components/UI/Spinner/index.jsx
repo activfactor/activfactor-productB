@@ -1,12 +1,9 @@
 import React from 'react';
 import classes from './index.module.scss';
 
-const spinner = () => {
+const spinner = props => {
     return (
-        <div className={classes.container}>
-        <div className={classes.ldsRipple}><div></div><div></div></div>
-        {/* <div className={classes.description}>Gathering Information</div> */}
-        </div>
+        <div className={`${classes.loader} ${props.color==='black' ? classes.black : classes.white}`}></div>
     );
 };
 

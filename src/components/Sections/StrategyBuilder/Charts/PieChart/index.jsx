@@ -17,31 +17,31 @@ class Graph extends Component {
   render = () => {
     return (
       <div className={classes.container}>
-      <div className={classes.header}>{this.props.header}</div>
-      {/* <div className={classes.chartDiv}> */}
-      <Chart
-        width={"90%"}
-        height={"80%"}
-        chartType="PieChart"
-        loader={<Spinner />}
-        data={this.getData(this.props.data)}
-        options={{
-          pieHole: 0.5,
-          chartArea: { width: "85%",height: "85%", color:'red' },
-          hAxis: {
-            title: "Total Population",
-            minValue: 0
-          },
-          vAxis: {
-            title: "City"
-          },
-          with:"100%",
-          height:"100%"
-        }}
-        // For tests
-        rootProps={{ "data-testid": "1" }}
-      />
-      {/* </div> */}
+        <div className={classes.header}>{this.props.header}</div>
+        <div className={classes.chartcontainer}>
+        <Chart
+          width={"99%"}
+          height={"99%"}
+          chartType="PieChart"
+          loader={<Spinner color="black"/>}
+          data={this.getData(this.props.data)}
+          options={{
+            pieHole: 0.5,
+            chartArea: { width: "85%",height: "85%", color:'red' },
+            hAxis: {
+              title: "Total Population",
+              minValue: 0
+            },
+            vAxis: {
+              title: "City"
+            },
+            with:"100%",
+            height:"100%"
+          }}
+          // For tests
+          rootProps={{ "data-testid": "1" }}
+        />
+        </div>
       </div>
     );
   }

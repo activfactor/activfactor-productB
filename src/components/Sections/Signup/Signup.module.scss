@@ -1,9 +1,9 @@
 @import "../../../styles/params/variables";
     .section {
       display: flex;
-      flex-direction: column;
-      align-content: flex-start;
-      flex-basis: 75%;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-basis: 100%;
       .container {
         background-color: #fff;
         margin: 25px;
@@ -11,6 +11,7 @@
         .sections {
           display: flex;
           flex-direction: row;
+          justify-content: flex-start;
           flex-wrap: wrap;
         }
         
@@ -21,9 +22,12 @@
   
   
   @media only screen and ($mediaSignupSmallWidth){
+    .section{
+      padding:0.5rem !important;
+    }
     .container{
-      padding: 20px 30px !important;
-      margin: 10px !important;
+      padding: 1rem 1rem !important;
+      margin: 0 !important;
     }
   }
   

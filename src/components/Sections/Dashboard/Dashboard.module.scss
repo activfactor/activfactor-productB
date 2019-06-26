@@ -1,11 +1,12 @@
 @import "../../../styles/params/variables";
 
 .container {
+    flex-basis: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 3em;
     color: $mainBlueColor;
+    padding: 3rem;
   }
   
   @media only screen and ($mediaMediumWidth) {

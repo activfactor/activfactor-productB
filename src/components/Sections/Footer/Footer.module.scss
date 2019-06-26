@@ -2,7 +2,8 @@
 
 footer {
   background-color: white;
-  font-size: 0.8rem;
+  flex-basis: 100%;
+  align-self: flex-end;
 }
 .message {
   display: flex;

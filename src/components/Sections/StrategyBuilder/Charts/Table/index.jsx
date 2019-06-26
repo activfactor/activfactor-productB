@@ -6,7 +6,7 @@ import Spinner from '../../../../UI/Spinner';
 class Table extends Component {
   getData(strategy,benchmark){
     const result = Object.keys(strategy).map(key => {
-      return [String(key), strategy[key], benchmark[key]]
+      return [String(key).split("_").join(" "), strategy[key], benchmark[key]]
     })
     result.unshift(["return", "strategy","benchmark"]);
     return result;
@@ -19,15 +19,12 @@ class Table extends Component {
           width={"100%"}
           height={"100%"}
           chartType="Table"
-          loader={<Spinner />}
+          loader={<Spinner color="black"/>}
           data={this.getData(this.props.strategy,this.props.benchmark)}
           formatters={[
             {
               type: "ColorFormat",
               column: 1,
-              options: {
-                width: 120
-              },
               ranges: [
                 [-20000, 0, "#FF0000"],
                 [20000, null, "red", "#109CF1"]
@@ -36,9 +33,6 @@ class Table extends Component {
             {
               type: "ColorFormat",
               column: 2,
-              options: {
-                width: 120
-              },
               ranges: [
                 [-20000, 0, "#FF0000"],
                 [20000, null, "red", "#109CF1"]

@@ -16,23 +16,23 @@ class AreaChart extends Component {
     return (
       <div className={classes.container}>
         <div className={classes.header}>{this.props.header}</div>
-        <Chart
-          width={"95%"}
-          height={"80%"}
-          chartType="AreaChart"
-          loader={<Spinner />}
-          data={this.getData(this.props.strategy,this.props.benchmark)}
-          options={{
-            title: "Company Performance",
-            hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
-            vAxis: { minValue: 0 },
-            // For the legend to fit, we make the chart area smaller
-            chartArea: { width: "70%", height: "70%" }
-            // lineWidth: 25
-          }}
-          // For tests
-          rootProps={{ "data-testid": "1" }}
-        />
+        <div className={classes.chartcontainer}>
+          <Chart
+            width={"99%"}
+            height={"99%"}
+            chartType="AreaChart"
+            loader={<Spinner color="black"/>}
+            data={this.getData(this.props.strategy,this.props.benchmark)}
+            options={{
+              title: "Company Performance",
+              hAxis: { title: "Month", titleTextStyle: { color: "#333" } },
+              vAxis: { minValue: 0 },
+              legend: { position: 'top'},
+              // For the legend to fit, we make the chart area smaller
+              chartArea: { width: "65%", height: "70%" }
+            }}
+          />
+        </div>
       </div>
     );
   }

@@ -44,7 +44,7 @@ class Login extends Component{
 
     render(){
         return(
-            <div className={classes.section}>
+            <section className={classes.section}>
                 <div className={classes.container}>
                     <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
                         <h4 className={classes.header}>Login</h4>
@@ -60,7 +60,7 @@ class Login extends Component{
                     <div></div>
                     <div></div>
                 </div>
-            </div>
+            </section>
             
         );
     }

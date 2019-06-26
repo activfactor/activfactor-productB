@@ -8,9 +8,11 @@ import Table from '../Charts/Table';
 import { connect } from 'react-redux';
 import { getFactorScreener } from '../../../../actions/index';
 import Spinner from '../../../UI/Spinner';
+import Modal from '../../../UI/Modal';
+import requireAuth from '../../../hoc/requireAuth';
 
 const query = {
-    "country":"usa",
+    "country":"can",
     "sectors":"consumer,materials,financials,industrials,services,technology,energy,health,utilities",
     "factors":"momentum,profitability,value,size,investment,volatility",
     "n_stock":10,
@@ -23,64 +25,72 @@ class AnalyzeResults extends Component{
     }
 
     renderCharts(){
-        console.log(this.props.data);
-        if (this.props.data.message===""){
+        if (this.props.data.error)
+        {
             return (
-                <div className={classes.container}>
-                    <p>Performance</p>
-                    <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
-                    <div className={classes.spinnerContainer}>
-                    <Spinner />
+                <section>
+                    <div className={classes.container}>
+                        <p>Performance</p>
+                        <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
+                        <div className={classes.spinnerContainer}>
+                        <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error}</h2>
+                        </div>
                     </div>
-                </div>
+                </section>
+            );
+        } else if (this.props.data.message===""){
+            return (
+                <Modal>
+                    <Spinner color="white"/>
+                </Modal>
             );
         } else {
             return (
-                <div className={classes.container}>
-                    <p>Performance</p>
-                    <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
-                    <div className={classes.chartcontainer}>
-                    <PieGraph 
-                        header="Sectors" 
-                        data={this.props.data.sector_allocation}/>
-                    <LineGraph 
-                        header="Historical Performance" 
-                        strategy={this.props.data.culmulative_return_strategy}
-                        benchmark={this.props.data.culmulative_return_benchmark}/>
-                    <BarChart 
-                        header="Annual Return" 
-                        strategy={this.props.data.annual_return_strategy}
-                        benchmark={this.props.data.annual_return_benchmark}/>
-                    <AreaChart 
-                        header="Drawdown" 
-                        strategy={this.props.data.drawdown_strategy}
-                        benchmark={this.props.data.drawdown_benchmark}/>    
+                <section>
+                    <div className={classes.headers}>
+                        <p>{`Last Update ${this.props.data.last_update}`}</p>
+                        <p>{`Next Update ${this.props.data.next_update}`}</p>
                     </div>
-                    <div className={classes.tablecontainer}>
-                        <Table 
-                            strategy={this.props.data.return_strategy}
-                            benchmark={this.props.data.return_benchmark}/>
-                        <Table 
-                            strategy={this.props.data.metrics_strategy}
-                            benchmark={this.props.data.metrics_benchmark}/>
-                        <Table 
-                            strategy={this.props.data.risk_strategy}
-                            benchmark={this.props.data.risk_benchmark}/>
+                    <div className={classes.container}>
+                        <p>Performance</p>
+                        <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
+                        <div className={classes.chartcontainer}>
+                        <PieGraph 
+                            header="Sectors" 
+                            data={this.props.data.sector_allocation}/>
+                        <LineGraph 
+                            header="Historical Performance" 
+                            strategy={this.props.data.culmulative_return_strategy}
+                            benchmark={this.props.data.culmulative_return_benchmark}/>
+                        <BarChart 
+                            header="Annual Return" 
+                            strategy={this.props.data.annual_return_strategy}
+                            benchmark={this.props.data.annual_return_benchmark}/>
+                        <AreaChart 
+                            header="Drawdown" 
+                            strategy={this.props.data.drawdown_strategy}
+                            benchmark={this.props.data.drawdown_benchmark}/>    
+                        </div>
+                        <div className={classes.tablecontainer}>
+                            <Table 
+                                strategy={this.props.data.return_strategy}
+                                benchmark={this.props.data.return_benchmark}/>
+                            <Table 
+                                strategy={this.props.data.metrics_strategy}
+                                benchmark={this.props.data.metrics_benchmark}/>
+                            <Table 
+                                strategy={this.props.data.risk_strategy}
+                                benchmark={this.props.data.risk_benchmark}/>
+                        </div>
                     </div>
-                </div>
+                </section>
             );
         }
     }
 
     render(){
         return(
-            <section>
-                <div className={classes.headers}>
-                    <p>{`Last Update ${this.props.data.last_update}`}</p>
-                    <p>{`Next Update ${this.props.data.next_update}`}</p>
-                </div>
-                {this.renderCharts()}
-            </section>
+            this.renderCharts()
         );
     }
 }
@@ -91,4 +101,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps, {getFactorScreener})(AnalyzeResults);
+export default connect(mapStateToProps, {getFactorScreener})(requireAuth(AnalyzeResults));

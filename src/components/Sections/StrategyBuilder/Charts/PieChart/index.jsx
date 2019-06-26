@@ -27,19 +27,10 @@ class Graph extends Component {
           data={this.getData(this.props.data)}
           options={{
             pieHole: 0.5,
-            chartArea: { width: "85%",height: "85%", color:'red' },
-            hAxis: {
-              title: "Total Population",
-              minValue: 0
-            },
-            vAxis: {
-              title: "City"
-            },
+            chartArea: { width: "95%",height: "95%" },
             with:"100%",
             height:"100%"
           }}
-          // For tests
-          rootProps={{ "data-testid": "1" }}
         />
         </div>
       </div>

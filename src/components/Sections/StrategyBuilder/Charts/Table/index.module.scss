@@ -8,13 +8,34 @@
     height: 400px;
     table{
         td{
-            font-size: 0.45rem !important;
+            font-size: 0.55rem;
             overflow: hidden !important;
-            // max-width: 33px !important;
             white-space: nowrap !important;
+            text-align: center !important;
+            &:first-child{
+                text-align: left !important;
+            }
         }
         th{
-            font-size: 0.4rem !important;
+            font-size: 0.6rem !important;
+            &:first-child{
+                text-align: left;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and ($mediaChartPreSmall){
+    .container{
+        table{
+            td{
+                font-size: 0.9rem !important;
+            }
+            th{
+                font-size: 0.9rem !important;
+            }
         }
     }
 }
@@ -24,23 +45,24 @@
         flex-basis: 31% !important;
         table{
             td{
-                font-size: 0.9rem !important;
+                font-size: 1rem !important;
             }
             th{
-                font-size: 0.9rem !important;
+                font-size: 1.1rem !important;
             }
         }
     }
 }
 
-@media only screen and ($mediaChartPreSmall){
+@media only screen and ($mediaChartMax){
     .container{
+        flex-basis: 31% !important;
         table{
             td{
-                font-size: 0.8rem !important;
+                font-size: 1.1rem !important;
             }
             th{
-                font-size: 0.8rem !important;
+                font-size: 1.3rem !important;
             }
         }
     }

@@ -10,7 +10,7 @@ class Graph extends Component {
     const result = Object.keys(strategy).map(key => {
       return [String(key), strategy[key], benchmark[key]];
     }); 
-    result.unshift(["Date","Strategy","Benchmark"]);
+    result.unshift(["Date","Strategy","S&P TSX"]);
     return result;
   }
 
@@ -26,17 +26,9 @@ class Graph extends Component {
           loader={<Spinner color="black"/>}
           data={this.getData(this.props.strategy,this.props.benchmark)}
           options={{
-            chartArea: { width: "70%",height: "70%", color:'red' },
-            hAxis: {
-              title: "Date",
-              minValue: 0
-            },
-            vAxis: {
-              title: "Numbers"
-            },
+            legend: {position:'top'},
+            chartArea: { width: "90%",height: "80%" },
           }}
-          // For tests
-          rootProps={{ "data-testid": "1" }}
         />
         </div>
       </div>

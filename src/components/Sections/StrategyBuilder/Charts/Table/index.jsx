@@ -27,7 +27,7 @@ class Table extends Component {
               column: 1,
               ranges: [
                 [-20000, 0, "#FF0000"],
-                [20000, null, "red", "#109CF1"]
+                [0, 20000, "green"]
               ]
             },
             {
@@ -35,17 +35,15 @@ class Table extends Component {
               column: 2,
               ranges: [
                 [-20000, 0, "#FF0000"],
-                [20000, null, "red", "#109CF1"]
+                [0, 20000, "green"]
               ]
             }
           ]}
           options={{
             allowHtml: true,
-            // showRowNumber: true,
             width: "100%",
             height: "100%"
           }}
-          rootProps={{ "data-testid": "3" }}
         />
       </div>
     );

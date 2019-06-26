@@ -9,7 +9,7 @@ class BarChart extends Component {
     const result = Object.keys(strategy).map(key => {
       return [String(key), strategy[key], benchmark[key]];
     }); 
-    result.unshift(["Year","Performance_Strategy","Performance_Benchmark"]);
+    result.unshift(["Year","strategy","S&P TSX"]);
     return result;
   }
 
@@ -19,16 +19,15 @@ class BarChart extends Component {
         <div className={classes.header}>{this.props.header}</div>
         <div className={classes.chartcontainer}>
         <Chart
-          width={"90%"}
-          height={"99%"}
-          chartType="BarChart"
+          width={"95%"}
+          height={"95%"}
+          chartType="ColumnChart"
           loader={<Spinner color="black"/>}
           data={this.getData(this.props.strategy,this.props.benchmark)}
           options={{
             // Material design options
-            chartArea: { width: "70%",height: "70%", color:'red' },
+            chartArea:{width: '90%', height:'90%'},
             legend: {position:'top'},
-            colors: ['#b0120a', '#ffab91'],
           }}
         />
         </div>

@@ -14,6 +14,8 @@ class App extends React.Component {
   componentDidMount(){
     if (!this.props.authenticated){
       history.push('/login');
+    } else {
+      history.push('/dashboard');
     }
   }
 

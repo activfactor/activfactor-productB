@@ -17,7 +17,8 @@ export const signIn = formProps => async dispatch => {
     const dataReponse = {
       authenticated: response.data.access_token ? true : false,
       username: formProps.username,
-      token: response.data.access_token
+      regtime: currentDate,
+      token: response.data.access_token,
     };
     dispatch({ type: SIGN_IN, payload: dataReponse });
     localStorage.setItem("username", dataReponse.username);
@@ -42,10 +43,10 @@ export const signOut = () => {
 
 
 
-export const toggleClicked = status => dispatch => {
+export const toggleClicked = () => (dispatch, getState) => {
   dispatch({
     type: TOGGLE_STATUS,
-    payload: { clickStatus: !status, initialStatus: true }
+    payload: { clickStatus: !getState().toggle.clicked, initialStatus: true }
   });
 };
 

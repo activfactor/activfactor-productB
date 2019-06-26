@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavigationItem = props => {
   return (
-    <Link className={props.nameOfClass} to={props.to}>
+    <Link onClick={props.onClick} className={props.nameOfClass} to={props.to}>
       {props.children}
     </Link>
   );

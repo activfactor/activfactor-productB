@@ -38,7 +38,7 @@ class Login extends Component{
 
     AuthError = () => {
         if (this.props.errorMessage){
-            return <div className="error">{this.props.errorMessage}</div>
+            return <div className={classes.error}>{this.props.errorMessage}</div>
         }
     }
 

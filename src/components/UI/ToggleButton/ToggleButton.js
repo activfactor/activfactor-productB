@@ -5,19 +5,13 @@ import classes from './ToggleButton.module.scss';
 
 
 class ToggleButton extends Component {
-
-    state = {
-        Clicked:false,
-    };
-
     onClickHandler = () => {
-        this.props.toggleClicked(this.state.Clicked);
-        this.setState(prevState => ({Clicked:!prevState.Clicked}));
+        this.props.toggleClicked();
     }
 
     render(){
         return (
-                <div className={this.state.Clicked ? `${classes.container} ${classes.change}` : `${classes.container}`} onClick={this.onClickHandler}>
+                <div className={this.props.clicked ? `${classes.container} ${classes.change}` : `${classes.container}`} onClick={this.onClickHandler}>
                     <div className={classes.bar1} />
                     <div className={classes.bar2} />
                     <div className={classes.bar3} />
@@ -26,4 +20,10 @@ class ToggleButton extends Component {
     } 
 }
 
-export default connect(null,{toggleClicked})(ToggleButton);
+const mapStateToProps = state => {
+    return {
+        clicked: state.toggle.clicked
+    };
+}
+
+export default connect(mapStateToProps,{toggleClicked})(ToggleButton);

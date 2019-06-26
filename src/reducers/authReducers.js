@@ -12,7 +12,8 @@ export default (state = INITIAL_STATE, action)=>{
                 ...state, 
                 authenticated: action.payload.authenticated,
                 username: action.payload.username,
-                jwtoken: action.payload.jwtoken,
+                regtime: action.payload.regtime,
+                token: action.payload.token,
                 errorMessage:null
             }
         case SIGN_OUT:

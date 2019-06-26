@@ -18,7 +18,7 @@ class AuthButtons extends Component {
     } else {
       return (
         <div className={classes.container}>
-          <Link className={classes.button} onClick={this.props.signOut}>Logout</Link>
+          <Link className={classes.button} to="#" onClick={this.props.signOut}>Logout</Link>
         </div>
       );
     }

@@ -11,12 +11,17 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     reducers,
-    { auth: {
+    { 
+        auth: {
         authenticated: localStorage.getItem('authenticated'),
         username: localStorage.getItem('username'),
         regtime: localStorage.getItem('regtime'),
         token: localStorage.getItem('t'),
-    }},
+        },
+        toggle: {
+            clicked: false
+        }
+    },
     composeEnhancers(applyMiddleware(reduxThunk))
 )
 

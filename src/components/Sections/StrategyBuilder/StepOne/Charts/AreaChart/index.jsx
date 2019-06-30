@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "../chart.module.scss";
-import Spinner from "../../../../UI/Spinner";
+import Spinner from "../../../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 
 class AreaChart extends Component {

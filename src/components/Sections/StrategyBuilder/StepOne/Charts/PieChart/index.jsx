@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
 import classes from '../chart.module.scss';
-import Spinner from '../../../../UI/Spinner';
+import Spinner from '../../../../../UI/Spinner';
 
 class Graph extends Component {
 

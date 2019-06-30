@@ -7,7 +7,7 @@ import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
-import AnalyzeResults from "./Sections/StrategyBuilder/AnalyzeResults";
+import AnalyzeResults from "./Sections/StrategyBuilder/StepOne/AnalyzeResults";
 
 class App extends React.Component {
 

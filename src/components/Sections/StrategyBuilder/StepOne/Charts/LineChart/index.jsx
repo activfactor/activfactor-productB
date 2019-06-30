@@ -10,7 +10,7 @@ class Graph extends Component {
     const result = Object.keys(strategy).map(key => {
       return [String(key), {v:strategy[key],f:`${Math.round(strategy[key]*100)/100}$`},{v:benchmark[key],f:`${Math.round(benchmark[key]*100)/100}$`}];
     }); 
-    result.unshift(["Date","Strategy","S&P TSX"]);
+    result.unshift([this.props.chartName,"Strategy","S&P TSX"]);
     return result;
   }
 
@@ -27,9 +27,9 @@ class Graph extends Component {
           data={this.getData(this.props.strategy,this.props.benchmark)}
           options={{
             legend: {position:'top'},
-            chartArea: { width: "79%",height: "80%" },
+            chartArea: {left:80, width: "80%",height: "80%" },
             curveType:'function',
-            vAxis:{title: 'US Dolor'}
+            vAxis:{format:"##,###$"}
           }}
         />
         </div>

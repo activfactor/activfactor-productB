@@ -57,19 +57,23 @@ class AnalyzeResults extends Component{
                         <div className={classes.chartcontainer}>
                         <PieGraph 
                             header="Sectors" 
-                            data={this.props.data.sector_allocation}/>
+                            data={this.props.data.sector_allocation}
+                            />
                         <LineGraph 
                             header="Historical Performance" 
                             strategy={this.props.data.culmulative_return_strategy}
-                            benchmark={this.props.data.culmulative_return_benchmark}/>
+                            benchmark={this.props.data.culmulative_return_benchmark}
+                            chartName="Historical Performance"/>
                         <BarChart 
                             header="Annual Return" 
                             strategy={this.props.data.annual_return_strategy}
-                            benchmark={this.props.data.annual_return_benchmark}/>
+                            benchmark={this.props.data.annual_return_benchmark}
+                            chartName="Annual Return"/>
                         <AreaChart 
                             header="Drawdown" 
                             strategy={this.props.data.drawdown_strategy}
-                            benchmark={this.props.data.drawdown_benchmark}/>    
+                            benchmark={this.props.data.drawdown_benchmark}
+                            chartName="Drawdown"/>    
                         </div>
                         <div className={classes.tablecontainer}>
                             <Table 

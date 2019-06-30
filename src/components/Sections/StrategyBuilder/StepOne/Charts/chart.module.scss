@@ -56,7 +56,7 @@
     .chartcontainer{
         height: 520px !important;
         div{
-            max-width: 900px !important;
+            max-width: 1000px !important;
             svg{
                 width: 99% !important;
             }
@@ -65,10 +65,13 @@
 }
 
 @media only screen and ($mediaChartMedium){
+    .container{
+        flex-basis: 48% !important;
+    }
     .chartcontainer{
-        height: 520px !important;
+        height: 480px !important;
         div{
-            max-width: 1200px !important;
+            max-width: 530px !important;
             svg{
                 width: 99% !important;
             }
@@ -76,7 +79,22 @@
     }
 }
 
-@media only screen and ($mediaChartMax){
+@media only screen and ($mediaChartXMax){
+    .container{
+        flex-basis: 48% !important;
+    }
+    .chartcontainer{
+        height: 480px !important;
+        div{
+            max-width: 600px !important;
+            svg{
+                width: 99% !important;
+            }
+        }
+    }
+}
+
+@media only screen and ($mediaChartXMax){
     .container{
         flex-basis: 48% !important;
     }

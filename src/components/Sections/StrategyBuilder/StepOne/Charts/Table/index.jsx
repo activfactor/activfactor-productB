@@ -4,15 +4,20 @@ import classes from "./index.module.scss";
 import Spinner from '../../../../../UI/Spinner';
 
 class Table extends Component {
+
+  CapString = (textString) => {
+    return textString.charAt(0).toUpperCase() + textString.slice(1);
+  } 
+
   getData(strategy,benchmark){
     const result = Object.keys(strategy).map(key => {
       return [
-        String(key).split("_").join(" "),
+        this.CapString(String(key).split("_").join(" ")),
         {v:strategy[key], f:`${Math.round(strategy[key]*100)/100}%`}, 
         {v:benchmark[key], f:`${Math.round(benchmark[key]*100)/100}%`}
       ]
     })
-    result.unshift([this.props.tableName, "strategy","benchmark"]);
+    result.unshift([this.props.tableName, "strategy","s&p tsx"]);
     return result;
   }
 

@@ -6,9 +6,13 @@ import Spinner from '../../../../UI/Spinner';
 class Table extends Component {
   getData(strategy,benchmark){
     const result = Object.keys(strategy).map(key => {
-      return [String(key).split("_").join(" "), strategy[key], benchmark[key]]
+      return [
+        String(key).split("_").join(" "),
+        {v:strategy[key], f:`${Math.round(strategy[key]*100)/100}%`}, 
+        {v:benchmark[key], f:`${Math.round(benchmark[key]*100)/100}%`}
+      ]
     })
-    result.unshift(["return", "strategy","benchmark"]);
+    result.unshift([this.props.tableName, "strategy","benchmark"]);
     return result;
   }
 

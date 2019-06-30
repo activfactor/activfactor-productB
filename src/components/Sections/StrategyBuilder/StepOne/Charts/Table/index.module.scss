@@ -31,7 +31,7 @@
     .container{
         table{
             td{
-                font-size: 0.9rem !important;
+                font-size: 0.85rem !important;
             }
             th{
                 font-size: 0.9rem !important;
@@ -42,13 +42,13 @@
 
 @media only screen and ($mediaChartMedium){
     .container{
-        flex-basis: 31% !important;
+        flex-basis: 30% !important;
         table{
             td{
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
             }
             th{
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
             }
         }
     }
@@ -59,10 +59,10 @@
         flex-basis: 31% !important;
         table{
             td{
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
             }
             th{
-                font-size: 1.3rem !important;
+                font-size: 1.1rem !important;
             }
         }
     }

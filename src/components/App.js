@@ -4,7 +4,7 @@ import Header from "./Header/Header";
 import Login from "./Sections/Login/Login";
 import Dashboard from "./Sections/Dashboard/Dashboard";
 import Signup from "./Sections/Signup/Signup";
-import Footer from "../components/Sections/Footer/Footer";
+import Footer from "../components/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
 import AnalyzeResults from "./Sections/StrategyBuilder/AnalyzeResults";

@@ -6,10 +6,10 @@ import AreaChart from '../Charts/AreaChart';
 import BarChart from '../Charts/BarChart';
 import Table from '../Charts/Table';
 import { connect } from 'react-redux';
-import { getFactorScreener } from '../../../../actions/index';
-import Spinner from '../../../UI/Spinner';
-import Modal from '../../../UI/Modal';
-import requireAuth from '../../../hoc/requireAuth';
+import { getFactorScreener } from '../../../../../actions/index';
+import Spinner from '../../../../UI/Spinner';
+import Modal from '../../../../UI/Modal';
+import requireAuth from '../../../../hoc/requireAuth';
 
 const query = {
     "country":"can",
@@ -74,13 +74,16 @@ class AnalyzeResults extends Component{
                         <div className={classes.tablecontainer}>
                             <Table 
                                 strategy={this.props.data.return_strategy}
-                                benchmark={this.props.data.return_benchmark}/>
+                                benchmark={this.props.data.return_benchmark}
+                                tableName="return"/>
                             <Table 
                                 strategy={this.props.data.metrics_strategy}
-                                benchmark={this.props.data.metrics_benchmark}/>
+                                benchmark={this.props.data.metrics_benchmark}
+                                tableName="metrics"/>
                             <Table 
                                 strategy={this.props.data.risk_strategy}
-                                benchmark={this.props.data.risk_benchmark}/>
+                                benchmark={this.props.data.risk_benchmark}
+                                tableName="risk"/>
                         </div>
                     </div>
                 </section>

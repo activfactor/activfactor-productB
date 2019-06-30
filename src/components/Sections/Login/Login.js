@@ -5,16 +5,34 @@ import { connect } from 'react-redux';
 import { signIn } from '../../../actions';
 import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
+import Spinner from '../../UI/Spinner/SpinnerButton';
 
 let styleBorder = "none";
 
 class Login extends Component{
+    state = {isSpinner:true}
 
     onSubmit = formValues => {
         if (formValues.username && formValues.password){
+            this.setState({isSpinner:false});
             this.props.signIn(formValues);
         } else {
             this.validate(formValues);
+        }
+    }
+
+    renderSubmit = isinput => {
+        if (isinput){
+            return (
+                <input className={classes.submit} type="submit" value="Login" />
+            );
+        } else {
+            return(
+                <React.Fragment>
+                    <input className={classes.submit} type="submit" value='' />
+                    <Spinner color='white' nameOfClass={classes.spinner}/>
+                </React.Fragment>
+            );
         }
     }
 
@@ -52,7 +70,9 @@ class Login extends Component{
                         <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
                         {this.AuthError()}
                         <div className={classes.buttons}>
-                            <input className={classes.submit} type="submit" value="Login" />
+                            <span>
+                                {this.renderSubmit(this.state.isSpinner)}
+                            </span>
                             <Link to="/reset">Forgot Password?</Link>
                         </div>
                         <span className={classes.register}>Don't have an account? <Link to="/signup">Sign up</Link></span>
@@ -61,7 +81,6 @@ class Login extends Component{
                     <div></div>
                 </div>
             </section>
-            
         );
     }
 }
@@ -81,7 +100,7 @@ const validate = (formValues) => {
 
 const mapStateToProps = state => {
     return { 
-        jwtoken: state.auth.jwtoken,
+        token: state.auth.token,
         uername: state.auth.username,
         errorMessage: state.auth.errorMessage
     }

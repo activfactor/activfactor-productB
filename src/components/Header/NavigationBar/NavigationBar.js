@@ -37,7 +37,7 @@ class NavigationBar extends Component{
                     {this.renderAuthButtons()}
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Dashboard</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/strategy-builder" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Watch List</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/strategy-builder-step-two" nameOfClass={classes.link}>Watch List</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Portofolio Performance</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Transactions</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Strategy Monitor</NavigationItem>

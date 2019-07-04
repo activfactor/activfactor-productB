@@ -1,14 +1,14 @@
-import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR } from '../actions/types';
-const INITIAL_STATE = {
-    message: ""
-};
-
-export default (state = INITIAL_STATE, action)=>{
+import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR, FACTOR_SCREENER_RESET } from '../actions/types';
+const INITIAL_STATE={
+    message:""
+}
+export default (state=INITIAL_STATE , action)=>{
     switch (action.type){
+        case FACTOR_SCREENER_RESET:
+            return state=INITIAL_STATE
         case FACTOR_SCREENER:
             return { 
                 ...state, 
-                message:action.payload,
                 last_update:action.payload.last_update,
                 next_update:action.payload.next_update,
                 parameters:action.payload.parameters,
@@ -24,12 +24,14 @@ export default (state = INITIAL_STATE, action)=>{
                 metrics_strategy:action.payload.performance_strategy.metrics,
                 metrics_benchmark:action.payload.performance_benchmark.metrics,
                 risk_strategy:action.payload.performance_strategy.risk,
-                risk_benchmark:action.payload.performance_benchmark.risk
+                risk_benchmark:action.payload.performance_benchmark.risk,
+                strategy_actual_members:action.payload.strategy_actual_members
             }
         case FACTOR_SCREENER_ERROR:
             return {
                 ...state,
-                error: action.payload
+                message: action.payload.message,
+                error: action.payload.error
             }
         default:
             return state;

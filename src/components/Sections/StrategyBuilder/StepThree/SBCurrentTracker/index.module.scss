@@ -1,0 +1,166 @@
+@import "../../../../../styles/params/variables";
+.stockContainer {
+  max-width: 100%;
+  line-height: 1.25;
+  margin: 0 10px;
+}
+.stockContainerHeading {
+  font-weight: 400;
+
+  color: #192a3e;
+  max-width: 10rem;
+}
+.stockContainerDesc {
+  font-size: 1rem;
+  color: #989898;
+  margin: 20px 0;
+}
+.ticker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 105%;
+
+  .title {
+    color: #323c47;
+  }
+  .desc {
+    color: #707683;
+    font-size: 0.55rem;
+    align-self: flex-start;
+    text-align: left;
+  }
+}
+
+.SectorLabel {
+  color: #707683 !important;
+  align-self: flex-start;
+  
+}
+.warning
+{
+  color:#ff4040 !important;
+}
+.table {
+  -webkit-box-shadow: -1px 1px 4px 2px rgba(79, 157, 241, 1);
+  -moz-box-shadow: -1px 1px 4px 2px rgba(79, 157, 241, 1);
+  box-shadow: -1px 1px 4px 2px rgb(174, 178, 181);
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+.table tbody tr {
+  padding: 10px;
+}
+
+thead tr {
+  background-color: #f8f8f8;
+  padding: 0.35em;
+
+  background-color: #109cf1 !important;
+  padding: 15px 0;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 1.5rem;
+}
+
+.table th,
+.table td {
+  padding: 1.625em;
+ 
+  text-align: center;
+
+}
+
+
+
+.table td {
+font-size: 0.85rem;
+color:#109cf1;  
+  
+}
+.table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  text-align: center;
+}
+@media screen and (max-width: 950px) {
+  
+  thead tr {
+    font-size: 0.65rem;
+    
+  }
+
+.table td {
+font-size: 0.55rem;
+color:#109cf1;  
+}
+ .desc {
+   display:none !important;
+  } 
+}
+
+@media screen and (max-width: 700px) {
+  .table {
+    border: 0;
+  }
+
+  .table caption {
+    font-size: 1.3em;
+  }
+
+  .table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+   
+  }
+
+  .table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .table td::before {
+    /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+  }
+
+  .ticker {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100% !important;
+  }  
+  .desc {
+   display:none !important;
+  }
+}

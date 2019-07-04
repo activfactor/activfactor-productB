@@ -11,6 +11,10 @@ $backgroundColor:rgb(244, 247, 252);
 $whiteColor:#fff;
 $navigationBarShadowColor:#e4e1e1;
 
+// Strategy Builder Colors
+$activeColor: rgb(0, 157, 255);
+$doneColor: rgb(97, 195, 255);
+
 //media Queries
 
 //General
@@ -38,3 +42,9 @@ $mediaChartMedium:"min-width: 1100px";
 $mediaChartPreMedium:"min-width: 800px";
 $mediaChartPreSmall: "min-width: 500px";
 $mediaChartXSmall:"min-width: 370px";
+
+//Strategy Builder Step One defined by murtaza
+$mediaMinWithLarge: "min-width: 1200px";
+$mediaMinWithMedium:"min-width: 992px";
+$mediaSmallMinWidth:"min-width: 768px";
+$mediaXSmallMinWidth: "min-width:600px";

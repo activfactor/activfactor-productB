@@ -5,6 +5,13 @@ import {
   FACTOR_SCREENER, 
   FACTOR_SCREENER_ERROR,
   SIGN_OUT,
+  COUNTRY_UPDATE,
+  SECTOR_UPDATE,
+  FACTORS_UPDATE,
+  STOCK_UPDATE,
+  FIRM_UPDATE,
+  RESET_QUERY,
+  FACTOR_SCREENER_RESET
 } from "./types";
 import wealthface from "../apis/wealthface";
 import history from '../history';
@@ -52,11 +59,11 @@ export const toggleClicked = () => (dispatch, getState) => {
 
 
 
-export const getFactorScreener = props => async (dispatch, getState) => {
+export const getFactorScreener = () => async (dispatch, getState) => {
   try {
     if (!getState().factorScreener.parameters) {
       const response = await wealthface.get("/factor/screener", {
-        params: props,
+        params: getState().queryReducer,
         headers: {
           Authorization: `JWT ${getState().auth.token}`
         }
@@ -67,7 +74,29 @@ export const getFactorScreener = props => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: FACTOR_SCREENER_ERROR,
-      payload: error.response.data.message
+      payload: error.response.data
     });
   }
 };
+
+export const queryUpdate = props => dispatch => {
+  if ("country" in props){
+    dispatch({type: COUNTRY_UPDATE, payload: props})
+  } if ("sectors" in props){
+    dispatch({type: SECTOR_UPDATE, payload: props})
+  } if ("factors" in props){
+    dispatch({type: FACTORS_UPDATE, payload: props})
+  } if ("n_stock" in props){
+    dispatch({type: STOCK_UPDATE, payload: props})
+  } if ("firm_size" in props){
+    dispatch({type: FIRM_UPDATE, payload: props})
+  }
+}
+
+export const resetQuery = () => dispatch => {
+  dispatch({type: RESET_QUERY})
+}
+
+export const resetFactorScreener = () => dispatch => {
+  dispatch({type: FACTOR_SCREENER_RESET})
+}

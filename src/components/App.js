@@ -7,7 +7,7 @@ import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
-import AnalyzeResults from "./Sections/StrategyBuilder/StepOne/AnalyzeResults";
+import StrategyBuilder from "./Sections/StrategyBuilder";
 
 class App extends React.Component {
 
@@ -28,7 +28,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />
-            <Route PATH="/strategy-builder" component={AnalyzeResults} />
+            <Route path="/strategy-builder" component={StrategyBuilder} />
           </Switch>
           </div>
             <Footer />

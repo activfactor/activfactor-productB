@@ -6,26 +6,21 @@ import AreaChart from '../Charts/AreaChart';
 import BarChart from '../Charts/BarChart';
 import Table from '../Charts/Table';
 import { connect } from 'react-redux';
-import { getFactorScreener } from '../../../../../actions/index';
+import { getFactorScreener, resetFactorScreener } from '../../../../../actions/index';
 import Spinner from '../../../../UI/Spinner';
 import Modal from '../../../../UI/Modal';
 import requireAuth from '../../../../hoc/requireAuth';
-
-const query = {
-    "country":"can",
-    "sectors":"consumer,materials,financials,industrials,services,technology,energy,health,utilities",
-    "factors":"momentum,profitability,value,size,investment,volatility",
-    "n_stock":10,
-    "firm_size":"large,medium,small"
-}
+import Buttons from '../ActionButtons';
 
 class AnalyzeResults extends Component{
     componentDidMount(){
-        this.props.getFactorScreener(query); 
+        this.props.resetFactorScreener();
+        this.props.getFactorScreener(); 
     }
 
     renderCharts(){
-        if (this.props.data.error)
+        console.log(this.props.data);
+        if (this.props.data.error || this.props.data.message)
         {
             return (
                 <section>
@@ -33,12 +28,12 @@ class AnalyzeResults extends Component{
                         <p>Performance</p>
                         <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
                         <div className={classes.spinnerContainer}>
-                        <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error}</h2>
+                        <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error || this.props.data.message}</h2>
                         </div>
                     </div>
                 </section>
             );
-        } else if (this.props.data.message===""){
+        } else if (!this.props.data.parameters){
             return (
                 <Modal>
                     <Spinner color="white"/>
@@ -46,11 +41,6 @@ class AnalyzeResults extends Component{
             );
         } else {
             return (
-                <section>
-                    <div className={classes.headers}>
-                        <p>{`Last Update ${this.props.data.last_update}`}</p>
-                        <p>{`Next Update ${this.props.data.next_update}`}</p>
-                    </div>
                     <div className={classes.container}>
                         <p>Performance</p>
                         <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
@@ -89,8 +79,8 @@ class AnalyzeResults extends Component{
                                 benchmark={this.props.data.risk_benchmark}
                                 tableName="risk"/>
                         </div>
+                        <Buttons onClick={this.props.modify} customizePortfolio={this.props.customizePortfolio}/>
                     </div>
-                </section>
             );
         }
     }
@@ -108,4 +98,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps, {getFactorScreener})(requireAuth(AnalyzeResults));
+export default connect(mapStateToProps, {getFactorScreener,resetFactorScreener})(requireAuth(AnalyzeResults));

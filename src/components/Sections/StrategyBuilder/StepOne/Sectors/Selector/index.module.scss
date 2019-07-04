@@ -1,0 +1,74 @@
+@import "../../../../../../styles/params/variables";
+
+.checkboxitem {
+  flex-basis: 100%;
+  padding: 0.3rem 0;
+  label {
+    display: block;
+    color: #989898;
+    font-size: 1rem;
+    margin-left: 20px;
+    &:hover {
+      // background-color: #1e90ff;
+      color: #1e90ff;
+    }
+  }
+}
+
+@mixin csscheckbox($size: "24px", $selectedColor: #444, $checkColor: #fff, $valign: "middle", $rounded: rounded) 
+{
+  display: none;
+
+  &:checked + i {
+    background: #{$selectedColor} !important;
+    border-color: #c4c4c4;
+    &:hover:after {
+      opacity: 1;
+    }
+
+    &:after {
+      opacity: 1;
+      border-color: #109cf1;
+    }
+  }
+  + i {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    vertical-align: #{$valign};
+    border: 1px solid #999;
+    border-radius: 0.2em;
+    background: #ffffff;
+    font-size: #{$size};
+    cursor: pointer;
+    margin-right: 0.7rem; 
+
+    &:hover:after {
+      opacity: 0.2;
+    }
+
+    &:after {
+      content: "";
+      opacity: 0;
+      transform: translateZ(1px) rotate(-45deg);
+      outline: 1px solid transparent; // hack to prevent antialias atrifacts in firefox
+      position: absolute;
+      top: 30%;
+      left: 15%;
+      width: 0.79em;
+      height: 0.3em;
+      border: 0.1em solid #222;
+      border-top: none;
+      border-right: none;
+      background: rgba(0, 0, 0, 0);
+    }
+  }
+}
+
+// css checkbox
+
+.csscheckbox {
+  @include csscheckbox(18px, $selectedColor: #ffffff);
+}

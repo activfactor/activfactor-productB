@@ -1,0 +1,56 @@
+@import "params/variables";
+
+// @font-face {
+// font-family: "Poppins-Medium";
+// src: url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+// }
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("../assets/fonts/Poppins-Medium.otf");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../assets/fonts/Poppins-Regular.otf");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("../assets/fonts/Poppins-Bold.otf");
+}
+
+* {
+  font-family: "Poppins-Regular", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  min-height: 100%;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .subroot{
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: hidden;
+  }
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+body {
+  background-color: $backgroundColor;
+}
+
+ul {
+  list-style: none;
+}

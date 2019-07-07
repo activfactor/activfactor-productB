@@ -1,0 +1,56 @@
+@import "../../../../../../styles/params/variables";
+.tableContainer {
+    border-collapse: collapse;
+    flex-basis: 32%;
+    box-shadow: 1px 1px 4px #d4d4d4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 405px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .table__header{
+        border-bottom: 1px solid #ddd;
+        flex-basis: 100%;
+        padding: 0.2rem;
+        .table__headerow{
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+            &:first-child{
+                align-self: flex-start;
+            }
+        }
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .tablebody{
+        flex-basis: 100%;
+        .table__bodyrow{
+            flex-basis: 100%;
+            display: flex;
+            justify-content: space-between;
+            &:first-child{
+                align-self: flex-start;
+            }
+        }
+    }
+    .success{
+        color:$mainBlueColor;
+    }
+    .warning{
+        color:$redColor;
+    }
+    th, td {
+        padding: 8px;
+        text-align: center;
+        flex-basis: 20%;
+        &:first-child{
+            flex-basis: 65%;
+            text-align: left;
+        }
+      }
+  }
+  
+ 

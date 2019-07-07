@@ -1,0 +1,58 @@
+@import "../../../../../styles/params/variables";  
+  /*Sectors Start*/
+  .Country {
+    
+    padding-bottom: 10px;
+    flex-basis: 100%;
+    position: relative;
+    select{
+      -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: 30px;
+      top: 53px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #333;
+      z-index: 1;
+    }
+  }
+
+  .CountryHeading {
+    font-weight: 400;
+    border-bottom: 1px solid #d7d7d7;
+    color: #192a3e;
+    margin-left: 0.5rem;
+    max-width: 10rem;
+  }
+
+  .countryControl
+  {
+    background-color: #f5f6f8;
+    padding: 12px 24px;
+    border: 0;
+    max-width: 40rem;
+    border: 1px solid #f5f6f8;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px #f5f6f8;
+    width: 95%;
+    margin-top: 0.7rem;
+    color: #989898;
+    font-size: 1rem;
+  }
+  /*Sectors End*/
+ 
+  @media only screen and ($mediaSmallMinWidth) {
+  
+    .Country {
+    
+    flex-grow: 2 !important;
+    }
+  }
+  

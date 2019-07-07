@@ -1,10 +1,47 @@
-import React from 'react';
-import Header from './Header/Header';
+import React from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import Header from "./Header/Header";
+import Login from "./Sections/Login/Login";
+import Dashboard from "./Sections/Dashboard/Dashboard";
+import Signup from "./Sections/Signup/Signup";
+import Footer from "../components/Footer/Footer";
+import history from "../history";
+import { connect } from 'react-redux';
+import StrategyBuilder from "./Sections/StrategyBuilder";
 
-const App = () => {
+class App extends React.Component {
+
+  componentDidMount(){
+    if (!this.props.authenticated){
+      history.push('/login');
+    } else {
+      history.push('/dashboard');
+    }
+  }
+
+  render() {
     return (
-        <Header />
+        <Router history={history}>
+          <div className="subroot">
+            <Header />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/strategy-builder" component={StrategyBuilder} />
+          </Switch>
+          </div>
+            <Footer />
+        </Router>
     );
-};
+  }
+}
 
-export default App;
+
+const mapStateToProps = state => {
+  return { 
+      authenticated: state.auth.authenticated,
+  }
+}
+
+export default connect(mapStateToProps)(App);

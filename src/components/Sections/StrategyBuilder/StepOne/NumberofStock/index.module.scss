@@ -1,0 +1,31 @@
+@import "../../../../../styles/params/variables";
+
+.stockNumberContainer {
+  border: none;
+  margin: 20px 0;
+  padding-top: 10px;
+  flex-basis: 100%;
+}
+
+
+.stockNumberHeading {
+  font-weight: 400;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #d7d7d7;
+  color: #192a3e;
+  margin-left: 0.5rem;
+  max-width: 10rem;
+  margin-bottom: 20px;
+}
+.stockNumbercontrols {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  color: #989898;
+  font-size: 0.8em;
+}
+
+.active {
+  color: #109cf1 !important;
+}

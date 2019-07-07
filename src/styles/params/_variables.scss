@@ -1,0 +1,50 @@
+// Colors
+$mainBlueColor: #109CF1;
+$lightBlueColor: #E2F3FD;
+$secondBlueColor:#60DFC8;
+$darkBlueTextColor:#192A3E;
+$textColor:#858585;
+$footerColor:#192A3E;
+$redColor:#FF0000;
+$searchColor:#dfdede;
+$backgroundColor:rgb(244, 247, 252);
+$whiteColor:#fff;
+$navigationBarShadowColor:#e4e1e1;
+
+// Strategy Builder Colors
+$activeColor: rgb(0, 157, 255);
+$doneColor: rgb(97, 195, 255);
+
+//media Queries
+
+//General
+$mediaMaxWidth: "max-width: 2920px";
+$mediaMediumWidth:"max-width: 1200px";
+$mediaSmallWidth:"max-width: 542px";
+$mediaXSmallWidth: "max-width: 377px";
+
+//Login Form
+$mediaLoginMaxWidth:"max-width: 2920px";
+$mediaLoginMediumWidth:"max-width: 560px";
+$mediaLoginSmallWidth:"max-width: 560px";
+
+
+//Signup Form
+$mediaSignupMaxWith:"max-width: 2920px";
+$mediaSignupMediumWidth:"max-width: 1045px";
+$mediaSignupSmallWidth:"max-width: 610px";
+
+//Charts
+$mediaChartXMax:"min-width: 1400px";
+$mediaChartMax:"min-width: 1350px";
+$mediaCharPreMax:"min-width: 1250px";
+$mediaChartMedium:"min-width: 1100px";
+$mediaChartPreMedium:"min-width: 800px";
+$mediaChartPreSmall: "min-width: 500px";
+$mediaChartXSmall:"min-width: 370px";
+
+//Strategy Builder Step One defined by murtaza
+$mediaMinWithLarge: "min-width: 1200px";
+$mediaMinWithMedium:"min-width: 992px";
+$mediaSmallMinWidth:"min-width: 768px";
+$mediaXSmallMinWidth: "min-width:600px";

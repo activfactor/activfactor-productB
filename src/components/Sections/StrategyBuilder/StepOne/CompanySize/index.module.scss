@@ -1,0 +1,59 @@
+@import "../../../../../styles/params/variables";
+
+.companySize {
+  flex-basis: 100% !important;
+}
+.companySizeHeading {
+  font-weight: 400;
+  border-bottom: 1px solid #d7d7d7;
+  color: #192a3e;
+  margin-left: 0.5rem;
+  max-width: 10rem;
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  a {
+    color: $mainBlueColor;
+  }
+}
+
+.active {
+  background-color: $mainBlueColor !important;
+  color: #e1f2fd !important;
+  border: none !important;
+  box-shadow: 1px 1px 3px $mainBlueColor !important;
+}
+
+//Large Screens
+@media only screen and ($mediaXSmallMinWidth) {
+  .btns {
+    flex-direction: column !important;
+    
+  }
+}
+@media only screen and ($mediaSmallMinWidth) {
+  .btns {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media only screen and ($mediaMinWithMedium) {
+  .btn {
+    flex-basis: 30% !important;
+   
+  }
+}
+
+@media only screen and ($mediaMinWithLarge) {
+  .btn {
+    flex-basis: 30% !important;
+   
+  }
+}

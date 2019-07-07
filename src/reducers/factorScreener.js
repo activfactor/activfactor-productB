@@ -9,6 +9,7 @@ export default (state=INITIAL_STATE , action)=>{
         case FACTOR_SCREENER:
             return { 
                 ...state, 
+                benchmark:action.payload.benchmark,
                 last_update:action.payload.last_update,
                 next_update:action.payload.next_update,
                 parameters:action.payload.parameters,

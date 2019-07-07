@@ -10,7 +10,7 @@ class Graph extends Component {
     const result = Object.keys(strategy).map(key => {
       return [String(key), {v:strategy[key],f:`${Math.round(strategy[key]*100)/100}$`},{v:benchmark[key],f:`${Math.round(benchmark[key]*100)/100}$`}];
     }); 
-    result.unshift([this.props.chartName,"Strategy","S&P TSX"]);
+    result.unshift([this.props.chartName,"Strategy",this.props.benchmark_name]);
     return result;
   }
 

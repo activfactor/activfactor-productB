@@ -36,9 +36,15 @@ class StrategyBuilder extends Component{
     }
 
     DismissMessage = () => {
-        this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
-        this.props.resetQuery();
-        this.props.resetFactorScreener();
+        
+        if (this.props.saving_message){
+            this.props.resetQuery();
+            this.props.resetFactorScreener();
+            this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
+        } else if (this.props.error_saving_message){
+            this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
+        }
+        
     }
 
     AnalyuzeResult = () => {
@@ -80,7 +86,9 @@ class StrategyBuilder extends Component{
 
 const mapStateToProps = state => {
     return {
-        data: state.factorScreener
+        data: state.factorScreener,
+        saving_message: state.factorScreener.saving_message,
+        error_saving_message: state.factorScreener.error_saving_message
     };
 }
 

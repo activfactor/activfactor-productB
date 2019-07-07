@@ -15,12 +15,12 @@ class Login extends Component{
     onSubmit = formValues => {
         if (formValues.username && formValues.password){
             this.setState({isSpinner:false});
-            // this.props.signIn(formValues);
-            const data = {
-                "email":formValues.username,
-                "password":formValues.password
-            }
-            this.props.signIn_A(data);
+            this.props.signIn(formValues);
+            // const data = {
+            //     "email":formValues.username,
+            //     "password":formValues.password
+            // }
+            // this.props.signIn_A(data);
         } else {
             this.validate(formValues);
         }

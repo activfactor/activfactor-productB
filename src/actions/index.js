@@ -16,9 +16,19 @@ import {
   FACTOR_SCREENER_SAVE_ERROR
 } from "./types";
 import wealthface from "../apis/wealthface";
+import wealthalpha from "../apis/wealthfacea";
 import history from '../history';
 
 const currentDate = new Date();
+
+export const signIn_A = formProps => async () => {
+  try {
+    const response = await wealthalpha.post("/login", formProps);
+    console.log(response);
+  } catch(error){
+    console.log(error);
+  }
+}
 
 export const signIn = formProps => async dispatch => {
   try {

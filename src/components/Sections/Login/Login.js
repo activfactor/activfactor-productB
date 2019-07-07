@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { signIn } from '../../../actions';
+import { signIn, signIn_A } from '../../../actions';
 import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
@@ -107,7 +107,7 @@ const mapStateToProps = state => {
 }
 
 // this is the exact same way to wrap the redux form like below 
-export default compose(connect(mapStateToProps, {signIn}), reduxForm({ form: 'loginForm' ,validate}))(Login);
+export default compose(connect(mapStateToProps, {signIn,signIn_A}), reduxForm({ form: 'loginForm' ,validate}))(Login);
 
 // export default connect(mapStateToProps,{signIn})(
 //     reduxForm({form: 'loginForm',validate})(Login)

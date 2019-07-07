@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import classes from "./index.module.scss";
 
 class TableChart extends Component {
+  CapString = (textString) => {
+    return textString.charAt(0).toUpperCase() + textString.slice(1);
+  } 
+
   render() {
     return (
       <table className={classes.tableContainer}>
@@ -9,7 +13,7 @@ class TableChart extends Component {
           <tr className={classes.table__headerow}>
             <th scope="col">{this.props.tableName}</th>
             <th scope="col">strategy</th>
-            <th scope="col">S&amp;P TSX</th>
+            <th scope="col">{this.props.benchmark_name}</th>
           </tr>
         </thead>
         <tbody className={classes.tablebody}>
@@ -21,7 +25,7 @@ class TableChart extends Component {
                       data-label={this.props.tableName}
                     >
                       <span className={classes.title}>
-                        {row.replace("_", " ")}
+                        {this.CapString(String(row).split("_").join(" "))}
                       </span>
                     </td>
                     <td
@@ -32,17 +36,17 @@ class TableChart extends Component {
                           : classes.warning
                       }
                     >
-                      {this.props.strategy[row] ? String(this.props.strategy[row].toFixed(2))+"%" : "none"}
+                      {this.props.strategy[row] ? String(this.props.strategy[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio"].includes(String(row)) ? '' : '%'}` : "---"}
                     </td>
                     <td
-                      data-label="S&amp;P TSX"
+                      data-label={this.props.benchmark}
                       className={
                         this.props.benchmark[row] > 0
                           ? classes.success
                           : classes.warning
                       }
                     >
-                      {this.props.benchmark[row] ? String(this.props.benchmark[row].toFixed(2))+"%" : "none"}
+                      {this.props.benchmark[row] ? String(this.props.benchmark[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio"].includes(String(row)) ? '' : '%'}` : "---"}
                     </td>
                   </tr>
                 );

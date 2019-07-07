@@ -20,7 +20,7 @@ class SBCurrentTracker extends Component {
   } else {
       return(
           <React.Fragment>
-              <button className={classes.modalbtn} onClick={this.props.onSubmit}>Ok</button>
+              <button className={classes.modalbtn} onClick={this.props.onSubmit}>Save</button>
               <button className={classes.modalbtn} onClick={this.props.cancelModal}>Cancel</button>
           </React.Fragment>
       );
@@ -38,7 +38,7 @@ class SBCurrentTracker extends Component {
       }
       return (
         <Message>
-            <div className={classes.messageheader} style={{color:'green'}}>{responseMessage}</div>
+            <div className={classes.messageheader} style={this.props.saving_message ? {color:'green'} : {color:'red'}}>{responseMessage}</div>
             <span className={classes.messagespan}>
                 <button className={classes.messagebtn} onClick={this.props.DismissMessage}>OK</button>
             </span>
@@ -49,8 +49,8 @@ class SBCurrentTracker extends Component {
       return (
         <Modal onDismiss={this.props.cancelModal}>
           <div className={classes.modalcontainer}>
-            <div className={classes.header}>Strategy Save</div>
-            <input className={classes.modalinput} type="input" placeholder="Strategy Name" onChange={this.props.getStrategyName} />
+            <div className={classes.modalheader}>Saving the strategy</div>
+            <input className={classes.modalinput} type="input" placeholder="Please enter the strategy name" onChange={this.props.getStrategyName} />
             <div className={classes.btncontainer}>
               {this.renderInput()}
             </div>
@@ -107,42 +107,42 @@ class SBCurrentTracker extends Component {
                         </td>
                         <td
                           data-label="Momentum"
-                          className={this.props.data[row].momentum < 0 ? classes.warning : classes.success}
+                          className={this.props.data[row].momentum_rank < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].momentum ? this.props.data[row].momentum.toFixed(2) : "unknown"}
+                          {this.props.data[row].momentum_rank ? this.props.data[row].momentum_rank.toFixed(2) : "---"}
                         </td>
                         <td 
                           data-label="Value"
-                          className={this.props.data[row].value < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].value ? this.props.data[row].value.toFixed(2) : "unknown"}
+                          className={this.props.data[row].value_rank < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].value_rank ? this.props.data[row].value_rank.toFixed(2) : "---"}
                         </td>
                         <td
                           data-label="Size"
-                          className={this.props.data[row].size < 0 ? classes.warning : classes.success}
+                          className={this.props.data[row].size_rank < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].size? this.props.data[row].size.toFixed(2) : "unknown"}
+                          {this.props.data[row].size_rank? this.props.data[row].size_rank.toFixed(2) : "---"}
                         </td>
                         <td
                           data-label="Volatility"
                           className={this.props.data[row].volatility < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].volatility ? this.props.data[row].volatility.toFixed(2) : "unknown"}
+                          {this.props.data[row].volatility_rank ? this.props.data[row].volatility_rank.toFixed(2) : "---"}
                         </td>
                         <td 
                           data-label="Investment"
-                          className={this.props.data[row].investment < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].investment ? this.props.data[row].investment.toFixed(2) : "unknown"}
+                          className={this.props.data[row].investment_rank < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].investment_rank ? this.props.data[row].investment_rank.toFixed(2) : "---"}
                         </td>
                         <td 
                           data-label="Profitability"
-                          className={this.props.data[row].profitability < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].profitability ? this.props.data[row].profitability.toFixed(2) : "unknown"}
+                          className={this.props.data[row].profitability_rank < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].profitability_rank ? this.props.data[row].profitability_rank.toFixed(2) : "---"}
                         </td>
                         <td
                           data-label="Weight"
-                          className={this.props.data[row]["weight_%"] < 0 ? classes.warning : classes.success}
+                          // className={this.props.data[row]["weight_%"] < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"].toFixed(2)+"%" : "unknown"}
+                          {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"].toFixed(2)+"%" : "---"}
                         </td>
                       </tr>
                     );

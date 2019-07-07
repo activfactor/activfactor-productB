@@ -28,17 +28,16 @@ class StrategyBuilder3 extends Component {
       headers: {
         headers: {
           "Authorization": `JWT ${this.props.auth.token}`,
-          "Postman-Token": "b73da74d-5937-4722-954a-92460ccfa355,d14d6081-27b9-4a85-81c6-febd03fd72bb"
         }
       },
         data: {
           "user_id": 2,
           "strategy_name": this.state.strategyName,
-          "country": this.props.parameters.country,
-          "sectors": this.props.parameters.sectors,
-          "factors": this.props.parameters.factors,
-          "n_stock": this.props.parameters.n_stocks,
-          "firm_size": this.props.parameters.firm_size
+          "country": this.props.query.country,
+          "sectors": this.props.query.sectors.split(','),
+          "factors": this.props.query.factors.split(','),
+          "n_stock": this.props.query.n_stock,
+          "firm_size": this.props.query.firm_size.split(',')
         }
     };
     this.props.saveStrategy(dataToSend);
@@ -78,7 +77,9 @@ class StrategyBuilder3 extends Component {
 const mapStateToProps = state => {
     return {
         parameters: state.factorScreener.parameters,
+        query:state.queryReducer,
         saving_message: state.factorScreener.saving_message,
+        error_saving_message: state.factorScreener.error_saving_message,
         auth: state.auth
     };
 }

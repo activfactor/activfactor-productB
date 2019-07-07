@@ -12,7 +12,7 @@ class BarChart extends Component {
         {v:benchmark[key]/100, f:`${Math.round(benchmark[key]*100)/100}%`}
       ];
     });
-    result.unshift([this.props.chartName, "strategy", "S&P TSX"]);
+    result.unshift([this.props.chartName, "strategy", this.props.benchmark_name]);
     return result;
   };
 

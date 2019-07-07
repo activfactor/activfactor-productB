@@ -12,7 +12,7 @@ class AreaChart extends Component {
         {v:benchmark[key], f:`${Math.round(benchmark[key]*100)}%`}
       ];
     });
-    result.unshift([this.props.chartName, "Strategy", "S&P TSX"]);
+    result.unshift([this.props.chartName, "Strategy", this.props.benchmark_name]);
     return result;
   };
 

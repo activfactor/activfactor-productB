@@ -4,7 +4,7 @@ import AnalyzeResults from './StepTwo/AnalyzeResults';
 import BuildStrategy from './StepOne';
 import CustomizedPortfolio from './StepThree';
 import { connect } from 'react-redux';
-import { queryUpdate, resetQuery } from '../../../actions/index';
+import { queryUpdate, resetQuery, resetFactorScreener } from '../../../actions/index';
 import requireAuth from '../../hoc/requireAuth';
 
 class StrategyBuilder extends Component{
@@ -15,6 +15,10 @@ class StrategyBuilder extends Component{
         query: "",
     }
 
+    DismissError = () => {
+        this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null})
+    }
+
     renderWizard = () => {
         if (this.state.BuildStrategy===false && this.state.AnalyzeResults===null && this.state.CustomizedPortfolio===null){
             return (
@@ -22,13 +26,19 @@ class StrategyBuilder extends Component{
             );
         } else if (this.state.AnalyzeResults===false && this.state.BuildStrategy===true){
             return (
-                <AnalyzeResults modify={this.modifyHandler} customizePortfolio={this.customizePortfolio} />
+                <AnalyzeResults modify={this.modifyHandler} customizePortfolio={this.customizePortfolio} DismissError={this.DismissError} />
             );
         } else if (this.state.CustomizedPortfolio===false && this.state.AnalyzeResults===true && this.state.BuildStrategy===true){
             return (
-                <CustomizedPortfolio AnalyuzeResult={this.AnalyuzeResult}/>
+                <CustomizedPortfolio AnalyuzeResult={this.AnalyuzeResult} DismissMessage={this.DismissMessage}/>
             );
         }
+    }
+
+    DismissMessage = () => {
+        this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
+        this.props.resetQuery();
+        this.props.resetFactorScreener();
     }
 
     AnalyuzeResult = () => {
@@ -74,4 +84,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps,{queryUpdate,resetQuery})((requireAuth(StrategyBuilder)));
+export default connect(mapStateToProps,{queryUpdate,resetQuery,resetFactorScreener})((requireAuth(StrategyBuilder)));

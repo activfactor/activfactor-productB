@@ -1,19 +1,77 @@
 import React,{ Component } from 'react';
 import classes from './index.module.scss';
 import { connect } from 'react-redux';
+import Modal from '../../../../UI/Modal';
+import Spinner from '../../../../UI/Spinner/SpinnerButton';
+import Message from '../../../../UI/Message';
+import { resetQuery,resetFactorScreener } from '../../../../../actions/index';
 
 
 class SBCurrentTracker extends Component {
 
+  renderInput = () => {
+    if (this.props.isSpinner){
+      return (
+        <React.Fragment>
+            <button className={classes.modalbtn} onClick={this.props.onSubmit}><Spinner color="white" className={classes.spinner} /></button>
+            <button className={classes.modalbtn} onClick={this.props.cancelModal}>Cancel</button>
+        </React.Fragment>
+      );
+  } else {
+      return(
+          <React.Fragment>
+              <button className={classes.modalbtn} onClick={this.props.onSubmit}>Ok</button>
+              <button className={classes.modalbtn} onClick={this.props.cancelModal}>Cancel</button>
+          </React.Fragment>
+      );
+  }
+  }
+
+  renderModal = () => {
+    if (this.props.saving_message || this.props.error_saving_message){
+      this.props.cancelModal();
+      let responseMessage=''
+      if (this.props.saving_message){
+        responseMessage=this.props.saving_message
+      } else if (this.props.error_saving_message){
+        responseMessage=this.props.error_saving_message;
+      }
+      return (
+        <Message>
+            <div className={classes.messageheader} style={{color:'green'}}>{responseMessage}</div>
+            <span className={classes.messagespan}>
+                <button className={classes.messagebtn} onClick={this.props.DismissMessage}>OK</button>
+            </span>
+        </Message>
+      );
+    } else if (this.props.show){
+      console.log(this.props.show)
+      return (
+        <Modal onDismiss={this.props.cancelModal}>
+          <div className={classes.modalcontainer}>
+            <div className={classes.header}>Strategy Save</div>
+            <input className={classes.modalinput} type="input" placeholder="Strategy Name" onChange={this.props.getStrategyName} />
+            <div className={classes.btncontainer}>
+              {this.renderInput()}
+            </div>
+          </div>
+        </Modal>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
+
   render(){
     return (
       <div className={classes.stockContainer}>
+        {this.renderModal()}
         <div className={classes.stockContainerHeading}>Current Stocks</div>
         <div className={classes.stockContainerDesc}>
           This list is updated the last date of the month.
         </div>
         <div className={classes.stockTbls}>
-          <table className={classes.table}>
+          <table className={classes.table__class}>
             <thead>
               <tr>
                 <th scope="col">Ticker</th>
@@ -33,7 +91,6 @@ class SBCurrentTracker extends Component {
                     return (
                       <tr key={i}>
                         <td
-                          key={i}
                           data-label="Ticker"
                           className={classes.ticker}
                         >
@@ -43,48 +100,49 @@ class SBCurrentTracker extends Component {
                           </span>
                         </td>
                         <td
-                          key={i}
                           data-label="Sector"
                           className={classes.SectorLabel}
                         >
-                          {this.props.data[row].sector}{" "}
+                          {this.props.data[row].sector}
                         </td>
                         <td
-                          key={i}
                           data-label="Momentum"
-                          className={classes.warning}
+                          className={this.props.data[row].momentum < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].momentum.toFixed(2)}
+                          {this.props.data[row].momentum ? this.props.data[row].momentum.toFixed(2) : "unknown"}
                         </td>
-                        <td key={i} data-label="Value">
-                          {this.props.data[row].value.toFixed(2)}
+                        <td 
+                          data-label="Value"
+                          className={this.props.data[row].value < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].value ? this.props.data[row].value.toFixed(2) : "unknown"}
                         </td>
                         <td
-                          key={i}
                           data-label="Size"
-                          className={classes.warning}
+                          className={this.props.data[row].size < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].size.toFixed(2)}
+                          {this.props.data[row].size? this.props.data[row].size.toFixed(2) : "unknown"}
                         </td>
                         <td
-                          key={i}
                           data-label="Volatility"
-                          className={classes.warning}
+                          className={this.props.data[row].volatility < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].volatility.toFixed(2)}
+                          {this.props.data[row].volatility ? this.props.data[row].volatility.toFixed(2) : "unknown"}
                         </td>
-                        <td key={i} data-label="Investment">
-                          {this.props.data[row].investment.toFixed(2)}
+                        <td 
+                          data-label="Investment"
+                          className={this.props.data[row].investment < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].investment ? this.props.data[row].investment.toFixed(2) : "unknown"}
                         </td>
-                        <td key={i} data-label="Profitability">
-                          {this.props.data[row].profitability.toFixed(2)}
+                        <td 
+                          data-label="Profitability"
+                          className={this.props.data[row].profitability < 0 ? classes.warning : classes.success}>
+                          {this.props.data[row].profitability ? this.props.data[row].profitability.toFixed(2) : "unknown"}
                         </td>
                         <td
-                          key={i}
                           data-label="Weight"
-                          className={classes.SectorLabel}
+                          className={this.props.data[row]["weight_%"] < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row]["weight_%"] + "%"}
+                          {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"].toFixed(2)+"%" : "unknown"}
                         </td>
                       </tr>
                     );
@@ -101,8 +159,10 @@ class SBCurrentTracker extends Component {
 
 const mapStateToProps = state => {
   return{
-    data: state.factorScreener.strategy_actual_members
+    data: state.factorScreener.strategy_actual_members,
+    saving_message: state.factorScreener.saving_message,
+    error_saving_message: state.factorScreener.error_saving_message
   }
 }
 
-export default connect(mapStateToProps)(SBCurrentTracker);
+export default connect(mapStateToProps,{resetQuery,resetFactorScreener})(SBCurrentTracker);

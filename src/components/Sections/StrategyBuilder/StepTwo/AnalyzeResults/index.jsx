@@ -4,11 +4,12 @@ import PieGraph from '../Charts/PieChart';
 import LineGraph from '../Charts/LineChart';
 import AreaChart from '../Charts/AreaChart';
 import BarChart from '../Charts/BarChart';
-import Table from '../Charts/Table';
+import Table from '../Charts/TableChart';
 import { connect } from 'react-redux';
 import { getFactorScreener, resetFactorScreener } from '../../../../../actions/index';
 import Spinner from '../../../../UI/Spinner';
 import Modal from '../../../../UI/Modal';
+import Message from '../../../../UI/Message';
 import requireAuth from '../../../../hoc/requireAuth';
 import Buttons from '../ActionButtons';
 
@@ -19,16 +20,23 @@ class AnalyzeResults extends Component{
     }
 
     renderCharts(){
-        console.log(this.props.data);
-        if (this.props.data.error || this.props.data.message)
+        if (this.props.data.message || this.props.data.error)
         {
             return (
+                
                 <section>
+                    <Message>
+                        <div className={classes.messageheader}><i className="fas fa-exclamation-triangle"></i>   {this.props.data.error || this.props.data.message}</div>
+                        <span className={classes.messagespan}>
+                            <button className={classes.messagebtn} onClick={this.props.DismissError}>OK</button>
+                        </span>
+                    </Message>
                     <div className={classes.container}>
                         <p>Performance</p>
                         <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
                         <div className={classes.spinnerContainer}>
-                        <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error || this.props.data.message}</h2>
+                        {/* <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error || this.props.data.message}</h2> */}
+                        
                         </div>
                     </div>
                 </section>

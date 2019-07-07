@@ -24,10 +24,10 @@ class StepOne extends Component {
       const {country, sectors, factors, n_stock, firm_size} = this.props.data;
       this.setState({
         "country":country,
-        "sectors":sectors+',',
-        "factors":factors+',',
+        "sectors":sectors === '' ? '' : sectors +',',
+        "factors":factors === '' ? '' : factors +',',
         "n_stock":n_stock,
-        "firm_size":firm_size+','
+        "firm_size":firm_size === '' ? '' : firm_size +',',
       })
     }
   }
@@ -77,9 +77,8 @@ class StepOne extends Component {
 
     render() {
         return (
-          <section className={classes.maincontainer}>
 
-            <div className={classes.container}>
+            <section className={classes.container}>
 
               <div className={classes.strategy}>
                 <div className={classes.factorsContainer}>
@@ -91,15 +90,12 @@ class StepOne extends Component {
                 </div>
 
                 <div className={classes.CountryContainer}>
-                  <Country reset={this.state.reset} countryChange={this.countryChange} defaultvalue={this.state.country} />
+                  <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
                   <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
                 </div>
-                <div className={classes.ActionButtonsContainer}>
                   <ActionButtons onClick={() => this.props.onClick(this.state)} resetFilter={this.onResetFilter}/>
-                </div>
               </div>
-            </div>
-          </section>
+            </section>
         );
     }
 }

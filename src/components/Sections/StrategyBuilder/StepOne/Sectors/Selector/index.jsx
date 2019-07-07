@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
+import { connect } from 'react-redux'
+import { queryUpdate } from '../../../../../../actions/index';
 
 class Selector extends Component {
   state={checked: this.props.checked}
@@ -29,4 +31,4 @@ class Selector extends Component {
   }
 }
 
-export default Selector;
+export default connect(null,{ queryUpdate })(Selector);

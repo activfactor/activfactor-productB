@@ -9,7 +9,7 @@ import "./styles/main.scss";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
+const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
     reducers,
     { 
         auth: {
@@ -21,8 +21,7 @@ const store = createStore(
         toggle: {
             clicked: false
         }
-    },
-    composeEnhancers(applyMiddleware(reduxThunk))
+    }
 )
 
 ReactDOM.render(

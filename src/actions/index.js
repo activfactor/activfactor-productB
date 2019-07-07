@@ -11,7 +11,9 @@ import {
   STOCK_UPDATE,
   FIRM_UPDATE,
   RESET_QUERY,
-  FACTOR_SCREENER_RESET
+  FACTOR_SCREENER_RESET,
+  FACTOR_SCREENER_SAVE,
+  FACTOR_SCREENER_SAVE_ERROR
 } from "./types";
 import wealthface from "../apis/wealthface";
 import history from '../history';
@@ -74,7 +76,7 @@ export const getFactorScreener = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: FACTOR_SCREENER_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };
@@ -82,9 +84,11 @@ export const getFactorScreener = () => async (dispatch, getState) => {
 export const queryUpdate = props => dispatch => {
   if ("country" in props){
     dispatch({type: COUNTRY_UPDATE, payload: props})
-  } if ("sectors" in props){
+  } 
+  if ("sectors" in props){
     dispatch({type: SECTOR_UPDATE, payload: props})
-  } if ("factors" in props){
+  }
+   if ("factors" in props){
     dispatch({type: FACTORS_UPDATE, payload: props})
   } if ("n_stock" in props){
     dispatch({type: STOCK_UPDATE, payload: props})
@@ -100,3 +104,17 @@ export const resetQuery = () => dispatch => {
 export const resetFactorScreener = () => dispatch => {
   dispatch({type: FACTOR_SCREENER_RESET})
 }
+
+export const saveStrategy = props => (dispatch) => {
+    console.log("Strategy Posted");
+    if (props) {
+        wealthface.post("/factor/strategy", props.data, props.headers)
+        .then(res => 
+        {dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })}
+      ).catch(err => 
+        {
+          dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
+        }
+      )
+    }
+  }

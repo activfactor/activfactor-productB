@@ -8,10 +8,10 @@ class Country extends Component {
         return (
             <div className={classes.Country}>
                 <div className={classes.CountryHeading}>Country</div>
-                <select defaultValue={`${this.props.country ? this.props.country : 'can'}`} onChange={this.props.countryChange} className={classes.countryControl}>
+                <select value={`${this.props.value}`} onChange={this.props.countryChange} className={classes.countryControl}>
                     <option value='can'>Canada</option>
                     <option value='usa'>United States of America</option>
-            </select>
+                </select>
              </div>
         );
     }

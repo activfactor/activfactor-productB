@@ -1,8 +1,4 @@
 @import "../../../../styles/params/variables";
-.maincontainer {
-  background-color: #f5f6f8;
-  padding:0;
-}
 /*Date Container Start*/
 .dateContainer {
   list-style: none;
@@ -23,7 +19,6 @@
 /*Main Container Start*/
 .container {
   background-color: #ffff;
-  // margin: 1rem;
 
   /*Tabs Start*/
   .tabbar {
@@ -61,6 +56,9 @@
 .factorsContainer {
   border: none;
   flex-basis: 19%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .CompanySizeContainer {
   border: none;

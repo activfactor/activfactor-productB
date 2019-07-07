@@ -43,3 +43,31 @@
     flex-basis: 100%;
 
 }
+
+.messageheader{
+    padding: 1rem;
+    color: $redColor;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.messagespan{
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+.messagebtn{
+    flex-basis: 30%;
+    padding: 1rem;
+    background-color: $mainBlueColor;
+    box-shadow: 1px 1px 4px $mainBlueColor;
+    border-radius: 4px;
+    border: 1px solid $mainBlueColor;
+    color:$whiteColor;
+    appearance: none;
+    cursor: pointer;
+    
+}

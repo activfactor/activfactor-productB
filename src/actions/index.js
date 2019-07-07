@@ -23,7 +23,8 @@ const currentDate = new Date();
 
 export const signIn_A = formProps => async () => {
   try {
-    const response = await wealthalpha.post("/login", formProps);
+    const response = await wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}});
+    console.log(formProps);
     console.log(response);
   } catch(error){
     console.log(error);
@@ -120,9 +121,13 @@ export const saveStrategy = props => (dispatch) => {
     if (props) {
         wealthface.post("/factor/strategy", props.data, props.headers)
         .then(res => 
-        {dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })}
+        {
+          console.log(res);
+          dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
+        }
       ).catch(err => 
         {
+          console.log(err);
           dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
         }
       )

@@ -61,30 +61,36 @@ class AnalyzeResults extends Component{
                             header="Historical Performance" 
                             strategy={this.props.data.culmulative_return_strategy}
                             benchmark={this.props.data.culmulative_return_benchmark}
+                            benchmark_name={this.props.data.benchmark}
                             chartName="Historical Performance"/>
                         <BarChart 
                             header="Annual Return" 
                             strategy={this.props.data.annual_return_strategy}
                             benchmark={this.props.data.annual_return_benchmark}
+                            benchmark_name={this.props.data.benchmark}
                             chartName="Annual Return"/>
                         <AreaChart 
                             header="Drawdown" 
                             strategy={this.props.data.drawdown_strategy}
                             benchmark={this.props.data.drawdown_benchmark}
+                            benchmark_name={this.props.data.benchmark}
                             chartName="Drawdown"/>    
                         </div>
                         <div className={classes.tablecontainer}>
                             <Table 
                                 strategy={this.props.data.return_strategy}
                                 benchmark={this.props.data.return_benchmark}
+                                benchmark_name={this.props.data.benchmark}
                                 tableName="return"/>
                             <Table 
                                 strategy={this.props.data.metrics_strategy}
                                 benchmark={this.props.data.metrics_benchmark}
+                                benchmark_name={this.props.data.benchmark}
                                 tableName="metrics"/>
                             <Table 
                                 strategy={this.props.data.risk_strategy}
                                 benchmark={this.props.data.risk_benchmark}
+                                benchmark_name={this.props.data.benchmark}
                                 tableName="risk"/>
                         </div>
                         <Buttons onClick={this.props.modify} customizePortfolio={this.props.customizePortfolio}/>

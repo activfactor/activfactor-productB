@@ -69,9 +69,9 @@ class StepOne extends Component {
       this.setState({ country: e.target.value });
   }
 
-  stockChange = value => {
+  stockChange = (event) => {
     this.setState({
-      "n_stock": value
+      "n_stock": event.target.value,
     });
   }
 
@@ -86,7 +86,7 @@ class StepOne extends Component {
                 </div>
                 <div className={classes.Company_SectorContainer}>
                   <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange}/>
-                  <Sectors reset={this.state.reset} sectorChange={this.sectorChange} />
+                  <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
                 </div>
 
                 <div className={classes.CountryContainer}>

@@ -12,6 +12,10 @@ class Sectors extends Component {
             prevState.displayClass==='none' ? {displayClass:'flex',flexWrap:'wrap'} : {displayClass:'none',flexWrap:'nowrap'}
         ))
     }
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+    }
     
     render() {
         return (
@@ -20,12 +24,12 @@ class Sectors extends Component {
                 <div className={classes.multiselect}>
                     <div className={classes.selectBox} onClick={this.onClickHandler}>
                         <select>
-                            <option>Select sector</option>
+                            <option>{this.props.sectorsFromParent ? this.props.sectorsFromParent.replace(/,/g, " , ").slice(0,-2) : 'Select Sectors'}</option>
                         </select>
                         <div className={classes.overSelect}></div>
                     </div>
                     <div className={classes.checkboxes} style={{display:this.state.displayClass,flexWrap:this.state.flexWrap}}>
-                        <Selector reset={this.props.reset} checked={this.props.sectors ? this.props.sectors.includes('consumer') : false} id="consumer" txtValue="Consumer" onClick={this.props.sectorChange}/>
+                        <Selector reset={this.props.reset} checked={this.props.sectors ? this.props.sectors.includes('consumers') : false} id="consumers" txtValue="Consumers" onClick={this.props.sectorChange}/>
                         <Selector reset={this.props.reset} checked={this.props.sectors ? this.props.sectors.includes('materials') : false} id="materials" txtValue="Materials"onClick={this.props.sectorChange}/>
                         <Selector reset={this.props.reset} checked={this.props.sectors ? this.props.sectors.includes('financials') : false} id="financials" txtValue="Financials" onClick={this.props.sectorChange}/>
                         <Selector reset={this.props.reset} checked={this.props.sectors ? this.props.sectors.includes('industrials') : false} id="industrials" txtValue="Industrials" onClick={this.props.sectorChange}/>

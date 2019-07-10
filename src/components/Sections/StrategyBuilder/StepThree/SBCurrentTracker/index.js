@@ -109,40 +109,40 @@ class SBCurrentTracker extends Component {
                           data-label="Momentum"
                           className={this.props.data[row].momentum_rank < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].momentum_rank ? this.props.data[row].momentum_rank.toFixed(2) : "---"}
+                          {this.props.data[row].momentum_rank ? this.props.data[row].momentum_rank : "---"}
                         </td>
                         <td 
                           data-label="Value"
                           className={this.props.data[row].value_rank < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].value_rank ? this.props.data[row].value_rank.toFixed(2) : "---"}
+                          {this.props.data[row].value_rank ? this.props.data[row].value_rank : "---"}
                         </td>
                         <td
                           data-label="Size"
                           className={this.props.data[row].size_rank < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].size_rank? this.props.data[row].size_rank.toFixed(2) : "---"}
+                          {this.props.data[row].size_rank? this.props.data[row].size_rank : "---"}
                         </td>
                         <td
                           data-label="Volatility"
                           className={this.props.data[row].volatility < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row].volatility_rank ? this.props.data[row].volatility_rank.toFixed(2) : "---"}
+                          {this.props.data[row].volatility_rank ? this.props.data[row].volatility_rank : "---"}
                         </td>
                         <td 
                           data-label="Investment"
                           className={this.props.data[row].investment_rank < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].investment_rank ? this.props.data[row].investment_rank.toFixed(2) : "---"}
+                          {this.props.data[row].investment_rank ? this.props.data[row].investment_rank : "---"}
                         </td>
                         <td 
                           data-label="Profitability"
                           className={this.props.data[row].profitability_rank < 0 ? classes.warning : classes.success}>
-                          {this.props.data[row].profitability_rank ? this.props.data[row].profitability_rank.toFixed(2) : "---"}
+                          {this.props.data[row].profitability_rank ? this.props.data[row].profitability_rank : "---"}
                         </td>
                         <td
                           data-label="Weight"
                           // className={this.props.data[row]["weight_%"] < 0 ? classes.warning : classes.success}
                         >
-                          {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"].toFixed(2)+"%" : "---"}
+                          {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"]+"%" : "---"}
                         </td>
                       </tr>
                     );

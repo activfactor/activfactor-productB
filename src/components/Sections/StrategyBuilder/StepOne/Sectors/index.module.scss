@@ -3,16 +3,8 @@
 
 .sectors {
   flex-basis: 100% !important;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
   .SectorsHeading {
-    font-weight: 400;
-    border-bottom: 1px solid #d7d7d7;
-    color: #192a3e;
-    margin-left: 0.5rem;
-    width: 10rem;
+    @include allControllerHeading();
   }
   .multiselect {
     flex-basis: 100%;
@@ -20,7 +12,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-content: space-between;
-    margin-right:1.1rem;
+   
     .checkboxes {
       border: 1px solid #f5f6f8;
       flex-basis: 100%;

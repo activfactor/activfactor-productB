@@ -7,6 +7,10 @@
     display: flex;
     justify-content:flex-start;
     margin: 5px;
+
+    @include respond(phone) {
+     
+  }
   }
 
   .quesitonMarkSign

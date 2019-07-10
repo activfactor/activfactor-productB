@@ -1,21 +1,23 @@
 @import "../../../../../styles/params/variables";
+
 .factors {
   align-items: center;
 }
 
 .factorsHeading {
-  font-weight: 400;
-  border-bottom: 1px solid #d7d7d7;
-  color: #192a3e;
-  margin-left: 0.5rem;
-  max-width: 8rem;
+  @include allControllerHeading();
 }
 
 .factorscontrols {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  flex-direction: column;
   margin: 0.5rem;
+
+  @include respond(phone) {
+  
+}
 }
 .checkbox {
   margin-right: 0.5rem;

@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
-// Using an ES6 transpiler like Babel
-import Slider from "react-rangeslider";
-
-// To include the default styles
-import "react-rangeslider/lib/index.css";
-import "./index.scss";
 import { connect } from 'react-redux';
 
 class NumberofStock extends Component {

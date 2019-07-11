@@ -32,7 +32,7 @@ class BarChart extends Component {
               // Material design options
               chartArea: {left:70, width: "86%", height: "90%" },
               legend: { position: "top" },
-              vAxis: { minValue: -1, maxValue:1, format:"#%"}
+              vAxis: { minValue: -1, maxValue:1, format:"#%"},
             }}
           />
         </div>

@@ -4,6 +4,7 @@ import PieGraph from '../Charts/PieChart';
 import LineGraph from '../Charts/LineChart';
 import AreaChart from '../Charts/AreaChart';
 import BarChart from '../Charts/BarChart';
+import BarChartVertical from '../Charts/BarChartVertical';
 import Table from '../Charts/TableChart';
 import { connect } from 'react-redux';
 import { getFactorScreener, resetFactorScreener } from '../../../../../actions/index';
@@ -57,6 +58,15 @@ class AnalyzeResults extends Component{
                             header="Sectors" 
                             data={this.props.data.sector_allocation}
                             />
+                        <PieGraph
+                            header="Firm size"
+                            data={this.props.data.firm_size_allocation}
+                            />
+                        <BarChartVertical 
+                            header="Factor Intensity" 
+                            factor={this.props.data.factor_intensity}
+                            chartName="Factor intensity"
+                            />
                         <LineGraph 
                             header="Historical Performance" 
                             strategy={this.props.data.culmulative_return_strategy}
@@ -68,7 +78,8 @@ class AnalyzeResults extends Component{
                             strategy={this.props.data.annual_return_strategy}
                             benchmark={this.props.data.annual_return_benchmark}
                             benchmark_name={this.props.data.benchmark}
-                            chartName="Annual Return"/>
+                            chartName="Annual Return"
+                            />
                         <AreaChart 
                             header="Drawdown" 
                             strategy={this.props.data.drawdown_strategy}
@@ -81,17 +92,17 @@ class AnalyzeResults extends Component{
                                 strategy={this.props.data.return_strategy}
                                 benchmark={this.props.data.return_benchmark}
                                 benchmark_name={this.props.data.benchmark}
-                                tableName="return"/>
+                                tableName="Return"/>
                             <Table 
                                 strategy={this.props.data.metrics_strategy}
                                 benchmark={this.props.data.metrics_benchmark}
                                 benchmark_name={this.props.data.benchmark}
-                                tableName="metrics"/>
+                                tableName="Metrics"/>
                             <Table 
                                 strategy={this.props.data.risk_strategy}
                                 benchmark={this.props.data.risk_benchmark}
                                 benchmark_name={this.props.data.benchmark}
-                                tableName="risk"/>
+                                tableName="Risk"/>
                         </div>
                         <Buttons onClick={this.props.modify} customizePortfolio={this.props.customizePortfolio}/>
                     </div>

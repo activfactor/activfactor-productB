@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
+import { CapString } from '../../../../../../utils/textFunctions';
 
 class TableChart extends Component {
-  CapString = (textString) => {
-    return textString.charAt(0).toUpperCase() + textString.slice(1);
-  } 
 
   render() {
     return (
@@ -12,7 +10,7 @@ class TableChart extends Component {
         <thead className={classes.table__header}>
           <tr className={classes.table__headerow}>
             <th scope="col">{this.props.tableName}</th>
-            <th scope="col">strategy</th>
+            <th scope="col">Strategy</th>
             <th scope="col">{this.props.benchmark_name}</th>
           </tr>
         </thead>
@@ -25,7 +23,7 @@ class TableChart extends Component {
                       data-label={this.props.tableName}
                     >
                       <span className={classes.title}>
-                        {this.CapString(String(row).split("_").join(" "))}
+                        {CapString(String(row).split("_").join(" "))}
                       </span>
                     </td>
                     <td

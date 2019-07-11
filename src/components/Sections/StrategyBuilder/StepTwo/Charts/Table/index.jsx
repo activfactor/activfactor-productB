@@ -2,17 +2,12 @@ import React, { Component } from "react";
 import { Chart } from "react-google-charts";
 import classes from "./index.module.scss";
 import Spinner from '../../../../../UI/Spinner';
-
+import { CapString } from '../../../../../../utils/textFunctions';
 class Table extends Component {
-
-  CapString = (textString) => {
-    return textString.charAt(0).toUpperCase() + textString.slice(1);
-  } 
-
   getData(strategy,benchmark){
     const result = Object.keys(strategy).map(key => {
       return [
-        this.CapString(String(key).split("_").join(" ")),
+        CapString(String(key).split("_").join(" ")),
         {v:strategy[key], f:`${Math.round(strategy[key]*100)/100}%`}, 
         {v:benchmark[key], f:`${Math.round(benchmark[key]*100)/100}%`}
       ]

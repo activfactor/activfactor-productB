@@ -13,6 +13,8 @@ export default (state=INITIAL_STATE , action)=>{
                 last_update:action.payload.last_update,
                 next_update:action.payload.next_update,
                 parameters:action.payload.parameters,
+                factor_intensity: action.payload.factor_intensity,
+                firm_size_allocation:action.payload.firm_size_allocation,
                 culmulative_return_benchmark:action.payload.performance_benchmark.cumulative_return.monthly,
                 culmulative_return_strategy:action.payload.performance_strategy.cumulative_return.monthly,
                 sector_allocation:action.payload.sector_allocation,

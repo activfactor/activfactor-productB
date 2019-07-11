@@ -8,24 +8,23 @@ class BarChart extends Component {
     getFactorColor(factor){
         const factorString = String(factor).split('_')[0];
         if (factorString === 'momentum'){
-            return "#e9b06e"
+            return "#2a5ebe"
         } else if (factorString === 'value') {
-            return "#cfa0fa"
+            return "#e6a52e"
         } else if (factorString === 'size'){
-            return "#95e7e2"
+            return "#830c7d"
         } else if (factorString === 'volatility'){
-            return "#f58f98"
+            return "#168a2f"
         } else if (factorString === 'investment'){
-            return "#989898"
+            return "#ce5a90"
         } else {
-            return "#642e43"
+            return "#79b5d8"
         }
     }
   getData = factor => {
     const result = Object.keys(factor).map(key => {
       return [
-        CapString(String(key).split('_').join(' ')),
-        // {v:factor[key]/100, f:`${Math.round(factor[key]*100)/100}%`}
+        CapString(String(key).split('_')[0]),
         factor[key],
         `color : ${this.getFactorColor(key)}; font-size: 4px`,
         `${CapString(String(key).split('_')[0])} ${factor[key]}`
@@ -49,7 +48,7 @@ class BarChart extends Component {
             data={this.getData(this.props.factor)}
             options={{
               // Material design options
-              chartArea: {left:76, width: "86%", height: "90%" },
+              chartArea: {left:74, width: "82%", height: "90%" },
               legend: { position: "none" },
               animation: {
                 startup: true,
@@ -60,7 +59,9 @@ class BarChart extends Component {
                 textStyle: {
                     fontSize : 11
                   },
-              }
+              },
+              hAxis:{minValue: -100 , maxValue: 100}
+              
             }}
           />
         </div>

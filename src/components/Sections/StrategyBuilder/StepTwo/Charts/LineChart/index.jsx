@@ -29,7 +29,12 @@ class Graph extends Component {
             legend: {position:'top'},
             chartArea: {left:80, width: "80%",height: "80%" },
             curveType:'function',
-            vAxis:{format:"##,###$"}
+            vAxis:{format:"##,###$"},
+            animation: {
+              startup: true,
+              easing: 'out',
+              duration: 1500,
+            },
           }}
         />
         </div>

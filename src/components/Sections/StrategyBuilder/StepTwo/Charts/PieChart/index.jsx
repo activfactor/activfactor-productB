@@ -29,7 +29,7 @@ class Graph extends Component {
             pieHole: 0.5,
             chartArea: {left:70, width: "95%",height: "95%" },
             with:"100%",
-            height:"100%"
+            height:"100%",
           }}
         />
         </div>

@@ -49,11 +49,16 @@ class BarChart extends Component {
             data={this.getData(this.props.factor)}
             options={{
               // Material design options
-              chartArea: {left:70, width: "86%", height: "90%" },
+              chartArea: {left:76, width: "86%", height: "90%" },
               legend: { position: "none" },
+              animation: {
+                startup: true,
+                easing: 'out',
+                duration: 1500,
+              },
               vAxis:{
                 textStyle: {
-                    fontSize : 10
+                    fontSize : 11
                   },
               }
             }}

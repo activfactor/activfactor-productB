@@ -5,7 +5,6 @@ import Spinner from '../../../../../UI/Spinner';
 
 class Graph extends Component {
 
-
   getData = (obj) => {
     const result = Object.keys(obj).map(key => {
       return [String(key), obj[key]];

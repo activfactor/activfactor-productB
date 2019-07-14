@@ -13,7 +13,8 @@ import {
   RESET_QUERY,
   FACTOR_SCREENER_RESET,
   FACTOR_SCREENER_SAVE,
-  FACTOR_SCREENER_SAVE_ERROR
+  FACTOR_SCREENER_SAVE_ERROR,
+  AUTH_RESET
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
@@ -50,6 +51,10 @@ export const signIn = formProps => async dispatch => {
     dispatch({ type: AUTH_ERR, payload: error.response.data.description });
   }
 };
+
+export const resetSignInError = () => dispatch => {
+  dispatch({type: AUTH_RESET})
+}
 
 export const signOut = () => {
   localStorage.removeItem("username");

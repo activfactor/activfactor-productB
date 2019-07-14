@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { signIn, signIn_A } from '../../../actions';
+import { signIn, signIn_A, resetSignInError } from '../../../actions';
 import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
@@ -10,24 +10,21 @@ import Spinner from '../../UI/Spinner/SpinnerButton';
 let styleBorder = "none";
 
 class Login extends Component{
-    state = {isSpinner:true}
+    state = {isSpinner:false}
+
 
     onSubmit = formValues => {
         if (formValues.username && formValues.password){
-            this.setState({isSpinner:false});
+            this.props.resetSignInError();
+            this.setState({isSpinner:true});
             this.props.signIn(formValues);
-            // const data = {
-            //     "email":formValues.username,
-            //     "password":formValues.password
-            // }
-            // this.props.signIn_A(data);
         } else {
             this.validate(formValues);
         }
     }
 
     renderSubmit = isinput => {
-        if (isinput){
+        if (!isinput || this.props.errorMessage){
             return (
                 <input className={classes.submit} type="submit" value="Login" />
             );
@@ -53,7 +50,6 @@ class Login extends Component{
         this.renderError(meta);
         return (
             <div>
-                {/* {this.renderError(meta, input, type, placeholder)} */}
                 <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
             </div>
         );
@@ -61,6 +57,7 @@ class Login extends Component{
 
     AuthError = () => {
         if (this.props.errorMessage){
+
             return <div className={classes.error}>{this.props.errorMessage}</div>
         }
     }
@@ -90,19 +87,6 @@ class Login extends Component{
     }
 }
 
-const validate = (formValues) => {
-    const errors = {};
-    if(!formValues.username){
-        errors.username='You must to specify a username'
-    } 
-
-    if (!formValues.password){
-        errors.password='You must enter a password'
-    }
-
-    return errors;
-}
-
 const mapStateToProps = state => {
     return { 
         token: state.auth.token,
@@ -110,10 +94,4 @@ const mapStateToProps = state => {
         errorMessage: state.auth.errorMessage
     }
 }
-
-// this is the exact same way to wrap the redux form like below 
-export default compose(connect(mapStateToProps, {signIn,signIn_A}), reduxForm({ form: 'loginForm' ,validate}))(Login);
-
-// export default connect(mapStateToProps,{signIn})(
-//     reduxForm({form: 'loginForm',validate})(Login)
-// );
+export default compose(connect(mapStateToProps, {signIn,signIn_A,resetSignInError}), reduxForm({ form: 'loginForm'}))(Login);

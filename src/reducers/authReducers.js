@@ -1,4 +1,4 @@
-import { SIGN_IN,SIGN_OUT, AUTH_ERR, AUTH_START } from '../actions/types';
+import { SIGN_IN,SIGN_OUT, AUTH_ERR, AUTH_START,AUTH_RESET } from '../actions/types';
 const INITIAL_STATE = {
     authenticated: false,
     username: null,
@@ -7,6 +7,8 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action)=>{
     switch (action.type){
+        case AUTH_RESET:
+            return state=INITIAL_STATE
         case SIGN_IN:
             return { 
                 ...state, 

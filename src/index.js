@@ -13,10 +13,11 @@ const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
     reducers,
     { 
         auth: {
-        authenticated: localStorage.getItem('authenticated'),
-        username: localStorage.getItem('username'),
-        regtime: localStorage.getItem('regtime'),
-        token: localStorage.getItem('t'),
+        authenticated: sessionStorage.getItem('authenticated'),
+        username: sessionStorage.getItem('username'),
+        regtime: sessionStorage.getItem('regtime'),
+        token: sessionStorage.getItem('token'),
+        userID: sessionStorage.getItem('userID')
         },
         toggle: {
             clicked: false

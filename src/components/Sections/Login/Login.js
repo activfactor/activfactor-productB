@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { signIn, signIn_A, resetSignInError } from '../../../actions';
+import {signIn_A, resetSignInError } from '../../../actions';
 import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
@@ -17,7 +17,11 @@ class Login extends Component{
         if (formValues.username && formValues.password){
             this.props.resetSignInError();
             this.setState({isSpinner:true});
-            this.props.signIn(formValues);
+            const data = {
+                email: formValues.username,
+                password: formValues.password
+            }
+            this.props.signIn_A(data);
         } else {
             this.validate(formValues);
         }
@@ -38,7 +42,7 @@ class Login extends Component{
         }
     }
 
-    renderError({ error, touched} , input ,type, placeholder){
+    renderError({ error, touched}){
         if (touched && error){
             styleBorder = "4px solid #a30808";
         } else {
@@ -94,4 +98,4 @@ const mapStateToProps = state => {
         errorMessage: state.auth.errorMessage
     }
 }
-export default compose(connect(mapStateToProps, {signIn,signIn_A,resetSignInError}), reduxForm({ form: 'loginForm'}))(Login);
+export default compose(connect(mapStateToProps, {signIn_A,resetSignInError}), reduxForm({ form: 'loginForm'}))(Login);

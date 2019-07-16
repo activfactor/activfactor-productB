@@ -1,5 +1,6 @@
 import { 
-  SIGN_IN, 
+  SIGN_IN_A,
+  SIGN_IN_B, 
   AUTH_ERR, 
   TOGGLE_STATUS,
   FACTOR_SCREENER, 
@@ -22,31 +23,46 @@ import history from '../history';
 
 const currentDate = new Date();
 
-export const signIn_A = formProps => async () => {
+// export const signIn_A = formProps => async () => {
+//   try {
+//     const response = await wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}});
+//     console.log(formProps);
+//     console.log(response);
+//   } catch(error){
+//     console.log(error);
+//   }
+// }
+
+export const signIn_A = formProps => async dispatch => {
   try {
     const response = await wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}});
-    console.log(formProps);
-    console.log(response);
+    console.log("i will start sign in to b")
+    signIn_B();
+    console.log("i supposed to be finished from b")
+    const dataReponse = {
+      authenticated: response.data.data.token ? true : false,
+      user: response.data.data.user,
+      regtime: currentDate,
+      userID: response.data.data.id
+    };
+    dispatch({ type: SIGN_IN_A, payload: dataReponse });
+    sessionStorage.setItem("user", dataReponse.user);
+    sessionStorage.setItem("authenticated", dataReponse.authenticated);
+    sessionStorage.setItem("regtime", currentDate);
+    sessionStorage.setItem("userID", response.data.data.id)
+    history.push("/dashboard");
   } catch(error){
-    console.log(error);
+    dispatch({ type: AUTH_ERR, payload: error.response.data.description });
   }
 }
 
-export const signIn = formProps => async dispatch => {
+export const signIn_B = () => async dispatch => {
+  console.log("i am processing B");
+  const formProps = {username: 'wealthface', password: '123'};
   try {
     const response = await wealthface.post("/auth", formProps);
-    const dataReponse = {
-      authenticated: response.data.access_token ? true : false,
-      username: formProps.username,
-      regtime: currentDate,
-      token: response.data.access_token,
-    };
-    dispatch({ type: SIGN_IN, payload: dataReponse });
-    localStorage.setItem("username", dataReponse.username);
-    localStorage.setItem("authenticated", dataReponse.authenticated);
-    localStorage.setItem("regtime", currentDate);
-    localStorage.setItem("t", response.data.access_token);
-    history.push("/dashboard");
+    dispatch({ type: SIGN_IN_B, payload: response.data.access_token});
+    sessionStorage.setItem("token", response.data.access_token);
   } catch (error) {
     dispatch({ type: AUTH_ERR, payload: error.response.data.description });
   }
@@ -57,10 +73,11 @@ export const resetSignInError = () => dispatch => {
 }
 
 export const signOut = () => {
-  localStorage.removeItem("username");
-  localStorage.removeItem("authenticated");
-  localStorage.removeItem("regtime");
-  localStorage.removeItem("t");
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("authenticated");
+  sessionStorage.removeItem("regtime");
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("userID");
   return {
     type: SIGN_OUT
   }

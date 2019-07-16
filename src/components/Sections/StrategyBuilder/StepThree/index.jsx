@@ -31,7 +31,7 @@ class StrategyBuilder3 extends Component {
         }
       },
         data: {
-          "user_id": 2,
+          "user_id": this.props.auth.userID,
           "strategy_name": this.state.strategyName,
           "country": this.props.query.country,
           "sectors": this.props.query.sectors.split(','),

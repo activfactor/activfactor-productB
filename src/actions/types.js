@@ -1,5 +1,5 @@
 export const SIGN_IN_A = 'SIGN_IN_A';
-export const SIGN_IN_B = 'SIGN_IN_B';
+export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 export const SIGN_OUT = 'SIGN_OUT';
 export const AUTH_ERR = 'AUTH_ERR';
 export const AUTH_RESET = 'AUTH_RESET';

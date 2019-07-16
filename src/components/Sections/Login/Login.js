@@ -6,13 +6,19 @@ import {signIn_A, resetSignInError } from '../../../actions';
 import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
+import history from '../../../history';
 
 let styleBorder = "none";
 
 class Login extends Component{
     state = {isSpinner:false}
 
-
+    componentDidMount(){
+        if (this.props.authenticated){
+            history.push('/dashboard');
+        }
+    }
+    
     onSubmit = formValues => {
         if (formValues.username && formValues.password){
             this.props.resetSignInError();
@@ -91,11 +97,25 @@ class Login extends Component{
     }
 }
 
+const validate = (formValues) => {
+    const errors = {};
+    if(!formValues.username){
+        errors.username='You must to specify a username'
+    } 
+
+    if (!formValues.password){
+        errors.password='You must enter a password'
+    }
+
+    return errors;
+}
+
 const mapStateToProps = state => {
     return { 
         token: state.auth.token,
         uername: state.auth.username,
-        errorMessage: state.auth.errorMessage
+        errorMessage: state.auth.errorMessage,
+        authenticated: state.auth.authenticated
     }
 }
-export default compose(connect(mapStateToProps, {signIn_A,resetSignInError}), reduxForm({ form: 'loginForm'}))(Login);
+export default compose(connect(mapStateToProps, {signIn_A,resetSignInError}), reduxForm({ form: 'loginForm',validate}))(Login);

@@ -25,6 +25,7 @@ const currentDate = new Date();
 
 export const signIn_A = formProps => dispatch => {
   wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}}).then(res => {
+    console.log(res);
     if (res.data.success){
       wealthface.post("/auth", {username: "wealthface", password: "123"}).then(respond => {
         const dataReponse = {
@@ -42,7 +43,15 @@ export const signIn_A = formProps => dispatch => {
         sessionStorage.setItem("token", dataReponse.token);
         history.push("/dashboard");
       }).catch(err => {
-        dispatch({type: AUTH_ERR, payload: err});
+        let errorMessage = ''
+        if (err.response === 'undefined'){
+          errorMessage='A network error occurred.'
+          + 'This could be a CORS issue or a dropped internet connection. '
+          + 'It is not possible for us to know.'
+        } else {
+          errorMessage = err.response
+        }
+        dispatch({type: AUTH_ERR, payload: errorMessage});
       })
     }
     else {
@@ -52,7 +61,15 @@ export const signIn_A = formProps => dispatch => {
       dispatch({type: SIGN_IN_ERROR, payload: dataReponse});
     }
   }).catch(error => {
-    dispatch({type: AUTH_ERR, payload: error});
+    let errorMessage = ''
+    if (error.response === undefined){
+      errorMessage='A network error occurred.'
+      + 'This could be a CORS issue or a dropped internet connection. '
+      + 'It is not possible for us to know.'
+    } else {
+      errorMessage = error.response
+    }
+    dispatch({type: AUTH_ERR, payload: errorMessage});
   })
 }
 

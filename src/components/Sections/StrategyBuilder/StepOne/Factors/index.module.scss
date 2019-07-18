@@ -9,12 +9,12 @@
 }
 
 .factorscontrols {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: 0.5rem;
-
+  //display: flex;
+  //justify-content: flex-start;
+  //flex-wrap: wrap;
+  //flex-direction: column;
+  //margin: 0.5rem;
+  display: block;
   @include respond(phone) {
   
 }
@@ -28,7 +28,7 @@
 @media only screen and ($mediaSmallMinWidth){
   .factorscontrols {
    
-    justify-content: flex-start;
+    //justify-content: flex-start;
 
  
   }

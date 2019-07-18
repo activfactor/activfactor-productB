@@ -8,7 +8,7 @@ class Factors extends Component {
   render() {
     return (
       <div className={classes.factors}>
-        <div className={classes.factorsHeading}>Factors</div>
+        <div className="section-title_h3">Factors</div>
         <div className={classes.factorscontrols}>
           <Factor reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('Momentum') : false} value="Momentum" onChange={this.props.factorChange}/>
           <Factor reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('Value') : false} value="Value" onChange={this.props.factorChange}/>

@@ -41,7 +41,7 @@ class CompanySize extends Component {
   render() {
     return (
       <div className={classes.companySize}>
-        <div className={classes.companySizeHeading}>Company Size</div>
+        <div className="section-title_h3">Company Size</div>
         <div className={classes.btns}>
           <Button
             value="large"

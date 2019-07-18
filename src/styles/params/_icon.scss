@@ -1,0 +1,13 @@
+@import "variables";
+
+
+.icon {
+
+    &-info {
+        &_question {
+            background-color: $lightBlueColor;
+            color: $mainBlueColor;
+            margin: 0 5px;
+        }
+    }
+}

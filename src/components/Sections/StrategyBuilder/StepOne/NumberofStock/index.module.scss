@@ -6,6 +6,9 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+  position: relative;
+  padding-top: 12px;
+
   .rangelabel{
     clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
     width:35px;

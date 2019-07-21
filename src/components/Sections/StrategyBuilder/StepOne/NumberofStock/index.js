@@ -6,7 +6,7 @@ class NumberofStock extends Component {
   render() {
     return (
       <div className={classes.stockNumberContainer}>
-        <div className={classes.stockNumberHeading}># Number of Stock</div>
+        <div className="section-title_h3"># Number of Stock</div>
         <div className={classes.rangeSlider}>
             <input
             type="range"

@@ -1,5 +1,8 @@
 @import "params/variables";
 @import "params/mixins";
+@import "params/type";
+@import "params/icon";
+
 // @font-face {
 // font-family: "Poppins-Medium";
 // src: url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
@@ -55,3 +58,4 @@ body {
 ul {
   list-style: none;
 }
+

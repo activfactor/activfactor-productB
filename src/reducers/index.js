@@ -3,6 +3,7 @@ import authReducers from './authReducers';
 import toggleStatusReducer from './toggleStatusReducer';
 import queryReducer from './queryReducer';
 import factorScreener from './factorScreener';
+import factorDashboard from './factorDashboard';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -10,6 +11,7 @@ export default combineReducers({
     toggle: toggleStatusReducer,
     form: formReducer,
     factorScreener,
-    queryReducer
+    queryReducer,
+    factorDashboard
 })
 

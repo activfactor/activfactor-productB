@@ -12,7 +12,7 @@ import { resetQuery } from '../../../../actions/index';
 class StepOne extends Component {
   state={
     "country":"can",
-    "sectors":"",
+    "sectors":"consumers,materials,financials,industrials,services,technology,energy,health,utilities,",
     "factors":"",
     "n_stock":1,
     "firm_size":"",

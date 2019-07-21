@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classes from "../chart.module.scss";
 import Spinner from "../../../../../UI/Spinner";
 import { Chart } from "react-google-charts";
+import Header from '../../../../../UI/Header';
 
 class BarChart extends Component {
   getData = (strategy, benchmark) => {
@@ -19,7 +20,7 @@ class BarChart extends Component {
   render() {
     return (
       <div className={classes.container}>
-        <div className={classes.header}>{this.props.header}</div>
+        <Header header={this.props.header} />
         <div className={classes.chartcontainer}>
           <Chart
             pattern= {"#%"}

@@ -1,22 +1,13 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
+import Input from '../../../../UI/Input';
 
 class ActionButtons extends Component {
   render() {
     return (
       <div className={classes.buttons__container}>
-        <input
-          className={classes.buttons__submit}
-          value="Modify Strategy"
-          type="submit"
-          onClick={this.props.onClick}
-        />
-        <input
-          className={classes.buttons__submit}
-          value="Customized Portfolio"
-          type="submit"
-          onClick={this.props.customizePortfolio}
-        />
+        <Input type="submit" value="Modify Strategy" onClick={this.props.onClick} />
+        <Input type="submit" value="Customized Portfolio" onClick={this.props.customizePortfolio} />
       </div>
     );
   }

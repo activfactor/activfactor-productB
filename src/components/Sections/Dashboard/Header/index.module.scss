@@ -1,0 +1,14 @@
+@import '../../../../styles/params/variables';
+
+.container{
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: auto auto auto auto;
+    background-color: $whiteColor;
+    border-radius: 2px;
+    box-shadow: 2px 2px 8px $searchColor; 
+    margin-bottom: 2rem;
+    padding: 2rem;
+    width: 100%;
+    grid-column: 1;
+}

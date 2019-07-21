@@ -9,22 +9,22 @@
   text-align: center;
 }
 
-.buttons__submit {
-  flex-basis: 20%;
-  color: #fff;
-  padding: 15px 25px;
-  background-color: #109CF1;
-  font-size: 1em;
-  border: 1px solid #109CF1;
-  border-radius: 4px;
-  box-shadow: 0 1px 6px #109CF1;
-  cursor: pointer;
+// .buttons__submit {
+//   flex-basis: 20%;
+//   color: #fff;
+//   padding: 15px 25px;
+//   background-color: #109CF1;
+//   font-size: 1em;
+//   border: 1px solid #109CF1;
+//   border-radius: 4px;
+//   box-shadow: 0 1px 6px #109CF1;
+//   cursor: pointer;
  
-  margin-bottom: 1rem;
-  &:first-child{
-    margin-right  : 1rem;
-}
-}
+//   margin-bottom: 1rem;
+//   &:first-child{
+//     margin-right  : 1rem;
+// }
+// }
 
 
 @media only screen and ($mediaChartPreSmall){

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import classes from './index.module.scss';
+import Input from '../../../../UI/Input';
 
 
 class ActionButtons extends Component {
@@ -9,8 +10,8 @@ class ActionButtons extends Component {
         return (
 
             <div className={classes.buttons__container}>
-              <input className={classes.buttons__submit} type="submit" value="Analyze results" onClick={this.props.AnalyuzeResult}/>
-              <input className={classes.buttons__submit} type="submit" value="Replicate Strategy" onClick={this.props.ReplicateStrategy} />
+              <Input type="submit" value="Analyze results" onClick={this.props.AnalyuzeResult} />
+              <Input type="submit" value="Replicate Strategy" onClick={this.props.AnalyuzeResult} />
             </div>
         );
     }

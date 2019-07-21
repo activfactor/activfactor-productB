@@ -1,6 +1,13 @@
 import { COUNTRY_UPDATE,SECTOR_UPDATE,FACTORS_UPDATE,STOCK_UPDATE,FIRM_UPDATE, RESET_QUERY } from '../actions/types';
+const INITIAL_STATE = {
+    "country":"CAN",
+    "sectors":"consumers,materials,financials,industrials,services,technology,energy,health,utilities",
+    "factors":"",
+    "n_stock":1,
+    "firm_size":""
+}
 
-export default (state={}, action)=>{
+export default (state=INITIAL_STATE, action)=>{
     switch (action.type){
         case COUNTRY_UPDATE:
             return{

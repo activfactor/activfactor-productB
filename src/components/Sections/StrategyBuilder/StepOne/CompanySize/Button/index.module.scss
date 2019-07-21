@@ -20,6 +20,7 @@
   appearance: none;
   line-height: 1.1rem;
   max-width: 17rem;
+  outline: none;
   @include respond(tab-port) {
     
       flex-basis: 25% !important;

@@ -3,6 +3,7 @@ import classes from "../chart.module.scss";
 import Spinner from "../../../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 import { CapString } from '../../../../../../utils/textFunctions';
+import Header from '../../../../../UI/Header';
 
 class BarChart extends Component {
     getFactorColor(factor){
@@ -37,7 +38,7 @@ class BarChart extends Component {
   render() {
     return (
       <div className={classes.container}>
-        <div className={classes.header}>{this.props.header}</div>
+        <Header header={this.props.header} />
         <div className={classes.chartcontainer}>
           <Chart
             pattern= {"#%"}

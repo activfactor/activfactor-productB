@@ -1,0 +1,12 @@
+@import '../../../styles/params/variables';
+.container{
+    display: grid;
+    text-align: center;
+    .number{
+        font-size: 1.9rem;
+    }
+    .description{
+        font-size: 0.8rem;
+        color: $textColor;
+    }
+}

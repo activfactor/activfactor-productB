@@ -9,25 +9,6 @@
   justify-content: flex-end !important;
   margin-right:auto;
   padding: 1rem 2rem;
-  a {
-    color: $mainBlueColor;
-    text-decoration: none;
-    padding-top: 1rem;
-  }
-  
-}
-.buttons__submit {
-  flex-basis: 20%;
-  color: $whiteColor;
-  padding: 15px 25px;
-
-  background-color: $mainBlueColor;
-  font-size: 1em;
-  border: 1px solid $mainBlueColor;
-  border-radius: 4px;
-  box-shadow: 0 1px 6px $mainBlueColor;
-  cursor: pointer;
-  margin:10px 10px;
 }
 
 

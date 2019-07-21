@@ -9,7 +9,6 @@ class Selector extends Component {
   onChangeHandler = (value,checked) => {
     this.setState(prevState => ({
       checked:!prevState.checked,
-      sector:value
     }))
     this.props.onClick(value,checked);
   }

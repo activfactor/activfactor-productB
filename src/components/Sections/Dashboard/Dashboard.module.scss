@@ -1,22 +1,11 @@
 @import "../../../styles/params/variables";
 
 .container {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
-    font-size: 3em;
-    color: $mainBlueColor;
-    padding: 3rem;
-  }
-  
-  @media only screen and ($mediaMediumWidth) {
-    .container {
-      font-size: 1.8em;
-    }
-  }
-  
-  @media only screen and ($mediaSmallWidth) {
-    .container {
-      font-size: 1.2em;
+    padding: 2rem;
+    width: 100%;
+    .table{
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        grid-column-gap: 50px;
     }
   }

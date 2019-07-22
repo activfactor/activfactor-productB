@@ -29,17 +29,20 @@
         background-color: #f5f6f8;
         border: 1px solid #f5f6f8;
         border-radius: 4px;
-        box-shadow: 0 1px 6px #f5f6f8;
+        //box-shadow: 0 1px 6px #f5f6f8;
         color: #989898;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        padding: 12px 24px !important;
+        padding: 12px 14px !important;
         margin: 0;
         font-size: 1rem;
         position: relative;
         flex-basis: 100%;
+        font-family: "Poppins-Regular";
+        text-transform: capitalize;
       }
+
 
       .overSelect {
         position: absolute;

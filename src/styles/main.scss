@@ -1,7 +1,39 @@
 @import "params/variables";
 @import "params/mixins";
-@import "params/type";
-@import "params/icon";
+
+
+
+
+
+// Bootstrap Added
+@import "partials/vendor/bootstrap/functions";
+@import "partials/vendor/bootstrap/variables";
+@import "partials/vendor/bootstrap/mixins";
+@import "partials/vendor/bootstrap/grid";
+@import "partials/vendor/bootstrap/buttons";
+
+// Custom Theme Styling
+@import "partials/type";
+@import "partials/icon";
+@import "partials/buttons";
+@import "partials/custom-theme";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @font-face {
 // font-family: "Poppins-Medium";

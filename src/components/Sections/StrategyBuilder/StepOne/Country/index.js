@@ -8,7 +8,9 @@ class Country extends Component {
     render() {
         return (
             <div className={classes.Country}>
-                <div className={classes.CountryHeading}>Country</div>
+
+                <div className="section-title_h3">Country</div>
+
                 <DropDown value={`${this.props.value}`} color="black" DropDownChangeHandler={this.props.countryChange}>
                     <option value='can'>Canada</option>
                     <option value='usa'>USA</option>

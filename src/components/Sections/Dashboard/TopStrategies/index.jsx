@@ -36,12 +36,12 @@ class Table extends Component {
                   <td className={data[item]["3_months"] > 0 ? classes.success : classes.warning}>{data[item]["3_months"]}%</td>
                   <td className={data[item]["6_months"] > 0 ? classes.success : classes.warning}>{data[item]["6_months"]}%</td>
                   <td className={data[item]["year_to_date"] > 0 ? classes.success : classes.warning}>{data[item]["year_to_date"]}%</td>
-                  <td className={data[item]["1_year_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["1_year_annualized_return"]}%</td>
+                  <td className={data[item]["1_year_total_return"] > 0 ? classes.success : classes.warning}>{data[item]["1_year_total_return"]}%</td>
                   {/* <td className={data[item]["2_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["2_years_annualized_return"]}%</td> */}
-                  <td className={data[item]["3_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["3_years_annualized_return"]}%</td>
-                  <td className={data[item]["5_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["5_years_annualized_return"]}%</td>
-                  <td className={data[item]["7_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["7_years_annualized_return"]}%</td>
-                  <td className={data[item]["10_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["10_years_annualized_return"]}%</td>
+                  <td className={data[item]["3_years_total_return"] > 0 ? classes.success : classes.warning}>{data[item]["3_years_total_return"]}%</td>
+                  <td className={data[item]["5_years_total_return"] > 0 ? classes.success : classes.warning}>{data[item]["5_years_total_return"]}%</td>
+                  <td className={data[item]["7_years_total_return"] > 0 ? classes.success : classes.warning}>{data[item]["7_years_totalreturn"]}%</td>
+                  <td className={data[item]["10_years_total_return"] > 0 ? classes.success : classes.warning}>{data[item]["10_years_totalreturn"]}%</td>
                   {/* <td className={data[item]["since_2008"] > 0 ? classes.success : classes.warning}>{data[item]["since_2008"]}%</td> */}
                 </tr>
               );

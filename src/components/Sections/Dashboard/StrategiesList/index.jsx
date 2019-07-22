@@ -12,7 +12,7 @@ class StrategyList extends Component{
                     return <Strategy 
                             strategyName={strategy} 
                             numberID={strategies[strategy]["strategy_perf_1d"]} 
-                            descriptionID="ID"
+                            descriptionID="1 Day"
                             numberWTD={strategies[strategy]["strategy_perf_wtd"]}
                             descriptionWTD="WTD"
                             numberMTD={strategies[strategy]["strategy_perf_mtd"]}

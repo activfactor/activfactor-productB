@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import classes from './index.module.scss';
 
 class Button extends Component{
     render(){

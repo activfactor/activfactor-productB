@@ -10,6 +10,7 @@ import StrategiesList from './StrategiesList';
 import Link from '../../UI/Link';
 import Spinner from '../../UI/Spinner';
 import Modal from '../../UI/Modal';
+import Input from '../../UI/Input';
 
 class Dashboard extends Component {
     state={
@@ -38,6 +39,9 @@ class Dashboard extends Component {
               <Link to="/#">view all</Link>
             </div>
             <StrategiesList />
+            <div className={classes.build_btn}>
+              <Input type="submit" nameOfClass="primary" value="Build a New Strategy" />
+            </div>
           </main> 
         )
       } else {

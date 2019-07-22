@@ -29,11 +29,11 @@ class CompanySize extends Component {
 
     onClickHandler = (value) => {
        if (value==='large'){
-         this.setState({largeClasses:`${this.state.largeClasses === '' ? classes.active : ''}`})
+         this.setState({largeClasses:`${this.state.largeClasses === '' ? 'active' : ''}`})
        } else if(value==='medium') {
-        this.setState({mediumClasses:`${this.state.mediumClasses ==='' ? classes.active : ''}`})
+        this.setState({mediumClasses:`${this.state.mediumClasses ==='' ? 'active' : ''}`})
        } else if(value==='small') {
-        this.setState({smallClasses:`${this.state.smallClasses === '' ? classes.active : ''}`})
+        this.setState({smallClasses:`${this.state.smallClasses === '' ? 'active' : ''}`})
        }
        this.props.companySizeChange(value);
     }

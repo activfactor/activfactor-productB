@@ -24,14 +24,16 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      padding: 12px 24px !important;
+      padding: 12px 14px !important;
       margin: 0 0.5rem;
       margin-top: 0.6rem;
       font-size: 1rem;
       position: relative;
       flex-basis: 100%;
       outline: none;
+        font-family: "Poppins-Regular";
     }
+
     &:after {
       content: "";
       position: absolute;

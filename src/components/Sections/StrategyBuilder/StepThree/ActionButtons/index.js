@@ -10,8 +10,8 @@ class ActionButtons extends Component {
         return (
 
             <div className={classes.buttons__container}>
-              <Input type="submit" value="Analyze results" onClick={this.props.AnalyuzeResult} />
-              <Input type="submit" value="Replicate Strategy" onClick={this.props.AnalyuzeResult} />
+              <Input nameOfClass="primary" type="submit" value="Analyze results" onClick={this.props.AnalyuzeResult} />
+              <Input nameOfClass="outline" type="submit" value="Replicate Strategy" onClick={this.props.AnalyuzeResult} />
             </div>
         );
     }

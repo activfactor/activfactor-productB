@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     "sectors":"consumers,materials,financials,industrials,services,technology,energy,health,utilities",
     "factors":"",
     "n_stock":1,
-    "firm_size":""
+    "firm_size":"large,medium,small"
 }
 
 export default (state=INITIAL_STATE, action)=>{

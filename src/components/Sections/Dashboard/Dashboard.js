@@ -6,6 +6,10 @@ import { getDashboard, resetDashboard } from '../../../actions/dashboard';
 import Table from './TopStrategies';
 import Header from './Header';
 import BrokerPanel from './BrokerPanel';
+import StrategiesList from './StrategiesList';
+import Link from '../../UI/Link';
+import Spinner from '../../UI/Spinner';
+import Modal from '../../UI/Modal';
 
 class Dashboard extends Component {
     state={
@@ -16,26 +20,48 @@ class Dashboard extends Component {
       this.setState({country: e.target.value});
     }
 
-    // componentWillUpdate(){
-    //   this.props.resetDashboard();
-    //   this.props.getDashboard(this.state.country);
-    // }
-
     componentDidMount(){
       this.props.getDashboard();
     }
 
+    renderContent(){
+      if(this.props.data.CAN){
+        return (
+              <main className={classes.container}>
+            <Header />
+            <div className={classes.table}>
+              <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
+              <BrokerPanel />
+            </div>
+            <div className={classes.strategies_headercontainer}>
+              <div>My strategies</div>
+              <Link to="/#">view all</Link>
+            </div>
+            <StrategiesList />
+          </main> 
+        )
+      } else {
+        return (
+          <Modal>
+            <Spinner color="white"/>
+          </Modal>
+        );
+      }
+    }
+
   render() {
     return (
-      <main className={classes.container}>
-        <Header />
-        <div className={classes.table}>
-          <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
-          <BrokerPanel />
-        </div>
-      </main>
-    );
+      <React.Fragment>
+        {this.renderContent()}
+      </React.Fragment>
+    )
   }
 }
 
-export default connect(null,{getDashboard,resetDashboard})(requireAuth(Dashboard));
+const mapStateToProps = state => {
+  return {
+    data: state.factorDashboard
+  }
+}
+
+export default connect(mapStateToProps,{getDashboard,resetDashboard})(requireAuth(Dashboard));

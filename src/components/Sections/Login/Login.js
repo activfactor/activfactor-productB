@@ -3,10 +3,10 @@ import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {signIn_A, resetSignInError } from '../../../actions';
-import { Link } from 'react-router-dom';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
 import history from '../../../history';
+import Link from '../../UI/Link';
 
 let styleBorder = "none";
 

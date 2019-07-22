@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
 import classes from './SignupForm.module.scss';
+import Link from '../../../UI/Link';
 
 let styleBorder = "none";
 class Signup extends Component {

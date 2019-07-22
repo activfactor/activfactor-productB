@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
-import { Link } from "react-router-dom";
 import Input from '../../../../UI/Input';
+import Link from '../../../../UI/Link';
 
 class ActionButtons extends Component {
   render() {

@@ -1,18 +1,17 @@
 import React, { Component } from "react"; 
-import Button from '../../../UI/Button';
 import classes from './AuthButtons.module.scss';
 import { connect } from 'react-redux';
 import { signOut } from '../../../../actions/index';
-import { Link } from 'react-router-dom';
+import Link from '../../../UI/Link';
 
 class AuthButtons extends Component {
   renderAuthButtons = () => {
     if (!this.props.authenticated){
       return (
         <div className={classes.container}>
-          <Button to="/login" nameOfClass={classes.button}>Login</Button>
+          <Link nameOfClass={classes.button} to="/login">Login</Link>
           <span className={classes.button}>|</span>
-          <Button to="/signup" nameOfClass={classes.button}>Sign up</Button>
+          <Link nameOfClass={classes.button} to="signup">Sign up</Link>
         </div>
       );
     } else {

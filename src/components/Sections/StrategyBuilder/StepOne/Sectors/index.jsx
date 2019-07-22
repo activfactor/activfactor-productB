@@ -21,7 +21,9 @@ class Sectors extends Component {
   render() {
     return (
       <div className={classes.sectors}>
-        <div className={classes.SectorsHeading}>Sectors</div>
+
+        <div className="section-title_h3">Sectors</div>
+
         <div className={classes.multiselect}>
           <div className={classes.selectBox} onClick={this.onClickHandler}>
             <select>

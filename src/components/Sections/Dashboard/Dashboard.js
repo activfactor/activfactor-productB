@@ -16,13 +16,13 @@ class Dashboard extends Component {
       this.setState({country: e.target.value});
     }
 
-    componentWillUpdate(){
-      this.props.resetDashboard();
-      this.props.getDashboard(this.state.country);
-    }
+    // componentWillUpdate(){
+    //   this.props.resetDashboard();
+    //   this.props.getDashboard(this.state.country);
+    // }
 
     componentDidMount(){
-      this.props.getDashboard(this.state.country);
+      this.props.getDashboard();
     }
 
   render() {
@@ -30,7 +30,7 @@ class Dashboard extends Component {
       <main className={classes.container}>
         <Header />
         <div className={classes.table}>
-          <Table countryChangeHandler={this.countryChangeHandler} value={this.state.country}/>
+          <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
           <BrokerPanel />
         </div>
       </main>

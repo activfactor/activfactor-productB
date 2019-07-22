@@ -8,8 +8,8 @@ import DropDown from '../../../UI/DropDown';
 class Table extends Component {
 
   renderTable() {
-    if (this.props.data.investement) {
-      const data = this.props.data;
+    if (this.props.data.CAN) {
+      const data = this.props.country === 'CAN' ? this.props.data.CAN : this.props.data.USA ;
       return (
         <table>
           <thead>
@@ -61,7 +61,7 @@ class Table extends Component {
     return (
     <div className={classes.container}>
       <Header header="Top Strategies">
-        <DropDown value={this.props.value} color="blue" DropDownChangeHandler={this.props.countryChangeHandler}>
+        <DropDown value={this.props.country} color="blue" DropDownChangeHandler={this.props.countryChangeHandler}>
           <option>USA</option>
           <option>CAN</option>
         </DropDown>

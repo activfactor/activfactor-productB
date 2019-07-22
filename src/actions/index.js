@@ -63,9 +63,7 @@ export const signIn_A = formProps => dispatch => {
   }).catch(error => {
     let errorMessage = ''
     if (error.response === undefined){
-      errorMessage='A network error occurred.'
-      + 'This could be a CORS issue or a dropped internet connection. '
-      + 'It is not possible for us to know.'
+      errorMessage='system error, kindly contact the system administrator'
     } else {
       errorMessage = error.response
     }

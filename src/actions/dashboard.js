@@ -1,10 +1,10 @@
 import {
-    DASHBOARD_GET_MONTHLY,
+    DASHBOARD_GET,
     DASHBOARD_RESET
 } from './types';
 import wealthface from '../apis/wealthface';
 
-export const getDashboard = (country) => (dispatch, getState) => {
+export const getDashboard = () => (dispatch, getState) => {
     wealthface.get('/factor/dashboard', {
         params: {
             user_id: getState().auth.userID
@@ -13,11 +13,7 @@ export const getDashboard = (country) => (dispatch, getState) => {
           Authorization: `JWT ${getState().auth.token}`
         }
     }).then(res => {
-        if (country === 'CAN'){
-            dispatch({type: DASHBOARD_GET_MONTHLY, payload: res.data.message.Base_strategy_performance.monthly.CAN});
-        } else {
-            dispatch({type: DASHBOARD_GET_MONTHLY, payload: res.data.message.Base_strategy_performance.monthly.USA});
-        }
+        dispatch({type: DASHBOARD_GET, payload: res.data.message});
     }).catch(err => console.log(err));
 }
 

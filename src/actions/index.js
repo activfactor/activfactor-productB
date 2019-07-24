@@ -15,7 +15,8 @@ import {
   FACTOR_SCREENER_RESET,
   FACTOR_SCREENER_SAVE,
   FACTOR_SCREENER_SAVE_ERROR,
-  AUTH_RESET
+  AUTH_RESET,
+  BUILD_STRATEGY_QUERY
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
@@ -135,6 +136,10 @@ export const queryUpdate = props => dispatch => {
 
 export const resetQuery = () => dispatch => {
   dispatch({type: RESET_QUERY})
+}
+
+export const buildNewStrategyQuery = () => dispatch => {
+  dispatch({type: BUILD_STRATEGY_QUERY})
 }
 
 export const resetFactorScreener = () => dispatch => {

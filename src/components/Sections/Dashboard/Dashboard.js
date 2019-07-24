@@ -12,7 +12,7 @@ import Spinner from '../../UI/Spinner';
 import Modal from '../../UI/Modal';
 import Input from '../../UI/Input';
 import history from '../../../history';
-import { resetQuery } from '../../../actions/index'
+import { buildNewStrategyQuery } from '../../../actions/index'
 
 class Dashboard extends Component {
     state={
@@ -27,8 +27,8 @@ class Dashboard extends Component {
       this.props.getDashboard();
     }
 
-    BuildStrategy(){
-      this.props.resetQuery();
+    BuildStrategy = () => {
+      this.props.buildNewStrategyQuery();
       history.push('/strategy-builder')
     }
 
@@ -43,7 +43,7 @@ class Dashboard extends Component {
             </div>
             <div className={classes.strategies_headercontainer}>
               <div>My strategies</div>
-              <Link to="/#">view all</Link>
+              <Link to="/#">View all</Link>
             </div>
             <StrategiesList />
             <div className={classes.build_btn}>
@@ -75,4 +75,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{getDashboard,resetDashboard,resetQuery})(requireAuth(Dashboard));
+export default connect(mapStateToProps,{getDashboard,resetDashboard,buildNewStrategyQuery})(requireAuth(Dashboard));

@@ -1,4 +1,4 @@
-import { COUNTRY_UPDATE,SECTOR_UPDATE,FACTORS_UPDATE,STOCK_UPDATE,FIRM_UPDATE, RESET_QUERY, BUILD_STRATEGY_QUERY } from '../actions/types';
+import { COUNTRY_UPDATE,SECTOR_UPDATE,FACTORS_UPDATE,STOCK_UPDATE,FIRM_UPDATE, RESET_QUERY, BUILD_STRATEGY_QUERY, UPDATE_STRATEGY_QUERY } from '../actions/types';
 const INITIAL_STATE = {
     "country":"CAN",
     "sectors":"consumers,materials,financials,industrials,services,technology,energy,health,utilities",
@@ -51,6 +51,15 @@ export default (state=INITIAL_STATE, action)=>{
                 "factors":"",
                 "n_stock":1,
                 "firm_size":"large,medium,small"
+            }
+        case UPDATE_STRATEGY_QUERY:
+            return {
+                ...state,
+                "country": action.payload.country,
+                "sectors": action.payload.sectors,
+                "factors": action.payload.factors,
+                "n_stock": action.payload.n_stock,
+                "firm_size": action.payload.firm_size
             }
         default:
             return state;

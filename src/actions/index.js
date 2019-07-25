@@ -3,20 +3,9 @@ import {
   SIGN_IN_ERROR, 
   AUTH_ERR, 
   TOGGLE_STATUS,
-  FACTOR_SCREENER, 
-  FACTOR_SCREENER_ERROR,
   SIGN_OUT,
-  COUNTRY_UPDATE,
-  SECTOR_UPDATE,
-  FACTORS_UPDATE,
-  STOCK_UPDATE,
-  FIRM_UPDATE,
-  RESET_QUERY,
-  FACTOR_SCREENER_RESET,
-  FACTOR_SCREENER_SAVE,
-  FACTOR_SCREENER_SAVE_ERROR,
   AUTH_RESET,
-  BUILD_STRATEGY_QUERY
+  LOCATION_PATH
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
@@ -42,13 +31,12 @@ export const signIn_A = formProps => dispatch => {
         sessionStorage.setItem("regtime", dataReponse.regtime);
         sessionStorage.setItem("userID", dataReponse.userID);
         sessionStorage.setItem("token", dataReponse.token);
+        dispatch({type: LOCATION_PATH, payload: '/dashboard'}); // this is for the active navigation button
         history.push("/dashboard");
       }).catch(err => {
         let errorMessage = ''
         if (err.response === 'undefined'){
-          errorMessage='A network error occurred.'
-          + 'This could be a CORS issue or a dropped internet connection. '
-          + 'It is not possible for us to know.'
+          errorMessage='system error, kindly contact the system administrator';
         } else {
           errorMessage = err.response
         }
@@ -87,8 +75,6 @@ export const signOut = () => {
   }
 }
 
-
-
 export const toggleClicked = () => (dispatch, getState) => {
   dispatch({
     type: TOGGLE_STATUS,
@@ -96,70 +82,6 @@ export const toggleClicked = () => (dispatch, getState) => {
   });
 };
 
-
-
-export const getFactorScreener = () => async (dispatch, getState) => {
-  try {
-    if (!getState().factorScreener.parameters) {
-      const response = await wealthface.get("/factor/screener", {
-        params: getState().queryReducer,
-        headers: {
-          Authorization: `JWT ${getState().auth.token}`
-        }
-      });
-      const responseData = JSON.parse(response.data.replace(/\bNaN\b/g, null));
-      dispatch({ type: FACTOR_SCREENER, payload: responseData.message });
-    }
-  } catch (error) {
-    dispatch({
-      type: FACTOR_SCREENER_ERROR,
-      payload: error.response
-    });
-  }
-};
-
-export const queryUpdate = props => dispatch => {
-  if ("country" in props){
-    dispatch({type: COUNTRY_UPDATE, payload: props})
-  } 
-  if ("sectors" in props){
-    dispatch({type: SECTOR_UPDATE, payload: props})
-  }
-   if ("factors" in props){
-    dispatch({type: FACTORS_UPDATE, payload: props})
-  } if ("n_stock" in props){
-    dispatch({type: STOCK_UPDATE, payload: props})
-  } if ("firm_size" in props){
-    dispatch({type: FIRM_UPDATE, payload: props})
-  }
+export const updateLocation = (location) => (dispatch) => {
+  dispatch({type: LOCATION_PATH, payload: location});
 }
-
-export const resetQuery = () => dispatch => {
-  dispatch({type: RESET_QUERY})
-}
-
-export const buildNewStrategyQuery = () => dispatch => {
-  dispatch({type: BUILD_STRATEGY_QUERY})
-}
-
-export const resetFactorScreener = () => dispatch => {
-  dispatch({type: FACTOR_SCREENER_RESET})
-}
-
-export const saveStrategy = props => (dispatch) => {
-    console.log("Strategy Posted");
-    if (props) {
-        wealthface.post("/factor/strategy", props.data, props.headers)
-        .then(res => 
-        {
-          console.log(res);
-          dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
-        }
-      ).catch(err => 
-        {
-          console.log(err);
-          dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
-        }
-      )
-    }
-  }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
 import { connect } from 'react-redux'
-import { queryUpdate } from '../../../../../../actions/index';
+import { queryUpdate } from '../../../../../../actions/strategyBuilder';
 
 class Selector extends Component {
   state={checked: this.props.checked}

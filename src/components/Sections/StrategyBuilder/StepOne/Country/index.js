@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import DropDown from '../../../../UI/DropDown';
 
 class Country extends Component {
+
     render() {
         return (
             <div className={classes.Country}>
@@ -12,8 +13,8 @@ class Country extends Component {
                 <div className="section-title_h3">Country</div>
 
                 <DropDown value={`${this.props.value}`} color="black" DropDownChangeHandler={this.props.countryChange}>
-                    <option value='can'>Canada</option>
-                    <option value='usa'>USA</option>
+                    <option value='CAN'>Canada</option>
+                    <option value='USA'>USA</option>
                 </DropDown>
              </div>
         );

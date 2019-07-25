@@ -7,7 +7,7 @@ import Country from "./Country";
 import ActionButtons from "./ActionButtons";
 import NumberofStock from "./NumberofStock";
 import { connect } from 'react-redux';
-import { resetQuery } from '../../../../actions/index';
+import { resetQuery } from '../../../../actions/strategyBuilder';
 
 class StepOne extends Component {
   state={

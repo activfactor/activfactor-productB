@@ -8,8 +8,9 @@ class StrategyList extends Component{
             if (this.props.user_strategies !== "Your are not following any strategy"){
                 const strategies = this.props.user_strategies;
                 return (
-                    Object.keys(strategies).map(strategy => {
+                    Object.keys(strategies).map((strategy, index) => {
                     return <Strategy 
+                            key={index}
                             strategyName={strategy} 
                             numberID={strategies[strategy]["strategy_perf_1d"]} 
                             descriptionID="1 Day"

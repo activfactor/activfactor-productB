@@ -8,13 +8,17 @@
   justify-content: space-between;
   align-items: center;
   .link {
+    border-radius: 3px;
     text-decoration: none;
     color: $textColor;
-    border-radius: 3px;
     padding: 13px;
     margin: 0 8px;
     font-size: 0.9em;
     font-weight: 400;
+    &.active{
+      background-color: $lightBlueColor;
+      color: $mainBlueColor;
+    }
     &:hover {
       background-color: $lightBlueColor;
       color: $mainBlueColor;

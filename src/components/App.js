@@ -8,12 +8,16 @@ import Footer from "../components/Footer/Footer";
 import history from "../history";
 import { connect } from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
+import { updateLocation } from '../actions';
 
 class App extends React.Component {
 
   componentDidMount(){
     if (!this.props.authenticated){
       history.push('/login');
+      this.props.updateLocation('/login')
+    } else {
+      this.props.updateLocation('/dashboard');
     }
   }
 
@@ -42,4 +46,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,{updateLocation})(App);

@@ -4,7 +4,7 @@ import AnalyzeResults from './StepTwo/AnalyzeResults';
 import BuildStrategy from './StepOne';
 import CustomizedPortfolio from './StepThree';
 import { connect } from 'react-redux';
-import { queryUpdate, resetQuery, resetFactorScreener } from '../../../actions/index';
+import { queryUpdate, resetQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
 import requireAuth from '../../hoc/requireAuth';
 
 class StrategyBuilder extends Component{

@@ -3,11 +3,11 @@ import NavigationItem from '../../UI/NavigationItem';
 import SearchBox from '../../UI/SearchBox/SearchBox';
 import { connect } from 'react-redux';
 import classes from './NavigationBar.module.scss';
-import { toggleClicked, signOut } from '../../../actions/index';
+import { toggleClicked, signOut, updateLocation } from '../../../actions/index';
 
 class NavigationBar extends Component{
-
-    onClickHandler = () => {
+    onClickHandler = (path) => {
+        this.props.updateLocation(path);
         this.props.toggleClicked();
     }
 
@@ -24,8 +24,8 @@ class NavigationBar extends Component{
         }
         return (
             <React.Fragment>
-                <NavigationItem onClick={this.onClickHandler} to="/login" nameOfClass={`${classes.link} ${classes.auth}`}>Login</NavigationItem>
-                <NavigationItem onClick={this.onClickHandler} to="/signup" nameOfClass={`${classes.link} ${classes.auth}`}>Sign up</NavigationItem>
+                <NavigationItem onClick={() => this.onClickHandler("/login")} to="/login" nameOfClass={`${classes.link} ${classes.auth} ${(this.props.location ==='/login') ? classes.active : ''}`}>Login</NavigationItem>
+                <NavigationItem onClick={() => this.onClickHandler("/signup")} to="/signup" nameOfClass={`${classes.link} ${classes.auth} ${(this.props.location ==='/signup') ? classes.active : ''}`}>Sign up</NavigationItem>
             </React.Fragment>
         );
     }
@@ -35,12 +35,12 @@ class NavigationBar extends Component{
             <div className={`${classes.container} ${!this.props.clicked && this.props.initialStatus ? classes.remove : this.props.clicked && this.props.initialStatus ? classes.show : ""}`}>
                 <nav className={classes.navitems}>
                     {this.renderAuthButtons()}
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Dashboard</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/strategy-builder" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/strategy-builder-step-two" nameOfClass={classes.link}>Watch List</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Portofolio Performance</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Transactions</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Strategy Monitor</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ==='/dashboard') ? classes.active : ''}`}>Dashboard</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/strategy-builder')} to="/strategy-builder" nameOfClass={`${classes.link} ${(this.props.location ==='/strategy-builder') ? classes.active : ''}`}>Strategy Builder</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Watch List</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Portofolio Performance</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Transactions</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Strategy Monitor</NavigationItem>
                 </nav>
                 <SearchBox />
             </div>
@@ -56,8 +56,9 @@ const mapStateToProps = (state) => {
     return {
         clicked : state.toggle.clicked,
         initialStatus: state.toggle.initial,
-        authenticated: state.auth.authenticated
+        authenticated: state.auth.authenticated,
+        location: state.toggle.location
     }
 }
 
-export default connect(mapStateToProps, {toggleClicked,signOut})(NavigationBar);
+export default connect(mapStateToProps, {toggleClicked,signOut, updateLocation})(NavigationBar);

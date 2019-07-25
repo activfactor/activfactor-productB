@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import requireAuth from "../../hoc/requireAuth";
 import classes from "./Dashboard.module.scss";
 import { connect } from 'react-redux';
-import { getDashboard, resetDashboard } from '../../../actions/dashboard';
+import { getDashboard, resetDashboard, updateCuntry } from '../../../actions/dashboard';
 import Table from './TopStrategies';
 import Header from './Header';
 import BrokerPanel from './BrokerPanel';
@@ -12,7 +12,8 @@ import Spinner from '../../UI/Spinner';
 import Modal from '../../UI/Modal';
 import Input from '../../UI/Input';
 import history from '../../../history';
-import { buildNewStrategyQuery } from '../../../actions/index'
+import { buildNewStrategyQuery } from '../../../actions/strategyBuilder';
+import { updateLocation } from '../../../actions';
 
 class Dashboard extends Component {
     state={
@@ -21,13 +22,20 @@ class Dashboard extends Component {
 
     countryChangeHandler = (e) => {
       this.setState({country: e.target.value});
+      this.props.updateCuntry(e.target.value);
     }
 
     componentDidMount(){
-      this.props.getDashboard();
+      if (!this.props.data.CAN){
+        this.props.getDashboard(this.state.country);
+      } else {
+        this.setState({country: this.props.data.country});
+      }
+      
     }
 
     BuildStrategy = () => {
+      this.props.updateLocation('/strategy-builder');
       this.props.buildNewStrategyQuery();
       history.push('/strategy-builder')
     }
@@ -75,4 +83,13 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{getDashboard,resetDashboard,buildNewStrategyQuery})(requireAuth(Dashboard));
+export default connect(
+  mapStateToProps,
+  {
+    getDashboard,
+    resetDashboard,
+    buildNewStrategyQuery,
+    updateCuntry,
+    updateLocation
+  }
+)(requireAuth(Dashboard));

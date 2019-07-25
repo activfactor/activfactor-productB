@@ -3,7 +3,7 @@ import SBCurrentTracker from "./SBCurrentTracker";
 import ActionButtons from "./ActionButtons/index";
 import classes from "./index.module.scss";
 import { connect } from 'react-redux';
-import { saveStrategy } from '../../../../actions/index';
+import { saveStrategy } from '../../../../actions/strategyBuilder';
 
 class StrategyBuilder3 extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {signIn_A, resetSignInError } from '../../../actions';
+import {signIn_A, resetSignInError, updateLocation } from '../../../actions';
 import classes from './Login.module.scss';
 import Spinner from '../../UI/Spinner/SpinnerButton';
 import history from '../../../history';
@@ -16,6 +16,7 @@ class Login extends Component{
     componentDidMount(){
         if (this.props.authenticated){
             history.push('/dashboard');
+            this.props.updateLocation('/dashboard');
         }
     }
     
@@ -24,10 +25,10 @@ class Login extends Component{
             this.props.resetSignInError();
             this.setState({isSpinner:true});
             const data = {
-                email: formValues.username,
-                password: formValues.password
-                // email: "adam_smith14787@gnail.con",
-                // password: "123456789"
+                // email: formValues.username,
+                // password: formValues.password
+                email: "adam_smith14787@gnail.con",
+                password: "123456789"
             }
             this.props.signIn_A(data);
         } else {
@@ -120,4 +121,4 @@ const mapStateToProps = state => {
         authenticated: state.auth.authenticated
     }
 }
-export default compose(connect(mapStateToProps, {signIn_A,resetSignInError}), reduxForm({ form: 'loginForm',validate}))(Login);
+export default compose(connect(mapStateToProps, {signIn_A,resetSignInError, updateLocation}), reduxForm({ form: 'loginForm',validate}))(Login);

@@ -20,7 +20,8 @@ const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
         userID: sessionStorage.getItem('userID')
         },
         toggle: {
-            clicked: false
+            clicked: false,
+            location: '/'
         }
     }
 )

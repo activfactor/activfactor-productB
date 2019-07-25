@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '../../../../UI/Modal';
 import Spinner from '../../../../UI/Spinner/SpinnerButton';
 import Message from '../../../../UI/Message';
-import { resetQuery,resetFactorScreener } from '../../../../../actions/index';
+import { resetQuery,resetFactorScreener } from '../../../../../actions/strategyBuilder';
 
 
 class SBCurrentTracker extends Component {

@@ -7,7 +7,7 @@ import BarChart from '../Charts/BarChart';
 import BarChartVertical from '../Charts/BarChartVertical';
 import Table from '../Charts/TableChart';
 import { connect } from 'react-redux';
-import { getFactorScreener, resetFactorScreener } from '../../../../../actions/index';
+import { getFactorScreener, resetFactorScreener } from '../../../../../actions/strategyBuilder';
 import Spinner from '../../../../UI/Spinner';
 import Modal from '../../../../UI/Modal';
 import Message from '../../../../UI/Message';

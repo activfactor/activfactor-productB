@@ -14,10 +14,6 @@ class Sectors extends Component {
     );
   };
 
-  componentWillReceiveProps(nextProps){
-      console.log(nextProps);
-  }
-
   render() {
     return (
       <div className={classes.sectors}>

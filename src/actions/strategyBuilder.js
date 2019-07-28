@@ -39,7 +39,7 @@ import {
     }
   };
   
-  export const queryUpdate = props => dispatch => {
+  export const queryUpdate = props => (dispatch,getState) => {
     if ("country" in props){
       dispatch({type: COUNTRY_UPDATE, payload: props})
     } 
@@ -68,7 +68,6 @@ import {
             "n_stock": props.n_stock,
             "firm_size": props.firm_size.join(',')
         }
-        console.log(query);
         dispatch({type: UPDATE_STRATEGY_QUERY, payload: query});
         history.push('/strategy-builder');
     } else {
@@ -86,17 +85,14 @@ import {
   }
   
   export const saveStrategy = props => (dispatch) => {
-      console.log("Strategy Posted");
       if (props) {
           wealthface.post("/factor/strategy", props.data, props.headers)
           .then(res => 
           {
-            console.log(res);
             dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
           }
         ).catch(err => 
           {
-            console.log(err);
             dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
           }
         )

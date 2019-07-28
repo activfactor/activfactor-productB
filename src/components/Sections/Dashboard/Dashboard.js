@@ -12,7 +12,7 @@ import Spinner from '../../UI/Spinner';
 import Modal from '../../UI/Modal';
 import Input from '../../UI/Input';
 import history from '../../../history';
-import { buildNewStrategyQuery } from '../../../actions/strategyBuilder';
+import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
 import { updateLocation } from '../../../actions';
 
 class Dashboard extends Component {
@@ -35,6 +35,7 @@ class Dashboard extends Component {
     }
 
     BuildStrategy = () => {
+      this.props.resetFactorScreener();
       this.props.updateLocation('/strategy-builder');
       this.props.buildNewStrategyQuery();
       history.push('/strategy-builder')
@@ -90,6 +91,7 @@ export default connect(
     resetDashboard,
     buildNewStrategyQuery,
     updateCuntry,
-    updateLocation
+    updateLocation,
+    resetFactorScreener
   }
 )(requireAuth(Dashboard));

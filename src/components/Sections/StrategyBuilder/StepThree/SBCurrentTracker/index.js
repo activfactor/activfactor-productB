@@ -45,7 +45,6 @@ class SBCurrentTracker extends Component {
         </Message>
       );
     } else if (this.props.show){
-      console.log(this.props.show)
       return (
         <Modal onDismiss={this.props.cancelModal}>
           <div className={classes.modalcontainer}>

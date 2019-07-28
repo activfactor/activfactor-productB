@@ -7,16 +7,15 @@ import Country from "./Country";
 import ActionButtons from "./ActionButtons";
 import NumberofStock from "./NumberofStock";
 import { connect } from 'react-redux';
-import { resetQuery } from '../../../../actions/strategyBuilder';
+import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
 
 class StepOne extends Component {
   state={
-    "country":"can",
-    "sectors":"consumers,materials,financials,industrials,services,technology,energy,health,utilities,",
+    "country":"",
+    "sectors":"",
     "factors":"",
     "n_stock":1,
     "firm_size":"",
-    reset:false
   }
 
   componentDidMount(){
@@ -34,7 +33,6 @@ class StepOne extends Component {
 
   onResetFilter = () => {
     this.props.resetQuery();
-    this.setState(prevState => ({reset:!prevState.reset}));
     this.setState({
       "country":"can",
       "sectors":"",
@@ -63,6 +61,7 @@ class StepOne extends Component {
     } else (
       this.setState(prevState => ({"sectors":`${prevState.sectors}`.replace(`${value},`,'')}))
     )
+    console.log(this.state);
   }
 
   countryChange = (e) => {
@@ -77,7 +76,6 @@ class StepOne extends Component {
 
     render() {
         return (
-
             <section className={classes.container}>
 
               <div className={classes.strategy}>
@@ -101,7 +99,9 @@ class StepOne extends Component {
 }
 
 const mapStateToProps = state => {
-  return {data: state.queryReducer}
+  return {
+    data: state.queryReducer
+  }
 }
 
-export default connect(mapStateToProps,{resetQuery})(StepOne);
+export default connect(mapStateToProps,{resetQuery, resetFactorScreener})(StepOne);

@@ -60,6 +60,16 @@ class StrategyBuilder extends Component{
     }
 
     onSubmitHandler = (values) => {
+        const oldQuery = {
+            "country": this.props.query.country,
+            "sectors": this.props.query.sectors + ",",
+            "factors": this.props.query.factors + ",",
+            "n_stock": this.props.query.n_stock,
+            "firm_size": this.props.query.firm_size + ","
+        }
+        if (JSON.stringify(oldQuery) !== JSON.stringify(values)){
+            this.props.resetFactorScreener();
+        }
         this.props.queryUpdate(values);
         this.setState({BuildStrategy:true,AnalyzeResults:false,query:values});
     }
@@ -88,7 +98,8 @@ const mapStateToProps = state => {
     return {
         data: state.factorScreener,
         saving_message: state.factorScreener.saving_message,
-        error_saving_message: state.factorScreener.error_saving_message
+        error_saving_message: state.factorScreener.error_saving_message,
+        query: state.queryReducer
     };
 }
 

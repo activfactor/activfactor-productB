@@ -4,13 +4,14 @@ import classes from "./index.module.scss";
 import Header from "../../../UI/Header";
 import DropDown from "../../../UI/DropDown";
 import Link from "../../../UI/Link";
-import { updateQuery } from "../../../../actions/strategyBuilder";
+import { updateQuery, resetFactorScreener } from "../../../../actions/strategyBuilder";
 import { updateLocation } from "../../../../actions";
 import { CapString } from '../../../../utils/textFunctions'
 
 class Table extends Component {
   buildStrategy = sector => {
     if (this.props.data.parameters) {
+      this.props.resetFactorScreener();
       if (this.props.country === "CAN") {
         this.props.updateQuery(this.props.data.parameters.CAN[sector]);
       } else {
@@ -175,5 +176,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateQuery, updateLocation }
+  { updateQuery, updateLocation, resetFactorScreener }
 )(Table);

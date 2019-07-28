@@ -17,7 +17,7 @@ class App extends React.Component {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
-      this.props.updateLocation('/dashboard');
+      this.props.updateLocation(history.location.pathname);
     }
   }
 

@@ -13,7 +13,6 @@ class Table extends Component {
       ]
     })
     result.unshift([this.props.tableName, "strategy","s&p tsx"]);
-    console.log(result);
     return result;
   }
 

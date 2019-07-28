@@ -16,7 +16,6 @@ import Buttons from '../ActionButtons';
 
 class AnalyzeResults extends Component{
     componentDidMount(){
-        this.props.resetFactorScreener();
         this.props.getFactorScreener(); 
     }
 

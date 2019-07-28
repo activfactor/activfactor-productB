@@ -23,7 +23,6 @@ class StrategyBuilder3 extends Component {
 
   onSubmit = () => {
     this.setState({ isSpinner: true });
-    console.log(this.props.auth.token);
     const dataToSend = {
       headers: {
         headers: {

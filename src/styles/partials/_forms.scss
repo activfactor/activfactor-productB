@@ -17,13 +17,13 @@ $form-control-color: #111;
     }
 
     &::-webkit-input-placeholder { /* Edge */
-        color: $textColor;
+        color: rgba($textColor, 0.7);
     }
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: $textColor;
+        color: rgba($textColor, 0.7);
     }
     &::placeholder {
-        color: $textColor;
+        color: rgba($textColor, 0.7);
     }
 }
 

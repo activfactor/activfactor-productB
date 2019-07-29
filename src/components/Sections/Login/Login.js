@@ -39,7 +39,7 @@ class Login extends Component{
     renderSubmit = isinput => {
         if (!isinput || this.props.errorMessage){
             return (
-                <input className={classes.submit} type="submit" value="Login" />
+                <input className={`btn btn-primary`} type="submit" value="Login" />
             );
         } else {
             return(
@@ -51,19 +51,27 @@ class Login extends Component{
         }
     }
 
+    // renderError({ error, touched}){
+    //     if (touched && error){
+    //         styleBorder = "4px solid #a30808";
+    //     } else {
+    //         styleBorder = "none";
+    //     }
+    // }
+
     renderError({ error, touched}){
         if (touched && error){
-            styleBorder = "4px solid #a30808";
+            styleBorder = "is-invalid";
         } else {
-            styleBorder = "none";
+            styleBorder = "";
         }
     }
 
     renderInput = ({meta, input, type, placeholder}) => {
         this.renderError(meta);
         return (
-            <div>
-                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
+            <div className="form-group">
+                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={`${classes.input} ${styleBorder} form-control`} />
             </div>
         );
     }
@@ -75,25 +83,30 @@ class Login extends Component{
         }
     }
 
+    btnBtnLink = "btn btn-link";
+
     render(){
         return(
-            <section className={classes.section}>
-                <div className={classes.container}>
-                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
-                        <h4 className={classes.header}>Login</h4>
-                        <Field name="username" component={this.renderInput} placeholder="Email Address"  />
-                        <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
-                        {this.AuthError()}
-                        <div className={classes.buttons}>
-                            <span>
+            <section className="container-fluid">
+                <div className="section-login_container col">
+                    <div className="section-login_wrapper">
+                        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={`${classes.form} _login-form`}>
+                            <h4 className={`${classes.header} _form-header`}>Login</h4>
+                            <Field name="username" component={this.renderInput} placeholder="Email Address"  />
+                            <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
+
+                            {this.AuthError()}
+
+                            <div className={`${classes.buttons} _btn-container`}>
                                 {this.renderSubmit(this.state.isSpinner)}
-                            </span>
-                            <Link to="/reset">Forgot Password?</Link>
-                        </div>
-                        <span className={classes.register}>Don't have an account? <Link to="/signup">Sign up</Link></span>
-                    </form>
-                    <div></div>
-                    <div></div>
+                                <span><Link to="/reset">Forgot Password?</Link></span>
+                            </div>
+
+                            <div className="_signup-container">Don't have an account? <span><Link to="/signup">Sign up now</Link></span></div>
+                        </form>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </section>
         );

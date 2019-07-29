@@ -1,0 +1,36 @@
+
+$form-control-padding: 8px 12px;
+$form-control-color: #111;
+
+
+.form-control {
+    padding: $form-control-padding;
+    height: auto;
+    line-height: 1.6;
+    background-color: rgba($backgroundColor, 0.8);
+    border-color: $backgroundColor;
+
+
+    &:focus {
+        color: $form-control-color;
+        background-image: none;
+    }
+
+    &::-webkit-input-placeholder { /* Edge */
+        color: $textColor;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $textColor;
+    }
+    &::placeholder {
+        color: $textColor;
+    }
+}
+
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+    padding: $form-control-padding;
+    background: inherit;
+    border-color: $redColor;
+}

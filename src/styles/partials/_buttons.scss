@@ -1,4 +1,16 @@
 
+.btn {
+    padding: 8px 20px;
+    line-height: 1.6;
+
+    &.btn-primary {
+        color: #fff;
+        background-color: $mainBlueColor;
+        border-color: $mainBlueColor;
+    }
+}
+
+
 
 .btn-company-size {
     color: #797979;

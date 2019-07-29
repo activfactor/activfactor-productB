@@ -71,7 +71,7 @@ class Login extends Component{
         this.renderError(meta);
         return (
             <div className="form-group">
-                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={`${classes.input} ${styleBorder} form-control`} />
+                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={`${styleBorder} form-control`} />
             </div>
         );
     }
@@ -79,7 +79,7 @@ class Login extends Component{
     AuthError = () => {
         if (this.props.errorMessage){
 
-            return <div className={classes.error}>{this.props.errorMessage}</div>
+            return <div className="invalid-feedback">{this.props.errorMessage}</div>
         }
     }
 
@@ -90,16 +90,18 @@ class Login extends Component{
             <section className="container-fluid">
                 <div className="section-login_container col">
                     <div className="section-login_wrapper">
-                        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={`${classes.form} _login-form`}>
-                            <h4 className={`${classes.header} _form-header`}>Login</h4>
+                        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="_login-form">
+                            <h4 className="_form-header">Login</h4>
                             <Field name="username" component={this.renderInput} placeholder="Email Address"  />
                             <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
 
                             {this.AuthError()}
 
-                            <div className={`${classes.buttons} _btn-container`}>
+                            <div className="_btn-container">
                                 {this.renderSubmit(this.state.isSpinner)}
-                                <span><Link to="/reset">Forgot Password?</Link></span>
+                                <span>
+                                    <Link to="/reset">Forgot Password?</Link>
+                                </span>
                             </div>
 
                             <div className="_signup-container">Don't have an account? <span><Link to="/signup">Sign up now</Link></span></div>

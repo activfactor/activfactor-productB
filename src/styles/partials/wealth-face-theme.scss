@@ -1,0 +1,93 @@
+
+
+.section-login {
+
+    &_container {
+        background-color: #fff;
+        margin-top: 15px;
+        margin-bottom: 100px;
+        box-shadow: $box-shadow;
+        border-radius: 4px;
+        padding: 40px 30px;
+
+        @media (max-width: 575.98px) {
+            padding: 30px 15px;
+        }
+    }
+    &_wrapper {
+        max-width: 600px;
+        margin: 0 auto 0 100px;
+
+        @media (max-width: 767.98px) {
+            margin: 0;
+        }
+
+        ._form-header {
+            font-family: $font-medium;
+            color: $mainBlueColor;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-left: 2px;
+            @media (max-width: 575.98px) {
+                font-size: 1.3rem;
+            }
+        }
+        ._login-form {
+            display: block;
+
+
+            .form-control {
+                max-width: 350px;
+                color: $text-color-dark;
+            }
+        }
+        ._btn-container {
+            margin-bottom: 20px;
+
+            .btn-primary {
+                margin-right: 15px;
+                padding-left: 50px;
+                padding-right: 50px;
+                @media (max-width: 575.98px) {
+                    padding-left: 35px;
+                    padding-right: 35px;
+                }
+            }
+            span {
+                a {
+                    color: $mainBlueColor;
+                    display: inline-block;
+                    text-align: center;
+                    vertical-align: middle;
+                    user-select: none;
+                    background-color: transparent;
+                    border: 1px solid transparent;
+                    padding: 3px;
+                    line-height: 1.5;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                }
+            }
+        }
+        ._signup-container {
+            display: flex;
+            align-items: center;
+            color: $text-color-dark;
+            span {
+                margin-left: 5px;
+
+                a {
+                    color: $mainBlueColor;
+                    display: inline-block;
+                    text-align: center;
+                    vertical-align: middle;
+                    user-select: none;
+                    background-color: transparent;
+                    border: 1px solid transparent;
+                    padding: 3px;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+
+}

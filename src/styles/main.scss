@@ -27,37 +27,36 @@ $font-medium:       "Poppins-Medium", Roboto, "Helvetica Neue", Arial !default;
 $font-bold:         "Poppins-Bold", Roboto, "Helvetica Neue", Arial !default;
 
 
-* {
-    font-family: "Poppins-Regular", sans-serif;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: none;
-}
+//* {
+//    font-family: "Poppins-Regular", sans-serif;
+//    box-sizing: border-box;
+//    margin: 0;
+//    padding: 0;
+//    outline: none;
+//}
+//
+//#root {
+//    min-height: 100%;
+//    line-height: 1.7;
+//    display: flex;
+//    flex-direction: row;
+//    flex-wrap: wrap;
+//
+//    .subroot {
+//        flex-basis: 100%;
+//        display: flex;
+//        flex-direction: row;
+//        flex-wrap: wrap;
+//        align-content: flex-start;
+//        overflow: hidden;
+//    }
+//}
 
-#root {
-    min-height: 100%;
-    line-height: 1.7;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    .subroot {
-        flex-basis: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        overflow: hidden;
-    }
-}
-
-html,
-body {
-    height: 100vh;
-    width: 100%;
-}
-
+//html,
+//body {
+//    height: 100vh;
+//    width: 100%;
+//}
 
 
 

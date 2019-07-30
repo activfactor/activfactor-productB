@@ -9,11 +9,18 @@ import classes from "./AuthNav.module.scss";
 class AuthNav extends Component {
   render() {
     return (
-      <div className={classes.container}>
+      <div className="_auth-container">
+
         <AuthButtons />
+
         <NotificationButton />
-        <ProfilePicture image={image} />
+
+        <div className="_profile-picture-avatar">
+          <ProfilePicture image={image} />
+        </div>
+
         <ToggleButton />
+
       </div>
     );
   }

@@ -1,35 +1,35 @@
-@import "../../../styles/params/variables";
-    .section {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-basis: 100%;
-      .container {
-        background-color: #fff;
-        margin: 25px;
-        padding: 40px 50px;
-        .sections {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          flex-wrap: wrap;
-        }
-        
-      }
-    }
-  
-  
-  
-  
-  @media only screen and ($mediaSignupSmallWidth){
-    .section{
-      padding:0.5rem !important;
-    }
-    .container{
-      padding: 1rem 1rem !important;
-      margin: 0 !important;
-    }
-  }
+//@import "../../../styles/params/variables";
+//    .section {
+//      display: flex;
+//      flex-direction: row;
+//      justify-content: flex-start;
+//      flex-basis: 100%;
+//      .container {
+//        background-color: #fff;
+//        margin: 25px;
+//        padding: 40px 50px;
+//        .sections {
+//          display: flex;
+//          flex-direction: row;
+//          justify-content: flex-start;
+//          flex-wrap: wrap;
+//        }
+//
+//      }
+//    }
+//
+//
+//
+//
+//  @media only screen and ($mediaSignupSmallWidth){
+//    .section{
+//      padding:0.5rem !important;
+//    }
+//    .container{
+//      padding: 1rem 1rem !important;
+//      margin: 0 !important;
+//    }
+//  }
   
   
   

@@ -87,11 +87,11 @@ class Login extends Component{
 
     render(){
         return(
-            <section className="container-fluid">
-                <div className="section-login_container col">
-                    <div className="section-login_wrapper">
+            <div className="container-fluid">
+                <div className="container-authentication col">
+                    <div className="form-login_wrapper">
                         <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="_login-form">
-                            <h4 className="_form-header">Login</h4>
+                            <div className="h4">Login</div>
                             <Field name="username" component={this.renderInput} placeholder="Email Address"  />
                             <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
 
@@ -104,13 +104,13 @@ class Login extends Component{
                                 </span>
                             </div>
 
-                            <div className="_signup-container">Don't have an account? <span><Link to="/signup">Sign up now</Link></span></div>
+                            <div className="_btn-text-container">Don't have an account? <span><Link to="/signup">Sign up</Link></span></div>
                         </form>
                         <div></div>
                         <div></div>
                     </div>
                 </div>
-            </section>
+            </div>
         );
     }
 }

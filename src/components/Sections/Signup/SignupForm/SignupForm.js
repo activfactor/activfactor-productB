@@ -1,53 +1,61 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
+import React, {Component} from "react";
+import {Field, reduxForm} from "redux-form";
 import classes from './SignupForm.module.scss';
 import Link from '../../../UI/Link';
 
 let styleBorder = "none";
+
 class Signup extends Component {
-  onSubmit(){
-    console.log("Done");
-  }
+    onSubmit() {
+        console.log("Done");
+    }
 
-  renderInput = ({meta, input, type, placeholder}) => {
-    // this.renderError(meta);
-    return (
-        <div>
-            {/* {this.renderError(meta, input, type, placeholder)} */}
-            <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
-        </div>
-    );
-}
+    renderInput = ({meta, input, type, placeholder}) => {
+        // this.renderError(meta);
+        return (
+            <div className="form-group">
+                {/* {this.renderError(meta, input, type, placeholder)} */}
+                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className="form-control" />
+            </div>
+        );
+    }
 
-  render() {
-    return (
-      
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
-          <p className={classes.header}>Sign up for free</p>
-          <div className={classes.elements}>
-          <p className={classes.subheader}>Get access to a wealth trading platform by just entering your Email and Password!</p>
-            <div className={classes.firstname}>
-            <Field  name="firstname" component={this.renderInput} placeholder="First Name" />
+    render() {
+        return (
+            <div className="_signup-form">
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+
+                    <div className="h4">Sign up for free</div>
+                    <p className="text-medium">Get access to a wealth trading platform by just entering your Email and Password!</p>
+
+                    <div className="_form-wrapper">
+
+                        <div className="_name-container">
+                            <Field name="firstname" component={this.renderInput} placeholder="First Name"/>
+
+                            <Field name="lastname" component={this.renderInput} placeholder="Last Name"/>
+                        </div>
+
+                        <Field name="email" component={this.renderInput} placeholder="Email Address"/>
+
+                        <Field name="password" type="password" component={this.renderInput} placeholder="Password"/>
+
+                        <div className="_btn-container">
+                            <input className="btn btn-primary" type="submit" value="Sign up"/>
+
+                            <div className="_btn-text-container">
+                                Already have an account?  <span><Link to="/login">Login</Link></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
             </div>
-            <div className={classes.lastname}>
-            <Field className="signup--form__lastname" name="lastname" component={this.renderInput} placeholder="Last Name" />
-            </div>
-            <div className={classes.email}>
-            <Field className="signup--form__email" name="email" component={this.renderInput} placeholder="Email Address" />
-            </div>
-            <div className={classes.password}>
-            <Field className="signup--form__password" name="password" type="password" component={this.renderInput} placeholder="Password" />
-            </div>
-            <div className={classes.buttons}>
-              <input className={classes.submit} type="submit" value="Sign up" />
-              <span>Already have an account?  <Link to="/login">Login</Link></span>
-            </div>
-          </div>
-        </form>
-    );
-  }
+        );
+    }
 }
 
 export default reduxForm({
-  form:'signupForm'
+    form: 'signupForm'
 })(Signup);

@@ -1,37 +1,46 @@
-
-$form-control-padding: 10px 12px;
+$form-control-padding: 11px 12px;
 $form-control-color: #111;
+$grid-gutter: 15px;
 
+
+.form-group {
+  margin-bottom: $grid-gutter;
+}
 
 .form-control {
-    padding: $form-control-padding;
-    height: auto;
-    line-height: 1.6;
-    background: rgba($backgroundColor, 0.8);
-    border-color: $backgroundColor;
-    appearance: none;
+  padding: $form-control-padding;
+  height: auto;
+  line-height: 1.6;
+  background: rgba($backgroundColor, 0.8);
+  border-color: $backgroundColor;
+  appearance: none;
+  font-size: 13px;
 
+  &:focus {
+    color: $form-control-color;
+    background-image: none;
+  }
 
-    &:focus {
-        color: $form-control-color;
-        background-image: none;
-    }
+  &::-webkit-input-placeholder { /* Edge */
+    color: rgba($textColor, 0.7);
+    font-family: $font-regular;
+  }
 
-    &::-webkit-input-placeholder { /* Edge */
-        color: rgba($textColor, 0.7);
-    }
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: rgba($textColor, 0.7);
-    }
-    &::placeholder {
-        color: rgba($textColor, 0.7);
-    }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba($textColor, 0.7);
+    font-family: $font-regular;
+  }
+
+  &::placeholder {
+    color: rgba($textColor, 0.7);
+    font-family: $font-regular;
+  }
 }
 
 
 .form-control.is-invalid,
 .was-validated .form-control:invalid {
-    padding: $form-control-padding;
-    background: rgba($backgroundColor, 0.9);
-    border-color: $redColor;
+  padding: $form-control-padding;
+  background: rgba($backgroundColor, 0.9);
+  border-color: $redColor;
 }

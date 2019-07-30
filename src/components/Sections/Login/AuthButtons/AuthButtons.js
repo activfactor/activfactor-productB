@@ -13,16 +13,16 @@ class AuthButtons extends Component {
   renderAuthButtons = () => {
     if (!this.props.authenticated){
       return (
-        <div className={classes.container}>
-          <Link nameOfClass={classes.button} to="/login" onClick={() => this.props.updateLocation('/login')}>Login</Link>
-          <span className={classes.button}>|</span>
-          <Link nameOfClass={classes.button} to="/signup" onClick={() => this.props.updateLocation('/signup')}>Sign up</Link>
+        <div className="_btn-auth-container">
+          <Link nameOfClass="btn btn-link" to="/login" onClick={() => this.props.updateLocation('/login')}>Login</Link>
+          <span className="_separator">|</span>
+          <Link nameOfClass="btn btn-link" to="/signup" onClick={() => this.props.updateLocation('/signup')}>Sign up</Link>
         </div>
       );
     } else {
       return (
-        <div className={classes.container}>
-          <Link className={classes.button} to="#" onClick={this.onSignOut}>Logout</Link>
+        <div className="_btn-auth-container">
+          <Link className="btn btn-link" to="#" onClick={this.onSignOut}>Logout</Link>
         </div>
       );
     }

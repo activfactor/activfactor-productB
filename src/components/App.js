@@ -1,19 +1,19 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import Header from "./Header/Header";
 import Login from "./Sections/Login/Login";
 import Dashboard from "./Sections/Dashboard/Dashboard";
 import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import history from "../history";
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
-import { updateLocation } from '../actions';
+import {updateLocation} from '../actions';
 
 class App extends React.Component {
 
-  componentDidMount(){
-    if (!this.props.authenticated){
+  componentDidMount() {
+    if (!this.props.authenticated) {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
@@ -23,27 +23,31 @@ class App extends React.Component {
 
   render() {
     return (
-        <Router history={history}>
-          <div className="subroot">
-            <Header />
+      <Router history={history}>
+
+        <Header/>
+
+        <main className="site-content">
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/strategy-builder" component={StrategyBuilder} />
+            <Route path="/login" component={Login}/>
+            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/strategy-builder" component={StrategyBuilder}/>
           </Switch>
-          </div>
-            <Footer />
-        </Router>
+        </main>
+
+        <Footer/>
+
+      </Router>
     );
   }
 }
 
 
 const mapStateToProps = state => {
-  return { 
-      authenticated: state.auth.authenticated,
+  return {
+    authenticated: state.auth.authenticated,
   }
 }
 
-export default connect(mapStateToProps,{updateLocation})(App);
+export default connect(mapStateToProps, {updateLocation})(App);

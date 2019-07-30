@@ -5,9 +5,9 @@ import classes from './NotificationButton.module.scss';
 
 const NotificationButton = () => {
     return (
-        <button className={classes.btn}>
+        <button className="btn _btn-notification-header">
           <FontAwesomeIcon icon={faBell} />
-          <span className={classes.badge} />
+          <span className="_badge" />
         </button>
     );
 }

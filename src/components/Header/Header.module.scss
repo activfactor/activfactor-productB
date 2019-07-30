@@ -1,26 +1,26 @@
-@import "../../styles/params/variables";
-header{
-    flex-basis: 100%;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    padding: 15px 0;
-    background-color: #f5f6f8;
-}
-
-
-@media only screen and ($mediaMediumWidth){
-    .container{
-        border-bottom: 1px solid $mainBlueColor !important;
-    }
-}
-
-@media only screen and ($mediaSmallWidth){
-    .container{
-        border-bottom: 1px solid $mainBlueColor !important;
-    }
-}
+//@import "../../styles/params/variables";
+//header{
+//    flex-basis: 100%;
+//}
+//
+//.container {
+//    display: flex;
+//    justify-content: space-between;
+//    align-items: center;
+//    flex-direction: row;
+//    padding: 15px 0;
+//    background-color: #f5f6f8;
+//}
+//
+//
+//@media only screen and ($mediaMediumWidth){
+//    .container{
+//        border-bottom: 1px solid $mainBlueColor !important;
+//    }
+//}
+//
+//@media only screen and ($mediaSmallWidth){
+//    .container{
+//        border-bottom: 1px solid $mainBlueColor !important;
+//    }
+//}

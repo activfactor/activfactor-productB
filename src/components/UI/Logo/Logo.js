@@ -9,9 +9,7 @@ class Logo extends Component {
 
     render(){
         return (
-            <div className={classes.container} onClick={this.onClickHandler}>
-                <p>WealthFace</p>
-            </div>
+            <div className="_header-title" onClick={this.onClickHandler}>WealthFace</div>
         );
     }
 };

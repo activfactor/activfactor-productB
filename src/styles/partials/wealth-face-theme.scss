@@ -369,7 +369,8 @@ footer {
       }
       @media (max-width: 575.98px) {
         margin: 0 5px;
-        padding: 0 3px;
+        padding: 0 1px;
+        font-size: 10px;
       }
     }
     &:last-of-type {
@@ -384,6 +385,9 @@ footer {
   padding: 10px;
   @media (max-width: 767.98px) {
     font-size: 12px;
+  }
+  @media (max-width: 575.98px) {
+    font-size: 10px;
   }
 }
 

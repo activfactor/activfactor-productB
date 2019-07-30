@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './SignupSidebar.module.scss';
 
 const SignupSidebar = () => {
     return (

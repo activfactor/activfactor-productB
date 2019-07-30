@@ -46,19 +46,19 @@ class CompanySize extends Component {
           <Button
             value="large"
             valueDisplay="Large"
-            span="Market capitalization greater than 1 billion"
+            span={this.props.buttonDefinition('large')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.largeClasses} />
           <Button
             value="medium"
             valueDisplay="Medium"
-            span="Market capitalization between 2 billion and 10 billion"
+            span={this.props.buttonDefinition('medium')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.mediumClasses} />
           <Button
             value="small"
             valueDisplay="Small"
-            span="Market capitalization between 300 million and 2 billion"
+            span={this.props.buttonDefinition('small')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.smallClasses} />
         </div>
@@ -69,7 +69,7 @@ class CompanySize extends Component {
 
 const mapStateToProps = state => {
   return {
-    firm_size: state.queryReducer.firm_size
+    firm_size: state.queryReducer.firm_size,
   }
 }
 

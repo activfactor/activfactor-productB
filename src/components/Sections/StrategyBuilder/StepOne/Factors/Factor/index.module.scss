@@ -11,7 +11,7 @@
     @include respond(phone) {
      
   }
-  }
+}
 
   .quesitonMarkSign
 {
@@ -26,7 +26,37 @@
 .faquestioncircle {
     color: #44b2f4;
     margin: 0 0.5rem;
-  }
+}
+
+
+// added for the tooltip
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.questionMark:hover .tooltiptext{
+  visibility: visible;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  font-size: 0.85rem;
+  width: 320px;
+  background-color: $textColor;
+  color: $whiteColor;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+  top: -100%;
+}
+//////////////////////////
+
+
+
 
 
 

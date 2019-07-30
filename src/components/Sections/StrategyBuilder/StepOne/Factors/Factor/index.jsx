@@ -28,7 +28,8 @@ class Factor extends Component{
           </label>
           <span>{this.props.value} </span>
           <span className={classes.questionMark}>
-            <i className="icon-info_question fas fa-question-circle"/>
+            <i className={`icon-info_question fas fa-question-circle ${classes.tooltip}`}/>
+            <span className={classes.tooltiptext}>{this.props.tooltip}</span>
           </span>
           <span className={classes.questionInfo} />
         </div>

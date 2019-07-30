@@ -8,6 +8,9 @@ import ActionButtons from "./ActionButtons";
 import NumberofStock from "./NumberofStock";
 import { connect } from 'react-redux';
 import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
+import { getDashboard } from '../../../../actions/dashboard';
+import Spinner from '../../../UI/Spinner';
+import Modal from '../../../UI/Modal';
 
 class StepOne extends Component {
   state={
@@ -16,6 +19,10 @@ class StepOne extends Component {
     "factors":"",
     "n_stock":1,
     "firm_size":"",
+  }
+
+  componentWillMount(){
+    this.props.getDashboard("CAN");
   }
 
   componentDidMount(){
@@ -74,34 +81,63 @@ class StepOne extends Component {
     });
   }
 
+  buttonDefinition = (size) => {
+    if (this.props.definition){
+      return (size === 'large' ? this.props.definition.large : size === 'medium' ? this.props.definition.medium : this.props.definition.small);
+    }
+  }
+
+  getTooltip = (factor) => {
+    if (this.props.definition){
+      return this.props.definition[factor]
+    }
+  }
+
+  renderHandler(){
+    if(this.props.definition){
+      return (
+      <section className={classes.container}>
+        <div className={classes.strategy}>
+          <div className={classes.factorsContainer}>
+            <Factors reset={this.state.reset} factorChange={this.factorChange} getTooltip={this.getTooltip}/>
+          </div>
+          <div className={classes.Company_SectorContainer}>
+            <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange} buttonDefinition={this.buttonDefinition}/>
+            <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
+          </div>
+
+          <div className={classes.CountryContainer}>
+            <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
+            <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
+          </div>
+            <ActionButtons onClick={() => this.props.onClick(this.state)} resetFilter={this.onResetFilter}/>
+        </div>
+      </section>
+      );
+      
+    } else {
+      return (
+        <Modal>
+          <Spinner color="white" />
+        </Modal>
+      );
+    }
+  }
+
     render() {
         return (
-            <section className={classes.container}>
-
-              <div className={classes.strategy}>
-                <div className={classes.factorsContainer}>
-                  <Factors reset={this.state.reset} factorChange={this.factorChange}/>
-                </div>
-                <div className={classes.Company_SectorContainer}>
-                  <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange}/>
-                  <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
-                </div>
-
-                <div className={classes.CountryContainer}>
-                  <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
-                  <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
-                </div>
-                  <ActionButtons onClick={() => this.props.onClick(this.state)} resetFilter={this.onResetFilter}/>
-              </div>
-            </section>
+            <React.Fragment>
+              {this.renderHandler()}
+            </React.Fragment>
         );
     }
 }
 
 const mapStateToProps = state => {
   return {
-    data: state.queryReducer
+    data: state.queryReducer,
+    definition: state.factorDashboard.definition
   }
 }
 
-export default connect(mapStateToProps,{resetQuery, resetFactorScreener})(StepOne);
+export default connect(mapStateToProps,{resetQuery, resetFactorScreener, getDashboard})(StepOne);

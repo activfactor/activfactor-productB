@@ -74,13 +74,21 @@ class StrategyBuilder extends Component{
         this.setState({BuildStrategy:true,AnalyzeResults:false,query:values});
     }
 
-    render(){
-        return(
-            <section>
+    renderHeaders = () => {
+        if (this.state.BuildStrategy){
+            return (
                 <div className={classes.headers}>
                     <p>{`Last Update ${this.props.data.last_update}`}</p>
                     <p>{`Next Update ${this.props.data.next_update}`}</p>
                 </div>
+            )
+        }
+    }
+
+    render(){
+        return(
+            <section>
+                {this.renderHeaders()}
                 <div className={classes.container}>
                     <ul>
                       <li className={`${this.state.BuildStrategy===false ? classes.active : this.state.BuildStrategy===true ? classes.done : ''}`}>Build your strategy</li>

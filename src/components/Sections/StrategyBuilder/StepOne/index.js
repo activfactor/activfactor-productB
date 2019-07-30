@@ -25,6 +25,10 @@ class StepOne extends Component {
     this.props.getDashboard("CAN");
   }
 
+  componentDidUpdate(){
+    console.log(this.state.firm_size);
+  }
+
   componentDidMount(){
     if(this.props.data.country){
       const {country, sectors, factors, n_stock, firm_size} = this.props.data;
@@ -58,8 +62,16 @@ class StepOne extends Component {
     )
   }
 
-  companySizeChange = (value) => {
-    this.setState(prevState => ({"firm_size":`${this.state.firm_size.includes(value) ? prevState.firm_size.replace(value+',','') : prevState.firm_size+value+','}`}));
+  companySizeChange = (value, active) => {
+    if (active){
+      if (!this.state.firm_size.includes(value)){
+        this.setState(prevState => ({"firm_size": prevState.firm_size+value+','}))
+      }
+    } else {
+      if (this.state.firm_size.includes(value)){
+        this.setState(prevState => ({"firm_size": prevState.firm_size.replace(value+',','')}));
+      }
+    }
   }
 
   sectorChange = (value,checked) => {
@@ -68,7 +80,6 @@ class StepOne extends Component {
     } else (
       this.setState(prevState => ({"sectors":`${prevState.sectors}`.replace(`${value},`,'')}))
     )
-    console.log(this.state);
   }
 
   countryChange = (e) => {
@@ -82,9 +93,7 @@ class StepOne extends Component {
   }
 
   buttonDefinition = (size) => {
-    if (this.props.definition){
-      return (size === 'large' ? this.props.definition.large : size === 'medium' ? this.props.definition.medium : this.props.definition.small);
-    }
+    return this.props.definition[size];
   }
 
   getTooltip = (factor) => {

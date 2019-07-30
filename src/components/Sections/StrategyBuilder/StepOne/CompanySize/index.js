@@ -30,12 +30,15 @@ class CompanySize extends Component {
     onClickHandler = (value) => {
        if (value==='large'){
          this.setState({largeClasses:`${this.state.largeClasses === '' ? 'active' : ''}`})
+         this.props.companySizeChange(value, this.state.largeClasses === '' ? true : false);
        } else if(value==='medium') {
         this.setState({mediumClasses:`${this.state.mediumClasses ==='' ? 'active' : ''}`})
+        this.props.companySizeChange(value, this.state.mediumClasses === '' ? true : false);
        } else if(value==='small') {
         this.setState({smallClasses:`${this.state.smallClasses === '' ? 'active' : ''}`})
+        this.props.companySizeChange(value, this.state.smallClasses === '' ? true : false);
        }
-       this.props.companySizeChange(value);
+       
     }
 
   render() {

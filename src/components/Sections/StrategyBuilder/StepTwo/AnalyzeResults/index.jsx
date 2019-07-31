@@ -1,10 +1,10 @@
 import React,{ Component } from 'react';
 import classes from './index.module.scss';
-import PieGraph from '../Charts/PieChart';
-import LineGraph from '../Charts/LineChart';
-import AreaChart from '../Charts/AreaChart';
-import BarChart from '../Charts/BarChart';
-import BarChartVertical from '../Charts/BarChartVertical';
+import PieGraph from '../../../../UI/Charts/PieGraph';
+import LineGraph from '../../../../UI/Charts/LineChart';
+import AreaChart from '../../../../UI/Charts/AreaChart';
+import BarChart from '../../../../UI/Charts/BarChart';
+import BarChartVertical from '../../../../UI/Charts/BarChartVertical';
 import Table from '../Charts/TableChart';
 import { connect } from 'react-redux';
 import { getFactorScreener, resetFactorScreener } from '../../../../../actions/strategyBuilder';
@@ -52,7 +52,7 @@ class AnalyzeResults extends Component{
                     <div className={classes.container}>
                         <p>Performance</p>
                         <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
-                        <div className={classes.chartcontainer}>
+                        <div className="row">
                         <PieGraph 
                             header="Sectors" 
                             data={this.props.data.sector_allocation}

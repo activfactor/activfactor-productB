@@ -1,9 +1,7 @@
 @import "../../../../../styles/params/variables";
     .container{
-        flex-basis: 100%;
-        padding: 2rem;
         background-color: white;
-        width: 285px;
+        padding: 1.5rem;
         p{
             flex-basis: 100%;
             &:first-child{

@@ -4,7 +4,6 @@ import ProfilePicture from '../../UI/ProfilePicture/ProfilePicture';
 import NotificationButton from '../../UI/NotificationButton/NotificationButton';
 import AuthButtons from '../../Sections/Login/AuthButtons/AuthButtons';
 import ToggleButton from "../../UI/ToggleButton/ToggleButton";
-import classes from "./AuthNav.module.scss";
 
 class AuthNav extends Component {
   render() {

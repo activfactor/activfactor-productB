@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Link} from 'react-router-dom';
-import classes from './Footer.module.scss';
 
 class Footer extends Component {
     render() {

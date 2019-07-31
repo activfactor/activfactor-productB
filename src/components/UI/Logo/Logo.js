@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import history from '../../../history';
-import classes from './Logo.module.scss';
 
 class Logo extends Component {
     onClickHandler(){

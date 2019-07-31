@@ -17,7 +17,7 @@ import { updateLocation } from '../../../actions';
 
 class Dashboard extends Component {
     state={
-      country: 'USA'
+      country: 'USA',
     }
 
     countryChangeHandler = (e) => {

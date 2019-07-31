@@ -40,7 +40,7 @@ class NavigationBar extends Component{
                     <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Watch List</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Portofolio Performance</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Transactions</NavigationItem>
-                    <NavigationItem onClick={() => this.onClickHandler('/strategy-monitor')} to="/strategy-monitor" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Strategy Monitor</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/strategy-monitor')} to="/strategy-monitor" nameOfClass={`${classes.link} ${(this.props.location === "/strategy-monitor" ) ? classes.active : ''}`}>Strategy Monitor</NavigationItem>
                 </nav>
                 <SearchBox />
             </div>

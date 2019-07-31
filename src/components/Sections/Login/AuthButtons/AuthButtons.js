@@ -1,5 +1,4 @@
 import React, { Component } from "react"; 
-import classes from './AuthButtons.module.scss';
 import { connect } from 'react-redux';
 import { signOut, updateLocation } from '../../../../actions/index';
 import Link from '../../../UI/Link';

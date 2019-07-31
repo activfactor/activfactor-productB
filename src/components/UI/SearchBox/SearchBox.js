@@ -5,9 +5,14 @@ import classes from './SearchBox.module.scss';
 class SearchBox extends Component {
     render(){
         return (
-            <div className={classes.container}>
-                <Field name="search" component="input" type="text" placeholder="       Search" />
+            <div className="input-group search-input-group">
+                <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-search"></i></span>
+                </div>
+
+                <Field name="search" component="input" type="text" placeholder="Search" className="form-control" />
             </div>
+
         );
     }
     

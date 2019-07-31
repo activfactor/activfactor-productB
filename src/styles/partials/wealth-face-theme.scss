@@ -192,7 +192,6 @@ main {
 
     .form-control {
       max-width: 350px;
-      color: $text-color-dark;
       @media (max-width: 575.98px) {
         max-width: none;
       }
@@ -310,6 +309,7 @@ main {
 
     &_list {
       margin-top: 10px;
+      padding: 0;
 
       li {
         font-family: $font-regular;

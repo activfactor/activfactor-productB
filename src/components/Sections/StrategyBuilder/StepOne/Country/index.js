@@ -1,6 +1,5 @@
 
 import React, { Component } from "react";
-import classes from './index.module.scss';
 import { connect } from 'react-redux';
 import DropDown from '../../../../UI/DropDown';
 

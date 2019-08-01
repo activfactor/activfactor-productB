@@ -3,8 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {signIn_A, resetSignInError, updateLocation } from '../../../actions';
-import classes from './Login.module.scss';
-import Spinner from '../../UI/Spinner/SpinnerButton';
 import history from '../../../history';
 import Link from '../../UI/Link';
 
@@ -44,8 +42,10 @@ class Login extends Component{
         } else {
             return(
                 <React.Fragment>
-                    <input className={classes.submit} type="submit" value='' />
-                    <Spinner color='white' nameOfClass={classes.spinner}/>
+                    <button className={`btn btn-primary`} type="submit">
+                    <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
+                    Login
+                    </button>
                 </React.Fragment>
             );
         }

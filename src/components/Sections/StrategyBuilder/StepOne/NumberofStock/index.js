@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
 import { connect } from 'react-redux';
 
 class NumberofStock extends Component {

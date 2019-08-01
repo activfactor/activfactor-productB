@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Selector from "./Selector";
-import classes from "./index.module.scss";
 import { connect } from "react-redux";
 
 class Sectors extends Component {

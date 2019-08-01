@@ -12,6 +12,7 @@ import Table from './Table';
 import Input from '../../UI/Input';
 import Message from '../../UI/Message';
 import MessageModal from './Modal';
+import requireAuth from '../../hoc/requireAuth';
 class StrategyMonitor extends Component{
     state={
         show: false,
@@ -83,4 +84,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps,{getStrategyMonitor, updateLocation, deleteStrategy})(StrategyMonitor);
+export default connect(mapStateToProps,{getStrategyMonitor, updateLocation, deleteStrategy})(requireAuth(StrategyMonitor));

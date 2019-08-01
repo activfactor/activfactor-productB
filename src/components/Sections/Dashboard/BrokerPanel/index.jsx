@@ -11,8 +11,8 @@ class BrokerPanel extends Component{
                 <div className={classes.content}>
                 <p className={classes.subject}>No Brokerages Connected</p>
                 <p className={classes.body}>You've not connected a brokerage account to stockflare, why not give it a go?</p>
-                <Input nameOfClass="primary" type="submit" value="Connect Brokerage" onClick={this.props.ConnectBrokerage} />
-                <Input nameOfClass="primary" type="submit" value="Create an Account" onClick={this.props.CreateAccount} color="black" />
+                <Input nameOfClass="btn btn-primary" type="submit" value="Connect Brokerage" onClick={this.props.ConnectBrokerage} />
+                <Input nameOfClass="btn btn-secondary" type="submit" value="Create an Account" onClick={this.props.CreateAccount} color="black" />
                 </div>
             </div>
         );

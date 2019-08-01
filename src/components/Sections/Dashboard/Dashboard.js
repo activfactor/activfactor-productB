@@ -56,7 +56,7 @@ class Dashboard extends Component {
             </div>
             <StrategiesList />
             <div className={classes.build_btn}>
-              <Input type="submit" nameOfClass="primary" value="Build a New Strategy" onClick={this.BuildStrategy} />
+              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy" onClick={this.BuildStrategy} />
             </div>
           </main> 
         )

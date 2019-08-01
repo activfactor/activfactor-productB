@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { Chart } from "react-google-charts";
 import Spinner from "../../../UI/Spinner";
 import Header from "../../../UI/Header";
-import classes from "../index.module.scss";
 
 class Graph extends Component {
   getData = obj => {
     const result = Object.keys(obj).map(key => {
-      return [String(key), obj[key]];
+      return [String(key), obj[key], `${String(key)} ${obj[key]}%`];
     });
-    result.unshift(["Sectors", "percentage"]);
+    result.unshift(["Sectors", "percentage", {type: "string", role: "tooltip"}]);
     return result;
   };
 

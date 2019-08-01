@@ -28,7 +28,7 @@ class BarChart extends Component {
       return [
         CapString(String(key).split("_")[0]),
         factor[key],
-        `color : ${factor[key] > 0 ? '#2a5ebe' : '#a5070c'}; font-size: 20px`,
+        `color : ${this.getFactorColor(String(key).split("_")[0])}; font-size: 20px`,
         `${CapString(String(key).split("_")[0])} ${factor[key]}%`
       ];
     });

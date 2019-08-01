@@ -7,7 +7,7 @@ class ActionButtons extends Component {
     return (
       <div className="strategy-builder_btn-container">
         <Link to="/strategy-builder" onClick={this.props.resetFilter}>Clear All Filters</Link>
-        <Input nameOfClass="primary" type="submit" value="Run Strategy" onClick={this.props.onClick} />
+        <Input nameOfClass="btn btn-primary" type="submit" value="Run Strategy" onClick={this.props.onClick} />
       </div>
     );
   }

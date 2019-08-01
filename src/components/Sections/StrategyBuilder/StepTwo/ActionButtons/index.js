@@ -6,8 +6,8 @@ class ActionButtons extends Component {
   render() {
     return (
       <div className="strategy-builder_btn-container">
-        <Input nameOfClass="outline" type="submit" value="Modify Strategy" onClick={this.props.onClick} />
-        <Input nameOfClass="primary" type="submit" value="Customized Portfolio" onClick={this.props.customizePortfolio} />
+        <Input nameOfClass="btn btn-outline-primary" type="submit" value="Modify Strategy" onClick={this.props.onClick} />
+        <Input nameOfClass="btn btn-primary" type="submit" value="Customized Portfolio" onClick={this.props.customizePortfolio} />
       </div>
     );
   }

@@ -51,7 +51,7 @@ class StrategyMonitor extends Component{
                         <Charts />
                         <Table />
                         <div className={classes.input}>
-                            <Input onClick={() => this.setState({show:true})} color="red" type="submit" value="Delete this strategy" />
+                            <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show:true})} type="submit" value="Delete this strategy" />
                         </div>
                     </main>
                 );

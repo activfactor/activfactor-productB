@@ -23,10 +23,9 @@ class AreaChart extends Component {
 
   render() {
     return (
-      <div className="col-4">
-        <div className={`${classes.container}`}>
+        <div className="analyze-result-card">
           <Header header={this.props.header} />
-          <div className={classes.chartcontainer}>
+          <div className="_card-body">
             <Chart
               width={"99%"}
               height={"99%"}
@@ -47,7 +46,6 @@ class AreaChart extends Component {
             />
           </div>
         </div>
-      </div>
     );
   }
 }

@@ -6,6 +6,10 @@
   min-height: 100vh;
 }
 
+
+/******************
+***** =Header *****
+*/
 header {
   &.site-header {
     flex-shrink: 0;
@@ -321,6 +325,14 @@ main {
   }
 }
 
+
+
+
+
+
+/******************
+***** =Footer *****
+*/
 footer {
   &.site-footer {
     flex-shrink: 0;
@@ -339,7 +351,6 @@ footer {
     }
   }
 }
-
 .footer-nav-links {
   display: flex;
   justify-content: center;
@@ -374,7 +385,6 @@ footer {
     }
   }
 }
-
 .footer-legal-copyright {
   color: #fff;
   background: $text-color-dark-blue;
@@ -386,18 +396,22 @@ footer {
   @media (max-width: 575.98px) {
     font-size: 10px;
   }
+  @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+    padding-bottom: 30px;
+  }
 }
+
+
+/****************************
+***** =Strategy Builder *****
+*/
 
 .strategy-builder {
   padding: 15px;
   @include clearfix;
-
   @media (max-width: 575.98px) {
     padding: 0;
-  }
-
-  &_container {
-
+    margin-bottom: 30px;
   }
   
   &_breadcrumb {
@@ -410,6 +424,9 @@ footer {
       color: $secondBlueColor;
       font-family: $font-regular;
       font-size: 0.9rem;
+      @media (max-width: 575.98px) {
+        font-size: 0.8rem;
+      }
       
       &:last-of-type {
         color: $mainBlueColor;
@@ -457,14 +474,13 @@ footer {
         border-color: $mainBlueColor;
       }
       &._header-done {
-        color: $main-blue-transparent;
-        border-color: $main-blue-transparent;
+        color: $light-blue;
+        border-color: $light-blue;
       }
     }
   }
 
-
-  &_body {
+  &_build-strategy {
     background-color: #fff;
     padding: 20px 70px;
     @media (max-width: 991.98px) {
@@ -475,6 +491,26 @@ footer {
     }
   }
 
+  &_analyze-results {
+    background-color: #fff;
+    padding: 20px 70px;
+    @media (max-width: 991.98px) {
+      padding: 20px 30px;
+    }
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+  }
+
+
+
+
+
+  &_section-title {
+    font-family: $font-medium;
+    font-size: 18px;
+    color: $text-color-dark-blue;
+  }
   &_btn-container {
     display: flex;
     justify-content: flex-end;
@@ -693,3 +729,97 @@ footer {
     padding: 0 14px;
   }
 }
+
+.analyze-results {
+
+  &_card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin-bottom: 30px;
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+      grid-gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .table-responsive {
+      margin: 0;
+      height: 100%;
+    }
+  }
+}
+
+.analyze-result-card {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  ._card-header {
+    font-family: $font-medium;
+    font-size: 15px;
+    color: $text-color-dark-blue;
+    padding: 15px 20px;
+    border-bottom: 1px solid $border-color-primary;
+  }
+  ._card-body {
+    padding: 20px;
+  }
+}
+.analyze-result-table {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  thead {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    tr {
+      border-bottom: 1px solid $border-color-primary;
+      th {
+        font-family: $font-medium;
+        color: $text-color-dark-blue;
+        font-size: 15px;
+        padding: 15px 20px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        color: $text-color-dark-blue;
+        padding: 12px 20px 0;
+        white-space: nowrap;
+
+        &._row-name {
+          font-size: 13px;
+          font-family: $font-medium;
+        }
+
+        &._td-benchmark,
+        &._td-strategy {
+          text-align: center;
+          font-size: 12px;
+
+          &._success {
+            color: $mainBlueColor;
+          }
+          &._warning {
+            color: $redColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+

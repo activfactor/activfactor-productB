@@ -63,36 +63,34 @@ class BarChart extends Component {
 
   render() {
     return (
-      <div className="col-4">
-        <div className={`${classes.container}`}>
-          <Header header={this.props.header} />
-          <div className={classes.chartcontainer}>
-            <Chart
-              pattern={"#%"}
-              width={"95%"}
-              height={"95%"}
-              chartType="BarChart"
-              loader={<Spinner color="black" />}
-              data={this.getData(this.props.factor)}
-              options={{
-                // Material design options
-                chartArea: { left: 74, width: "78%", height: "80%" },
-                legend: { position: "none" },
-                bar: { groupWidth: "95%" },
-                animation: {
-                  startup: true,
-                  easing: "out",
-                  duration: 1500
-                },
-                vAxis: {
-                  textStyle: {
-                    fontSize: 11
-                  }
-                },
-                hAxis: { minValue: -100, maxValue: 100 }
-              }}
-            />
-          </div>
+      <div className="analyze-result-card">
+        <Header header={this.props.header} />
+        <div className="_card-body">
+          <Chart
+            pattern={"#%"}
+            width={"95%"}
+            height={"95%"}
+            chartType="BarChart"
+            loader={<Spinner color="black" />}
+            data={this.getData(this.props.factor)}
+            options={{
+              // Material design options
+              chartArea: { left: 74, width: "78%", height: "80%" },
+              legend: { position: "none" },
+              bar: { groupWidth: "95%" },
+              animation: {
+                startup: true,
+                easing: "out",
+                duration: 1500
+              },
+              vAxis: {
+                textStyle: {
+                  fontSize: 11
+                }
+              },
+              hAxis: { minValue: -100, maxValue: 100 }
+            }}
+          />
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 // Colors
 $mainBlueColor:                       #109CF1 !default;
+$light-blue:                          #61c3ff !default;
 $main-blue-transparent:               rgba(16, 156, 241, 0.6) !default;
 $lightBlueColor:                      #E2F3FD !default;
 $secondBlueColor:                     #60DFC8 !default;
@@ -28,7 +29,9 @@ $activeColor: rgb(0, 157, 255);
 $doneColor: rgb(97, 195, 255);
 
 
-// Mixin itself
+
+
+
 @mixin clearfix() {
   &::after {
     display: block;
@@ -56,6 +59,12 @@ $doneColor: rgb(97, 195, 255);
   }
 }
 
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
 
 
 

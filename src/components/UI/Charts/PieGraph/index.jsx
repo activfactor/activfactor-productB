@@ -15,10 +15,9 @@ class Graph extends Component {
 
   render = () => {
     return (
-      <div className="col-4">
-        <div className={`${classes.container}`}>
+        <div className="analyze-result-card">
           <Header header={this.props.header} />
-          <div className={classes.chartcontainer}>
+          <div className="_card-body">
             <Chart
               width={"100%"}
               height={"100%"}
@@ -34,7 +33,6 @@ class Graph extends Component {
             />
           </div>
         </div>
-      </div>
     );
   };
 }

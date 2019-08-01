@@ -29,10 +29,9 @@ class BarChart extends Component {
 
   render() {
     return (
-      <div className="col-4">
-        <div className={`${classes.container}`}>
+        <div className="analyze-result-card">
           <Header header={this.props.header} />
-          <div className={classes.chartcontainer}>
+          <div className="_card-body">
             <Chart
               pattern={"#%"}
               width={"95%"}
@@ -49,7 +48,6 @@ class BarChart extends Component {
             />
           </div>
         </div>
-      </div>
     );
   }
 }

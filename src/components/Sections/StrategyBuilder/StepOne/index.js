@@ -105,7 +105,7 @@ class StepOne extends Component {
   renderHandler(){
     if(this.props.definition){
       return (
-      <div className="strategy-builder_body">
+      <div className="strategy-builder_build-strategy">
         <div className="row">
           <div className="order-0 col-sm-6 col-md-3 col-lg-2">
             <Factors reset={this.state.reset} factorChange={this.factorChange} getTooltip={this.getTooltip}/>

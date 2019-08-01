@@ -23,11 +23,20 @@ export const getStrategyMonitor = (strategyName) => (dispatch, getState) => {
                   Authorization: `JWT ${getState().auth.token}`
                 }
             }).then(response => {
+                const textContructor = "text".constructor;
+                const objectConstructor = {}.constructor;
+                let responseData;
                 try{
-
-                    dispatch({type: STRATEGY_MONITOR_GET, payload: JSON.parse(response.data.replace(/\bNaN\b/g, null)).message})
-                } catch {
-                    dispatch({type: STRATEGY_MONITOR_GET, payload: JSON.parse(JSON.stringify(response.data).replace(/\bNaN\b/g, null)).message})
+                    if (response.data.constructor === objectConstructor){
+                        responseData = JSON.stringify(response.data);
+                    } else if (response.data.constructor === textContructor) {
+                        responseData = response.data.replace(/\bNaN\b/g, null);
+                        responseData = responseData.replace(/-\bInfinity\b/g, null);
+                        responseData = responseData.replace(/\bInfinity\b/g, null);
+                    }
+                    dispatch({type: STRATEGY_MONITOR_GET, payload: JSON.parse(responseData).message});
+                } catch(err) {
+                    console.log(err);
                 }
             }).catch(err => {console.log(err)})
         }

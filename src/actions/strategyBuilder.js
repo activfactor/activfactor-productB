@@ -12,6 +12,7 @@ import {
     FACTOR_SCREENER_RESET,
     FACTOR_SCREENER_SAVE,
     FACTOR_SCREENER_SAVE_ERROR,
+    DASHBOARD_RESET
     
   } from "./types";
 
@@ -89,6 +90,7 @@ import {
           wealthface.post("/factor/strategy", props.data, props.headers)
           .then(res => 
           {
+            dispatch({type: DASHBOARD_RESET});
             dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
           }
         ).catch(err => 

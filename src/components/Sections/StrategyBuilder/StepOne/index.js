@@ -107,16 +107,16 @@ class StepOne extends Component {
       return (
       <div className="strategy-builder_body">
         <div className="row">
-          <div className="order-0 col-6 col-md-3 col-lg-2">
+          <div className="order-0 col-sm-6 col-md-3 col-lg-2">
             <Factors reset={this.state.reset} factorChange={this.factorChange} getTooltip={this.getTooltip}/>
           </div>
 
-          <div className="order-1 order-md-1 col-12 col-md-6 col-lg-7">
+          <div className="order-0 order-sm-1 order-md-0 col-12 col-md-6 col-lg-7">
             <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange} buttonDefinition={this.buttonDefinition}/>
             <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
           </div>
 
-          <div className="order-0 order-md-2 col-6 col-md-3">
+          <div className="order-0 col-sm-6 col-md-3">
             <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
             <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
           </div>

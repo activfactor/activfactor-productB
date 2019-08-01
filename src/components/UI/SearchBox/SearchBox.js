@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import classes from './SearchBox.module.scss';
 
 class SearchBox extends Component {
     render(){

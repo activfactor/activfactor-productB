@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import classes from './index.module.scss';
 import AnalyzeResults from './StepTwo/AnalyzeResults';
 import BuildStrategy from './StepOne';
 import CustomizedPortfolio from './StepThree';

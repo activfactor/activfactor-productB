@@ -19,26 +19,6 @@ class BarChart extends Component {
         return "#168a2f";
       case "investment":
         return "#79b5d8";
-      case "LARGE":
-        return "#2a5ebe";
-      case "SMALL":
-        return "#e6a52e";
-      case "MEDIUM":
-        return "#a5070c";
-      case "Energy":
-        return "#b5090c";
-      case "IT & Communication":
-        return "#75070c";
-      case "Health Care":
-        return "#25040c";
-      case "Industrials":
-        return "#e2052b";
-      case "Materials":
-        return "#c2040a";
-      case "Services":
-        return "#a91c0c";
-      case "Utilities":
-        return "#a3678a";
       default:
         return "Orange";
     }
@@ -48,8 +28,8 @@ class BarChart extends Component {
       return [
         CapString(String(key).split("_")[0]),
         factor[key],
-        `color : ${this.getFactorColor(key)}; font-size: 20px`,
-        `${CapString(String(key).split("_")[0])} ${factor[key]}`
+        `color : ${factor[key] > 0 ? '#2a5ebe' : '#a5070c'}; font-size: 20px`,
+        `${CapString(String(key).split("_")[0])} ${factor[key]}%`
       ];
     });
     result.unshift([

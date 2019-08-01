@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
 import Button from './Button';
 import { connect } from 'react-redux';
 

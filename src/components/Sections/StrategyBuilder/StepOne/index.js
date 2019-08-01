@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classes from './index.module.scss';
 import Factors from "./Factors/index";
 import CompanySize from "./CompanySize/index";
 import Sectors from "./Sectors";

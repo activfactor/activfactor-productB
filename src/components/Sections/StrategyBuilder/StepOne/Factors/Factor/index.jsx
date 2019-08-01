@@ -14,24 +14,27 @@ class Factor extends Component{
 
     render(){
       return (
-        <div className={classes.control}>
+        <div className="checkbox--item">
+
           <label>
             <input
               type="checkbox"
               value={this.props.value}
-              className={classes.csscheckbox}
               onChange={this.props.onChange}
               checked={this.state.checked}
               onClick={this.onCheckHandler}
             />
             <i />
+            <span className="_text-label">{this.props.value} </span>
           </label>
-          <span>{this.props.value} </span>
-          <span className={classes.questionMark}>
-            <i className={`icon-info_question fas fa-question-circle ${classes.tooltip}`}/>
+
+          <span className="tooltip--icon">
+            <i className="_icon-question fas fa-question"></i>
             <span className={classes.tooltiptext}>{this.props.tooltip}</span>
           </span>
+
           <span className={classes.questionInfo} />
+
         </div>
     );
     }

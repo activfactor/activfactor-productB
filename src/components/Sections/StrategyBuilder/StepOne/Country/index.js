@@ -8,7 +8,7 @@ class Country extends Component {
 
     render() {
         return (
-            <div className={classes.Country}>
+            <div className="country-step-one-container">
 
                 <div className="section-title_h3">Country</div>
 

@@ -43,9 +43,10 @@ class CompanySize extends Component {
 
   render() {
     return (
-      <div className={classes.companySize}>
+      <div className="company-size-container">
         <div className="section-title_h3">Company Size</div>
-        <div className={classes.btns}>
+
+        <div className="company-size_btn-grid">
           <Button
             value="large"
             valueDisplay="Large"
@@ -65,6 +66,7 @@ class CompanySize extends Component {
             onClick={this.onClickHandler}
             nameOfClass={this.state.smallClasses} />
         </div>
+
       </div>
     );
   }

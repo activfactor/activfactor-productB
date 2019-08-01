@@ -4,7 +4,7 @@ import classes from './index.module.scss';
 
 const Button = (props) => {
     return (
-        <Link to={props.to} className={`${props.nameOfClass ? props.nameOfClass : classes.input}`} onClick={props.onClick} >
+        <Link to={props.to} className={`${props.nameOfClass ? props.nameOfClass : 'btn btn-link'}`} onClick={props.onClick} >
           {props.children}
         </Link>
     );

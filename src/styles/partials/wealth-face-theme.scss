@@ -433,6 +433,8 @@ footer {
     }
     @media (max-width: 575.98px) {
       grid-gap: 0;
+      padding: 10px 0 0 0;
+      border-bottom: 0;
     }
 
     ._header-item {
@@ -446,7 +448,7 @@ footer {
         font-size: 16px;
       }
       @media (max-width: 575.98px) {
-        font-size: 13px;
+        font-size: 10px;
         padding-left: 5px;
       }
 
@@ -516,6 +518,7 @@ footer {
      grid-gap: 0 15px;
    }
     .checkbox--item {
+      overflow: hidden;
       @media (max-width: 575.98px) {
         margin-top: 0;
       }
@@ -543,6 +546,9 @@ footer {
     @media (max-width: 991.98px) {
       grid-gap: 10px;
     }
+    @media (max-width: 575.98px) {
+      grid-gap: 5px;
+    }
 
     .btn-company-size {
       padding: 10px 14px;
@@ -559,6 +565,9 @@ footer {
       @media (max-width: 991.98px) {
         padding: 7px;
       }
+      @media (max-width: 575.98px) {
+        padding: 5px;
+      }
 
       ._title {
         display: block;
@@ -567,6 +576,9 @@ footer {
         color: $text-color-dark-primary;
         line-height: 1.5;
         margin-bottom: 5px;
+        @media (max-width: 575.98px) {
+          font-size: 13px;
+        }
       }
 
       ._description {
@@ -577,6 +589,9 @@ footer {
 
         @media (max-width: 991.98px) {
           font-size: 10px;
+        }
+        @media (max-width: 575.98px) {
+          font-size: 9px;
         }
       }
 

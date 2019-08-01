@@ -7,9 +7,9 @@ class Factors extends Component {
 
   render() {
     return (
-      <div className={classes.factors}>
+      <div className="factors-container">
         <div className="section-title_h3">Factors</div>
-        <div className={classes.factorscontrols}>
+        <div className="factors-container_checkboxes">
           <Factor tooltip={this.props.getTooltip('momentum')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('momentum') : false} value="momentum" onChange={this.props.factorChange}/>
           <Factor tooltip={this.props.getTooltip('size')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('size') : false} value="size" onChange={this.props.factorChange}/>
           <Factor tooltip={this.props.getTooltip('value')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('value') : false} value="value" onChange={this.props.factorChange}/>

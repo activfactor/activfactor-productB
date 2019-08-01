@@ -9,20 +9,21 @@ class Sectors extends Component {
   onClickHandler = () => {
     this.setState(prevState =>
       prevState.displayClass === "none"
-        ? { displayClass: "flex", flexWrap: "wrap" }
+        ? { displayClass: "block", flexWrap: "wrap" }
         : { displayClass: "none", flexWrap: "nowrap" }
     );
   };
 
   render() {
     return (
-      <div className={classes.sectors}>
+      <div className="sectors-selector-container">
 
         <div className="section-title_h3">Sectors</div>
 
-        <div className={classes.multiselect}>
-          <div className={classes.selectBox} onClick={this.onClickHandler}>
-            <select>
+        <div className="">
+
+          <div className="_formControl-select" onClick={this.onClickHandler}>
+            <select className="form-control">
               <option>
                 {!this.props.sectorsFromParent
                   ? "Select Sectors"
@@ -31,13 +32,13 @@ class Sectors extends Component {
                   : this.props.sectorsFromParent.split(",").join(" , ").slice(0, -2)}
               </option>
             </select>
-            <div className={classes.overSelect} />
+            <div className="_overSelect" />
           </div>
+
           <div
-            className={classes.checkboxes}
+            className="_checkbox-item-container"
             style={{
-              display: this.state.displayClass,
-              flexWrap: this.state.flexWrap
+              display: this.state.displayClass
             }}
           >
             <Selector

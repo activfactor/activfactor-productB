@@ -77,9 +77,9 @@ class StrategyBuilder extends Component{
     renderHeaders = () => {
         if (this.state.BuildStrategy){
             return (
-                <div className={classes.headers}>
-                    <p>{`Last Update ${this.props.data.last_update}`}</p>
-                    <p>{`Next Update ${this.props.data.next_update}`}</p>
+                <div className="strategy-builder_breadcrumb">
+                    <div>{`Last Update ${this.props.data.last_update}`}</div>
+                    <div>{`Next Update ${this.props.data.next_update}`}</div>
                 </div>
             )
         }
@@ -87,17 +87,17 @@ class StrategyBuilder extends Component{
 
     render(){
         return(
-            <section>
+            <div className="strategy-builder">
                 {this.renderHeaders()}
-                <div className={classes.container}>
-                    <ul>
-                      <li className={`${this.state.BuildStrategy===false ? classes.active : this.state.BuildStrategy===true ? classes.done : ''}`}>Build your strategy</li>
-                      <li className={`${this.state.AnalyzeResults===false ? classes.active : this.state.AnalyzeResults===true ? classes.done : ''}`}>Analyze results</li>
-                      <li className={`${this.state.CustomizedPortfolio===false ? classes.active : this.state.CustomizedPortfolio===true ? classes.done : ''}`}>Customized portfolio</li>
-                    </ul>
+                <div className="strategy-builder_container">
+                    <div className="strategy-builder_header">
+                      <div className={`_header-item ${this.state.BuildStrategy===false ? '_header-active' : this.state.BuildStrategy===true ? '_header-done' : ''}`}>Build your strategy</div>
+                      <div className={`_header-item ${this.state.AnalyzeResults===false ? '_header-active' : this.state.AnalyzeResults===true ? '_header-done' : ''}`}>Analyze results</div>
+                      <div className={`_header-item ${this.state.CustomizedPortfolio===false ? '_header-active' : this.state.CustomizedPortfolio===true ? '_header-done' : ''}`}>Customized portfolio</div>
+                    </div>
                     {this.renderWizard()}
                 </div>
-            </section>
+            </div>
         );
     }
 }

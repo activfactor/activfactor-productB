@@ -2,55 +2,18 @@
 .btn {
     padding: 10px 20px;
     line-height: 1.6;
-
-    &.btn-primary {
-        color: #fff;
-        background-color: $mainBlueColor;
-        border-color: $mainBlueColor;
-    }
+}
+.btn-primary {
+    color: #fff;
+    background-color: $mainBlueColor;
+    border-color: $mainBlueColor;
+}
+.btn-link {
+    color: $mainBlueColor;
+}
+.btn-outline-primary {
+    color: $mainBlueColor;
+    border-color: $mainBlueColor;
 }
 
 
-
-.btn-company-size {
-    color: #797979;
-    padding: 15px 14px;
-    background-color: #f5f6f8;
-    font-size: 1em;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: left;
-    cursor: pointer;
-    appearance: none;
-    line-height: 1.1rem;
-    max-width: 17rem;
-    outline: none;
-    border: none;
-    font-family: "Poppins-Regular";
-
-    @include respond(tab-port) {
-
-        flex-basis: 25% !important;
-
-        padding: 10px;
-
-    }
-
-    ._description {
-        font-size: 0.7rem;
-        margin-top: 0.5rem;
-        max-width: 90%;
-        color: #989898;
-    }
-    
-    &.active {
-        background-color: $mainBlueColor;
-        color: #e1f2fd;
-
-        ._description {
-            color: #e1f2fd;
-        }
-    }
-}

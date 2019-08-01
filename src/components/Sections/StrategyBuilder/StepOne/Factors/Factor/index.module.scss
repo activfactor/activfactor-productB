@@ -1,51 +1,46 @@
-@import "../../../../../../styles/params/variables";
-
-.control {
-    color: #989898;
-    flex-basis: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin: 12px 0 10px;
-
-    @include respond(phone) {
-     
-  }
-}
-
-  .quesitonMarkSign
-{
-  border:none;
-}
-.questionInfo {
-  margin-right: 30px;
-}
-.control label {
-  margin-right: 10px;
-}
-.faquestioncircle {
-    color: #44b2f4;
-    margin: 0 0.5rem;
-}
-
-
-// added for the tooltip
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.questionMark:hover .tooltiptext{
-  visibility: visible;
-}
-
+//@import "../../../../../../styles/params/variables";
+//
+//.control {
+//
+//
+//    @include respond(phone) {
+//
+//  }
+//}
+//
+//  .quesitonMarkSign
+//{
+//  border:none;
+//}
+//.questionInfo {
+//  margin-right: 30px;
+//}
+//.control label {
+//  margin-right: 10px;
+//}
+//.faquestioncircle {
+//    color: #44b2f4;
+//    margin: 0 0.5rem;
+//}
+//
+//
+//// added for the tooltip
+//.tooltip {
+//  position: relative;
+//  display: inline-block;
+//  border-bottom: 1px dotted black;
+//}
+//
+//.questionMark:hover .tooltiptext{
+//  visibility: visible;
+//}
+//
 .tooltiptext {
   visibility: hidden;
   font-size: 0.85rem;
   width: 320px;
-  background-color: $textColor;
-  color: $whiteColor;
+  //background-color: $textColor;
+  //color: $whiteColor;
   text-align: center;
   border-radius: 6px;
   padding: 0.5rem;
@@ -53,76 +48,10 @@
   z-index: 1;
   top: -100%;
 }
-//////////////////////////
-
-
-
-
-
-
-@mixin csscheckbox($size: "24px", $selectedColor: #444, $checkColor: #fff, $valign: "middle", $rounded: rounded) {
-    display: none;
-  
-    &:checked + i {
-      background: #{$selectedColor};
-      border-color: #c4c4c4;
-      &:hover:after {
-        opacity: 1;
-      }
-  
-      &:after {
-        opacity: 1;
-        border-color: #109cf1;
-      }
-    }
-  
-    + i {
-      box-sizing: border-box;
-      &:before,
-      &:after {
-        box-sizing: border-box;
-      }
-    }
-    + i {
-      position: relative;
-      display: inline-block;
-      //top: -1px;
-      width: 24px;
-      height: 24px;
-      margin: 0;
-      vertical-align: #{$valign};
-      border: 1px solid #999;
-      transition: background 200ms ease;
-      border-radius: 0.2em;
-  
-      background: #ffffff;
-      font-size: #{$size};
-      cursor: pointer;
-  
-      &:hover:after {
-        opacity: 0.2;
-      }
-  
-      &:after {
-        content: "";
-        opacity: 0;
-        transform: translateZ(1px) rotate(-45deg);
-        outline: 1px solid transparent; // hack to prevent antialias atrifacts in firefox
-        position: absolute;
-        top: 30%;
-        left: 15%;
-        width: 0.79em;
-        height: 0.3em;
-        border: 0.1em solid #222;
-        border-top: none;
-        border-right: none;
-        background: rgba(0, 0, 0, 0);
-      }
-    }
-  }
-  
-  // css checkbox
-  
-  .csscheckbox {
-    @include csscheckbox(18px, $selectedColor: #ffffff);
-  }
+////////////////////////////
+//
+//
+//
+//
+//
+//

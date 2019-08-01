@@ -1,24 +1,24 @@
-@import '../../../styles/params/variables';
-
-.container {
-    input {
-      background-color: $searchColor;
-      opacity: 0.6;
-      border-radius: 3px;
-      border: none;
-      padding: 13px;
-      width: 240px;
-      &::placeholder {
-        font-family: "Poppins-Regular" sans-serif;
-        background: url("../../../assets/icons/search-solid.svg") no-repeat;
-        font-size: 1.1em;
-      }
-    }
-  }
-
-  @media only screen and ($mediaMediumWidth){
-    .container {
-        margin-top: 8px;
-        margin-left: 18px;
-      }
-  }
+//@import '../../../styles/params/variables';
+//
+//.container {
+//    input {
+//      background-color: $searchColor;
+//      opacity: 0.6;
+//      border-radius: 3px;
+//      border: none;
+//      padding: 13px;
+//      width: 240px;
+//      &::placeholder {
+//        font-family: "Poppins-Regular" sans-serif;
+//        background: url("../../../assets/icons/search-solid.svg") no-repeat;
+//        font-size: 1.1em;
+//      }
+//    }
+//  }
+//
+//  @media only screen and ($mediaMediumWidth){
+//    .container {
+//        margin-top: 8px;
+//        margin-left: 18px;
+//      }
+//  }

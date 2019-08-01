@@ -6,7 +6,6 @@
   min-height: 100vh;
 }
 
-
 header {
   &.site-header {
     flex-shrink: 0;
@@ -99,9 +98,6 @@ main {
   }
 }
 
-
-
-
 .container-authentication {
   background-color: #fff;
   margin-top: 15px;
@@ -192,7 +188,6 @@ main {
 
     .form-control {
       max-width: 350px;
-      color: $text-color-dark;
       @media (max-width: 575.98px) {
         max-width: none;
       }
@@ -310,6 +305,7 @@ main {
 
     &_list {
       margin-top: 10px;
+      padding: 0;
 
       li {
         font-family: $font-regular;
@@ -378,6 +374,7 @@ footer {
     }
   }
 }
+
 .footer-legal-copyright {
   color: #fff;
   background: $text-color-dark-blue;
@@ -391,4 +388,308 @@ footer {
   }
 }
 
+.strategy-builder {
+  padding: 15px;
+  @include clearfix;
 
+  @media (max-width: 575.98px) {
+    padding: 0;
+  }
+
+  &_container {
+
+  }
+  
+  &_breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-bottom: 13px;
+    padding-left: 15px;
+
+    > div {
+      color: $secondBlueColor;
+      font-family: $font-regular;
+      font-size: 0.9rem;
+      
+      &:last-of-type {
+        color: $mainBlueColor;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  &_header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    padding: 15px 70px 17px;
+    background: #fff;
+    border-bottom: 1px solid $border-color-primary;
+    @media (max-width: 991.98px) {
+      padding: 15px 30px 17px;
+    }
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+    @media (max-width: 575.98px) {
+      grid-gap: 0;
+      padding: 10px 0 0 0;
+      border-bottom: 0;
+    }
+
+    ._header-item {
+      font-family: $font-bold;
+      font-size: 17px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      color: $text-color-dark-primary;
+      border-bottom: 3px solid $border-color-dark;
+      @media (max-width: 767.98px) {
+        font-size: 16px;
+      }
+      @media (max-width: 575.98px) {
+        font-size: 10px;
+        padding-left: 5px;
+      }
+
+      &._header-active {
+        color: $mainBlueColor;
+        border-color: $mainBlueColor;
+      }
+      &._header-done {
+        color: $main-blue-transparent;
+        border-color: $main-blue-transparent;
+      }
+    }
+  }
+
+
+  &_body {
+    background-color: #fff;
+    padding: 20px 70px;
+    @media (max-width: 991.98px) {
+      padding: 20px 30px;
+    }
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+  }
+
+  &_btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 30px 0 0;
+
+    .btn-link {
+      padding: 10px;
+
+      @media (max-width: 575.98px) {
+        padding: 5px;
+      }
+    }
+
+    .btn-primary {
+      padding: 10px 40px;
+
+      @media (max-width: 575.98px) {
+        padding: 10px 15px;
+      }
+    }
+    .btn {
+      margin-left: 15px;
+    }
+  }
+}
+
+.factors-container {
+  margin-bottom: 30px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 20px;
+  }
+  @media (max-width: 575.98px) {
+    margin-bottom: 10px;
+  }
+
+  &_checkboxes {
+   @media (max-width: 575.98px) {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-gap: 0 15px;
+   }
+    .checkbox--item {
+      overflow: hidden;
+      @media (max-width: 575.98px) {
+        margin-top: 0;
+      }
+    }
+  }
+  .tooltip--icon {
+    margin-left: 10px;
+  }
+}
+
+.company-size {
+
+  &-container {
+    margin-bottom: 30px;
+    @media (max-width: 767.98px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &_btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+    @media (max-width: 991.98px) {
+      grid-gap: 10px;
+    }
+    @media (max-width: 575.98px) {
+      grid-gap: 5px;
+    }
+
+    .btn-company-size {
+      padding: 10px 14px;
+      background-color: $backgroundColor;
+      border-radius: 4px;
+      cursor: pointer;
+      appearance: none !important;
+      outline: none !important;
+      border: none;
+      text-align: start;
+      display: flex;
+      flex-direction: column;
+
+      @media (max-width: 991.98px) {
+        padding: 7px;
+      }
+      @media (max-width: 575.98px) {
+        padding: 5px;
+      }
+
+      ._title {
+        display: block;
+        font-size: 15px;
+        font-family: $font-medium;
+        color: $text-color-dark-primary;
+        line-height: 1.5;
+        margin-bottom: 5px;
+        @media (max-width: 575.98px) {
+          font-size: 13px;
+        }
+      }
+
+      ._description {
+        display: block;
+        color: $text-color-dark-primary;
+        line-height: 1.5;
+        font-size: 12px;
+
+        @media (max-width: 991.98px) {
+          font-size: 10px;
+        }
+        @media (max-width: 575.98px) {
+          font-size: 9px;
+        }
+      }
+
+      &.active {
+        background-color: $mainBlueColor;
+
+        ._title {
+          color: #fff;
+        }
+        ._description {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.country-step-one-container {
+  margin-bottom: 30px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 20px;
+  }
+
+  ._select-country {
+    @include formControl-caret;
+  }
+}
+
+.nos-step-one-container {
+  margin-bottom: 30px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 20px;
+  }
+}
+
+.NumberOfStock-rangeSlider {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  ._input {
+    flex: 1;
+    appearance: none;
+    height: 2px;
+    background: $border-color-dark;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: $whiteColor;
+      box-shadow: 1px 1px 5px #c2c1c1;
+      cursor: pointer;
+    }
+  }
+  ._label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:35px;
+    height: 25px;
+    font-size: 0.8rem;
+    color: $textColor;
+    margin-left: 0.6rem;
+    background-color: $border-color-dark;
+    clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
+  }
+}
+
+.sectors-selector-container {
+  margin-bottom: 30px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 20px;
+  }
+
+  ._formControl-select {
+    @include formControl-caret;
+
+    .form-control {
+      text-transform: capitalize;
+    }
+
+    ._overSelect {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  ._checkbox-item-container {
+    background: $backgroundColor;
+    overflow: hidden;
+    padding: 0 14px;
+  }
+}

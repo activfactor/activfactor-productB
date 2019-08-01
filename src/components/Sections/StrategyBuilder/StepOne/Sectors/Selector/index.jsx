@@ -20,7 +20,7 @@ class Selector extends Component {
 
   render() {
     return (
-      <div className={classes.checkboxitem} onClick={() => this.onChangeHandler(this.props.id, !this.state.checked)}>
+      <div className="checkbox--item" onClick={() => this.onChangeHandler(this.props.id, !this.state.checked)}>
         <label htmlFor={this.props.id}>
           <input value={this.props.id} type="checkbox" className={classes.csscheckbox} checked={this.state.checked} onChange={this.props.onClick}/>
           <i />

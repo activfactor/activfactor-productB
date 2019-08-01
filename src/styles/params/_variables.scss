@@ -1,15 +1,23 @@
 // Colors
-$mainBlueColor:             #109CF1 !default;
-$lightBlueColor:            #E2F3FD !default;
-$secondBlueColor:           #60DFC8 !default;
-$textColor:                 #858585 !default;
-$text-color-dark-primary:   #989898 !default;
-$text-color-dark-blue:      #192A3E !default;
-$text-color-dark:           #111111 !default;
-$redColor:                  #FF0000 !default;
-$orange-light:              #F7685B !default;
-$backgroundColor:           #F5F6F8 !default;
-$purple-light:              #C2CFE0 !default;
+$mainBlueColor:                       #109CF1 !default;
+$main-blue-transparent:               rgba(16, 156, 241, 0.6) !default;
+$lightBlueColor:                      #E2F3FD !default;
+$secondBlueColor:                     #60DFC8 !default;
+$textColor:                           #858585 !default;
+$text-color-dark-primary:             #989898 !default;
+$text-color-darker:                   #797979 !default;
+$text-color-dark-blue:                #192A3E !default;
+$text-color-dark:                     #111111 !default;
+$redColor:                            #FF0000 !default;
+$orange-light:                        #F7685B !default;
+$backgroundColor:                     #F5F6F8 !default;
+$purple-light:                        #C2CFE0 !default;
+$form-control-color:                  $text-color-dark-primary;
+$form-control-placeholder-color:      #B9B9B9 !default;
+$form-control-background:             #F0F0F0 !default;
+$form-control-caret:                  #707683 !default;
+$border-color-primary:                #EBEFF2 !default;
+$border-color-dark:                   #D7D7D7 !default;
 
 $searchColor:#dfdede96;
 $whiteColor:#fff;
@@ -18,6 +26,50 @@ $navigationBarShadowColor:#e4e1e1;
 // Strategy Builder Colors
 $activeColor: rgb(0, 157, 255);
 $doneColor: rgb(97, 195, 255);
+
+
+// Mixin itself
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin formControl-caret() {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $form-control-caret;
+    z-index: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //media Queries
 

@@ -1,15 +1,15 @@
-@import "../../../../../styles/params/variables";  
-.CountryHeading {
-  @include allControllerHeading();
-}
-.Country {
-  flex-basis: 100% !important;
- 
-  @include respond(ipad) {
-    flex-basis: 40% !important;
-    }
-  }
-
+//@import "../../../../../styles/params/variables";
+//.CountryHeading {
+//  @include allControllerHeading();
+//}
+//.Country {
+//  flex-basis: 100% !important;
+//
+//  @include respond(ipad) {
+//    flex-basis: 40% !important;
+//    }
+//  }
+//
 
 
   // /*Sectors Start*/

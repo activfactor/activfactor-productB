@@ -858,8 +858,6 @@ footer {
     box-shadow: none;
   }
 
-
-  &:focus,
   &:hover {
     ._tooltip-content {
       @media (min-width: 576px) {
@@ -868,10 +866,12 @@ footer {
       }
     }
   }
-  &:hover {
+  &:focus {
     ._tooltip-content {
-        display: block;
-        opacity: 1;
+        @media (max-width: 575.98px) {
+          display: block;
+          opacity: 1;
+        }
     }
   }
 
@@ -883,7 +883,7 @@ footer {
     position: absolute;
     width: 300px;
     top: 50%;
-    left: calc(100% + 12px);
+    left: calc(100% + 14px);
     transform: translateY(-50%);
     font-size: 11px;
     color: $mainBlueColor;
@@ -893,7 +893,7 @@ footer {
     background-color: #E0F1FB;
     pointer-events: none;
     transition: opacity .2s ease;
-    z-index: 10;
+    z-index: 100;
 
     @media (max-width: 575.98px) {
       top: calc(100% + 12px);

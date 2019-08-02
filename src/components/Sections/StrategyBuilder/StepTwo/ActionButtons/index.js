@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
 import Input from '../../../../UI/Input';
 
 class ActionButtons extends Component {

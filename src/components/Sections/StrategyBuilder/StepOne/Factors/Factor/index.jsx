@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import classes from './index.module.scss';
 
 class Factor extends Component{
   state ={checked: this.props.checked ? this.props.checked : false}
@@ -28,12 +27,12 @@ class Factor extends Component{
             <span className="_text-label">{this.props.value} </span>
           </label>
 
-          <span className="tooltip--icon">
+          <button className="btn tooltip-container tooltip--icon">
             <i className="_icon-question fas fa-question"></i>
-            <span className={classes.tooltiptext}>{this.props.tooltip}</span>
-          </span>
+            <span className="_tooltip-content">{this.props.tooltip}</span>
+          </button>
 
-          <span className={classes.questionInfo} />
+          {/*<span className="_ruestion-info" />*/}
 
         </div>
     );

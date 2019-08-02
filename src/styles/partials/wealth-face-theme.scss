@@ -502,15 +502,12 @@ footer {
     }
   }
 
-
-
-
-
   &_section-title {
     font-family: $font-medium;
     font-size: 18px;
     color: $text-color-dark-blue;
   }
+
   &_btn-container {
     display: flex;
     justify-content: flex-end;
@@ -554,9 +551,32 @@ footer {
      grid-gap: 0 15px;
    }
     .checkbox--item {
-      overflow: hidden;
+      //overflow: hidden;
       @media (max-width: 575.98px) {
         margin-top: 0;
+      }
+
+
+
+      &:nth-of-type(2n) {
+        .tooltip-container {
+
+          ._tooltip-content {
+            @media (max-width: 575.98px) {
+              right: -60px;
+              left: auto;
+            }
+
+            &::after {
+              @media (max-width: 575.98px) {
+                top: auto;
+                right: 52px;
+                left: auto;
+                bottom: 100%;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -821,5 +841,88 @@ footer {
     }
   }
 }
+
+
+/**
+ * =Tooltip Styles
+ */
+
+/* Add this attribute to the element that needs a tooltip */
+.tooltip-container {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    ._tooltip-content {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+
+
+  ._tooltip-content {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    left: calc(100% + 12px);
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: $mainBlueColor;
+    text-align: start;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #E0F1FB;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 10;
+
+    @media (max-width: 575.98px) {
+      top: calc(100% + 18px);
+      left: -60px;
+      transform: translate(0,0);
+    }
+
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right:8px solid #E0F1FB;
+
+      @media (max-width: 575.98px) {
+        top: auto;
+        left: 52px;
+        bottom: 100%;
+        transform: translate(50%, 0);
+        border-top: none;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #E0F1FB;
+      }
+    }
+  }
+}
+
+
+
+
+
 
 

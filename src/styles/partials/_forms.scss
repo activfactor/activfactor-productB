@@ -133,6 +133,10 @@ $grid-gutter: 15px;
 
       &:hover:after {
         opacity: 1;
+
+        @media (max-width: 575.98px) {
+          opacity: 0;
+        }
       }
 
       &:after {

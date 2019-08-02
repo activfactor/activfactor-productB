@@ -98,6 +98,31 @@ $grid-gutter: 15px;
     span {
       text-transform: capitalize;
     }
+
+    &:hover {
+
+      input[type="checkbox"] {
+
+        &:checked + i {
+          border-color: $text-color-dark-primary;
+
+          &:hover:after {
+            opacity: 1;
+          }
+
+          &:after {
+            opacity: 1;
+            border-color: $mainBlueColor;
+          }
+        }
+
+        + i {
+          &:after {
+            opacity: 0.1;
+          }
+        }
+      }
+    }
   }
 
   input[type="checkbox"] {
@@ -135,9 +160,9 @@ $grid-gutter: 15px;
         box-sizing: border-box;
       }
 
-      &:hover:after {
-        opacity: 0.3;
-      }
+      //&:hover:after {
+      //  opacity: 0.3;
+      //}
 
       &:after {
         content: "";
@@ -155,6 +180,7 @@ $grid-gutter: 15px;
         background: rgba(0, 0, 0, 0);
       }
     }
+
   }
 
 }

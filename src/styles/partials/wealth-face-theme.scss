@@ -858,10 +858,20 @@ footer {
     box-shadow: none;
   }
 
+
+  &:focus,
   &:hover {
     ._tooltip-content {
-      display: block;
-      opacity: 1;
+      @media (min-width: 576px) {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+  &:focus {
+    ._tooltip-content {
+        display: block;
+        opacity: 1;
     }
   }
 

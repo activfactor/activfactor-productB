@@ -858,8 +858,7 @@ footer {
     box-shadow: none;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     ._tooltip-content {
       display: block;
       opacity: 1;

@@ -106,10 +106,6 @@ $grid-gutter: 15px;
         &:checked + i {
           border-color: $text-color-dark-primary;
 
-          &:hover:after {
-            opacity: 1;
-          }
-
           &:after {
             opacity: 1;
             border-color: $mainBlueColor;
@@ -118,7 +114,11 @@ $grid-gutter: 15px;
 
         + i {
           &:after {
-            opacity: 0.1;
+            opacity: 0.2;
+
+            @media (max-width: 575.98px) {
+              opacity: 0;
+            }
           }
         }
       }

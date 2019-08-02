@@ -563,14 +563,14 @@ footer {
 
           ._tooltip-content {
             @media (max-width: 575.98px) {
-              right: -60px;
+              right: -45px;
               left: auto;
             }
 
             &::after {
               @media (max-width: 575.98px) {
                 top: auto;
-                right: 52px;
+                right: 53px;
                 left: auto;
                 bottom: 100%;
               }
@@ -888,9 +888,10 @@ footer {
     z-index: 10;
 
     @media (max-width: 575.98px) {
-      top: calc(100% + 18px);
+      top: calc(100% + 12px);
       left: -60px;
       transform: translate(0,0);
+      width: 270px;
     }
 
 

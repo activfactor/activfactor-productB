@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
 import { getDashboard } from '../../../../actions/dashboard';
 import Spinner from '../../../UI/Spinner';
-import Modal from '../../../UI/Modal';
+// import Modal from '../../../UI/Modal';
 
 class StepOne extends Component {
   state={
@@ -127,9 +127,7 @@ class StepOne extends Component {
       
     } else {
       return (
-        <Modal>
-          <Spinner color="white" />
-        </Modal>
+        <Spinner color="white" containerClass="fullScreen" />
       );
     }
   }

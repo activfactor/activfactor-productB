@@ -78,7 +78,6 @@ class Login extends Component{
 
     AuthError = () => {
         if (this.props.errorMessage){
-
             return <div className="invalid-feedback">{this.props.errorMessage}</div>
         }
     }

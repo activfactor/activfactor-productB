@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://wealthface.com/api'
+    baseURL: 'https://apis.wealthface.com'
 });

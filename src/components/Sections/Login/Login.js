@@ -42,7 +42,7 @@ class Login extends Component{
         } else {
             return(
                 <React.Fragment>
-                    <button className={`btn btn-primary d-flex align-items-center`} type="submit">
+                    <button className={`btn btn-primary d-i-flex align-items-center`} type="submit">
                     <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
                     Login
                     </button>

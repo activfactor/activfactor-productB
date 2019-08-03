@@ -9,7 +9,7 @@ import Table from '../Charts/TableChart';
 import {connect} from 'react-redux';
 import {getFactorScreener, resetFactorScreener} from '../../../../../actions/strategyBuilder';
 import Spinner from '../../../../UI/Spinner';
-import Modal from '../../../../UI/Modal';
+// import Modal from '../../../../UI/Modal';
 import Message from '../../../../UI/Message';
 import requireAuth from '../../../../hoc/requireAuth';
 import Buttons from '../ActionButtons';
@@ -45,9 +45,7 @@ class AnalyzeResults extends Component {
       );
     } else if (!this.props.data.parameters) {
       return (
-        <Modal>
-          <Spinner color="white"/>
-        </Modal>
+          <Spinner color="white" containerClass="fullScreen" />
       );
     } else {
       return (

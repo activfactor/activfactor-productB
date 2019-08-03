@@ -9,7 +9,7 @@ import BrokerPanel from './BrokerPanel';
 import StrategiesList from './StrategiesList';
 import Link from '../../UI/Link';
 import Spinner from '../../UI/Spinner';
-import Modal from '../../UI/Modal';
+// import Modal from '../../UI/Modal';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
@@ -62,9 +62,7 @@ class Dashboard extends Component {
         )
       } else {
         return (
-          <Modal>
-            <Spinner color="white"/>
-          </Modal>
+            <Spinner color="white" containerClass="fullScreen" />
         );
       }
     }

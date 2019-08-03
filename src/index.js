@@ -14,7 +14,7 @@ const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
     { 
         auth: {
         authenticated: sessionStorage.getItem('authenticated'),
-        username: sessionStorage.getItem('user'),
+        // username: sessionStorage.getItem('user'),
         regtime: sessionStorage.getItem('regtime'),
         token: sessionStorage.getItem('token'),
         userID: sessionStorage.getItem('userID')

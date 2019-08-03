@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SBCurrentTracker from "./SBCurrentTracker";
 import ActionButtons from "./ActionButtons/index";
-import classes from "./index.module.scss";
 import { connect } from 'react-redux';
 import { saveStrategy } from '../../../../actions/strategyBuilder';
 
@@ -48,27 +47,22 @@ class StrategyBuilder3 extends Component {
 
   render() {
     return (
-      <section className={classes.maincontainer}>
-        <div className={classes.container}>
-          <div className={classes.strategy}>
-            <SBCurrentTracker
-              cancelModal={this.cancelModal}
-              show={this.state.show}
-              onSubmit={this.onSubmit}
-              isSpinner={this.state.isSpinner}
-              getStrategyName={this.getStrategyName}
-              responseMessage={this.state.responseMessage}
-              DismissMessage={this.props.DismissMessage}
-            />
-          </div>
-          <div className={classes.ActionButtonsContainer}>
+      <div className="strategy-builder_customized-portfolio">
+          <SBCurrentTracker
+            cancelModal={this.cancelModal}
+            show={this.state.show}
+            onSubmit={this.onSubmit}
+            isSpinner={this.state.isSpinner}
+            getStrategyName={this.getStrategyName}
+            responseMessage={this.state.responseMessage}
+            DismissMessage={this.props.DismissMessage}
+          />
+
             <ActionButtons
               AnalyuzeResult={this.props.AnalyuzeResult}
               ReplicateStrategy={this.ReplicateStrategy}
             />
-          </div>
-        </div>
-      </section>
+      </div>
     );
   }
 }

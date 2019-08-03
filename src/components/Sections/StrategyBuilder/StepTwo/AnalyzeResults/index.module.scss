@@ -31,7 +31,11 @@
         }
     }
 
-
+.message_body {
+    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 4px;
+}
 .spinnerContainer{
     display: flex;
     flex-direction: column;
@@ -43,18 +47,14 @@
 }
 
 .messageheader{
-    padding: 1rem;
     color: $redColor;
-    text-align: center;
     font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 .messagespan{
-    display: flex;
-    flex-basis: 100%;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 1rem;
+    text-align: right;
+    display: block;
 }
 
 .messagebtn{

@@ -25,11 +25,12 @@ class AnalyzeResults extends Component {
 
         <section>
           <Message>
-            <div className={classes.messageheader}><i
-              className="fas fa-exclamation-triangle"></i> {this.props.data.error || this.props.data.message}</div>
-            <span className={classes.messagespan}>
-                            <button className={classes.messagebtn} onClick={this.props.DismissError}>OK</button>
-                        </span>
+            <div className={classes.message_body}>
+              <div className={classes.messageheader}><i
+                className="fas fa-exclamation-triangle"></i> {this.props.data.error || this.props.data.message}</div>
+              <span className={classes.messagespan}>
+                            <button className="btn btn-primary" onClick={this.props.DismissError}>OK</button>
+                        </span>            </div>
           </Message>
           <div className={classes.container}>
             <p>Performance</p>
@@ -55,55 +56,75 @@ class AnalyzeResults extends Component {
           <div className="strategy-builder_section-title">Performance</div>
           <p>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
 
-          <div className="analyze-results_card-container">
-            <PieGraph
-              header="Sectors"
-              data={this.props.data.sector_allocation}
-            />
-            <PieGraph
-              header="Firm size"
-              data={this.props.data.firm_size_allocation}
-            />
-            <BarChartVertical
-              header="Factor Intensity"
-              factor={this.props.data.factor_intensity}
-              chartName="Factor intensity"
-            />
-            <LineGraph
-              header="Historical Performance"
-              strategy={this.props.data.culmulative_return_strategy}
-              benchmark={this.props.data.culmulative_return_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              chartName="Historical Performance"/>
-            <BarChart
-              header="Annual Return"
-              strategy={this.props.data.annual_return_strategy}
-              benchmark={this.props.data.annual_return_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              chartName="Annual Return"
-            />
-            <AreaChart
-              header="Drawdown"
-              strategy={this.props.data.drawdown_strategy}
-              benchmark={this.props.data.drawdown_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              chartName="Drawdown"/>
+          <div className="analyze-results_card-row">
+            <div className="col-sm-6 col-md-4">
+              <PieGraph
+                header="Sectors"
+                data={this.props.data.sector_allocation}
+              />
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <PieGraph
+                header="Firm size"
+                data={this.props.data.firm_size_allocation}
+              />
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <BarChartVertical
+                header="Factor Intensity"
+                factor={this.props.data.factor_intensity}
+                chartName="Factor intensity"
+              />
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <LineGraph
+                header="Historical Performance"
+                strategy={this.props.data.culmulative_return_strategy}
+                benchmark={this.props.data.culmulative_return_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                chartName="Historical Performance"/>
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <BarChart
+                header="Annual Return"
+                strategy={this.props.data.annual_return_strategy}
+                benchmark={this.props.data.annual_return_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                chartName="Annual Return"
+              />
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <AreaChart
+                header="Drawdown"
+                strategy={this.props.data.drawdown_strategy}
+                benchmark={this.props.data.drawdown_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                chartName="Drawdown"/>
+            </div>
+            <div className="col-sm-6 col-md-4">
+              <Table
+                strategy={this.props.data.return_strategy}
+                benchmark={this.props.data.return_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                tableName="Return"/>
+            </div>
 
-            <Table
-              strategy={this.props.data.return_strategy}
-              benchmark={this.props.data.return_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              tableName="Return"/>
-            <Table
-              strategy={this.props.data.metrics_strategy}
-              benchmark={this.props.data.metrics_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              tableName="Metrics"/>
-            <Table
-              strategy={this.props.data.risk_strategy}
-              benchmark={this.props.data.risk_benchmark}
-              benchmark_name={this.props.data.benchmark}
-              tableName="Risk"/>
+            <div className="col-sm-6 col-md-4">
+              <Table
+                strategy={this.props.data.metrics_strategy}
+                benchmark={this.props.data.metrics_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                tableName="Metrics"/>
+            </div>
+
+            <div className="col-sm-6 col-md-4">
+              <Table
+                strategy={this.props.data.risk_strategy}
+                benchmark={this.props.data.risk_benchmark}
+                benchmark_name={this.props.data.benchmark}
+                tableName="Risk"/>
+            </div>
+
           </div>
 
           <Buttons onClick={this.props.modify} customizePortfolio={this.props.customizePortfolio}/>

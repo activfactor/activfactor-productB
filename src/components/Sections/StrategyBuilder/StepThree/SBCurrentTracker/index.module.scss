@@ -1,36 +1,39 @@
 @import "../../../../../styles/params/variables";
-.stockContainer {
-  max-width: 100%;
-  line-height: 1.25;
-  margin: 0 10px;
-}
-.stockContainerHeading {
-  font-weight: 400;
 
-  color: #192a3e;
-  max-width: 10rem;
+.modal_content {
+  padding: 30px 50px;
+  background: #fff;
+  border-radius: 4px;
 }
-.stockContainerDesc {
-  font-size: 1rem;
-  color: #989898;
-  margin: 20px 0;
-}
-.ticker {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 105%;
 
-  .title {
-    color: #323c47;
-  }
-  .desc {
-    color: #707683;
-    font-size: 0.55rem;
-    align-self: flex-start;
-    text-align: left;
-  }
+.modal_header {
+  font-family: "Poppins-Medium", Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  color: $text-color-dark;
+  margin-bottom: 10px;
 }
+
+.modal_btn_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.message_text {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.message_body {
+  padding: 30px 40px;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.message_btn_container {
+  text-align: right;
+}
+
+
 
 .SectorLabel {
   color: #707683 !important;
@@ -43,48 +46,7 @@
 .success {
   color: $mainBlueColor;
 }
-.table__class {
-  box-shadow: 1px 1px 4px rgb(226, 226, 226);
-  margin-top: 20px;
-  border-radius: 4px;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
-.table__class tbody tr {
-  padding: 10px;
-}
 
-.table__class thead tr {
-  background-color: #f8f8f8;
-  padding: 0.35em;
-
-  background-color: #109cf1 !important;
-  padding: 15px 0;
-  color: #ffffff;
-  font-size: 1rem;
-  padding: 1.5rem;
-}
-
-.table__class th,
-.table__class td {
-  padding: 1.625em;
-
-  text-align: center;
-}
-
-.table__class td {
-  font-size: 0.85rem;
-  color: #109cf1;
-}
-.table__class th {
-  font-size: 0.85em;
-  letter-spacing: 0.1em;
-  text-transform: capitalize;
-  text-align: center;
-}
 
 .modalcontainer {
   background-color: #f7f7f7;
@@ -141,6 +103,7 @@
   }
 }
 
+
 .messageheader{
   padding: 1rem;
   color: $redColor;
@@ -154,98 +117,4 @@
   flex-direction: row;
   justify-content: flex-end;
   margin: 1rem;
-}
-
-.modalheader{
-  padding: 0.5rem;
-  border-bottom: 1px solid $searchColor;
-  width: 100%;
-  margin-bottom: 0.7rem;
-  text-align: left;
-}
-
-.messagebtn{
-  flex-basis: 30%;
-  padding: 1rem;
-  background-color: $mainBlueColor;
-  box-shadow: 1px 1px 4px $mainBlueColor;
-  border-radius: 4px;
-  border: 1px solid $mainBlueColor;
-  color:$whiteColor;
-  appearance: none;
-  cursor: pointer;
-  
-}
-
-@media screen and (max-width: 950px) {
-  thead tr {
-    font-size: 0.65rem;
-  }
-
-  .table__class td {
-    font-size: 0.55rem;
-    color: #109cf1;
-  }
-  .desc {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .table__class {
-    border: 0;
-  }
-
-  .table__class caption {
-    font-size: 1.3em;
-  }
-
-  .table__class thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  .table__class tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: 0.625em;
-  }
-
-  .table__class td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: 0.8em;
-    text-align: right;
-  }
-
-  .table__class td::before {
-    /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .table__class td:last-child {
-    border-bottom: 0;
-  }
-
-  .ticker {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100% !important;
-  }
-  .desc {
-    display: none !important;
-  }
 }

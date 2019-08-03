@@ -27,10 +27,10 @@ class Factor extends Component{
             <span className="_text-label">{this.props.value} </span>
           </label>
 
-          <button className="btn tooltip-container tooltip--icon">
+          <span className="btn tooltip-container tooltip--icon">
             <i className="_icon-question fas fa-question"></i>
             <span className="_tooltip-content">{this.props.tooltip}</span>
-          </button>
+          </span>
 
           {/*<span className="_ruestion-info" />*/}
 

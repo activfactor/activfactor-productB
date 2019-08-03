@@ -1,5 +1,4 @@
 
-
 #root {
   display: flex;
   flex-direction: column;
@@ -35,12 +34,14 @@ header {
           line-height: 1;
           padding: 4px;
         }
+
         ._separator {
           color: $mainBlueColor;
           margin: 0 10px;
         }
       }
     }
+
     ._header-title {
       font-family: $font-medium;
       font-size: 24px;
@@ -326,10 +327,6 @@ main {
 }
 
 
-
-
-
-
 /******************
 ***** =Footer *****
 */
@@ -351,6 +348,7 @@ footer {
     }
   }
 }
+
 .footer-nav-links {
   display: flex;
   justify-content: center;
@@ -380,11 +378,13 @@ footer {
         font-size: 10px;
       }
     }
+
     &:last-of-type {
       border-right: none;
     }
   }
 }
+
 .footer-legal-copyright {
   color: #fff;
   background: $text-color-dark-blue;
@@ -396,7 +396,7 @@ footer {
   @media (max-width: 575.98px) {
     font-size: 10px;
   }
-  @media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
     padding-bottom: 30px;
   }
 }
@@ -405,7 +405,6 @@ footer {
 /****************************
 ***** =Strategy Builder *****
 */
-
 .strategy-builder {
   padding: 15px;
   @include clearfix;
@@ -413,7 +412,7 @@ footer {
     padding: 0;
     margin-bottom: 30px;
   }
-  
+
   &_breadcrumb {
     display: flex;
     align-items: center;
@@ -427,7 +426,7 @@ footer {
       @media (max-width: 575.98px) {
         font-size: 0.8rem;
       }
-      
+
       &:last-of-type {
         color: $mainBlueColor;
         margin-left: 15px;
@@ -473,6 +472,7 @@ footer {
         color: $mainBlueColor;
         border-color: $mainBlueColor;
       }
+
       &._header-done {
         color: $light-blue;
         border-color: $light-blue;
@@ -502,6 +502,18 @@ footer {
     }
   }
 
+  &_customized-portfolio {
+    background-color: #fff;
+    padding: 20px 70px;
+
+    @media (max-width: 991.98px) {
+      padding: 20px 30px;
+    }
+    @media (max-width: 767.98px) {
+      padding: 15px;
+    }
+  }
+
   &_section-title {
     font-family: $font-medium;
     font-size: 18px;
@@ -515,25 +527,24 @@ footer {
     margin: 30px 0 0;
 
     .btn-link {
-      padding: 10px;
 
       @media (max-width: 575.98px) {
-        padding: 5px;
+        padding: 8px;
       }
     }
 
     .btn-primary {
-      padding: 10px 40px;
-
       @media (max-width: 575.98px) {
-        padding: 10px 15px;
+        padding: 8px 10px;
       }
     }
+
     .btn {
-      margin-left: 15px;
+      margin-left: 10px;
     }
   }
 }
+
 
 .factors-container {
   margin-bottom: 30px;
@@ -545,17 +556,17 @@ footer {
   }
 
   &_checkboxes {
-   @media (max-width: 575.98px) {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     grid-gap: 0 15px;
-   }
+    @media (max-width: 575.98px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0 15px;
+    }
+
     .checkbox--item {
       //overflow: hidden;
       @media (max-width: 575.98px) {
         margin-top: 0;
       }
-
 
 
       &:nth-of-type(2n) {
@@ -580,6 +591,7 @@ footer {
       }
     }
   }
+
   .tooltip--icon {
     margin-left: 10px;
   }
@@ -657,6 +669,7 @@ footer {
         ._title {
           color: #fff;
         }
+
         ._description {
           color: #fff;
         }
@@ -707,11 +720,12 @@ footer {
       cursor: pointer;
     }
   }
+
   ._label {
     display: flex;
     justify-content: center;
     align-items: center;
-    width:35px;
+    width: 35px;
     height: 25px;
     font-size: 0.8rem;
     color: $textColor;
@@ -752,20 +766,9 @@ footer {
 
 .analyze-results {
 
-  &_card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
+  &_card-row {
+    @include make-row;
     margin-bottom: 30px;
-
-    @media (max-width: 767.98px) {
-      grid-template-columns: 1fr 1fr;
-    }
-    @media (max-width: 767.98px) {
-      grid-template-columns: 1fr;
-      grid-gap: 15px;
-      margin-bottom: 20px;
-    }
 
     .table-responsive {
       margin: 0;
@@ -779,6 +782,7 @@ footer {
   border-radius: 4px;
   box-shadow: $box-shadow;
   overflow: hidden;
+  margin-bottom: 30px;
 
   ._card-header {
     font-family: $font-medium;
@@ -787,22 +791,35 @@ footer {
     padding: 15px 20px;
     border-bottom: 1px solid $border-color-primary;
   }
+
   ._card-body {
     padding: 20px;
   }
 }
+
 .analyze-result-table {
   width: 100%;
   border-radius: 4px;
   box-shadow: $box-shadow;
-  overflow: hidden;
+  margin-bottom: 30px;
+
+  .table-responsive {
+    max-height: 370px;
+    overflow-y: auto;
+
+    @media (max-width: 575.98px) {
+      max-height: none;
+    }
+  }
 
   thead {
     margin: 0;
     padding: 0;
     border: 0;
+
     tr {
       border-bottom: 1px solid $border-color-primary;
+
       th {
         font-family: $font-medium;
         color: $text-color-dark-blue;
@@ -833,6 +850,7 @@ footer {
           &._success {
             color: $mainBlueColor;
           }
+
           &._warning {
             color: $redColor;
           }
@@ -842,15 +860,79 @@ footer {
   }
 }
 
+.table-customized-portfolio {
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+
+  .table-responsive {
+    border-radius: 4px;
+  }
+  .table {
+    margin: 0;
+    white-space: nowrap;
+
+    thead {
+      tr {
+        background-color: $mainBlueColor;
+        color: #fff;
+
+        th {
+          font-family: $font-medium;
+          text-align: center;
+          padding: 15px;
+          font-size: 15px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid $border-color-primary;
+
+        &:first-of-type {
+          border-bottom: none;
+        }
+        td {
+          text-align: center;
+          font-size: 13px;
+          line-height: 1;
+          vertical-align: middle;
+          padding: 10px 15px;
+
+          &._td-ticker {
+            text-align: start;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * =Tooltip Styles
  */
-
-/* Add this attribute to the element that needs a tooltip */
 .tooltip-container {
   position: relative;
-  cursor: pointer;
   padding: 0;
 
   &:focus,
@@ -860,25 +942,13 @@ footer {
 
   &:hover {
     ._tooltip-content {
-      @media (min-width: 576px) {
-        display: block;
-        opacity: 1;
-      }
+      visibility: visible;
+      opacity: 1;
     }
   }
-  &:focus {
-    ._tooltip-content {
-        @media (max-width: 575.98px) {
-          display: block;
-          opacity: 1;
-        }
-    }
-  }
-
-
 
   ._tooltip-content {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     position: absolute;
     width: 300px;
@@ -891,14 +961,14 @@ footer {
     padding: 6px 10px;
     border-radius: 4px;
     background-color: #E0F1FB;
-    pointer-events: none;
-    transition: opacity .2s ease;
-    z-index: 100;
+    //pointer-events: none;
+    transition: opacity 0.7s ease;
+    z-index: 10;
 
     @media (max-width: 575.98px) {
       top: calc(100% + 12px);
       left: -60px;
-      transform: translate(0,0);
+      transform: translate(0, 0);
       width: 270px;
     }
 
@@ -913,7 +983,7 @@ footer {
       height: 0;
       border-top: 8px solid transparent;
       border-bottom: 8px solid transparent;
-      border-right:8px solid #E0F1FB;
+      border-right: 8px solid #E0F1FB;
 
       @media (max-width: 575.98px) {
         top: auto;
@@ -932,6 +1002,22 @@ footer {
 
 
 
+/**
+ * =Utility Classes
+ */
+.text-danger {
+  color: $redColor !important;
+}
+.text-primary {
+  color: $mainBlueColor !important;
+}
+.text-dark {
+  color: $text-color-darker !important;
+}
 
-
-
+.text-medium {
+  font-family: $font-medium;
+}
+.text-start {
+  text-align: start !important;
+}

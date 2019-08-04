@@ -405,6 +405,7 @@ footer {
   display: flex;
   align-items: center;
   margin-bottom: 13px;
+  margin-right: 15px;
   padding-left: 15px;
 
   > div {
@@ -417,7 +418,6 @@ footer {
 
     &:last-of-type {
       color: $mainBlueColor;
-      margin-left: 15px;
     }
   }
 }
@@ -433,8 +433,12 @@ footer {
 
   &_container {
     padding: 15px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     @include clearfix;
+
+    @media (max-width: 575.98px) {
+      margin-bottom: 50px;
+    }
   }
 
   &_header {
@@ -456,7 +460,13 @@ footer {
 
 
     ._header-item-title {
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+
+      &:last-of-type {
+        margin-top: 15px;
+        margin-bottom: 0;
+      }
+
       @media (max-width: 767.98px) {
         font-size: 13px;
       }
@@ -477,6 +487,9 @@ footer {
       }
     }
 
+    ._header-item-value2 {
+
+    }
   }
 
   &_top-content {
@@ -632,74 +645,17 @@ footer {
   }
 }
 
-.table-top-strategies {
-
-  table.table {
-    margin: 0;
-
-    thead {
-
-      tr {
-        border-bottom: 1px solid $border-color-primary;
-
-        th {
-          font-family: $font-medium;
-          font-size: 12px;
-          padding: 18px 10px;
-          text-align: center;
-          line-height: 1;
-          white-space: nowrap;
-          color: $text-color-dark-blue;
-        }
-      }
-    }
-
-    tbody {
-      tr {
-        border-bottom: 1px solid $border-color-primary;
-
-        &:last-of-type {
-          border-bottom: none;
-        }
-
-        td {
-          padding: 15px 10px;
-          text-align: center;
-          line-height: 1;
-          white-space: nowrap;
-          vertical-align: middle;
-          font-size: 13px;
-
-          &._td-link {
-
-            a {
-              font-family: $font-medium;
-              font-size: 15px;
-              line-height: 1;
-              color: $text-color-dark-blue;
-              padding: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-
-
-
-
 
 /****************************
 ***** =Strategy Builder *****
 */
 .strategy-builder {
   padding: 15px;
+  margin-bottom: 100px;
   @include clearfix;
+
   @media (max-width: 575.98px) {
-    padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
 
@@ -816,11 +772,6 @@ footer {
 }
 
 
-
-
-
-
-
 /****************************
 ***** =Strategy Monitor *****
 */
@@ -828,12 +779,20 @@ footer {
 
   &_container {
     padding: 15px;
+    margin-bottom: 100px;
     @include clearfix;
+
+    @media (max-width: 575.98px) {
+      margin-bottom: 50px;
+    }
   }
 
   &_charts {
     @include make-row;
     margin-bottom: 30px;
+  }
+  &_table {
+    @include card-defaults;
   }
 }
 
@@ -1057,7 +1016,7 @@ footer {
 
 .charts-card-container {
   @include make-row;
-  margin-bottom: 30px;
+  margin-top: 30px;
 
   ._card-row-item {
     margin-bottom: 30px;
@@ -1211,6 +1170,66 @@ footer {
   }
 }
 
+.table-top-strategies {
+
+  table.table {
+    margin: 0;
+
+    thead {
+
+      tr {
+        border-bottom: 1px solid $border-color-primary;
+
+        th {
+          font-family: $font-medium;
+          font-size: 12px;
+          padding: 18px 10px;
+          text-align: center;
+          line-height: 1;
+          white-space: nowrap;
+          color: $text-color-dark-blue;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $border-color-primary;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 15px 10px;
+          text-align: center;
+          line-height: 1;
+          white-space: nowrap;
+          vertical-align: middle;
+          font-size: 13px;
+
+          &._td-link {
+            text-align: start;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            a {
+              font-family: $font-medium;
+              font-size: 15px;
+              line-height: 1;
+              color: $text-color-dark-blue;
+              padding: 0;
+
+              &:hover {
+                color: $mainBlueColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 .card__title {
   font-family: $font-medium;
@@ -1218,7 +1237,83 @@ footer {
   color: $text-color-dark-blue;
   padding: 15px 20px;
   border-bottom: 1px solid $border-color-primary;
+
+  &.with-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
 }
+
+.card__default {
+  padding: 15px;
+  @include card-defaults;
+}
+table.table--primary {
+  color: $textColor;
+  margin: 0;
+
+  thead {
+    border: none;
+
+    tr {
+
+      th {
+        font-size: 15px;
+        font-family: $font-medium;
+        color: #fff;
+        background-color: $mainBlueColor;
+        padding: 14px 10px;
+        white-space: nowrap;
+        text-align: center;
+        border: none;
+
+        &:first-of-type {
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  tbody {
+
+    tr {
+
+      td {
+        font-size: 13px;
+        text-align: center;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid $border-color-primary;
+        vertical-align: middle;
+        white-space: nowrap;
+
+        &:first-of-type {
+          text-align: start;
+        }
+
+        ._row-text-medium {
+          font-family: $font-medium;
+          color: $text-color-dark-blue;
+        }
+        ._row-text-small {
+          font-size: 10px;
+        }
+
+        &._cta-container {
+          padding: 3px 10px;
+
+          .btn {
+            padding: 3px 10px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 
 /**
@@ -1314,4 +1409,11 @@ footer {
 
 .text-start {
   text-align: start !important;
+}
+
+
+
+
+.mb-30 {
+  margin-bottom: 30px !important;
 }

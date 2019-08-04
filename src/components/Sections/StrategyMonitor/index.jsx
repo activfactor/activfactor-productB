@@ -44,16 +44,25 @@ class StrategyMonitor extends Component{
         if (this.props.strategyMonitor.strategyName){
             if (this.props.strategyMonitor.data){
                 return (
-                    <main className={classes.container}>
+                    <div className="strategy-monitor_container">
+
                         {this.renderAction()}
-                        <div className={classes.header__text}>Last update {this.props.strategyMonitor.data.last_update}</div>
+
+                        <div className="main_breadcrumb">
+                            <div>Last update {this.props.strategyMonitor.data.last_update}</div>
+                        </div>
+
                         <Header />
+
                         <Charts />
+
                         <Table />
+
                         <div className={classes.input}>
                             <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show:true})} type="submit" value="Delete this strategy" />
                         </div>
-                    </main>
+
+                    </div>
                 );
             } else {
                 return (

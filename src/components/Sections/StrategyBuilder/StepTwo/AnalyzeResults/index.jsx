@@ -54,7 +54,7 @@ class AnalyzeResults extends Component {
           <div className="section__title">Performance</div>
           <p>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
 
-          <div className="analyze-results_card-row">
+          <div className="charts-card-container">
             <div className="col-sm-6 col-md-4 _card-row-item">
               <PieGraph
                 header="Sectors"

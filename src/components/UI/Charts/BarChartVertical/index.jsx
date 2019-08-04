@@ -42,7 +42,7 @@ class BarChart extends Component {
 
   render() {
     return (
-      <div className="analyze-result-card">
+      <div className="charts-card-item">
         <Header header={this.props.header} />
         <div className="_card-body">
           <Chart

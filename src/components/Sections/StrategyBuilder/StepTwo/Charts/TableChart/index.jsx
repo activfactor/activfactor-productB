@@ -6,7 +6,7 @@ class TableChart extends Component {
 
   render() {
     return (
-      <div className="analyze-result-table">
+      <div className="card-table">
         <div className="table-responsive">
           <table className="table table-borderless ">
             <thead className={classes.table__header}>

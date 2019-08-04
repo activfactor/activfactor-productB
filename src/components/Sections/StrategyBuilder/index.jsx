@@ -76,7 +76,7 @@ class StrategyBuilder extends Component{
     renderHeaders = () => {
         if (this.state.BuildStrategy){
             return (
-                <div className="strategy-builder_breadcrumb">
+                <div className="main_breadcrumb">
                     <div>{`Last Update ${this.props.data.last_update}`}</div>
                     <div>{`Next Update ${this.props.data.next_update}`}</div>
                 </div>

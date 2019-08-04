@@ -401,6 +401,30 @@ footer {
   }
 }
 
+.main_breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+  padding-left: 15px;
+
+  > div {
+    color: $secondBlueColor;
+    font-family: $font-regular;
+    font-size: 0.9rem;
+    @media (max-width: 575.98px) {
+      font-size: 0.8rem;
+    }
+
+    &:last-of-type {
+      color: $mainBlueColor;
+      margin-left: 15px;
+    }
+  }
+}
+
+
+
+
 
 /*********************
 ***** =Dashboard *****
@@ -452,6 +476,7 @@ footer {
         font-size: 24px;
       }
     }
+
   }
 
   &_top-content {
@@ -573,6 +598,11 @@ footer {
     }
 
     ._strategy-list-item {
+      ._text-bold {
+        font-family: $font-medium;
+        font-size: 15px;
+        color: $mainBlueColor;
+      }
       ._btn-list-item {
         font-family: $font-medium;
         font-size: 15px;
@@ -657,6 +687,10 @@ footer {
 }
 
 
+
+
+
+
 /****************************
 ***** =Strategy Builder *****
 */
@@ -668,26 +702,7 @@ footer {
     margin-bottom: 30px;
   }
 
-  &_breadcrumb {
-    display: flex;
-    align-items: center;
-    margin-bottom: 13px;
-    padding-left: 15px;
 
-    > div {
-      color: $secondBlueColor;
-      font-family: $font-regular;
-      font-size: 0.9rem;
-      @media (max-width: 575.98px) {
-        font-size: 0.8rem;
-      }
-
-      &:last-of-type {
-        color: $mainBlueColor;
-        margin-left: 15px;
-      }
-    }
-  }
 
   &_header {
     display: grid;
@@ -800,6 +815,27 @@ footer {
   }
 }
 
+
+
+
+
+
+
+/****************************
+***** =Strategy Monitor *****
+*/
+.strategy-monitor {
+
+  &_container {
+    padding: 15px;
+    @include clearfix;
+  }
+
+  &_charts {
+    @include make-row;
+    margin-bottom: 30px;
+  }
+}
 
 .factors-container {
   margin-bottom: 30px;
@@ -1019,25 +1055,23 @@ footer {
   }
 }
 
-.analyze-results {
+.charts-card-container {
+  @include make-row;
+  margin-bottom: 30px;
 
-  &_card-row {
-    @include make-row;
+  ._card-row-item {
     margin-bottom: 30px;
+  }
 
-    ._card-row-item {
-      margin-bottom: 30px;
-    }
-
-    .table-responsive {
-      margin: 0;
-      height: 100%;
-    }
+  .table-responsive {
+    margin: 0;
+    height: 100%;
   }
 }
 
-.analyze-result-card {
+.charts-card-item {
   width: 100%;
+  background: #ffffff;
   border-radius: 4px;
   box-shadow: $box-shadow;
   overflow: hidden;
@@ -1049,7 +1083,7 @@ footer {
   }
 }
 
-.analyze-result-table {
+.card-table {
   height: 100%;
   width: 100%;
   border-radius: 4px;

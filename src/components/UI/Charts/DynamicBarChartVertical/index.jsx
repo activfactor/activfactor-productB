@@ -46,7 +46,8 @@ class BarChart extends Component {
     return (
       <div className="col-4">
         <div className={`${classes.container}`}>
-          <Header header={this.props.header}>
+
+          <Header header={this.props.header} nameOfClass="with-select">
             <DropDown
               value={this.props.option}
               color="blue"
@@ -57,13 +58,14 @@ class BarChart extends Component {
               <option value="mtd">MTD</option>
             </DropDown>
           </Header>
+
           <div className={classes.chartcontainer}>
             <Chart
               pattern={"#%"}
               width={"95%"}
               height={"95%"}
               chartType="BarChart"
-              loader={<Spinner color="black" />}
+              loader={<Spinner color="white" />}
               data={this.getData(this.props.factor)}
               options={{
                 // Material design options

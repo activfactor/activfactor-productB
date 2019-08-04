@@ -2,8 +2,8 @@ import React from 'react';
 
 const functionName = props => {
     return (
-        <div className="_card-header">
-          <div>{props.header}</div>
+        <div className="card__title">
+          <div className="_header-title">{props.header}</div>
           {props.children}
         </div>
     );

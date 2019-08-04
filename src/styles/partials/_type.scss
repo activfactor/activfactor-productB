@@ -3,6 +3,12 @@
   //margin-bottom: 1rem;
 }
 
+.section__title {
+  font-family: $font-medium;
+  font-size: 18px;
+  color: $text-color-dark-blue;
+}
+
 .section-title {
 
   &_h3 {

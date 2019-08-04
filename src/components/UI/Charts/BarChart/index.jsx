@@ -36,7 +36,7 @@ class BarChart extends Component {
               width={"95%"}
               height={"95%"}
               chartType="ColumnChart"
-              loader={<Spinner color="black" />}
+              loader={<Spinner color="white" />}
               data={this.getData(this.props.strategy, this.props.benchmark)}
               options={{
                 // Material design options

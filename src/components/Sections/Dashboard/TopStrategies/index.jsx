@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import classes from "./index.module.scss";
+// import classes from "./index.module.scss";
 import Header from "../../../UI/Header";
 import DropDown from "../../../UI/DropDown";
 import Link from "../../../UI/Link";
@@ -28,9 +28,9 @@ class Table extends Component {
           ? this.props.data.CAN
           : this.props.data.USA;
       return (
-        <table>
+        <table className="table table-hover table-borderless">
           <thead>
-            <tr className={classes.tbl_row}>
+            <tr>
               <th />
               <th>1 month</th>
               <th>3 months</th>
@@ -48,8 +48,8 @@ class Table extends Component {
           <tbody>
             {Object.keys(data).map((item, index) => {
               return (
-                <tr className={classes.tbl_row} key={index}>
-                  <td key={index}>
+                <tr key={index}>
+                  <td className="_td-link" key={index}>
                     <Link
                       to="/strategy-builder"
                       onClick={() => this.buildStrategy(item)}
@@ -60,8 +60,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["1_month"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["1_month"]}%
@@ -69,8 +69,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["3_months"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["3_months"]}%
@@ -78,8 +78,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["6_months"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["6_months"]}%
@@ -87,8 +87,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["year_to_date"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["year_to_date"]}%
@@ -96,18 +96,18 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["1_year_annualized_return"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["1_year_annualized_return"]}%
                   </td>
-                  {/* <td className={data[item]["2_years_annualized_return"] > 0 ? classes.success : classes.warning}>{data[item]["2_years_annualized_return"]}%</td> */}
+                  {/* <td className={data[item]["2_years_annualized_return"] > 0 ? 'text-primary : 'text-danger}>{data[item]["2_years_annualized_return"]}%</td> */}
                   <td
                     className={
                       data[item]["3_years_total_return"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["3_years_total_return"]}%
@@ -115,8 +115,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["5_years_total_return"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["5_years_total_return"]}%
@@ -124,8 +124,8 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["7_years_total_return"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["7_years_total_return"]}%
@@ -133,13 +133,13 @@ class Table extends Component {
                   <td
                     className={
                       data[item]["10_years_total_return"] > 0
-                        ? classes.success
-                        : classes.warning
+                        ? 'text-primary'
+                        : 'text-danger'
                     }
                   >
                     {data[item]["10_years_total_return"]}%
                   </td>
-                  {/* <td className={data[item]["since_2008"] > 0 ? classes.success : classes.warning}>{data[item]["since_2008"]}%</td> */}
+                  {/* <td className={data[item]["since_2008"] > 0 ? 'text-primary : 'text-danger}>{data[item]["since_2008"]}%</td> */}
                 </tr>
               );
             })}
@@ -151,18 +151,24 @@ class Table extends Component {
 
   render() {
     return (
-      <div className={classes.container}>
+      <div className="dashboard_top-strategies">
         <Header header="Top Strategies">
-          <DropDown
-            value={this.props.country}
-            color="blue"
-            DropDownChangeHandler={this.props.countryChangeHandler}
-          >
-            <option value="USA">USA</option>
-            <option value="CAN">CAN</option>
-          </DropDown>
-        </Header>
-        <div className={classes.tbl}>{this.renderTable()}</div>
+
+        <DropDown
+          value={this.props.country}
+          color="blue"
+          DropDownChangeHandler={this.props.countryChangeHandler}
+        >
+          <option value="USA">USA</option>
+          <option value="CAN">CAN</option>
+        </DropDown>
+      </Header>
+
+        <div className="table-top-strategies">
+          <div className="table-responsive">
+            {this.renderTable()}
+          </div>
+        </div>
       </div>
     );
   }

@@ -51,30 +51,30 @@ class AnalyzeResults extends Component {
       return (
         <div className="strategy-builder_analyze-results">
 
-          <div className="strategy-builder_section-title">Performance</div>
+          <div className="section__title">Performance</div>
           <p>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
 
           <div className="analyze-results_card-row">
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <PieGraph
                 header="Sectors"
                 data={this.props.data.sector_allocation}
               />
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <PieGraph
                 header="Firm size"
                 data={this.props.data.firm_size_allocation}
               />
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <BarChartVertical
                 header="Factor Intensity"
                 factor={this.props.data.factor_intensity}
                 chartName="Factor intensity"
               />
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <LineGraph
                 header="Historical Performance"
                 strategy={this.props.data.culmulative_return_strategy}
@@ -82,7 +82,7 @@ class AnalyzeResults extends Component {
                 benchmark_name={this.props.data.benchmark}
                 chartName="Historical Performance"/>
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <BarChart
                 header="Annual Return"
                 strategy={this.props.data.annual_return_strategy}
@@ -91,7 +91,7 @@ class AnalyzeResults extends Component {
                 chartName="Annual Return"
               />
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <AreaChart
                 header="Drawdown"
                 strategy={this.props.data.drawdown_strategy}
@@ -99,7 +99,7 @@ class AnalyzeResults extends Component {
                 benchmark_name={this.props.data.benchmark}
                 chartName="Drawdown"/>
             </div>
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <Table
                 strategy={this.props.data.return_strategy}
                 benchmark={this.props.data.return_benchmark}
@@ -107,7 +107,7 @@ class AnalyzeResults extends Component {
                 tableName="Return"/>
             </div>
 
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <Table
                 strategy={this.props.data.metrics_strategy}
                 benchmark={this.props.data.metrics_benchmark}
@@ -115,7 +115,7 @@ class AnalyzeResults extends Component {
                 tableName="Metrics"/>
             </div>
 
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-4 _card-row-item">
               <Table
                 strategy={this.props.data.risk_strategy}
                 benchmark={this.props.data.risk_benchmark}

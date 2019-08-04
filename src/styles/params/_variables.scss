@@ -29,7 +29,7 @@ $activeColor: rgb(0, 157, 255);
 $doneColor: rgb(97, 195, 255);
 
 
-
+$border-radius: 4px;
 
 
 @mixin clearfix() {
@@ -40,21 +40,31 @@ $doneColor: rgb(97, 195, 255);
   }
 }
 
+@mixin card-defaults() {
+  background-color: #fff;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
 @mixin formControl-caret() {
   position: relative;
 
+  .form-control {
+    padding-right: 25px;
+    min-width: 150px;
+    border-color: rgba($form-control-background, 0.17);
+  }
   &:after {
-    content: "";
-    position: absolute;
     display: block;
+    position: absolute;
+    top: calc(50% - 2px);
     right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid $form-control-caret;
+    content: '';
+    border: solid $form-control-caret;
+    border-width: 0 2px 2px 0;
+    padding: 2.5px;
+    transform: translateY(-50%) rotate(45deg);
+    -webkit-transform: translateY(-50%) rotate(45deg);
     z-index: 1;
   }
 }

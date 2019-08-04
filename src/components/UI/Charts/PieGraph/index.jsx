@@ -21,7 +21,7 @@ class Graph extends Component {
               width={"100%"}
               height={"100%"}
               chartType="PieChart"
-              loader={<Spinner color="black" />}
+              loader={<Spinner color="white" />}
               data={this.getData(this.props.data)}
               options={{
                 pieHole: 0.5,

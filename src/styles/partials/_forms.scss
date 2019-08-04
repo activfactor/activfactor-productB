@@ -37,6 +37,28 @@ $grid-gutter: 15px;
   }
 }
 
+.form-control-select {
+  position: relative;
+  @include formControl-caret;
+
+  &._blue {
+
+    .form-control {
+      color: $mainBlueColor;
+      background-color: rgba($mainBlueColor, 0.15);
+      border-color: rgba($mainBlueColor, 0.1);
+    }
+
+    &::after {
+      border-color: $mainBlueColor;
+    }
+  }
+  &._black {
+
+  }
+
+}
+
 
 .form-control.is-invalid,
 .was-validated .form-control:invalid {

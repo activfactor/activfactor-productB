@@ -402,6 +402,261 @@ footer {
 }
 
 
+/*********************
+***** =Dashboard *****
+*/
+.dashboard {
+
+  &_container {
+    padding: 15px;
+    margin-bottom: 80px;
+    @include clearfix;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    @include card-defaults;
+
+    @media (max-width: 767.98px) {
+      padding: 10px 15px;
+    }
+  }
+
+  &_header-item {
+    line-height: 1;
+    text-align: center;
+
+
+    ._header-item-title {
+      margin-bottom: 12px;
+      @media (max-width: 767.98px) {
+        font-size: 13px;
+      }
+      @media (max-width: 575.98px) {
+        font-size: 12px;
+      }
+    }
+
+    ._header-item-value {
+      color: $text-color-dark-blue;
+      font-size: 32px;
+      line-height: 0.9;
+      @media (max-width: 767.98px) {
+        font-size: 28px;
+      }
+      @media (max-width: 575.98px) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &_top-content {
+    @include make-row;
+  }
+
+  &_top-strategies {
+    @include card-defaults;
+    @media (max-width: 767.98px) {
+      margin-bottom: 15px;
+    }
+
+    .card__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+
+      ._header-title {
+        font-size: 18px;
+
+        @media (max-width: 1199.98px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  &_broker-panel {
+    @include card-defaults;
+
+    .card__title {
+
+      ._header-title {
+        font-size: 18px;
+        @media (max-width: 1199.98px) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    ._panel-body {
+      padding: 20px;
+      text-align: center;
+      @media (max-width: 1199.98px) {
+        padding: 10px;
+      }
+      @media (max-width: 575.98px) {
+        padding: 15px 50px;
+      }
+    }
+
+    ._text-title {
+      font-size: 18px;
+      color: $text-color-dark-blue;
+      margin-bottom: 5px;
+      @media (max-width: 1199.98px) {
+        font-size: 14px;
+      }
+      @media (max-width: 767.98px) {
+        font-size: 16px;
+      }
+    }
+
+    ._text-body {
+      font-size: 15px;
+      margin-bottom: 15px;
+      @media (max-width: 1199.98px) {
+        font-size: 13px;
+      }
+    }
+
+    ._btn-block {
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+
+        @media (max-width: 1199.98px) {
+          font-size: 13px;
+        }
+        @media (max-width: 575.98px) {
+          width: auto;
+          min-width: 200px;
+          margin: 8px auto 0;
+        }
+      }
+    }
+  }
+
+  &_title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 5px;
+    margin-top: 15px;
+
+    .section__title {
+      font-family: $font-medium;
+    }
+
+    .btn {
+      font-size: 15px;
+      font-family: $font-medium;
+    }
+  }
+
+  &_strategy-list {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    @include card-defaults;
+
+    @media (max-width: 767.98px) {
+      padding: 10px;
+    }
+
+    ._strategy-list-item {
+      ._btn-list-item {
+        font-family: $font-medium;
+        font-size: 15px;
+        line-height: 1;
+        color: $mainBlueColor;
+        padding: 0;
+        @media (max-width: 767.98px) {
+          font-size: 14px;
+        }
+      }
+
+      ._header-item-value {
+        @media (max-width: 767.98px) {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  &_btn-container {
+    margin-top: 30px;
+    text-align: center;
+
+    @media (max-width: 575.98px) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.table-top-strategies {
+
+  table.table {
+    margin: 0;
+
+    thead {
+
+      tr {
+        border-bottom: 1px solid $border-color-primary;
+
+        th {
+          font-family: $font-medium;
+          font-size: 12px;
+          padding: 18px 10px;
+          text-align: center;
+          line-height: 1;
+          white-space: nowrap;
+          color: $text-color-dark-blue;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $border-color-primary;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 15px 10px;
+          text-align: center;
+          line-height: 1;
+          white-space: nowrap;
+          vertical-align: middle;
+          font-size: 13px;
+
+          &._td-link {
+
+            a {
+              font-family: $font-medium;
+              font-size: 15px;
+              line-height: 1;
+              color: $text-color-dark-blue;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 /****************************
 ***** =Strategy Builder *****
 */
@@ -770,6 +1025,10 @@ footer {
     @include make-row;
     margin-bottom: 30px;
 
+    ._card-row-item {
+      margin-bottom: 30px;
+    }
+
     .table-responsive {
       margin: 0;
       height: 100%;
@@ -782,29 +1041,26 @@ footer {
   border-radius: 4px;
   box-shadow: $box-shadow;
   overflow: hidden;
-  margin-bottom: 30px;
-
-  ._card-header {
-    font-family: $font-medium;
-    font-size: 15px;
-    color: $text-color-dark-blue;
-    padding: 15px 20px;
-    border-bottom: 1px solid $border-color-primary;
-  }
+  margin: 0;
 
   ._card-body {
+    position: relative;
     padding: 20px;
   }
 }
 
 .analyze-result-table {
+  height: 100%;
   width: 100%;
   border-radius: 4px;
   box-shadow: $box-shadow;
-  margin-bottom: 30px;
+  margin: 0;
+  @media (max-width: 575.98px) {
+    height: auto;
+  }
 
   .table-responsive {
-    max-height: 370px;
+    max-height: 400px;
     overflow-y: auto;
 
     @media (max-width: 575.98px) {
@@ -812,52 +1068,63 @@ footer {
     }
   }
 
-  thead {
+  .table {
     margin: 0;
-    padding: 0;
-    border: 0;
 
-    tr {
-      border-bottom: 1px solid $border-color-primary;
+    thead {
+      margin: 0;
+      padding: 0;
+      border: 0;
 
-      th {
-        font-family: $font-medium;
-        color: $text-color-dark-blue;
-        font-size: 15px;
-        padding: 15px 20px;
-        white-space: nowrap;
-      }
-    }
-  }
+      tr {
+        border-bottom: 1px solid $border-color-primary;
 
-  tbody {
-    tr {
-      td {
-        color: $text-color-dark-blue;
-        padding: 12px 20px 0;
-        white-space: nowrap;
-
-        &._row-name {
-          font-size: 13px;
+        th {
           font-family: $font-medium;
+          color: $text-color-dark-blue;
+          font-size: 15px;
+          padding: 15px 20px;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:last-of-type {
+          td {
+            padding: 12px 20px;
+          }
         }
 
-        &._td-benchmark,
-        &._td-strategy {
-          text-align: center;
-          font-size: 12px;
+        td {
+          color: $text-color-dark-blue;
+          padding: 12px 20px 0;
+          white-space: nowrap;
 
-          &._success {
-            color: $mainBlueColor;
+          &._row-name {
+            font-size: 13px;
+            font-family: $font-medium;
           }
 
-          &._warning {
-            color: $redColor;
+          &._td-benchmark,
+          &._td-strategy {
+            text-align: center;
+            font-size: 12px;
+
+            &._success {
+              color: $mainBlueColor;
+            }
+
+            &._warning {
+              color: $redColor;
+            }
           }
         }
       }
     }
   }
+
 }
 
 .table-customized-portfolio {
@@ -867,6 +1134,7 @@ footer {
   .table-responsive {
     border-radius: 4px;
   }
+
   .table {
     margin: 0;
     white-space: nowrap;
@@ -884,6 +1152,7 @@ footer {
         }
       }
     }
+
     tbody {
       tr {
         border-bottom: 1px solid $border-color-primary;
@@ -891,6 +1160,7 @@ footer {
         &:first-of-type {
           border-bottom: none;
         }
+
         td {
           text-align: center;
           font-size: 13px;
@@ -908,24 +1178,13 @@ footer {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.card__title {
+  font-family: $font-medium;
+  font-size: 15px;
+  color: $text-color-dark-blue;
+  padding: 15px 20px;
+  border-bottom: 1px solid $border-color-primary;
+}
 
 
 /**
@@ -1000,17 +1259,17 @@ footer {
 }
 
 
-
-
 /**
  * =Utility Classes
  */
 .text-danger {
   color: $redColor !important;
 }
+
 .text-primary {
   color: $mainBlueColor !important;
 }
+
 .text-dark {
   color: $text-color-darker !important;
 }
@@ -1018,6 +1277,7 @@ footer {
 .text-medium {
   font-family: $font-medium;
 }
+
 .text-start {
   text-align: start !important;
 }

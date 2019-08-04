@@ -73,7 +73,7 @@ class SBCurrentTracker extends Component {
 
         {this.renderModal()}
 
-        <div className="strategy-builder_section-title">Current Stocks</div>
+        <div className="section__title">Current Stocks</div>
         <p>This list is updated the last date of the month.</p>
 
         <div className="table-customized-portfolio">

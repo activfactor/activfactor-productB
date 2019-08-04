@@ -1,21 +1,21 @@
-@import '../../../../styles/params/variables';
-.container{
-    background-color: $whiteColor;
-    box-shadow: 2px 2px 10px rgba(209, 209, 209, 0.445);
-    border-radius: 2px;
-    height: 380px;
-    .subject{
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-    .body{
-        color: $textColor;
-        font-size: 1.2rem;
-    }
-    .content{
-        display: grid;
-        justify-content: center;
-        text-align: center;
-        padding: 2rem;
-    }
-}
+//@import '../../../../styles/params/variables';
+//.container{
+//    background-color: $whiteColor;
+//    box-shadow: 2px 2px 10px rgba(209, 209, 209, 0.445);
+//    border-radius: 2px;
+//    height: 380px;
+//    .subject{
+//        font-weight: bold;
+//        font-size: 1.5rem;
+//    }
+//    .body{
+//        color: $textColor;
+//        font-size: 1.2rem;
+//    }
+//    .content{
+//        display: grid;
+//        justify-content: center;
+//        text-align: center;
+//        padding: 2rem;
+//    }
+//}

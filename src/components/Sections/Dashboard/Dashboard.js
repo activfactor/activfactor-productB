@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import requireAuth from "../../hoc/requireAuth";
-import classes from "./Dashboard.module.scss";
+// import classes from "./Dashboard.module.scss";
 import { connect } from 'react-redux';
 import { getDashboard, resetDashboard, updateCuntry } from '../../../actions/dashboard';
 import Table from './TopStrategies';
@@ -44,21 +44,34 @@ class Dashboard extends Component {
     renderContent(){
       if(this.props.data.CAN){
         return (
-              <main className={classes.container}>
-            <Header />
-            <div className={classes.table}>
-              <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
-              <BrokerPanel />
+          <div className="dashboard_container">
+
+            <Header/>
+
+            <div className="dashboard_top-content">
+
+              <div className="col-md-9">
+                <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
+              </div>
+
+              <div className="col-md-3 col-sm-6">
+                <BrokerPanel/>
+              </div>
             </div>
-            <div className={classes.strategies_headercontainer}>
-              <div>My strategies</div>
+
+            <div className="dashboard_title-container">
+              <div className="section__title">My strategies</div>
               <Link to="/#">View all</Link>
             </div>
-            <StrategiesList />
-            <div className={classes.build_btn}>
-              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy" onClick={this.BuildStrategy} />
+
+            <StrategiesList/>
+
+            <div className="dashboard_btn-container">
+              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"
+                     onClick={this.BuildStrategy}/>
             </div>
-          </main> 
+
+          </div>
         )
       } else {
         return (

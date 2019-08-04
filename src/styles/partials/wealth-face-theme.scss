@@ -405,13 +405,13 @@ footer {
   display: flex;
   align-items: center;
   margin-bottom: 13px;
-  margin-right: 15px;
   padding-left: 15px;
 
   > div {
     color: $secondBlueColor;
     font-family: $font-regular;
     font-size: 0.9rem;
+    margin-right: 15px;
     @media (max-width: 575.98px) {
       font-size: 0.8rem;
     }
@@ -664,15 +664,9 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
-    padding: 15px 70px 17px;
+    padding: 15px;
     background: #fff;
     border-bottom: 1px solid $border-color-primary;
-    @media (max-width: 991.98px) {
-      padding: 15px 30px 17px;
-    }
-    @media (max-width: 767.98px) {
-      padding: 15px;
-    }
     @media (max-width: 575.98px) {
       grid-gap: 0;
       padding: 10px 0 0 0;
@@ -708,10 +702,7 @@ footer {
 
   &_build-strategy {
     background-color: #fff;
-    padding: 20px 70px;
-    @media (max-width: 991.98px) {
-      padding: 20px 30px;
-    }
+    padding: 20px 15px;
     @media (max-width: 767.98px) {
       padding: 15px;
     }
@@ -719,10 +710,7 @@ footer {
 
   &_analyze-results {
     background-color: #fff;
-    padding: 20px 70px;
-    @media (max-width: 991.98px) {
-      padding: 20px 30px;
-    }
+    padding: 20px 15px;
     @media (max-width: 767.98px) {
       padding: 15px;
     }
@@ -730,11 +718,7 @@ footer {
 
   &_customized-portfolio {
     background-color: #fff;
-    padding: 20px 70px;
-
-    @media (max-width: 991.98px) {
-      padding: 20px 30px;
-    }
+    padding: 20px 15px;
     @media (max-width: 767.98px) {
       padding: 15px;
     }

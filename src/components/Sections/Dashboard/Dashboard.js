@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import requireAuth from "../../hoc/requireAuth";
-// import classes from "./Dashboard.module.scss";
 import { connect } from 'react-redux';
 import { getDashboard, resetDashboard, updateCuntry } from '../../../actions/dashboard';
 import Table from './TopStrategies';
 import Header from './Header';
 import BrokerPanel from './BrokerPanel';
 import StrategiesList from './StrategiesList';
+import WatchLists from './WatchLists';
 import Link from '../../UI/Link';
 import Spinner from '../../UI/Spinner';
-// import Modal from '../../UI/Modal';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
@@ -65,6 +64,13 @@ class Dashboard extends Component {
             </div>
 
             <StrategiesList/>
+
+            <div className="dashboard_title-container">
+              <div className="section__title">My Wath List</div>
+              <Link to="/#">View all</Link>
+            </div>
+
+            <WatchLists />
 
             <div className="dashboard_btn-container">
               <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"

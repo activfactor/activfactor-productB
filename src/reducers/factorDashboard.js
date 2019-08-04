@@ -10,6 +10,7 @@ export default (state = {}, action) => {
                 user_strategies: action.payload.data.User_strategy_performance,
                 parameters: action.payload.data.Base_strategy_parameters.monthly,
                 definition: action.payload.data.definition,
+                watchlist: action.payload.data.User_watchlist_performance,
                 country: action.payload.country
             }
         case UPDATE_COUNTRY:

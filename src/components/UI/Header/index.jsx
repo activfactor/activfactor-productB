@@ -1,6 +1,6 @@
 import React from 'react';
 
-const functionName = props => {
+const header = props => {
     return (
         <div className={`card__title ${props.nameOfClass ? props.nameOfClass : ''}`}>
           <div className="_header-title">{props.header}</div>
@@ -9,4 +9,4 @@ const functionName = props => {
     );
 };
 
-export default functionName;
+export default header;

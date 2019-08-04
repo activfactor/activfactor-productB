@@ -1,9 +1,9 @@
 import React,{ Component } from 'react';
 import classes from './index.module.scss';
 import { connect } from 'react-redux';
-import Modal from '../../../../UI/Modal';
+import Backdrop from '../../../../UI/BackDrop';
 import Spinner from '../../../../UI/Spinner/SpinnerButton';
-import Message from '../../../../UI/Message';
+import Modal from '../../../../UI/Modal';
 import { resetQuery,resetFactorScreener } from '../../../../../actions/strategyBuilder';
 
 
@@ -37,18 +37,18 @@ class SBCurrentTracker extends Component {
         responseMessage=this.props.error_saving_message;
       }
       return (
-        <Message>
+        <Modal>
           <div className={classes.message_body}>
             <div className={`${this.props.saving_message ? 'text-success' : 'text-danger'} ${classes.message_text}`}>{responseMessage}</div>
             <span className={classes.message_btn_container}>
                 <button className="btn btn-primary" onClick={this.props.DismissMessage}>OK</button>
             </span>
           </div>
-        </Message>
+        </Modal>
       );
     } else if (this.props.show){
       return (
-        <Modal onDismiss={this.props.cancelModal} nameOfClass="with_white_background">
+        <Backdrop onDismiss={this.props.cancelModal} nameOfClass="with_white_background">
           <div className={classes.modal_content}>
             <div className={classes.modal_header}>Saving the strategy</div>
             <div className="">
@@ -60,7 +60,7 @@ class SBCurrentTracker extends Component {
               </div>
             </div>
           </div>
-        </Modal>
+        </Backdrop>
       );
     } else {
       return <div></div>;

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class Header extends Component {
   getValue = value => {
-    if (value) {
+    if (value || value===0) {
       return value;
     } else {
       return "---";

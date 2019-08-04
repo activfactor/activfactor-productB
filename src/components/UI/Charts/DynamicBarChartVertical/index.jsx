@@ -44,48 +44,46 @@ class BarChart extends Component {
 
   render() {
     return (
-      <div className="col-4">
-        <div className={`${classes.container}`}>
+      <div className="charts-card-item">
 
-          <Header header={this.props.header} nameOfClass="with-select">
-            <DropDown
-              value={this.props.option}
-              color="blue"
-              DropDownChangeHandler={this.props.DropDownChangeHandler}
-            >
-              <option value="1d">1 Day</option>
-              <option value="wtd">WTD</option>
-              <option value="mtd">MTD</option>
-            </DropDown>
-          </Header>
+        <Header header={this.props.header} nameOfClass="with-select">
+          <DropDown
+            value={this.props.option}
+            color="blue"
+            DropDownChangeHandler={this.props.DropDownChangeHandler}
+          >
+            <option value="1d">1 Day</option>
+            <option value="wtd">WTD</option>
+            <option value="mtd">MTD</option>
+          </DropDown>
+        </Header>
 
-          <div className={classes.chartcontainer}>
-            <Chart
-              pattern={"#%"}
-              width={"95%"}
-              height={"95%"}
-              chartType="BarChart"
-              loader={<Spinner color="white" />}
-              data={this.getData(this.props.factor)}
-              options={{
-                // Material design options
-                chartArea: { left: 74, width: "78%", height: "80%" },
-                legend: { position: "none" },
-                bar: { groupWidth: "30%" },
-                animation: {
-                  startup: true,
-                  easing: "out",
-                  duration: 1500
-                },
-                vAxis: {
-                  textStyle: {
-                    fontSize: 11
-                  }
-                },
-                hAxis: { minValue: -1, maxValue: 1 }
-              }}
-            />
-          </div>
+        <div className="_card-body">
+          <Chart
+            pattern={"#%"}
+            width={"95%"}
+            height={"95%"}
+            chartType="BarChart"
+            loader={<Spinner color="white" />}
+            data={this.getData(this.props.factor)}
+            options={{
+              // Material design options
+              chartArea: { left: 74, width: "78%", height: "80%" },
+              legend: { position: "none" },
+              bar: { groupWidth: "30%" },
+              animation: {
+                startup: true,
+                easing: "out",
+                duration: 1500
+              },
+              vAxis: {
+                textStyle: {
+                  fontSize: 11
+                }
+              },
+              hAxis: { minValue: -1, maxValue: 1 }
+            }}
+          />
         </div>
       </div>
     );

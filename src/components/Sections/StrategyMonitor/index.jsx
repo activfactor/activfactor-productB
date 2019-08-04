@@ -58,7 +58,7 @@ class StrategyMonitor extends Component{
 
                         <Table />
 
-                        <div className={classes.input}>
+                        <div className="dashboard_btn-container">
                             <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show:true})} type="submit" value="Delete this strategy" />
                         </div>
 
@@ -66,9 +66,7 @@ class StrategyMonitor extends Component{
                 );
             } else {
                 return (
-                    <BackDrop>
-                        <Spinner color="white" />
-                    </BackDrop>
+                    <Spinner color="white" containerClass="fullScreen" />
                 );
             }
         } else {

@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { getStrategyMonitor, deleteStrategy } from '../../../actions/StrategyMonitor';
-import Modal from '../../UI/Modal';
+import BackDrop from '../../UI/BackDrop';
 import Spinner from '../../UI/Spinner';
 import Header from './Header';
 import classes from './index.module.scss';
@@ -10,7 +10,7 @@ import {  updateLocation } from '../../../actions';
 import Charts from './Charts';
 import Table from './Table';
 import Input from '../../UI/Input';
-import Message from '../../UI/Message';
+import Modal from '../../UI/Modal';
 import MessageModal from './Modal';
 import requireAuth from '../../hoc/requireAuth';
 class StrategyMonitor extends Component{
@@ -28,9 +28,9 @@ class StrategyMonitor extends Component{
     renderAction(){
         if (this.state.show){
             return (
-                <Message onDismiss={() => this.setState({show:false})}>
+                <Modal onDismiss={() => this.setState({show:false})}>
                     <MessageModal isSpinner={this.state.isSpinner} strategyName={this.props.strategyMonitor.strategyName} closeHandler={() => this.setState({show:false})} deleteHandler={this.deleteHandler}/>
-                </Message>
+                </Modal>
             );
         }
     }
@@ -57,9 +57,9 @@ class StrategyMonitor extends Component{
                 );
             } else {
                 return (
-                    <Modal>
+                    <BackDrop>
                         <Spinner color="white" />
-                    </Modal>
+                    </BackDrop>
                 );
             }
         } else {

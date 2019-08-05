@@ -13,7 +13,7 @@ class Header extends Component {
   };
   render() {
     return (
-      <div className="dashboard_strategy-list">
+      <div className={`dashboard_strategy-list ${this.props.nameOfClass}`}>
         <div className="_strategy-list-item">
           <div className="_item-strategy-monitor">
             <div className="_text-bold">{this.props.strategyName}</div>

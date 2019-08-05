@@ -7,6 +7,10 @@
   font-family: $font-medium;
   font-size: 18px;
   color: $text-color-dark-blue;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 .section-title {

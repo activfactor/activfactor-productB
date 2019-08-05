@@ -50,7 +50,7 @@ class StrategyMonitor extends Component{
                             <div>Last update {this.props.strategyMonitor.data.last_update}</div>
                         </div>
 
-                        <Header />
+                        <Header nameOfClass="_make-title-on-small" />
 
                         <Charts />
 

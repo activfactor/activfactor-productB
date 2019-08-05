@@ -10,17 +10,79 @@
     height: 100%;
     overflow: hidden;
     outline: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255,255,255, 0.7);
     transition: opacity .15s linear;
   }
   &__wrapper {
     position: relative;
     width: auto;
     margin: .5rem;
+    @include card-defaults;
+    box-shadow: $box-shadow-2;
 
     @media (min-width: 576px) {
       max-width: 500px;
-      margin: 1.75rem auto;
+      margin: 5rem auto 1rem;
+    }
+  }
+  &__body {
+    padding: 30px 50px;
+
+    .form-control {
+      padding-top: 9px;
+      padding-bottom: 9px;
+    }
+  }
+  &__title {
+    font-family: $font-medium;
+    font-size: 16px;
+    color: $text-color-dark-blue;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  &__response-container {
+
+    ._icon {
+      font-size: 70px;
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+  }
+  &__response-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  &__btn-container {
+    text-align: center;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+    }
+
+    .btn {
+      min-width: 150px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+
+    }
+  }
+  &__btn-spinner {
+    margin: 0 auto;
+    transform: translateZ(0);
+    animation-delay: -0.16s;
+    font-size: 3px;
+
+    > div {
+      margin: 0 auto !important;
+    }
+  }
+  &__active {
+
+    #root {
+      filter: blur(1.5px);
     }
   }
 }

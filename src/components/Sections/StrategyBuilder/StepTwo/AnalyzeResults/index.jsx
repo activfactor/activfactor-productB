@@ -9,8 +9,7 @@ import Table from '../Charts/TableChart';
 import {connect} from 'react-redux';
 import {getFactorScreener, resetFactorScreener} from '../../../../../actions/strategyBuilder';
 import Spinner from '../../../../UI/Spinner';
-// import Modal from '../../../../UI/Modal';
-import Modal from '../../../../UI/Modal';
+import BackDrop from '../../../../UI/BackDrop';
 import requireAuth from '../../../../hoc/requireAuth';
 import Buttons from '../ActionButtons';
 
@@ -23,15 +22,22 @@ class AnalyzeResults extends Component {
     if (this.props.data.message || this.props.data.error) {
       return (
 
-        <section>
-          <Modal>
-            <div className={classes.message_body}>
-              <div className={classes.messageheader}><i
-                className="fas fa-exclamation-triangle"></i> {this.props.data.error || this.props.data.message}</div>
-              <span className={classes.messagespan}>
-                            <button className="btn btn-primary" onClick={this.props.DismissError}>OK</button>
-                        </span>            </div>
-          </Modal>
+        <div>
+
+          <BackDrop>
+            <div className="modal__body">
+
+              <div className="modal__response-text text-danger text-center">
+                <i className="fas fa-exclamation-triangle"></i> {this.props.data.error || this.props.data.message}
+              </div>
+
+              <div className="modal__btn-container">
+                  <button className="btn btn-primary" onClick={this.props.DismissError}>OK</button>
+              </div>
+
+            </div>
+          </BackDrop>
+
           <div className={classes.container}>
             <p>Performance</p>
             <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not
@@ -41,7 +47,8 @@ class AnalyzeResults extends Component {
 
             </div>
           </div>
-        </section>
+
+        </div>
       );
     } else if (!this.props.data.parameters) {
       return (

@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { getStrategyMonitor, deleteStrategy } from '../../../actions/StrategyMonitor';
 import Spinner from '../../UI/Spinner';
 import Header from './Header';
+<<<<<<< HEAD
+=======
+// import classes from './index.module.scss';
+>>>>>>> d4ff8cef0ba485bc4db68794bd4bc93bc744bf6e
 import history from '../../../history';
 import {  updateLocation } from '../../../actions';
 import Charts from './Charts';

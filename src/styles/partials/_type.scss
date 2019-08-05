@@ -25,8 +25,31 @@
   }
 }
 
+
+/**
+ * =Utility Classes
+ */
+.text-primary {
+  color: $mainBlueColor !important;
+}
+.text-danger {
+  color: $redColor !important;
+}
+.text-success {
+  color: $secondBlueColor !important;
+}
+.text-dark {
+  color: $text-color-darker !important;
+}
+
+
+
 .text-medium {
   font-family: $font-medium;
   color: $text-color-dark-primary;
   margin-bottom: 0.5rem;
+}
+
+.text-start {
+  text-align: start !important;
 }

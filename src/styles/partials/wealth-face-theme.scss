@@ -24,7 +24,7 @@ header {
         display: flex;
         align-items: center;
 
-        @media (max-width: 575.98px) {
+        @media (max-width: 576px) {
           display: none;
         }
 
@@ -111,7 +111,7 @@ main {
   border-radius: 4px;
   padding: 40px 30px;
 
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     padding: 25px 15px;
   }
 
@@ -120,7 +120,7 @@ main {
     color: $mainBlueColor;
     font-size: 1.4rem;
     margin-bottom: 1.2rem;
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       font-size: 1.3rem;
     }
   }
@@ -132,7 +132,7 @@ main {
       margin-right: 15px;
       padding-left: 50px;
       padding-right: 50px;
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         padding-left: 35px;
         padding-right: 35px;
       }
@@ -182,7 +182,7 @@ main {
   max-width: 600px;
   margin: 0 auto 0 5%;
 
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     margin: 0;
   }
 
@@ -193,7 +193,7 @@ main {
 
     .form-control {
       max-width: 350px;
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         max-width: none;
       }
     }
@@ -211,7 +211,7 @@ main {
   @media (max-width: 991.98px) {
     padding: 0;
   }
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     display: block;
   }
 
@@ -225,10 +225,10 @@ main {
     @media (max-width: 991.98px) {
       padding: 0 40px 0 10px;
     }
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       padding: 0 30px 0 0px;
     }
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       padding: 0 0 30px 0;
       margin-bottom: 30px;
     }
@@ -245,10 +245,10 @@ main {
     ._btn-container {
       display: flex;
       align-items: center;
-      @media (max-width: 767.98px) {
+      @media (max-width: 768px) {
         display: block;
       }
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         margin-bottom: 0;
       }
 
@@ -257,7 +257,7 @@ main {
           padding-left: 30px;
           padding-right: 30px;
         }
-        @media (max-width: 767.98px) {
+        @media (max-width: 768px) {
           margin-bottom: 15px;
         }
       }
@@ -268,7 +268,7 @@ main {
       grid-template-columns: 1fr 1fr;
       grid-gap: 15px;
 
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         display: block;
       }
     }
@@ -284,7 +284,7 @@ main {
       height: 80%;
       background: $backgroundColor;
 
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         right: auto;
         top: auto;
         bottom: 0;
@@ -301,10 +301,10 @@ main {
     @media (max-width: 991.98px) {
       padding: 0 10px 0 35px;
     }
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       padding: 0 0 0 25px;
     }
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       padding: 0;
     }
 
@@ -341,7 +341,7 @@ footer {
       @media (max-width: 991.98px) {
         padding: 20px;
       }
-      @media (max-width: 767.98px) {
+      @media (max-width: 768px) {
         padding: 15px 15px 13px;
         font-size: 12px;
       }
@@ -367,12 +367,12 @@ footer {
       @media (max-width: 991.98px) {
         margin: 0 20px;
       }
-      @media (max-width: 767.98px) {
+      @media (max-width: 768px) {
         margin: 0 10px;
         padding: 0 5px;
         font-size: 12px;
       }
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         margin: 0 5px;
         padding: 0 1px;
         font-size: 10px;
@@ -390,10 +390,10 @@ footer {
   background: $text-color-dark-blue;
   text-align: center;
   padding: 10px;
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     font-size: 12px;
   }
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     font-size: 10px;
   }
   @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
@@ -412,7 +412,7 @@ footer {
     font-family: $font-regular;
     font-size: 0.9rem;
     margin-right: 15px;
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       font-size: 0.8rem;
     }
 
@@ -436,7 +436,10 @@ footer {
     margin-bottom: 100px;
     @include clearfix;
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 768px) {
+      padding: 15px 10px;
+    }
+    @media (max-width: 576px) {
       margin-bottom: 50px;
     }
   }
@@ -449,8 +452,12 @@ footer {
     margin-bottom: 15px;
     @include card-defaults;
 
-    @media (max-width: 767.98px) {
-      padding: 10px 15px;
+
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
+    @media (max-width: 576px) {
+      padding: 10px 0;
     }
   }
 
@@ -462,16 +469,13 @@ footer {
     ._header-item-title {
       margin-bottom: 15px;
 
+      @media (max-width: 768px) {
+        font-size: 13px;
+      }
+
       &:last-of-type {
         margin-top: 15px;
         margin-bottom: 0;
-      }
-
-      @media (max-width: 767.98px) {
-        font-size: 13px;
-      }
-      @media (max-width: 575.98px) {
-        font-size: 12px;
       }
     }
 
@@ -479,11 +483,12 @@ footer {
       color: $text-color-dark-blue;
       font-size: 32px;
       line-height: 0.9;
-      @media (max-width: 767.98px) {
-        font-size: 28px;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
       }
-      @media (max-width: 575.98px) {
-        font-size: 24px;
+      @media (max-width: 576px) {
+        font-size: 16px;
       }
     }
 
@@ -498,7 +503,7 @@ footer {
 
   &_top-strategies {
     @include card-defaults;
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       margin-bottom: 15px;
     }
 
@@ -508,11 +513,17 @@ footer {
       justify-content: space-between;
       padding: 10px 30px;
 
+      @media (max-width: 768px) {
+        padding: 10px;
+      }
+
       ._header-title {
         font-size: 18px;
-
-        @media (max-width: 1199.98px) {
+        @media (max-width: 768px) {
           font-size: 16px;
+        }
+        @media (max-width: 576px) {
+          font-size: 15px;
         }
       }
     }
@@ -525,8 +536,11 @@ footer {
 
       ._header-title {
         font-size: 18px;
-        @media (max-width: 1199.98px) {
+        @media (max-width: 768px) {
           font-size: 16px;
+        }
+        @media (max-width: 576px) {
+          font-size: 15px;
         }
       }
     }
@@ -537,7 +551,7 @@ footer {
       @media (max-width: 1199.98px) {
         padding: 10px;
       }
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         padding: 15px 50px;
       }
     }
@@ -549,7 +563,7 @@ footer {
       @media (max-width: 1199.98px) {
         font-size: 14px;
       }
-      @media (max-width: 767.98px) {
+      @media (max-width: 768px) {
         font-size: 16px;
       }
     }
@@ -572,7 +586,7 @@ footer {
         @media (max-width: 1199.98px) {
           font-size: 13px;
         }
-        @media (max-width: 575.98px) {
+        @media (max-width: 576px) {
           width: auto;
           min-width: 200px;
           margin: 8px auto 0;
@@ -588,6 +602,10 @@ footer {
     padding: 10px 20px 5px;
     margin-top: 15px;
 
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+
     .section__title {
       font-family: $font-medium;
     }
@@ -595,6 +613,11 @@ footer {
     .btn {
       font-size: 15px;
       font-family: $font-medium;
+
+      @media (max-width: 768px) {
+        font-size: 13px;
+        padding-right: 0;
+      }
     }
   }
 
@@ -606,8 +629,45 @@ footer {
     margin-bottom: 15px;
     @include card-defaults;
 
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       padding: 10px;
+    }
+    @media (max-width: 576px) {
+      padding: 10px 5px;
+      margin-bottom: 10px;
+    }
+
+    &._make-title-on-small {
+
+
+      @media (max-width: 576px) {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0;
+      }
+
+      > div {
+
+        &:first-of-type {
+          @media (max-width: 576px) {
+            width: 100%;
+            padding: 15px 10px;
+            border-bottom: 1px solid $border-color-primary;
+          }
+
+          ._item-strategy-monitor {
+            @media (max-width: 576px) {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
+        &:not(:first-of-type) {
+          flex: 1;
+          padding: 15px 10px;
+        }
+      }
     }
 
     ._strategy-list-item {
@@ -622,14 +682,11 @@ footer {
         line-height: 1;
         color: $mainBlueColor;
         padding: 0;
-        @media (max-width: 767.98px) {
-          font-size: 14px;
+        @media (max-width: 768px) {
+          font-size: 15px;
         }
-      }
-
-      ._header-item-value {
-        @media (max-width: 767.98px) {
-          font-size: 22px;
+        @media (max-width: 576px) {
+          font-size: 14px;
         }
       }
     }
@@ -639,7 +696,7 @@ footer {
     margin-top: 30px;
     text-align: center;
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       margin-top: 20px;
     }
   }
@@ -654,7 +711,7 @@ footer {
   margin-bottom: 100px;
   @include clearfix;
 
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     margin-bottom: 50px;
   }
 
@@ -667,7 +724,7 @@ footer {
     padding: 15px;
     background: #fff;
     border-bottom: 1px solid $border-color-primary;
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       grid-gap: 0;
       padding: 10px 0 0 0;
       border-bottom: 0;
@@ -680,10 +737,10 @@ footer {
       padding-bottom: 5px;
       color: $text-color-dark-primary;
       border-bottom: 3px solid $border-color-dark;
-      @media (max-width: 767.98px) {
+      @media (max-width: 768px) {
         font-size: 16px;
       }
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         font-size: 10px;
         padding-left: 5px;
       }
@@ -703,23 +760,7 @@ footer {
   &_build-strategy {
     background-color: #fff;
     padding: 20px 15px;
-    @media (max-width: 767.98px) {
-      padding: 15px;
-    }
-  }
-
-  &_analyze-results {
-    background-color: #fff;
-    padding: 20px 15px;
-    @media (max-width: 767.98px) {
-      padding: 15px;
-    }
-  }
-
-  &_customized-portfolio {
-    background-color: #fff;
-    padding: 20px 15px;
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       padding: 15px;
     }
   }
@@ -738,13 +779,7 @@ footer {
 
     .btn-link {
 
-      @media (max-width: 575.98px) {
-        padding: 8px;
-      }
-    }
-
-    .btn-primary {
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         padding: 8px 10px;
       }
     }
@@ -766,7 +801,7 @@ footer {
     margin-bottom: 100px;
     @include clearfix;
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       margin-bottom: 50px;
     }
   }
@@ -782,22 +817,22 @@ footer {
 
 .factors-container {
   margin-bottom: 30px;
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     margin-bottom: 20px;
   }
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     margin-bottom: 10px;
   }
 
   &_checkboxes {
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 0 15px;
     }
 
     .checkbox--item {
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         margin-top: 0;
       }
 
@@ -806,13 +841,13 @@ footer {
         .tooltip-container {
 
           ._tooltip-content {
-            @media (max-width: 575.98px) {
+            @media (max-width: 576px) {
               right: -45px;
               left: auto;
             }
 
             &::after {
-              @media (max-width: 575.98px) {
+              @media (max-width: 576px) {
                 top: auto;
                 right: 52px;
                 left: auto;
@@ -834,7 +869,7 @@ footer {
 
   &-container {
     margin-bottom: 30px;
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       margin-bottom: 20px;
     }
   }
@@ -847,7 +882,7 @@ footer {
     @media (max-width: 991.98px) {
       grid-gap: 10px;
     }
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       grid-gap: 5px;
     }
 
@@ -866,7 +901,7 @@ footer {
       @media (max-width: 991.98px) {
         padding: 7px;
       }
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         padding: 5px;
       }
 
@@ -877,21 +912,7 @@ footer {
         color: $text-color-dark-primary;
         line-height: 1.5;
         margin-bottom: 5px;
-        @media (max-width: 575.98px) {
-          font-size: 13px;
-        }
-      }
-
-      ._description {
-        display: block;
-        color: $text-color-dark-primary;
-        line-height: 1.5;
-        font-size: 12px;
-
-        @media (max-width: 991.98px) {
-          font-size: 10px;
-        }
-        @media (max-width: 575.98px) {
+        @media (max-width: 576px) {
           font-size: 9px;
         }
       }
@@ -913,7 +934,7 @@ footer {
 
 .country-step-one-container {
   margin-bottom: 30px;
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     margin-bottom: 20px;
   }
 
@@ -924,7 +945,7 @@ footer {
 
 .nos-step-one-container {
   margin-bottom: 30px;
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     margin-bottom: 20px;
   }
 }
@@ -970,7 +991,7 @@ footer {
 
 .sectors-selector-container {
   margin-bottom: 30px;
-  @media (max-width: 767.98px) {
+  @media (max-width: 768px) {
     margin-bottom: 20px;
   }
 
@@ -1001,8 +1022,15 @@ footer {
   @include make-row;
   margin-top: 30px;
 
+  @media (max-width: 576px) {
+    margin-top: 15px;
+  }
+
   ._card-row-item {
     margin-bottom: 30px;
+    @media (max-width: 576px) {
+      margin-bottom: 15px;
+    }
   }
 
   .table-responsive {
@@ -1031,7 +1059,7 @@ footer {
   border-radius: 4px;
   box-shadow: $box-shadow;
   margin: 0;
-  @media (max-width: 575.98px) {
+  @media (max-width: 576px) {
     height: auto;
   }
 
@@ -1039,7 +1067,7 @@ footer {
     max-height: 400px;
     overflow-y: auto;
 
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       max-height: none;
     }
   }
@@ -1171,6 +1199,9 @@ footer {
           line-height: 1;
           white-space: nowrap;
           color: $text-color-dark-blue;
+          @media (max-width: 768px) {
+            padding: 10px;
+          }
         }
       }
     }
@@ -1190,11 +1221,19 @@ footer {
           white-space: nowrap;
           vertical-align: middle;
           font-size: 13px;
+          @media (max-width: 768px) {
+            padding: 10px;
+          }
 
           &._td-link {
             text-align: start;
             padding-left: 20px;
             padding-right: 20px;
+
+            @media (max-width: 576px) {
+              padding-left: 10px;
+              padding-right: 10px;
+            }
 
             a {
               font-family: $font-medium;
@@ -1202,6 +1241,10 @@ footer {
               line-height: 1;
               color: $text-color-dark-blue;
               padding: 0;
+
+              @media (max-width: 768px) {
+                font-size: 14px;
+              }
 
               &:hover {
                 color: $mainBlueColor;
@@ -1220,6 +1263,9 @@ footer {
   color: $text-color-dark-blue;
   padding: 15px 20px;
   border-bottom: 1px solid $border-color-primary;
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 
   &.with-select {
     display: flex;
@@ -1227,7 +1273,14 @@ footer {
     align-items: center;
     padding: 10px 20px;
   }
+
+  ._header-title {
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
 }
+
 
 .card__default {
   padding: 15px;
@@ -1334,10 +1387,10 @@ table.table--primary {
     transition: opacity 0.7s ease;
     z-index: 10;
 
-    @media (max-width: 767.98px) {
+    @media (max-width: 768px) {
       font-size: 11px;
     }
-    @media (max-width: 575.98px) {
+    @media (max-width: 576px) {
       top: calc(100% + 12px);
       left: -60px;
       transform: translate(0, 0);
@@ -1356,7 +1409,7 @@ table.table--primary {
       border-left: 1px solid darken(#E0F1FB, 10%);
       border-bottom: 1px solid darken(#E0F1FB, 10%);
 
-      @media (max-width: 575.98px) {
+      @media (max-width: 576px) {
         top: auto;
         left: 55px;
         bottom: calc(100% - 6px);

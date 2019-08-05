@@ -53,6 +53,10 @@ $border-radius: 4px;
     padding-right: 25px;
     min-width: 150px;
     border-color: rgba($form-control-background, 0.17);
+
+    @media (max-width: 576px) {
+      min-width: 100px;
+    }
   }
   &:after {
     display: block;

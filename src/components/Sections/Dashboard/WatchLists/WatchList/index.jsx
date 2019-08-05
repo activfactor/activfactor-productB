@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ContentBlock from "../../../../UI/ContentBlock";
 import Header from "../../../../UI/Header";
-import Link from '../../../../UI/Link';
+// import Link from '../../../../UI/Link';
 
 class WatchList extends Component {
   render() {
@@ -11,8 +11,8 @@ class WatchList extends Component {
 
         <div className="dashboard_strategy-list" style={{borderBottom: 'none', boxShadow: 'none'}}>
 
-              <div className="_strategy-list-item">
-                <Link nameOfClass="btn _btn-list-item" to='/strategy-monitor'>{this.props.watchListQty} Tickers</Link>
+              <div style={{fontSize: '1.5rem', color:'black'}}>
+                {this.props.watchListQty} Tickers
               </div>
 
               <div className="_strategy-list-item">
@@ -28,7 +28,7 @@ class WatchList extends Component {
               </div>
 
             </div>
-            <div className="text-primary pl-3">Last Update {this.props.lastUpdate}</div>
+            <div className="_header-item-title pl-3 pb-3">Last Update {this.props.lastUpdate}</div>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import Backdrop from '../../../../UI/BackDrop';
 import Spinner from '../../../../UI/Spinner/SpinnerButton';
 import Modal from '../../../../UI/Modal';
 import { resetQuery,resetFactorScreener } from '../../../../../actions/strategyBuilder';
+import { getClass , getValue } from '../../../../../utils/textFunctions';
 
 
 class SBCurrentTracker extends Component {
@@ -114,42 +115,41 @@ class SBCurrentTracker extends Component {
                       </td>
                       <td
                         data-label="Momentum"
-                        className={this.props.data[row].momentum_rank < 0 ? 'text-danger' : 'text-primary'}
+                        className={getClass(this.props.data[row].momentum_rank)}
                       >
-                        {this.props.data[row].momentum_rank ? this.props.data[row].momentum_rank : "---"}
+                        {getValue(this.props.data[row].momentum_rank)}
                       </td>
                       <td
                         data-label="Value"
-                        className={this.props.data[row].value_rank < 0 ? 'text-danger' : 'text-primary'}>
-                        {this.props.data[row].value_rank ? this.props.data[row].value_rank : "---"}
+                        className={getClass(this.props.data[row].value_rank)}>
+                        {getValue(this.props.data[row].value_rank)}
                       </td>
                       <td
                         data-label="Size"
-                        className={this.props.data[row].size_rank < 0 ? 'text-danger' : 'text-primary'}
+                        className={getClass(this.props.data[row].size_rank)}
                       >
-                        {this.props.data[row].size_rank? this.props.data[row].size_rank : "---"}
+                        {getValue(this.props.data[row].size_rank)}
                       </td>
                       <td
                         data-label="Volatility"
-                        className={this.props.data[row].volatility < 0 ? 'text-danger' : 'text-primary'}
+                        className={getClass(this.props.data[row].volatility)}
                       >
-                        {this.props.data[row].volatility_rank ? this.props.data[row].volatility_rank : "---"}
+                        {getValue(this.props.data[row].volatility_rank)}
                       </td>
                       <td
                         data-label="Investment"
-                        className={this.props.data[row].investment_rank < 0 ? 'text-danger' : 'text-primary'}>
-                        {this.props.data[row].investment_rank ? this.props.data[row].investment_rank : "---"}
+                        className={getClass(this.props.data[row].investment_rank)}>
+                        {getValue(this.props.data[row].investment_rank)}
                       </td>
                       <td
                         data-label="Profitability"
-                        className={this.props.data[row].profitability_rank < 0 ? 'text-danger' : 'text-primary'}>
-                        {this.props.data[row].profitability_rank ? this.props.data[row].profitability_rank : "---"}
+                        className={getClass(this.props.data[row].profitability_rank)}>
+                        {getValue(this.props.data[row].profitability_rank)}
                       </td>
                       <td
                         data-label="Weight"
-                        // className={this.props.data[row]["weight_%"] < 0 ? 'text-danger : 'text-primary}
                       >
-                        {this.props.data[row]["weight_%"] ? this.props.data[row]["weight_%"]+"%" : "---"}
+                        {getValue(this.props.data[row]["weight_%"])}
                       </td>
                     </tr>
                   );

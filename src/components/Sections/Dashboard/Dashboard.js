@@ -65,6 +65,11 @@ class Dashboard extends Component {
 
             <StrategiesList/>
 
+            <div className="dashboard_btn-container">
+              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"
+                     onClick={this.BuildStrategy}/>
+            </div>
+
             <div className="dashboard_title-container">
               <div className="section__title">My Wath List</div>
               <Link to="/#">View all</Link>
@@ -73,9 +78,9 @@ class Dashboard extends Component {
             <WatchLists />
 
             <div className="dashboard_btn-container">
-              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"
-                     onClick={this.BuildStrategy}/>
+              <Input type="submit" nameOfClass="btn btn-primary" value="+ New Watch List" />
             </div>
+
 
           </div>
         )

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ContentBlock from "../../../UI/ContentBlock";
 import { connect } from "react-redux";
-// import classes from './index.module.scss';
+
 
 class Header extends Component {
   getValue = value => {
@@ -23,23 +23,23 @@ class Header extends Component {
           </div>
         </div>
         <ContentBlock
-          number={this.getValue(this.props.data.strategy_perf_1d)}
+          number={this.props.data.strategy_perf_1d}
           unit="%"
-          number2={this.getValue(this.props.data.benchmark_perf_1d)}
+          number2={this.props.data.benchmark_perf_1d}
           unit2="%"
           description="1 Day"
         />
         <ContentBlock
-          number={this.getValue(this.props.data.strategy_perf_wtd)}
+          number={this.props.data.strategy_perf_wtd}
           unit="%"
-          number2={this.getValue(this.props.data.benchmark_perf_wtd)}
+          number2={this.props.data.benchmark_perf_wtd}
           unit2="%"
           description="WTD"
         />
         <ContentBlock
-          number={this.getValue(this.props.data.strategy_perf_mtd)}
+          number={this.props.data.strategy_perf_mtd}
           unit="%"
-          number2={this.getValue(this.props.data.benchmark_perf_mtd)}
+          number2={this.props.data.benchmark_perf_mtd}
           unit2="%"
           description="MTD"
         />

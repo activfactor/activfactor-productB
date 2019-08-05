@@ -25,7 +25,7 @@ class Charts extends Component{
 
             <div className="col-sm-6 col-md-4 _card-row-item">
               <PieGraph
-                header="firm_size"
+                header="Firm Size"
                 data={this.props.data.firm_size_allocation}
               />
             </div>

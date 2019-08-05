@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 
 class Modal extends Component {
   componentDidMount(){
-    document.body.classList.add('backdrop-active');
+    document.body.classList.add('modal__active');
   }
 
   componentWillUnmount(){
-    document.body.classList.remove('backdrop-active');
+    document.body.classList.remove('modal__active');
   }
 
   render(){

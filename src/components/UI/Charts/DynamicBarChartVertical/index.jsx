@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "../index.module.scss";
+// import classes from "../index.module.scss";
 import Spinner from "../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 import { CapString } from "../../../../utils/textFunctions";

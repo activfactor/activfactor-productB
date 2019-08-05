@@ -1,10 +1,9 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { getStrategyMonitor, deleteStrategy } from '../../../actions/StrategyMonitor';
-import BackDrop from '../../UI/BackDrop';
 import Spinner from '../../UI/Spinner';
 import Header from './Header';
-import classes from './index.module.scss';
+// import classes from './index.module.scss';
 import history from '../../../history';
 import {  updateLocation } from '../../../actions';
 import Charts from './Charts';

@@ -3,18 +3,144 @@
     padding: 8px 20px;
     line-height: 1.6;
 }
+
+
 .btn-primary {
     color: #fff;
     background-color: $mainBlueColor;
     border-color: $mainBlueColor;
+
+    &:hover {
+        border-color: $mainBlueColor;
+        background-color: lighten($mainBlueColor, 15%);
+    }
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($mainBlueColor,.3);
+        border-color: darken($mainBlueColor, 5%) !important;
+        background-color: darken($mainBlueColor, 5%) !important;
+    }
+    &.disabled,
+    &:disabled {
+        opacity: 0.6;
+        box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        box-shadow: 0 0 0 0.2rem rgba($mainBlueColor,.3);
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($mainBlueColor,.3);
+        }
+    }
 }
+
+.btn-danger {
+    color: #fff;
+    background-color: $redColor;
+    border-color: $redColor;
+
+    &:hover {
+        border-color: $redColor;
+        background-color: lighten($redColor, 15%);
+    }
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($redColor,.3);
+        border-color: darken($redColor, 5%) !important;
+        background-color: darken($redColor, 5%) !important;
+    }
+    &.disabled,
+    &:disabled {
+        opacity: 0.6;
+        box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        box-shadow: 0 0 0 0.2rem rgba($redColor,.3);
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($redColor,.3);
+        }
+    }
+}
+
+.btn-success {
+    color: #fff;
+    background-color: $secondBlueColor;
+    border-color: $secondBlueColor;
+
+    &:hover {
+        border-color: $secondBlueColor;
+        background-color: lighten($secondBlueColor, 10%);
+    }
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($secondBlueColor,.5);
+        border-color: darken($secondBlueColor, 5%) !important;
+        background-color: darken($secondBlueColor, 5%) !important;
+    }
+    &.disabled,
+    &:disabled {
+        opacity: 0.6;
+        box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        box-shadow: 0 0 0 0.2rem rgba($secondBlueColor,.5);
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($secondBlueColor,.5);
+        }
+    }
+}
+
 .btn-link {
     color: $mainBlueColor;
+
+    &:focus,
+    &.focus {
+        text-decoration: none;
+        box-shadow: none;
+    }
+
+    &:disabled,
+    &.disabled {
+        color: lighten($mainBlueColor, 0.5);
+        pointer-events: none;
+    }
 }
 .btn-outline-primary {
     color: $mainBlueColor;
     border-color: $mainBlueColor;
+
+    &:hover {
+        border-color: $mainBlueColor;
+        background-color: lighten($mainBlueColor, 15%);
+    }
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
+        color: #fff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($mainBlueColor,.3);
+        border-color: darken($mainBlueColor, 5%) !important;
+        background-color: darken($mainBlueColor, 5%) !important;
+    }
 }
 
 
-
+.btn__login {
+    display: inline-flex;
+    align-items: center;
+}

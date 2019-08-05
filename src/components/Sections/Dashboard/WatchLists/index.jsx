@@ -4,10 +4,7 @@ import WatchList from './WatchList';
 
 class WatchLists extends Component{
     renderHandler(){
-        console.log(this.props.data);
-        console.log(this.props.data.constructor);
         if (this.props.data.constructor==={}.constructor){
-            console.log(true);
             const watchLists = this.props.data;
             return Object.keys(watchLists).map((watchlist, index) => {
                 return (

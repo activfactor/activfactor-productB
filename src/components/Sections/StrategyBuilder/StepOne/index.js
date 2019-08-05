@@ -24,10 +24,6 @@ class StepOne extends Component {
     this.props.getDashboard("CAN");
   }
 
-  componentDidUpdate(){
-    console.log(this.state.firm_size);
-  }
-
   componentDidMount(){
     if(this.props.data.country){
       const {country, sectors, factors, n_stock, firm_size} = this.props.data;

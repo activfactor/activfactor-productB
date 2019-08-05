@@ -2,15 +2,34 @@ import React, { Component } from "react";
 import SBCurrentTracker from "./SBCurrentTracker";
 import ActionButtons from "./ActionButtons/index";
 import { connect } from 'react-redux';
-import { saveStrategy } from '../../../../actions/strategyBuilder';
+import { saveStrategy } from '../../../../actions/strategyBuilder'; 
+import WatchListAdd from './WatchListAdd';
 
 class StrategyBuilder3 extends Component {
   state = {
     show: false,
     isSpinner: false,
     strategyName: "",
-    responseMessage: ""
+    responseMessage: "",
+    showAddToWatchList: false,
+    tickers:[]
   };
+
+  onCheckWatchListHandler = (value) => {
+    let tickers = this.state.tickers;
+    let updatedTickers;
+    if (tickers.includes(value)){
+      updatedTickers = tickers.filter(ticker => ticker!==value);
+    } else {
+      updatedTickers = tickers;
+      updatedTickers.push(value);
+    }
+    this.setState({tickers: updatedTickers});
+  }
+
+  AddToWatchlist = () => {
+    this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}));
+  }
 
   ReplicateStrategy = () => {
     this.setState({ show: true });
@@ -48,6 +67,7 @@ class StrategyBuilder3 extends Component {
   render() {
     return (
       <div className="strategy-builder_customized-portfolio">
+        <WatchListAdd tickers={this.state.tickers} show={this.state.showAddToWatchList} cancelHandler={() => this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}))} />
           <SBCurrentTracker
             cancelModal={this.cancelModal}
             show={this.state.show}
@@ -56,11 +76,13 @@ class StrategyBuilder3 extends Component {
             getStrategyName={this.getStrategyName}
             responseMessage={this.state.responseMessage}
             DismissMessage={this.props.DismissMessage}
+            onCheckWatchListHandler={this.onCheckWatchListHandler}
           />
 
             <ActionButtons
               AnalyuzeResult={this.props.AnalyuzeResult}
               ReplicateStrategy={this.ReplicateStrategy}
+              AddToWatchlist={this.AddToWatchlist}
             />
       </div>
     );

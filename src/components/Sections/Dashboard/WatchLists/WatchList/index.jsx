@@ -6,7 +6,7 @@ import Header from "../../../../UI/Header";
 class WatchList extends Component {
   render() {
     return (
-      <div className="col shadow-sm mb-5 p-0 bg-white rounded">
+      <div className="col-12 shadow-sm mb-5 p-0 bg-white rounded">
         <Header header={this.props.watchlistName} />
 
         <div className="dashboard_strategy-list" style={{borderBottom: 'none', boxShadow: 'none'}}>

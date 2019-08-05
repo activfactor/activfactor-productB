@@ -43,7 +43,6 @@ const currentDate = new Date();
 
 export const signIn_A = formProps => dispatch => {
   wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}}).then(res => {
-    console.log(res);
     if (res.data.success){
       wealthface.post("/auth", {username: "wealthface", password: "123"}).then(respond => {
         const dataReponse = {

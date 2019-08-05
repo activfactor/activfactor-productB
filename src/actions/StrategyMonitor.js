@@ -53,7 +53,6 @@ export const deleteStrategy = (strategyName) => (dispatch, getState) => {
             "strategy_name": strategyName
           }
       };
-    console.log(dataToSend.headers, dataToSend.data);
     wealthface.delete('/factor/strategy',dataToSend)
     .then(response => {
         dispatch({type:DASHBOARD_RESET});

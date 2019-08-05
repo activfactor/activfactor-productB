@@ -9,7 +9,7 @@ class ContentBlock extends Component{
                 <div className={`_header-item-value ${getClass(this.props.number)}`}>{getValue(this.props.number)}{this.props.unit}</div>
               {
                 this.props.number2 ?
-                  <div className={`_header-item-title ${getClass(this.props.number)}`}>{getValue(this.props.number2)}{this.props.unit2}</div> :
+                  <div className={`_header-item-title ${getClass(this.props.number2)}`}>{getValue(this.props.number2)}{this.props.unit2}</div> :
                   ''
               }
             </div>

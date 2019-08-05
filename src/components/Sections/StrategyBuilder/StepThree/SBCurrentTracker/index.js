@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import classes from './index.module.scss';
 import { connect } from 'react-redux';
 import Backdrop from '../../../../UI/BackDrop';
-import Spinner from '../../../../UI/Spinner/SpinnerButton';
 import Modal from '../../../../UI/Modal';
 import { resetQuery,resetFactorScreener } from '../../../../../actions/strategyBuilder';
 import { getClass , getValue } from '../../../../../utils/textFunctions';
@@ -11,21 +10,13 @@ import { getClass , getValue } from '../../../../../utils/textFunctions';
 class SBCurrentTracker extends Component {
 
   renderInput = () => {
-    if (this.props.isSpinner){
-      return (
-        <React.Fragment>
-            <button className={classes.modalbtn} onClick={this.props.onSubmit}><Spinner color="white" className={classes.spinner} /></button>
-            <button className={classes.modalbtn} onClick={this.props.cancelModal}>Cancel</button>
-        </React.Fragment>
-      );
-  } else {
-      return(
-          <React.Fragment>
-              <button className="btn btn-outline-primary" onClick={this.props.cancelModal}>Cancel</button>
-              <button className="btn btn-primary" onClick={this.props.onSubmit}>Save</button>
-          </React.Fragment>
-      );
-  }
+        if (this.props.isSpinner){
+          return (
+            <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
+          );
+      } else {
+        return "Save"
+      }
   }
 
   renderModal = () => {
@@ -41,9 +32,7 @@ class SBCurrentTracker extends Component {
         <Modal>
           <div className={classes.message_body}>
             <div className={`${this.props.saving_message ? 'text-success' : 'text-danger'} ${classes.message_text}`}>{responseMessage}</div>
-            <span className={classes.message_btn_container}>
-                <button className="btn btn-primary" onClick={this.props.DismissMessage}>OK</button>
-            </span>
+              <button className="btn btn-primary" onClick={this.props.DismissMessage}>OK</button>
           </div>
         </Modal>
       );
@@ -57,7 +46,9 @@ class SBCurrentTracker extends Component {
                 <input className="form-control" type="input" placeholder="Please enter the strategy name" onChange={this.props.getStrategyName} />
               </div>
               <div className={classes.modal_btn_container}>
-                {this.renderInput()}
+                  <button className="btn btn-outline-primary" onClick={this.props.cancelModal}>Cancel</button>
+                  <button className="btn btn-primary" onClick={this.props.onSubmit}>{this.renderInput()}</button>
+                  
               </div>
             </div>
           </div>
@@ -91,6 +82,7 @@ class SBCurrentTracker extends Component {
                 <th scope="col">Investment</th>
                 <th scope="col">Profitability</th>
                 <th scope="col">Weight</th>
+                <th scope="col">Add To Watchlist</th>
               </tr>
               </thead>
               <tbody>
@@ -150,6 +142,12 @@ class SBCurrentTracker extends Component {
                         data-label="Weight"
                       >
                         {getValue(this.props.data[row]["weight_%"])}
+                      </td>
+                      <td>
+                        <div className="custom-control custom-checkbox">
+                          <input onChange={() => this.props.onCheckWatchListHandler(row)} type="checkbox" className="custom-control-input" id={row} />
+                          <label className="custom-control-label" htmlFor={row}></label>
+                        </div>
                       </td>
                     </tr>
                   );

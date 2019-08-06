@@ -24,7 +24,7 @@ import {
     try {
       if (!getState().factorScreener.parameters) {
         const response = await wealthface.get("/factor/screener", {
-          params: getState().queryReducer,
+          params: {...getState().queryReducer, "user_id":getState().auth.userID},
           headers: {
             Authorization: `JWT ${getState().auth.token}`
           }

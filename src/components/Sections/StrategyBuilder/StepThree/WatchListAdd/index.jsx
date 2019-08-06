@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DropDown from "../../../../UI/DropDown";
 import Modal from "../../../../UI/Modal";
+import Backdrop from '../../../../UI/BackDrop';
 import { connect } from "react-redux";
 import {
   resetWathListMessage,
@@ -165,23 +166,29 @@ class WatchListAdd extends Component {
         );
       } else {
         return (
-          <Modal onDismiss={this.props.cancelHandler}>
-            <div className={classes.modal_content}>
-              <div className={classes.modal_header}>
-                The Watchlist Saved Successfuly
-              </div>
-              <div className="">
-                <div className={`${classes.modal_btn_container} mt-3`}>
-                  <button
-                    className="btn btn-primary"
-                    onClick={this.afterSavingHandler}
-                  >
-                    OK
-                  </button>
+          <Backdrop>
+          <div className="modal__body text-center">
+            {
+              this.props.message==='Successful' ?
+                <div className="modal__response-container _success">
+                  <div className="_icon text-success"><i className="far fa-check-circle"></i></div>
+                  <div className="modal__title">Saved!</div>
+                  <div className="modal__response-text">{this.props.message}</div>
+                  <div className="modal__btn-container">
+                    <button className="btn btn-success" onClick={this.afterSavingHandler}>OK</button>
+                  </div>
+                </div> :
+                <div className="modal__response-container _error">
+                  <div className="_icon text-danger"><i className="far fa-times-circle"></i></div>
+                  <div className="modal__title">Error!</div>
+                  <div className="modal__response-text">{this.props.message}</div>
+                  <div className="modal__btn-container">
+                    <button className="btn btn-danger" onClick={this.afterSavingHandler}>OK</button>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </Modal>
+            }
+          </div>
+        </Backdrop>
         );
       }
     }

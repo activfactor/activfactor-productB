@@ -21,12 +21,11 @@ class AuthButtons extends Component {
     } else {
       return (
         <div className="_btn-auth-container">
-          <Link className="btn btn-link" to="#" onClick={this.onSignOut}>Logout</Link>
+          <Link nameOfClass="btn-link" to="#" onClick={this.onSignOut}>Logout</Link>
         </div>
       );
     }
   }
-
 
   render() {
     return (

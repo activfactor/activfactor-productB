@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import NavigationItem from '../../UI/NavigationItem';
 import SearchBox from '../../UI/SearchBox/SearchBox';
 import { connect } from 'react-redux';
-import classes from './NavigationBar.module.scss';
+// import classes from './NavigationBar.module.scss';
 import { toggleClicked, signOut, updateLocation } from '../../../actions/index';
 
 class NavigationBar extends Component{
@@ -19,28 +19,28 @@ class NavigationBar extends Component{
     renderAuthButtons = () => {
         if (this.props.authenticated){
             return (
-                <NavigationItem onClick={this.onSignOutHandler} to="#" nameOfClass={`${classes.link} ${classes.auth}`}>Logout</NavigationItem>
+                <NavigationItem onClick={this.onSignOutHandler} to="#" nameOfClass={`_navbar-item _navbar-auth-btn`}>Logout</NavigationItem>
             );
         }
         return (
             <React.Fragment>
-                <NavigationItem onClick={() => this.onClickHandler("/login")} to="/login" nameOfClass={`${classes.link} ${classes.auth} ${(this.props.location ==='/login') ? classes.active : ''}`}>Login</NavigationItem>
-                <NavigationItem onClick={() => this.onClickHandler("/signup")} to="/signup" nameOfClass={`${classes.link} ${classes.auth} ${(this.props.location ==='/signup') ? classes.active : ''}`}>Sign up</NavigationItem>
+                <NavigationItem onClick={() => this.onClickHandler("/login")} to="/login" nameOfClass={`_navbar-item _navbar-auth-btn ${(this.props.location ==='/login') ? 'active' : ''}`}>Login</NavigationItem>
+                <NavigationItem onClick={() => this.onClickHandler("/signup")} to="/signup" nameOfClass={`_navbar-item _navbar-auth-btn ${(this.props.location ==='/signup') ? 'active' : ''}`}>Sign up</NavigationItem>
             </React.Fragment>
         );
     }
 
     renderNavigation(){
         return (
-            <div className={`${classes.container} ${!this.props.clicked && this.props.initialStatus ? classes.remove : this.props.clicked && this.props.initialStatus ? classes.show : ""}`}>
-                <nav className={classes.navitems}>
+            <div className={`navbar_container ${!this.props.clicked && this.props.initialStatus ? 'hide' : this.props.clicked && this.props.initialStatus ? 'show' : ""}`}>
+                <nav className="navbar_wrapper">
+                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ==='/dashboard') ? 'active' : ''}`}>Dashboard</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/strategy-builder')} to="/strategy-builder" nameOfClass={`_navbar-item ${(this.props.location ==='/strategy-builder') ? 'active' : ''}`}>Strategy Builder</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Watch List</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Portofolio Performance</NavigationItem>
+                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Transactions</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/strategy-monitor')} to="/strategy-monitor" nameOfClass={`_navbar-item ${(this.props.location === "/strategy-monitor" ) ? 'active' : ''}`}>Strategy Monitor</NavigationItem>
                     {this.renderAuthButtons()}
-                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ==='/dashboard') ? classes.active : ''}`}>Dashboard</NavigationItem>
-                    <NavigationItem onClick={() => this.onClickHandler('/strategy-builder')} to="/strategy-builder" nameOfClass={`${classes.link} ${(this.props.location ==='/strategy-builder') ? classes.active : ''}`}>Strategy Builder</NavigationItem>
-                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Watch List</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Portofolio Performance</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`${classes.link} ${(this.props.location ===null) ? classes.active : ''}`}>Transactions</NavigationItem>
-                    <NavigationItem onClick={() => this.onClickHandler('/strategy-monitor')} to="/strategy-monitor" nameOfClass={`${classes.link} ${(this.props.location === "/strategy-monitor" ) ? classes.active : ''}`}>Strategy Monitor</NavigationItem>
                 </nav>
                 <SearchBox />
             </div>

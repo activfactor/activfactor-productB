@@ -18,7 +18,9 @@ header {
       justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
-
+      @media (max-width: 576px) {
+        padding: 10px;
+      }
       ._btn-auth-container {
         line-height: 1;
         display: flex;
@@ -33,6 +35,10 @@ header {
           display: block;
           line-height: 1;
           padding: 4px;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
         }
 
         ._separator {
@@ -48,6 +54,10 @@ header {
       color: $mainBlueColor;
       padding-left: 5px;
       line-height: 1;
+
+      @media (max-width: 576px) {
+        font-size: 20px;
+      }
     }
 
     ._auth-container {
@@ -63,6 +73,11 @@ header {
         width: 46px;
         height: 46px;
         border-radius: 4px;
+
+        @media (max-width: 576px) {
+          width: 38px;
+          height: 38px;
+        }
       }
     }
 
@@ -81,6 +96,11 @@ header {
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 576px) {
+        width: 38px;
+        height: 38px;
+      }
+
       ._badge {
         position: absolute;
         top: 15px;
@@ -95,6 +115,110 @@ header {
 
   }
 }
+
+
+.navbar {
+
+  &_container {
+    background: #fff;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 0;
+
+      max-height: 0;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      overflow: hidden;
+    }
+
+    &.hide {
+      @media (max-width: 768px) {
+        max-height: 0;
+        padding: 0;
+      }
+    }
+    &.show {
+      display: flex;
+      max-height: 500px;
+      padding: 10px 0 0;
+      transition: max-height 0.3s ease-in, padding 0.3s ease-out;
+    }
+
+    .search-input-group {
+      @media (max-width: 768px) {
+        order: 0;
+        width: 100%;
+        max-width: none;
+        margin-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .form-control {
+        @media (max-width: 768px) {
+          padding: 8px 12px;
+        }
+      }
+    }
+  }
+  &_wrapper {
+
+    @media (max-width: 768px) {
+      display: block;
+      order: 1;
+      width: 100%;
+    }
+
+    ._navbar-item {
+      color: $textColor;
+      padding: 10px 15px;
+      border-radius: 4px;
+
+      @media (max-width: 992px) {
+        font-size: 12px;
+        margin-right: 0;
+        padding: 10px;
+      }
+      @media (max-width: 768px) {
+        display: block;
+        padding: 10px 15px;
+        border-bottom: 1px solid $border-color-primary;
+        border-radius: 0;
+      }
+
+      &.active {
+        color: $mainBlueColor;
+        background: rgba($mainBlueColor, 0.1);
+      }
+
+      &:hover,
+      &:focus {
+        color: $mainBlueColor;
+        text-decoration: none;
+      }
+
+      &._navbar-auth-btn {
+
+      }
+    }
+
+    ._navbar-auth-btn {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+  }
+}
+
+
+
+
+
+
 
 main {
   &.site-content {
@@ -712,6 +836,7 @@ footer {
   @include clearfix;
 
   @media (max-width: 576px) {
+    padding: 15px 0;
     margin-bottom: 50px;
   }
 

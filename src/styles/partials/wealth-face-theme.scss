@@ -137,25 +137,34 @@ header {
       }
 
       .search-input-group {
+        flex-shrink: 0;
         @media (max-width: 768px) {
           display: none;
+          height: 0;
+          transition: height 0.3s ease;
         }
       }
     }
     &.show {
       display: flex;
       max-height: 500px;
-      padding: 10px 0 0;
       transition: max-height 0.3s ease-in, padding 0.3s ease-out;
+
+      @media (max-width: 768px) {
+        padding: 10px 0 0;
+      }
 
       .search-input-group {
         @media (max-width: 768px) {
           display: flex;
+          height: 40px;
         }
       }
     }
 
     .search-input-group {
+      flex-shrink: 0;
+
       @media (max-width: 768px) {
         order: 0;
         width: 100%;

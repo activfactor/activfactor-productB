@@ -12,7 +12,9 @@ class StrategyBuilder3 extends Component {
     strategyName: "",
     responseMessage: "",
     showAddToWatchList: false,
-    tickers:[]
+    watchListKind: 'new',
+    tickers:[],
+    disabled: true
   };
 
   onCheckWatchListHandler = (value) => {
@@ -24,11 +26,19 @@ class StrategyBuilder3 extends Component {
       updatedTickers = tickers;
       updatedTickers.push(value);
     }
+    if (updatedTickers.length>0){
+      this.setState({disabled: false});
+    } else {
+      this.setState({disabled: true})
+    }
     this.setState({tickers: updatedTickers});
   }
 
-  AddToWatchlist = () => {
-    this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}));
+  AddToWatchlist = (kind) => {
+    this.setState(prevState => ({
+      showAddToWatchList: !prevState.showAddToWatchList,
+      watchListKind: kind
+    }));
   }
 
   ReplicateStrategy = () => {
@@ -67,7 +77,7 @@ class StrategyBuilder3 extends Component {
   render() {
     return (
       <div className="strategy-builder_customized-portfolio">
-        <WatchListAdd tickers={this.state.tickers} show={this.state.showAddToWatchList} cancelHandler={() => this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}))} />
+        <WatchListAdd kind={this.state.watchListKind} tickers={this.state.tickers} show={this.state.showAddToWatchList} cancelHandler={() => this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}))} />
           <SBCurrentTracker
             cancelModal={this.cancelModal}
             show={this.state.show}
@@ -83,6 +93,7 @@ class StrategyBuilder3 extends Component {
               AnalyuzeResult={this.props.AnalyuzeResult}
               ReplicateStrategy={this.ReplicateStrategy}
               AddToWatchlist={this.AddToWatchlist}
+              disabled={this.state.disabled}
             />
       </div>
     );

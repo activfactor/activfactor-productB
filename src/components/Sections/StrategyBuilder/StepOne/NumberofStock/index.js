@@ -5,7 +5,7 @@ class NumberofStock extends Component {
   render() {
     return (
       <div className="nos-step-one-container">
-        <div className="section-title_h3"># Number of Stock</div>
+        <div className="section-title_h3">Number of Stock</div>
         <div className="NumberOfStock-rangeSlider">
             <input
             type="range"

@@ -67,7 +67,7 @@ class BarChart extends Component {
                   fontSize: 11
                 }
               },
-              hAxis: { minValue: -100, maxValue: 100 }
+              hAxis: { minValue: -1, maxValue: 1 }
             }}
           />
         </div>

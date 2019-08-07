@@ -115,14 +115,14 @@ class ModuleName extends Component {
                           <td
                             data-label="Weight"
                           >
-                            {getValue(this.props.data[row]["weight_%"])}
+                            {getValue(this.props.data[row]["weight_%"])!== '---' ? getValue(this.props.data[row]["weight_%"]).toFixed(2) + '%' : getValue(this.props.data[row]["weight_%"])}
                           </td>
                           <td
                             data-label="Performance"
                             className={
                               getClass(this.props.data[row][this.state.option])}
                           >
-                            {getValue(this.props.data[row][this.state.option])} 
+                            {getValue(this.props.data[row][this.state.option])!== '---' ? getValue(this.props.data[row][this.state.option]).toFixed(2) + '%' : getValue(this.props.data[row][this.state.option])} 
                           </td>
                           <td className="_cta-container">
                             <Link to="/#" nameOfClass="btn btn-outline-primary">

@@ -12,29 +12,34 @@ import { resetDashboard } from "../../../../../actions/dashboard";
 import classes from "./index.module.scss";
 
 let styleBorder = "is-invalid";
+let inputError = undefined;
 
 class WatchListAdd extends Component {
   state = {
     isSpinner: false,
     WatchlistName: "",
-    newWatchListName: ""
+    newWatchListName: "",
   };
 
   inputChangeHandler = e => {
     this.setState({ newWatchListName: e.target.value });
     if (
-      Object.keys(this.props.watchlist).includes(e.target.value) ||
-      !e.target.value
-    ) {
+      Object.keys(this.props.watchlist).includes(e.target.value) || !e.target.value) {
+        if (!e.target.value){
+          inputError = 'This field is required';
+        } else {
+          inputError = 'This name is already exist'
+        }
       styleBorder = "is-invalid";
     } else {
       styleBorder = null;
+      inputError = undefined;
     }
   };
 
   renderNewWatchList() {
-    if (this.state.WatchlistName === "new") {
       return (
+        <React.Fragment>
         <input
           value={this.state.newWatchListName}
           className={`form-control mt-3 ${styleBorder}`}
@@ -42,8 +47,9 @@ class WatchListAdd extends Component {
           placeholder="Please enter the Watchlist Name"
           onChange={this.inputChangeHandler}
         />
+        {inputError ? <div className="text-danger mt-2">{inputError}</div> : ''}
+        </React.Fragment>
       );
-    }
   }
 
   renderSpinner() {
@@ -61,7 +67,7 @@ class WatchListAdd extends Component {
   }
 
   DropDownChangeHandler = e => {
-    this.setState({ WatchlistName: e.target.value, newWatchListName: "" });
+    this.setState({ WatchlistName: e.target.value});
   };
 
   renderOptions() {
@@ -96,7 +102,7 @@ class WatchListAdd extends Component {
   onSubmitHandler = () => {
     if (this.state.WatchlistName !== "") {
       let WatchlistName = "";
-      if (this.state.WatchlistName === "new") {
+      if (this.props.kind === "new") {
         WatchlistName = this.state.newWatchListName;
       } else {
         WatchlistName = this.state.WatchlistName;
@@ -113,16 +119,18 @@ class WatchListAdd extends Component {
           tickers: this.props.tickers
         }
       };
-      if (this.state.WatchlistName === "new") {
-        if (this.state.newWatchListName !== "" && !styleBorder) {
+      if (this.props.kind === "new") {
+        if (this.state.newWatchListName !== "" && !inputError) {
           if (this.props.tickers.length > 0) {
             this.setState({ isSpinner: true });
             this.props.addToNewWatchList(dataToSend);
           }
         }
       } else {
-        this.setState({ isSpinner: true });
-        this.props.addToExistingWatchList(dataToSend);
+        if (this.props.tickers.length > 0) {
+          this.setState({ isSpinner: true });
+          this.props.addToExistingWatchList(dataToSend);
+        }
       }
     }
   };
@@ -130,40 +138,43 @@ class WatchListAdd extends Component {
   renderContent() {
     if (this.props.show) {
       if (!this.props.message) {
-        return (
-          <Modal onDismiss={this.cancelHandler}>
-            <div className={classes.modal_content}>
-              <div className={classes.modal_header}>Saving the WatchList</div>
-              <div className="">
-                <div className="form">
-                  <DropDown
-                    color="blue"
-                    value={this.state.WatchlistName}
-                    DropDownChangeHandler={this.DropDownChangeHandler}
-                  >
-                    {this.renderOptions()}
-                    <option value="new">New Watchlist</option>
-                  </DropDown>
-                  {this.renderNewWatchList()}
-                </div>
-                <div className={`${classes.modal_btn_container} mt-3`}>
-                  <button
-                    className="btn btn-outline-primary"
-                    onClick={this.cancelHandler}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="btn btn-primary"
-                    onClick={this.onSubmitHandler}
-                  >
-                    {this.renderSpinner()}
-                  </button>
+          return (
+            <Modal onDismiss={this.cancelHandler}>
+              <div className={classes.modal_content}>
+                <div className={classes.modal_header}>Saving the WatchList</div>
+                <div className="">
+                  <div className="form">
+                    {this.props.kind === 'exist' ?
+                    <DropDown
+                      color="blue"
+                      value={this.state.WatchlistName}
+                      DropDownChangeHandler={this.DropDownChangeHandler}
+                    >
+                      {this.renderOptions()}
+                    </DropDown>
+                    :
+                    this.renderNewWatchList()
+                    }
+                  </div>
+                  <div className={`${classes.modal_btn_container} mt-3`}>
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={this.cancelHandler}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.onSubmitHandler}
+                    >
+                      {this.renderSpinner()}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Modal>
-        );
+            </Modal>
+          );
+        
       } else {
         return (
           <Backdrop>

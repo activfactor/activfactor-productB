@@ -32,9 +32,9 @@ class Charts extends Component{
 
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <BarChartVertical
-                header="Factor Intensity"
-                factor={this.props.data.factor_intensity}
-                chartName="Factor intensity"
+                header="Factor Beta"
+                factor={this.props.data.factor_beta}
+                chartName="Factor Beta"
               />
             </div>
 

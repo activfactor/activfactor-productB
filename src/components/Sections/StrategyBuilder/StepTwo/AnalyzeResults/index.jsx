@@ -79,6 +79,7 @@ class AnalyzeResults extends Component {
                 header="Factor Intensity"
                 factor={this.props.data.factor_intensity}
                 chartName="Factor intensity"
+                unit="%"
               />
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">

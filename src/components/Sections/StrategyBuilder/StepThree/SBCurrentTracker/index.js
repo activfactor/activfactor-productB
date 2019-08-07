@@ -163,7 +163,7 @@ class SBCurrentTracker extends Component {
                       <td
                         data-label="Weight"
                       >
-                        {getValue(this.props.data[row]["weight_%"])}
+                        {getValue(this.props.data[row]["weight_%"])!=='---' ? getValue(this.props.data[row]["weight_%"]).toFixed(2)+'%' : getValue(this.props.data[row]["weight_%"])}
                       </td>
                       <td className="_td-checkbox--item">
                         <div className="checkbox--item">

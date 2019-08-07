@@ -28,7 +28,7 @@ class BarChart extends Component {
         CapString(String(key).split("_")[0]),
         factor[key],
         `color : ${this.getFactorColor(String(key).split("_")[0])}; font-size: 20px`,
-        `${CapString(String(key).split("_")[0])} ${factor[key]}%`
+        `${CapString(String(key).split("_")[0])} ${factor[key]}${this.props.unit}`
       ];
     });
     result.unshift([
@@ -46,7 +46,6 @@ class BarChart extends Component {
         <Header header={this.props.header} />
         <div className="_card-body">
           <Chart
-            pattern={"#%"}
             width={"95%"}
             height={"95%"}
             chartType="BarChart"

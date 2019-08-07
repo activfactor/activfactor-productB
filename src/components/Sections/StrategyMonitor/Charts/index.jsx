@@ -35,6 +35,7 @@ class Charts extends Component{
                 header="Factor Beta"
                 factor={this.props.data.factor_beta}
                 chartName="Factor Beta"
+                unit=''
               />
             </div>
 

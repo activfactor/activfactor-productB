@@ -17,7 +17,7 @@ class WatchLists extends Component{
 
     render(){
         return(
-            <div className="row p-3">
+            <div>
                 {this.renderHandler()}
             </div>
         );

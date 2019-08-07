@@ -17,18 +17,23 @@ class ModuleName extends Component {
   render() {
     return (
       <div className="strategy-monitor_table">
-        <div className="card__default">
-          <div className="section__title">Current Stocks</div>
-          <p>This list is updated the last date of the month.</p>
-          <DropDown
-            value={this.state.option}
-            color="blue"
-            DropDownChangeHandler={this.optionChangeHandler}
-          >
-            <option value="daily_return">1 Day</option>
-            <option value="weekly_return">WTD</option>
-            <option value="monthly_return">MTD</option>
-          </DropDown>
+          <div className="card-table__title with-select">
+            <div>
+              <div className="_header-title">Current Stocks</div>
+              <p>This list is updated the last date of the month.</p>
+            </div>
+
+              <DropDown
+                value={this.state.option}
+                color="blue"
+                DropDownChangeHandler={this.optionChangeHandler}
+              >
+                <option value="daily_return">1 Day</option>
+                <option value="weekly_return">WTD</option>
+                <option value="monthly_return">MTD</option>
+              </DropDown>
+          </div>
+
           <div className="table-responsive">
             <table className="table table--primary table-hover">
               <thead>
@@ -136,7 +141,6 @@ class ModuleName extends Component {
               </tbody>
             </table>
           </div>
-        </div>
       </div>
     );
   }

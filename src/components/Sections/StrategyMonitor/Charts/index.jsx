@@ -16,21 +16,21 @@ class Charts extends Component{
     render(){
         return (
           <div className="charts-card-container">
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <PieGraph
                 header="Sectors"
                 data={this.props.data.sector_allocation}
               />
             </div>
 
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <PieGraph
                 header="Firm Size"
                 data={this.props.data.firm_size_allocation}
               />
             </div>
 
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <BarChartVertical
                 header="Factor Intensity"
                 factor={this.props.data.factor_intensity}
@@ -38,7 +38,7 @@ class Charts extends Component{
               />
             </div>
 
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <DynamicBarChartVertical
                 header="Sector Performance"
                 factor={
@@ -56,7 +56,7 @@ class Charts extends Component{
               />
             </div>
 
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <DynamicBarChartVertical
                 header="Firm Size Performance"
                 factor={
@@ -74,7 +74,7 @@ class Charts extends Component{
               />
             </div>
 
-            <div className="col-sm-6 col-md-4 _card-row-item">
+            <div className="col-sm-6 col-lg-4 _card-row-item">
               <DynamicBarChartVertical
                 header="Factor Performance"
                 factor={

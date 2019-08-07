@@ -6,13 +6,13 @@ import Header from "../../../../UI/Header";
 class WatchList extends Component {
   render() {
     return (
-      <div className="col-12 shadow-sm mb-5 p-0 bg-white rounded">
+      <div className="dashboard_watchlist-card">
         <Header header={this.props.watchlistName} />
 
-        <div className="dashboard_strategy-list" style={{borderBottom: 'none', boxShadow: 'none'}}>
+        <div className="dashboard_strategy-list">
 
-              <div style={{fontSize: '1.5rem', color:'black'}}>
-                {this.props.watchListQty} Tickers
+              <div className="_strategy-list-item">
+                <div className="_title">{this.props.watchListQty} Tickers</div>
               </div>
 
               <div className="_strategy-list-item">
@@ -28,7 +28,7 @@ class WatchList extends Component {
               </div>
 
             </div>
-            <div className="_header-item-title pl-3 pb-3">Last Update {this.props.lastUpdate}</div>
+            <div className="dashboard_watchlist-card-info small">Last Update {this.props.lastUpdate}</div>
       </div>
     );
   }

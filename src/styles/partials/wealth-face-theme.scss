@@ -169,7 +169,7 @@ header {
         order: 0;
         width: 100%;
         max-width: none;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         padding-left: 15px;
         padding-right: 15px;
       }
@@ -549,6 +549,10 @@ footer {
   margin-bottom: 13px;
   padding-left: 15px;
 
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
+
   > div {
     color: $secondBlueColor;
     font-family: $font-regular;
@@ -609,22 +613,23 @@ footer {
 
 
     ._header-item-title {
-      margin-bottom: 15px;
+      font-size: 13px;
+      margin-bottom: 12px;
 
       @media (max-width: 768px) {
         font-size: 13px;
       }
 
       &:last-of-type {
-        margin-top: 15px;
+        margin-top: 12px;
         margin-bottom: 0;
       }
     }
 
     ._header-item-value {
       color: $text-color-dark-blue;
-      font-size: 32px;
-      line-height: 0.9;
+      font-size: 26px;
+      line-height: 1;
 
       @media (max-width: 768px) {
         font-size: 18px;
@@ -653,7 +658,7 @@ footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 30px;
+      padding: 10px 15px;
 
       @media (max-width: 768px) {
         padding: 10px;
@@ -741,7 +746,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px 5px;
+    padding: 10px 15px 5px;
     margin-top: 15px;
 
     @media (max-width: 768px) {
@@ -767,7 +772,7 @@ footer {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
-    padding: 15px;
+    padding: 10px 15px;
     margin-bottom: 15px;
     @include card-defaults;
 
@@ -775,12 +780,11 @@ footer {
       padding: 10px;
     }
     @media (max-width: 576px) {
-      padding: 10px 5px;
+      padding: 10px;
       margin-bottom: 10px;
     }
 
     &._make-title-on-small {
-
 
       @media (max-width: 576px) {
         display: flex;
@@ -806,8 +810,10 @@ footer {
           }
         }
         &:not(:first-of-type) {
-          flex: 1;
-          padding: 15px 10px;
+          @media (max-width: 576px) {
+            flex: 1;
+            padding: 15px 10px;
+          }
         }
       }
     }
@@ -832,6 +838,27 @@ footer {
         }
       }
     }
+  }
+
+  &_watchlist-card {
+    @include card-defaults;
+    margin-bottom: 10px;
+
+    .dashboard_strategy-list {
+      box-shadow: none;
+      margin: 0;
+
+      ._strategy-list-item {
+        ._title {
+          color: $mainBlueColor;
+          font-family: $font-medium;
+        }
+      }
+    }
+  }
+
+  &_watchlist-card-info {
+    padding: 0 10px 10px;
   }
 
   &_btn-container {
@@ -902,10 +929,17 @@ footer {
 
   &_build-strategy {
     background-color: #fff;
-    padding: 20px 15px;
-    @media (max-width: 768px) {
-      padding: 15px;
-    }
+    padding: 15px;
+  }
+
+  &_analyze-results {
+    //background-color: #fff;
+    padding: 15px;
+  }
+
+  &_customized-portfolio {
+    padding: 15px;
+    background: #fff;
   }
 
   &_section-title {
@@ -1183,6 +1217,7 @@ footer {
 }
 
 .charts-card-item {
+  min-height: 100%;
   width: 100%;
   background: #ffffff;
   border-radius: 4px;
@@ -1193,14 +1228,14 @@ footer {
   ._card-body {
     position: relative;
     padding: 20px;
+    min-height: 170px;
   }
 }
 
 .card-table {
   height: 100%;
   width: 100%;
-  border-radius: 4px;
-  box-shadow: $box-shadow;
+  @include card-defaults;
   margin: 0;
   @media (max-width: 576px) {
     height: auto;
@@ -1318,6 +1353,12 @@ footer {
           &._td-ticker {
             text-align: start;
           }
+          &._td-checkbox--item {
+
+            .checkbox--item {
+              display: inline-block;
+            }
+          }
         }
       }
     }
@@ -1370,8 +1411,8 @@ footer {
 
           &._td-link {
             text-align: start;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
 
             @media (max-width: 576px) {
               padding-left: 10px;
@@ -1400,11 +1441,12 @@ footer {
   }
 }
 
+.card-table__title,
 .card__title {
   font-family: $font-medium;
   font-size: 15px;
   color: $text-color-dark-blue;
-  padding: 15px 20px;
+  padding: 15px;
   border-bottom: 1px solid $border-color-primary;
   @media (max-width: 768px) {
     padding: 10px;
@@ -1414,13 +1456,22 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    @media (max-width: 576px) {
+      padding: 10px;
+    }
   }
 
   ._header-title {
     @media (max-width: 768px) {
       font-size: 15px;
     }
+  }
+
+  p {
+    color: $textColor;
+    font-size: 14px;
+    margin-bottom: 0;
   }
 }
 
@@ -1492,6 +1543,11 @@ table.table--primary {
     }
   }
 }
+
+
+
+
+
 
 
 

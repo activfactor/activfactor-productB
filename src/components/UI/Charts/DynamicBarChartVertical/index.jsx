@@ -63,7 +63,7 @@ class BarChart extends Component {
             width={"95%"}
             height={"95%"}
             chartType="BarChart"
-            loader={<Spinner color="white" />}
+            loader={<Spinner color="black" />}
             data={this.getData(this.props.factor)}
             options={{
               // Material design options

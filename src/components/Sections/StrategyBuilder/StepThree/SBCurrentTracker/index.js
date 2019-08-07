@@ -165,10 +165,12 @@ class SBCurrentTracker extends Component {
                       >
                         {getValue(this.props.data[row]["weight_%"])}
                       </td>
-                      <td>
-                        <div className="custom-control custom-checkbox">
-                          <input onChange={() => this.props.onCheckWatchListHandler(row)} type="checkbox" className="custom-control-input" id={row} />
-                          <label className="custom-control-label" htmlFor={row}></label>
+                      <td className="_td-checkbox--item">
+                        <div className="checkbox--item">
+                          <label htmlFor={row}>
+                            <input onChange={() => this.props.onCheckWatchListHandler(row)} type="checkbox" id={row} />
+                            <i />
+                          </label>
                         </div>
                       </td>
                     </tr>

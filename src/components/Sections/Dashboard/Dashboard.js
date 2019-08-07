@@ -49,11 +49,11 @@ class Dashboard extends Component {
 
             <div className="dashboard_top-content">
 
-              <div className="col-md-9">
+              <div className="col-lg-9 col-md-8">
                 <Table countryChangeHandler={this.countryChangeHandler} country={this.state.country}/>
               </div>
 
-              <div className="col-md-3 col-sm-6">
+              <div className="col-lg-3 col-md-4 col-sm-6">
                 <BrokerPanel/>
               </div>
             </div>

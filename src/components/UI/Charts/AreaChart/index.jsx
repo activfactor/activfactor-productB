@@ -29,7 +29,7 @@ class AreaChart extends Component {
               width={"99%"}
               height={"99%"}
               chartType="AreaChart"
-              loader={<Spinner color="white" />}
+              loader={<Spinner color="black" />}
               data={this.getData(this.props.strategy, this.props.benchmark)}
               options={{
                 legend: { position: "top" },

@@ -50,7 +50,7 @@ class WatchListAdd extends Component {
     if (this.state.isSpinner) {
       return (
         <span
-          className="spinner-border spinner-border-sm mr-1"
+          className="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
         />

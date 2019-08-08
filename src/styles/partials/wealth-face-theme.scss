@@ -931,7 +931,9 @@ footer {
 
     ._full-height-table {
       max-height: 350px;
-
+      @media (max-width: 576px) {
+        max-height: none;
+      }
     }
   }
 

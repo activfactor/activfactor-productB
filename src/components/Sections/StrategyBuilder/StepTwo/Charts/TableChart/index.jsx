@@ -6,9 +6,9 @@ class TableChart extends Component {
 
   render() {
     return (
-      <div className="card-table">
+      <div className="card__table">
         <div className="table-responsive">
-          <table className="table table-borderless ">
+          <table className="table table-borderless">
             <thead className={classes.table__header}>
               <tr className={classes.table__headerow}>
                 <th scope="col">{this.props.tableName}</th>

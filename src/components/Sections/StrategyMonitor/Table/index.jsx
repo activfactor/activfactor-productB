@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
+// import classes from "./index.module.scss";
 import { connect } from "react-redux";
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
@@ -16,8 +16,9 @@ class ModuleName extends Component {
 
   render() {
     return (
-      <div className="strategy-monitor_table">
-          <div className="card-table__title with-select">
+      <div className="card__table">
+
+          <div className="card__title with-select">
             <div>
               <div className="_header-title">Current Stocks</div>
               <p>This list is updated the last date of the month.</p>
@@ -35,7 +36,7 @@ class ModuleName extends Component {
           </div>
 
           <div className="table-responsive">
-            <table className="table table--primary table-hover">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Ticker</th>
@@ -66,7 +67,7 @@ class ModuleName extends Component {
                           </td>
                           <td
                             data-label="Sector"
-                            className={classes.SectorLabel}
+                            className="text-muted"
                           >
                             {this.props.data[row].sector}
                           </td>

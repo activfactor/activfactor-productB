@@ -42,6 +42,9 @@ class Table extends Component {
               <th>10 years</th>
             </tr>
           </thead>
+
+
+
           <tbody>
             {Object.keys(data).map((item, index) => {
               return (
@@ -118,23 +121,21 @@ class Table extends Component {
 
   render() {
     return (
-      <div className="dashboard_top-strategies">
-        <Header header="Top Strategies">
+      <div className="card__table">
+        <Header header="Top Strategies" nameOfClass="with-select">
 
-        <DropDown
-          value={this.props.country}
-          color="blue"
-          DropDownChangeHandler={this.props.countryChangeHandler}
-        >
-          <option value="USA">USA</option>
-          <option value="CAN">CAN</option>
-        </DropDown>
-      </Header>
+          <DropDown
+            value={this.props.country}
+            color="blue"
+            DropDownChangeHandler={this.props.countryChangeHandler}
+          >
+            <option value="USA">USA</option>
+            <option value="CAN">CAN</option>
+          </DropDown>
+        </Header>
 
-        <div className="table-top-strategies">
-          <div className="table-responsive">
-            {this.renderTable()}
-          </div>
+        <div className="table-responsive">
+          {this.renderTable()}
         </div>
       </div>
     );

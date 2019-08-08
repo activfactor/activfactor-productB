@@ -90,23 +90,25 @@ class SBCurrentTracker extends Component {
         <div className="section__title">Current Stocks</div>
         <p>This list is updated the last date of the month.</p>
 
-        <div className="table-customized-portfolio">
+        <div className="card__table">
           <div className="table-responsive">
-            <table className="table table-borderless">
+            <table className="table table-hover table-borderless">
+
               <thead>
-              <tr>
-                <th scope="col" className="text-start">Ticker</th>
-                <th scope="col">Sector</th>
-                <th scope="col">Momentum</th>
-                <th scope="col">Value</th>
-                <th scope="col">Size</th>
-                <th scope="col">Volatility</th>
-                <th scope="col">Investment</th>
-                <th scope="col">Profitability</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Add To Watchlist</th>
-              </tr>
+                <tr>
+                  <th scope="col">Ticker</th>
+                  <th scope="col">Sector</th>
+                  <th scope="col">Momentum</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Size</th>
+                  <th scope="col">Volatility</th>
+                  <th scope="col">Investment</th>
+                  <th scope="col">Profitability</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Add To Watchlist</th>
+                </tr>
               </thead>
+
               <tbody>
               {this.props.data
                 ? Object.keys(this.props.data).map((row, i) => {
@@ -114,16 +116,14 @@ class SBCurrentTracker extends Component {
                     <tr key={i}>
                       <td
                         data-label="Ticker"
-                        className="_td-ticker"
+                        className=""
                       >
-                        <div className="text-dark text-medium">{row} </div>
-                        <div className="text-muted small">
-                          {this.props.data[row].name}
-                        </div>
+                        <div className="_row-text-medium">{row} </div>
+                        <div className="_row-text-small">{this.props.data[row].name}</div>
                       </td>
                       <td
                         data-label="Sector"
-                        className="text-dark"
+                        className="text-muted"
                       >
                         {this.props.data[row].sector}
                       </td>

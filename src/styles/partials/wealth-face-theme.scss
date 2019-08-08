@@ -939,7 +939,7 @@ footer {
 
   &_customized-portfolio {
     padding: 15px;
-    background: #fff;
+    //background: #fff;
   }
 
   &_section-title {
@@ -1340,7 +1340,6 @@ footer {
         }
       }
     }
-
     tbody {
       tr {
         border-bottom: 1px solid $border-color-primary;
@@ -1499,19 +1498,23 @@ footer {
     margin-bottom: 0;
 
     thead {
-
+      border-color: $mainBlueColor;
       tr {
         border-bottom: 1px solid $border-color-primary;
-
+        border-color: $mainBlueColor;
         th {
           font-family: $font-medium;
           color: $text-color-dark-blue;
-          padding: 13px $gutter-padding;
+          padding: $gutter-padding;
           text-align: center;
           line-height: 1;
           white-space: nowrap;
+          background: $mainBlueColor;
+          border-color: $mainBlueColor;
+          color: #fff;
+
           @media (max-width: 576px) {
-            padding: 13px 10px;
+            padding: 14px 10px;
           }
 
           &:first-of-type {
@@ -1541,9 +1544,6 @@ footer {
             text-align: start;
           }
 
-          &._td-title {
-
-          }
           &._td-link {
             font-size: 14px;
             color: $text-color-dark-blue;
@@ -1566,7 +1566,12 @@ footer {
               }
             }
           }
+          &._td-checkbox--item {
 
+            .checkbox--item {
+              display: inline-block;
+            }
+          }
           &._cta-container {
             padding: 3px 10px;
 
@@ -1575,7 +1580,6 @@ footer {
               font-size: 12px;
             }
           }
-
           ._row-text-medium {
             font-family: $font-medium;
             color: $text-color-dark-blue;
@@ -1585,6 +1589,7 @@ footer {
             font-size: 10px;
             color: $textColor;
             line-height: 1.3;
+            margin-top: 2px;
           }
         }
       }

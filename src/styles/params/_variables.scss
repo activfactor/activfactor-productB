@@ -99,6 +99,10 @@ $gutter-padding: 15px;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  @media (max-width: 576px) {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
 }
 
 

@@ -774,6 +774,9 @@ footer {
     padding: 10px $gutter-padding;
     margin-bottom: $gutter-space;
     @include card-defaults;
+    @media (max-width: 576px) {
+      padding: 10px;
+    }
 
     &._make-title-on-small {
 
@@ -810,6 +813,10 @@ footer {
     }
 
     ._strategy-list-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
       ._text-bold {
         font-family: $font-medium;
         font-size: 15px;

@@ -928,6 +928,11 @@ footer {
   &_analyze-results {
     //background-color: #fff;
     padding: 15px;
+
+    ._full-height-table {
+      max-height: 350px;
+
+    }
   }
 
   &_customized-portfolio {
@@ -1481,6 +1486,13 @@ footer {
   margin-bottom: 15px;
 
 
+  &._full-height-table {
+    width: 100%;
+    height: 100%;
+    @media (max-width: 576px) {
+      height: auto;
+    }
+  }
   table.table {
     margin-bottom: 0;
 
@@ -1527,8 +1539,14 @@ footer {
             text-align: start;
           }
 
-          &._td-link {
+          &._td-title {
 
+          }
+          &._td-link {
+            font-size: 14px;
+            color: $text-color-dark-blue;
+            font-family: $font-medium;
+            line-height: 1;
 
             a,
             .btn {

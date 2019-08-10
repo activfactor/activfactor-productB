@@ -36,7 +36,7 @@ class NavigationBar extends Component{
                 <nav className="navbar_wrapper">
                     <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ==='/dashboard') ? 'active' : ''}`}>Dashboard</NavigationItem>
                     <NavigationItem onClick={() => this.onClickHandler('/strategy-builder')} to="/strategy-builder" nameOfClass={`_navbar-item ${(this.props.location ==='/strategy-builder') ? 'active' : ''}`}>Strategy Builder</NavigationItem>
-                    <NavigationItem onClick={() => this.onClickHandler('/dashboard')} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Watch List</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler('/watchlist-monitor')} to="/watchlist-monitor" nameOfClass={`_navbar-item ${(this.props.location === '/watchlist-monitor') ? 'active' : ''}`}>Watch List</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Portofolio Performance</NavigationItem>
                     <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={`_navbar-item ${(this.props.location ===null) ? 'active' : ''}`}>Transactions</NavigationItem>
                     <NavigationItem onClick={() => this.onClickHandler('/strategy-monitor')} to="/strategy-monitor" nameOfClass={`_navbar-item ${(this.props.location === "/strategy-monitor" ) ? 'active' : ''}`}>Strategy Monitor</NavigationItem>

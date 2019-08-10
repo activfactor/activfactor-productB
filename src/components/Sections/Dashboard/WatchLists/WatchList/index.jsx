@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import ContentBlock from "../../../../UI/ContentBlock";
 import Header from "../../../../UI/Header";
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateWatchlistName } from '../../../../../actions/watchlist'
 // import Link from '../../../../UI/Link';
 
 class WatchList extends Component {
+  onClickHandler = () => {
+    this.props.updateWatchlistName(this.props.watchlistName);
+  } 
+
   render() {
     return (
       <div className="dashboard_watchlist-card">
-        <Header header={this.props.watchlistName} />
+        <Link style={{textDecoration:'none'}} to="/watchlist-monitor" onClick={this.onClickHandler}>
+          <Header header={this.props.watchlistName} />
+        </Link>
 
         <div className="dashboard_strategy-list">
 
@@ -34,4 +43,4 @@ class WatchList extends Component {
   }
 }
 
-export default WatchList;
+export default connect(null,{updateWatchlistName})(WatchList);

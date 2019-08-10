@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-// import classes from "./index.module.scss";
+import React,{ Component } from 'react';
 import { connect } from "react-redux";
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
@@ -149,8 +148,9 @@ class Table extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.strategyMonitor.data.actual_members
+    data: state.watchlistReducers.data.tickers
   };
 };
+
 
 export default connect(mapStateToProps)(Table);

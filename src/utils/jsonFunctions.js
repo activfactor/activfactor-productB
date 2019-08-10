@@ -12,6 +12,6 @@ export const getJSON = (response) => {
         }
         return JSON.parse(responseData);
     } catch(err) {
-        return false;
+        return false
     }
 }

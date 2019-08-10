@@ -6,6 +6,7 @@ import Dashboard from "./Sections/Dashboard/Dashboard";
 import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import StrategyMonitor from '../components/Sections/StrategyMonitor';
+import WatchListMonitor from './Sections/WatchlistMonitor';
 import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Route path="/signup" component={Signup} />
             <Route path="/strategy-builder" component={StrategyBuilder} />
             <Route path="/strategy-monitor" component={StrategyMonitor} />
+            <Route path="/watchlist-monitor" component={WatchListMonitor} />
           </Switch>
         </main>
 

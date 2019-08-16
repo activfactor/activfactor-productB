@@ -13,6 +13,7 @@ import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
 import { updateLocation } from '../../../actions';
+import { getTickerList } from '../../../actions/ticker'
 
 class Dashboard extends Component {
     state={
@@ -30,6 +31,9 @@ class Dashboard extends Component {
         this.props.getDashboard(this.state.country);
       } else {
         this.setState({country: this.props.data.country});
+      }
+      if (!this.props.tickers){
+        this.props.getTickerList();
       }
       
     }
@@ -103,7 +107,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.factorDashboard
+    data: state.factorDashboard,
+    tickers : state.tickerReducers.tickerList
   }
 }
 
@@ -115,6 +120,7 @@ export default connect(
     buildNewStrategyQuery,
     updateCuntry,
     updateLocation,
-    resetFactorScreener
+    resetFactorScreener,
+    getTickerList
   }
 )(requireAuth(Dashboard));

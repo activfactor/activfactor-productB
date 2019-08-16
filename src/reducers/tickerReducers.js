@@ -1,4 +1,4 @@
-import { TICKER_LIST , TICKER_GET, TICKER_NAME_UPDATE } from '../actions/types';
+import { TICKER_LIST , TICKER_GET, TICKER_NAME_UPDATE, TICKER_LIST_RESET } from '../actions/types';
 
 export default  (state = {} , action) => {
     switch (action.type){
@@ -17,6 +17,8 @@ export default  (state = {} , action) => {
                 tickerList: {...state.tickerList},
                 tickerName: action.payload
             }
+        case TICKER_LIST_RESET:
+            return state = {}
         default:
             return state
     }

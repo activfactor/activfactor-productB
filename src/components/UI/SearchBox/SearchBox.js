@@ -25,7 +25,7 @@ class SearchBox extends Component {
     }
 
     onChangeHandler = (e) => {
-        if (e.target.value !== '' && e.target.value!==undefined){
+        if (e.target.value !== '' && e.target.value!==undefined && this.props.tickers){
             const tickers = [];
             let obj ={};
             Object.keys(this.props.tickers).map(ticker => {
@@ -49,7 +49,7 @@ class SearchBox extends Component {
 
 
     renderOptions(){
-        if(this.state.tickersFromSearch.length>0){
+        if(this.state.tickersFromSearch.length>0 && this.props.tickers){
             return (
                 this.state.tickersFromSearch.map((ticker, index) => {
                     const tickerArr = Object.keys(ticker);

@@ -1,11 +1,13 @@
 import React, { Component } from "react"; 
 import { connect } from 'react-redux';
 import { signOut, updateLocation } from '../../../../actions/index';
+import { resetTickerList } from '../../../../actions/ticker'
 import Link from '../../../UI/Link';
 
 class AuthButtons extends Component {
   onSignOut = () => {
     this.props.updateLocation('/login');
+    this.props.resetTickerList();
     this.props.signOut();
   }
 
@@ -40,4 +42,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, {signOut, updateLocation})(AuthButtons);
+export default connect(mapStateToProps, {signOut, updateLocation, resetTickerList})(AuthButtons);

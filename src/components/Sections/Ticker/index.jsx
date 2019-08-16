@@ -6,6 +6,7 @@ import history from '../../../history';
 import Header from './Header';
 import WatchListAdd from '../StrategyBuilder/StepThree/WatchListAdd';
 import Fundamentals from './Fundamentals';
+import requireAuth from '../../hoc/requireAuth';
 
 class Ticker extends Component{
     state = {
@@ -78,4 +79,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Ticker);
+export default connect(mapStateToProps)(requireAuth(Ticker));

@@ -12,7 +12,9 @@ import {
     FACTOR_SCREENER_RESET,
     FACTOR_SCREENER_SAVE,
     FACTOR_SCREENER_SAVE_ERROR,
-    DASHBOARD_RESET
+    DASHBOARD_RESET,
+    STRATEGY_MONITOR_NAME,
+    RESET_STRATEGY_MONITOR
     
   } from "./types";
 
@@ -85,21 +87,36 @@ import {
     dispatch({type: FACTOR_SCREENER_RESET})
   }
   
-  export const saveStrategy = props => (dispatch) => {
+  export const saveStrategy = props => async (dispatch, getState) => {
+    try {
       if (props) {
-          wealthface.post("/factor/strategy", props.data, props.headers)
-          .then(res => 
-          {
-            dispatch({type: DASHBOARD_RESET});
-            dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
-          }
-        ).catch(err => 
-          {
-            dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
-          }
-        )
+        const strategyName = props.data.strategy_name;
+        await wealthface.post("/factor/strategy", props.data, props.headers);
+        dispatch({ type: DASHBOARD_RESET });
+        dispatch({
+          type: FACTOR_SCREENER_SAVE,
+          payload: `${props.data.strategy_name} saved successfully`
+        });
+        if (getState().strategyMonitor.strategyName === strategyName) {
+          dispatch({
+            type: STRATEGY_MONITOR_NAME,
+            payload: { name: strategyName }
+          });
+        } else {
+          dispatch({
+            type: RESET_STRATEGY_MONITOR,
+            payload: { name: strategyName }
+          });
+        }
+        history.push('/strategy-monitor');
       }
-}
+    } catch (err) {
+      dispatch({
+        type: FACTOR_SCREENER_SAVE_ERROR,
+        payload: "Unauthorized Action"
+      });
+    }
+  };
 
 
   

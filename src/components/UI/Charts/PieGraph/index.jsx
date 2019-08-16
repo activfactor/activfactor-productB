@@ -25,7 +25,7 @@ class Graph extends Component {
               data={this.getData(this.props.data)}
               options={{
                 pieHole: 0.5,
-                chartArea: { left: 70, width: "100%", height: "100%" },
+                chartArea: { left: 70, width: "90%", height: "90%" },
                 with: "100%",
                 height: "100%"
               }}

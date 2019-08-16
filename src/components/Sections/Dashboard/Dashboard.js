@@ -25,6 +25,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount(){
+      this.props.updateLocation('/dashboard');
       if (!this.props.data.CAN){
         this.props.getDashboard(this.state.country);
       } else {

@@ -1,9 +1,6 @@
 import React,{ Component } from 'react';
-// import classes from './index.module.scss';
 import { connect } from 'react-redux';
 import Backdrop from '../../../../UI/BackDrop';
-import Spinner from '../../../../UI/Spinner/SpinnerButton';
-// import Modal from '../../../../UI/Modal';
 import { resetQuery,resetFactorScreener } from '../../../../../actions/strategyBuilder';
 import { getClass , getValue } from '../../../../../utils/textFunctions';
 
@@ -15,7 +12,7 @@ class SBCurrentTracker extends Component {
       return (
         <React.Fragment>
           <button className="btn btn-outline-primary" onClick={this.props.cancelModal}>Cancel</button>
-          <button className="btn btn-primary" onClick={this.props.onSubmit}><Spinner color="white" nameOfClass="modal__btn-spinner" /></button>
+          <button className="btn btn-primary" onClick={this.props.onSubmit}>Save <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span></button>
         </React.Fragment>
       );
   } else {

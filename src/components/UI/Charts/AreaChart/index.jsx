@@ -34,7 +34,6 @@ class AreaChart extends Component {
               options={{
                 legend: { position: "top" },
                 // For the legend to fit, we make the chart area smaller
-                chartArea: { left: 70, width: "82%", height: "80%" },
                 vAxis: { minValue: -1, maxValue: 0, format: "#%" },
                 animation: {
                   startup: true,

@@ -12,12 +12,16 @@ class StrategyList extends Component{
                     return <Strategy 
                             key={index}
                             strategyName={strategy} 
-                            numberID={strategies[strategy]["strategy_perf_1d"]} 
+                            strategy_perf_1d={strategies[strategy]["strategy_perf_1d"]} 
+                            benchmark_perf_1d={strategies[strategy]["benchmark_perf_1d"]}
                             descriptionID="1 Day"
-                            numberWTD={strategies[strategy]["strategy_perf_wtd"]}
+                            strategy_perf_wtd={strategies[strategy]["strategy_perf_wtd"]}
+                            benchmark_perf_wtd={strategies[strategy]["benchmark_perf_wtd"]}
                             descriptionWTD="WTD"
-                            numberMTD={strategies[strategy]["strategy_perf_mtd"]}
+                            strategy_perf_mtd={strategies[strategy]["strategy_perf_mtd"]}
+                            benchmark_perf_mtd={strategies[strategy]["benchmark_perf_mtd"]}
                             descriptionMTD="MTD"
+                            benchmark_name={strategies[strategy]["benchmark_name"]}
                         />
                     })
                 )

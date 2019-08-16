@@ -1,4 +1,4 @@
-import { DASHBOARD_GET, DASHBOARD_RESET, UPDATE_COUNTRY, DASHBOARD_UPDATE_FROM_WATCHLIST } from '../actions/types';
+import { DASHBOARD_GET, DASHBOARD_RESET, UPDATE_COUNTRY } from '../actions/types';
 
 export default (state = {}, action) => {
     switch (action.type){
@@ -20,11 +20,6 @@ export default (state = {}, action) => {
             }
         case DASHBOARD_RESET:
             return state={};
-        case DASHBOARD_UPDATE_FROM_WATCHLIST:
-            return {
-                ...state,
-                watchlist: {...state.watchlist, ...action.payload}
-            }
         default:
             return state;
     }

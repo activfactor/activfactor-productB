@@ -6,6 +6,7 @@ import factorScreener from './factorScreener';
 import factorDashboard from './factorDashboard';
 import strategyMonitor from './strategyMonitor';
 import watchlistReducers from './watchlistReducers';
+import tickerReducers from './tickerReducers';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -16,6 +17,7 @@ export default combineReducers({
     queryReducer,
     factorDashboard,
     strategyMonitor,
-    watchlistReducers
+    watchlistReducers,
+    tickerReducers
 })
 

@@ -11,6 +11,8 @@ import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
 import {updateLocation} from '../actions';
+import { getTickerList } from '../actions/ticker';
+import TickerMonitor from '../components/Sections/Ticker';
 
 class App extends React.Component {
 
@@ -19,6 +21,7 @@ class App extends React.Component {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
+      this.props.getTickerList();
       this.props.updateLocation(history.location.pathname);
     }
   }
@@ -37,6 +40,7 @@ class App extends React.Component {
             <Route path="/strategy-builder" component={StrategyBuilder} />
             <Route path="/strategy-monitor" component={StrategyMonitor} />
             <Route path="/watchlist-monitor" component={WatchListMonitor} />
+            <Route path="/ticker-monitor" component={TickerMonitor} />
           </Switch>
         </main>
 
@@ -54,4 +58,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {updateLocation})(App);
+export default connect(mapStateToProps, {updateLocation,getTickerList})(App);

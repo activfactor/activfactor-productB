@@ -53,7 +53,6 @@ class BarChart extends Component {
             data={this.getData(this.props.factor)}
             options={{
               // Material design options
-              chartArea: { left: 74, width: "78%", height: "80%" },
               legend: { position: "none" },
               bar: { groupWidth: "95%" },
               animation: {

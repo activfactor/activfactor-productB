@@ -1,16 +1,23 @@
 import React,{ Component } from 'react';
 import { connect } from "react-redux";
+import { removeTicker } from '../../../../actions/watchlist';
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
 import { getValue, getClass } from '../../../../utils/textFunctions';
 
 class Table extends Component {
   state={
-    option: "daily_return"
+    option: "daily_return",
+    row: ''
   }
 
   optionChangeHandler = (e) => {
     this.setState({option: e.target.value})
+  }
+
+  removeTickerHandler(watchListName,row){
+    this.setState({row:row})
+    this.props.removeTicker(watchListName,row);
   }
 
   render() {
@@ -48,7 +55,6 @@ class Table extends Component {
                   <th scope="col">Profitability</th>
                   <th scope="col">Weight</th>
                   <th scope="col">Performance</th>
-                  <th scope="col" />
                   <th scope="col" />
                 </tr>
               </thead>
@@ -125,13 +131,8 @@ class Table extends Component {
                             {getValue(this.props.data[row][this.state.option])!== '---' ? getValue(this.props.data[row][this.state.option]).toFixed(2) + '%' : getValue(this.props.data[row][this.state.option])} 
                           </td>
                           <td className="_cta-container">
-                            <Link to="/#" nameOfClass="btn btn-outline-primary">
-                              <i className="fas fa-eye" />
-                            </Link>
-                          </td>
-                          <td className="_cta-container">
-                            <Link to="/#" nameOfClass="btn btn-primary">
-                              Trade
+                            <Link to="/watchlist-monitor" onClick={() => this.removeTickerHandler(this.props.watchListName,row)} nameOfClass="btn btn-danger">
+                              Remove {this.state.row===row ? <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> : ''}
                             </Link>
                           </td>
                         </tr>
@@ -148,9 +149,10 @@ class Table extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.watchlistReducers.data.tickers
+    data: state.watchlistReducers.data.tickers,
+    watchListName: state.watchlistReducers.watchListName
   };
 };
 
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps,{removeTicker})(Table);

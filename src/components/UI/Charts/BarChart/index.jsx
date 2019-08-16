@@ -40,7 +40,6 @@ class BarChart extends Component {
               data={this.getData(this.props.strategy, this.props.benchmark)}
               options={{
                 // Material design options
-                chartArea: { left: 70, width: "78%", height: "80%" },
                 legend: { position: "top" },
                 vAxis: { minValue: -1, maxValue: 1, format: "#%" }
               }}

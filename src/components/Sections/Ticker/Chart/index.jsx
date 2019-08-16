@@ -4,18 +4,16 @@ import Spinner from "../../../UI/Spinner";
 import Header from "../../../UI/Header";
 
 class Graph extends Component {
-  getData = (strategy, benchmark) => {
-    const result = Object.keys(strategy).map(key => {
+  getData = (data) => {
+    const result = Object.keys(data).map(key => {
       return [
-        String(key),
-        { v: strategy[key], f: `${Math.round(strategy[key] * 100) / 100}$` },
-        { v: benchmark[key], f: `${Math.round(benchmark[key] * 100) / 100}$` }
+        key,
+        { v: data[key], f: `${Math.round(data[key] * 100) / 100}$` }
       ];
     });
     result.unshift([
       this.props.chartName,
-      "Strategy",
-      this.props.benchmark_name
+      "Price",
     ]);
     return result;
   };
@@ -26,19 +24,31 @@ class Graph extends Component {
           <Header header={this.props.header} />
           <div className="_card-body">
             <Chart
-              width={"99%"}
-              height={"99%"}
+              width={"100%"}
+              height={"100%"}
               chartType="LineChart"
               loader={<Spinner color="black" />}
-              data={this.getData(this.props.strategy, this.props.benchmark)}
+              data={this.getData(this.props.data)}
               options={{
                 legend: { position: "top" },
                 curveType: "function",
                 vAxis: { format: "##,###$" },
+                hAxis: {
+                    title: 'Date',
+                    titleTextStyle: {
+                        fontSize: 10,
+                    }
+                },
                 animation: {
                   startup: true,
                   easing: "out",
                   duration: 1500
+                },
+                annotations: {
+                    alwaysOutside: true,
+                    textStyle: {
+                        fontSize: 8
+                    }
                 }
               }}
             />

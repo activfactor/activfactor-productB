@@ -9,6 +9,7 @@ import Table from './Table';
 import Input from '../../UI/Input';
 import Modal from '../../UI/Modal';
 import MessageModal from './Modal';
+import Charts from './Charts';
 
 class WatchlistMonitor extends Component{
     state ={
@@ -67,6 +68,7 @@ class WatchlistMonitor extends Component{
                     descriptionWTD="WTD"
                     descriptionMTD="MTD"
                 />
+                <Charts />
                 <Table />
                 <div className="dashboard_btn-container">
                     <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show:true})} type="submit" value="Delete this Watchlist" />

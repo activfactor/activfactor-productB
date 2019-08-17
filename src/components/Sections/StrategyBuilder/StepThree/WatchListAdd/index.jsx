@@ -71,6 +71,7 @@ class WatchListAdd extends Component {
   };
 
   renderOptions() {
+    if (this.props.watchlist.constructor === {}.constructor){
     let watchlistarr = Object.keys(this.props.watchlist);
     if (watchlistarr.length > 0) {
       return watchlistarr.map((watchlist, index) => {
@@ -82,9 +83,12 @@ class WatchListAdd extends Component {
       });
     }
   }
+  }
 
   componentDidMount() {
-    this.setState({ WatchlistName: Object.keys(this.props.watchlist)[0] });
+    if (this.props.watchlist.constructor === {}.constructor){
+      this.setState({ WatchlistName: Object.keys(this.props.watchlist)[0] });
+    }
   }
 
   afterSavingHandler = () => {
@@ -100,7 +104,7 @@ class WatchListAdd extends Component {
   };
 
   onSubmitHandler = () => {
-    if (this.state.WatchlistName !== "") {
+    if (this.state.WatchlistName !== "" || this.state.newWatchListName!=="") {
       let WatchlistName = "";
       if (this.props.kind === "new") {
         WatchlistName = this.state.newWatchListName;
@@ -126,7 +130,7 @@ class WatchListAdd extends Component {
             this.props.addToNewWatchList(dataToSend);
           }
         }
-      } else {
+      } else if (this.state.WatchListName!=='') {
         if (this.props.tickers.length > 0) {
           this.setState({ isSpinner: true });
           this.props.addToExistingWatchList(dataToSend);

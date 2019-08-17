@@ -14,7 +14,7 @@ class StrategyBuilder3 extends Component {
     showAddToWatchList: false,
     watchListKind: 'new',
     tickers:[],
-    disabled: true
+    disabled: true,
   };
 
   onCheckWatchListHandler = (value) => {

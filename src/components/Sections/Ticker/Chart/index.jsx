@@ -25,7 +25,7 @@ class Graph extends Component {
           <div className="_card-body">
             <Chart
               width={"100%"}
-              height={"100%"}
+              height={"400px"}
               chartType="LineChart"
               loader={<Spinner color="black" />}
               data={this.getData(this.props.data)}
@@ -37,7 +37,7 @@ class Graph extends Component {
                     title: 'Date',
                     titleTextStyle: {
                         fontSize: 10,
-                    }
+                    },
                 },
                 animation: {
                   startup: true,

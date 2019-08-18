@@ -9,7 +9,7 @@ class StrategyList extends Component{
                 const strategies = this.props.user_strategies;
                 return (
                     Object.keys(strategies).map((strategy, index) => {
-                    return <Strategy 
+                    return <Strategy
                             key={index}
                             strategyName={strategy} 
                             strategy_perf_1d={strategies[strategy]["strategy_perf_1d"]} 

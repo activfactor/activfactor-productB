@@ -20,6 +20,7 @@ import {
 
   import wealthface from "../apis/wealthface";
   import history from '../history';
+  import { getJSON } from '../utils/jsonFunctions';
   
   
   export const getFactorScreener = () => async (dispatch, getState) => {
@@ -31,10 +32,10 @@ import {
             Authorization: `JWT ${getState().auth.token}`
           }
         });
-        const responseData = JSON.parse(response.data.replace(/\bNaN\b/g, null));
-        dispatch({ type: FACTOR_SCREENER, payload: responseData.message });
+        dispatch({ type: FACTOR_SCREENER, payload: getJSON(response).message });
       }
     } catch (error) {
+      console.log(error);
       dispatch({
         type: FACTOR_SCREENER_ERROR,
         payload: error.response

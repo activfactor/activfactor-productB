@@ -106,6 +106,11 @@ header {
         height: 7px;
         border-radius: 50%;
         background: $orange-light;
+
+        @media (max-width: 576px) {
+          top: 11px;
+          right: 11px;
+        }
       }
     }
 
@@ -548,11 +553,7 @@ footer {
   display: flex;
   align-items: center;
   margin-bottom: 13px;
-  padding-left: 15px;
 
-  @media (max-width: 768px) {
-    padding-left: 0;
-  }
   @media (max-width: 576px) {
     padding: 0 10px;
   }
@@ -622,6 +623,10 @@ footer {
       @media (max-width: 768px) {
         font-size: 13px;
       }
+      @media (max-width: 576px) {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
 
       &:last-of-type {
         margin-top: 12px;
@@ -636,6 +641,9 @@ footer {
 
       @media (max-width: 768px) {
         font-size: 17px;
+      }
+      @media (max-width: 576px) {
+        font-size: 15px;
       }
     }
 
@@ -747,12 +755,9 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px 5px;
     margin-top: 15px;
+    margin-bottom: 2px;
 
-    @media (max-width: 768px) {
-      padding: 0;
-    }
 
     .section__title {
       font-family: $font-medium;
@@ -761,6 +766,8 @@ footer {
     .btn {
       font-size: 15px;
       font-family: $font-medium;
+      padding-right: 3px;
+      padding-left: 3px;
 
       @media (max-width: 768px) {
         font-size: 13px;
@@ -768,7 +775,6 @@ footer {
       }
     }
   }
-
 
   &_strategy-list {
     display: grid;
@@ -820,6 +826,13 @@ footer {
       overflow: hidden;
       text-overflow: ellipsis;
 
+      &._item-title {
+        font-size: 16px;
+
+        @media (max-width: 768px) {
+          font-size: 15px;
+        }
+      }
       ._text-bold {
         font-family: $font-medium;
         font-size: 15px;
@@ -945,7 +958,7 @@ footer {
     }
 
     ._full-height-table {
-      max-height: 350px;
+      max-height: 400px;
       @media (max-width: 576px) {
         max-height: none;
       }
@@ -1254,7 +1267,7 @@ footer {
 
   ._card-body {
     position: relative;
-    padding: 20px;
+    padding: 15px;
     min-height: 170px;
     @media (max-width: 576px) {
       padding: 15px 10px;
@@ -1475,7 +1488,7 @@ footer {
 
 
 .card__title {
-  font-family: $font-medium;
+  font-family: $font-bold;
   font-size: 15px;
   color: $text-color-dark-blue;
   padding: 10px $gutter-padding;
@@ -1488,12 +1501,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   ._header-title {
     @media (max-width: 768px) {
       font-size: 15px;
+    }
+    @media (max-width: 576px) {
+      font-size: 14px;
     }
   }
 
@@ -1505,6 +1520,18 @@ footer {
 
     @media (max-width: 768px) {
       font-size: 13px;
+    }
+    @media (max-width: 576px) {
+      font-size: 12px;
+    }
+  }
+
+  &-cta {
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+      background-color: rgba(0,0,0,.075);
     }
   }
 }
@@ -1534,13 +1561,12 @@ footer {
         border-color: $mainBlueColor;
         th {
           font-family: $font-medium;
-          color: $text-color-dark-blue;
           padding: $gutter-padding;
           text-align: center;
           line-height: 1;
           white-space: nowrap;
           background: $mainBlueColor;
-          border-color: $mainBlueColor;
+          border: none;
           color: #fff;
 
           @media (max-width: 576px) {
@@ -1560,12 +1586,14 @@ footer {
         border-bottom: 1px solid $border-color-primary;
 
         td {
-          padding: 10px $gutter-padding;
+          padding: $gutter-padding;
           text-align: center;
           line-height: 1;
           white-space: nowrap;
           vertical-align: middle;
           font-size: 13px;
+          border: none;
+          color: $text-color-dark-blue;
           @media (max-width: 576px) {
             padding: 10px;
           }
@@ -1624,6 +1652,18 @@ footer {
         }
       }
     }
+
+    &._no-bg-head {
+      thead {
+        tr {
+          border-color: transparent;
+          th {
+            color: $text-color-dark-blue;
+            background-color: transparent;
+          }
+        }
+      }
+    }
   }
 
   .table-responsive {
@@ -1633,9 +1673,6 @@ footer {
 
 
 .card-table__title,
-
-
-
 .card__default {
   padding: 15px;
   @include card-defaults;
@@ -1704,11 +1741,6 @@ table.table--primary {
     }
   }
 }
-
-
-
-
-
 
 
 
@@ -1785,14 +1817,14 @@ table.table--primary {
 
 
 
-.mb-30 {
-  margin-bottom: 30px !important;
-}
-
 
 [class*='col-'] {
   @media (max-width: 576px) {
     padding-left: 10px;
     padding-right: 10px;
   }
+}
+
+.mb-30 {
+  margin-bottom: 30px !important;
 }

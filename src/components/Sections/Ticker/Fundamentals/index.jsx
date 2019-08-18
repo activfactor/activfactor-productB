@@ -8,13 +8,16 @@ class Fundamentals extends Component{
     render(){
         return(
             <React.Fragment>
-                <div className="dashboard_strategy-list" style={{gridTemplateColumns: '1fr 1fr'}}>
+                <div className="charts-card-container">
+
                     <Momentum />
+
                     <Profitability />
-                </div>
-                <div className="dashboard_strategy-list" style={{gridTemplateColumns: '1fr 1fr'}}>
+
                     <Valuation />
+
                     <Risk />
+
                 </div>
             </React.Fragment>
         );

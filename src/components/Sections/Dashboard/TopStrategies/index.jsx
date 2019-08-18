@@ -27,7 +27,7 @@ class Table extends Component {
           ? this.props.data.CAN
           : this.props.data.USA;
       return (
-        <table className="table table-hover table-borderless">
+        <table className="table table-hover table-borderless no-border-radius">
           <thead>
             <tr>
               <th />

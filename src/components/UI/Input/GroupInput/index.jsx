@@ -15,15 +15,13 @@ class GroupInput extends Component {
 
   render() {
     return (
-        <div className="btn-group" style={{zIndex: '1000', overflow: 'visible'}}>
         <div className="btn-group">
           <button disabled={this.props.disabled} onClick={this.onClickHandler} type="button" className="btn btn-primary dropdown-toggle position-relative" data-toggle="dropdown" id="strategybuilder">
           {this.props.buttonName} <span className="caret"></span></button>
-          <div className="dropdown-menu ml-2 position-absolute" style={{display: this.state.display, overflow: 'visible', zIndex:'1000'}} onClick={this.onClickHandler}>
+          <div className="dropdown-menu position-absolute" style={{display: this.state.display, overflow: 'visible', zIndex:'1000'}} onClick={this.onClickHandler}>
             {this.props.children}
           </div>
         </div>
-      </div>
     );
   }
 }

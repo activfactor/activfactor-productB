@@ -14,7 +14,7 @@ class WatchList extends Component {
   render() {
     return (
       <div className="dashboard_watchlist-card">
-        <Link style={{textDecoration:'none'}} to="/watchlist-monitor" onClick={this.onClickHandler}>
+        <Link className="card__title-cta" to="/watchlist-monitor" onClick={this.onClickHandler}>
           <Header header={this.props.watchlistName} />
         </Link>
 

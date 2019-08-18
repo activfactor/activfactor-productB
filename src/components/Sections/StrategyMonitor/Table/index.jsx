@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-// import classes from "./index.module.scss";
 import { connect } from "react-redux";
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
 import { getValue, getClass } from '../../../../utils/textFunctions';
+import { getTickerDetails, updateTickerName  } from '../../../../actions/ticker';
+import { updateLocation } from '../../../../actions/index';
 
 class Table extends Component {
   state={
@@ -12,6 +13,12 @@ class Table extends Component {
 
   optionChangeHandler = (e) => {
     this.setState({option: e.target.value})
+  }
+
+  onEyeClickHandler = (ticker) => {
+    this.props.updateTickerName(ticker);
+    this.props.getTickerDetails(ticker);
+    this.props.updateLocation('/');
   }
 
   render() {
@@ -126,7 +133,7 @@ class Table extends Component {
                             {getValue(this.props.data[row][this.state.option])!== '---' ? getValue(this.props.data[row][this.state.option]).toFixed(2) + '%' : getValue(this.props.data[row][this.state.option])} 
                           </td>
                           <td className="_cta-container">
-                            <Link to="/#" nameOfClass="btn btn-outline-primary">
+                            <Link to="/ticker-monitor" onClick={() => this.onEyeClickHandler(row)} nameOfClass="btn btn-outline-primary">
                               <i className="fas fa-eye" />
                             </Link>
                           </td>
@@ -153,4 +160,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps,{getTickerDetails,updateTickerName,updateLocation})(Table);

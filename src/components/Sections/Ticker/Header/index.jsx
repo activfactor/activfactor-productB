@@ -30,12 +30,12 @@ class Header extends Component{
             <ContentBlock
             number={this.props.changeID}
             unit="%"
-            description="1 Day Change"
+            description="1 Day % Change"
             />
             <ContentBlock
             number={this.props.performanceID}
-            unit="%"
-            description="1 Day Performance"
+            unit="$"
+            description="1 Day Change"
             />
         </div>
         );

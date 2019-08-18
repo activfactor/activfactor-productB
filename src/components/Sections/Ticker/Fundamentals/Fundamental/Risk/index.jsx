@@ -12,8 +12,8 @@ class Risk extends Component{
                     <tr>
                         <th></th>
                         <th>Company</th>
-                        <th>Industry</th>
                         <th>Sector</th>
+                        <th>Industry</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -12,8 +12,8 @@ class Momentum extends Component{
                         <tr>
                             <th></th>
                             <th>Company</th>
-                            <th>Industry</th>
                             <th>Sector</th>
+                            <th>Industry</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,9 +25,9 @@ class Momentum extends Component{
                         </tr>
                         <tr>
                             <td>Performance 1 Month</td>
-                            <td className={getClass(this.props.company["performance_1_months"])}>{getValue(this.props.company["performance_1_months"])}%</td>
-                            <td className={getClass(this.props.sector["performance_1_months"])}>{getValue(this.props.sector["performance_1_months"])}%</td>
-                            <td className={getClass(this.props.industry["performance_1_months"])}>{getValue(this.props.industry["performance_1_months"])}%</td>
+                            <td className={getClass(this.props.company["performance_1_month"])}>{getValue(this.props.company["performance_1_month"])}%</td>
+                            <td className={getClass(this.props.sector["performance_1_month"])}>{getValue(this.props.sector["performance_1_month"])}%</td>
+                            <td className={getClass(this.props.industry["performance_1_month"])}>{getValue(this.props.industry["performance_1_month"])}%</td>
                         </tr>
                         <tr>
                             <td>Performance 3 Months</td>

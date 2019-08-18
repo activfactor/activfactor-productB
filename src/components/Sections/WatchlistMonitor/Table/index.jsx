@@ -1,6 +1,8 @@
 import React,{ Component } from 'react';
 import { connect } from "react-redux";
 import { removeTicker } from '../../../../actions/watchlist';
+import { getTickerDetails, updateTickerName  } from '../../../../actions/ticker';
+import { updateLocation } from '../../../../actions/index';
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
 import { getValue, getClass } from '../../../../utils/textFunctions';
@@ -18,6 +20,12 @@ class Table extends Component {
   removeTickerHandler(watchListName,row){
     this.setState({row:row})
     this.props.removeTicker(watchListName,row);
+  }
+
+  onEyeClickHandler = (ticker) => {
+    this.props.updateTickerName(ticker);
+    this.props.getTickerDetails(ticker);
+    this.props.updateLocation('/');
   }
 
   render() {
@@ -55,6 +63,8 @@ class Table extends Component {
                   <th scope="col">Profitability</th>
                   <th scope="col">Weight</th>
                   <th scope="col">Performance</th>
+                  <th scope="col" />
+                  <th scope="col" />
                   <th scope="col" />
                 </tr>
               </thead>
@@ -131,6 +141,16 @@ class Table extends Component {
                             {getValue(this.props.data[row][this.state.option])!== '---' ? getValue(this.props.data[row][this.state.option]).toFixed(2) + '%' : getValue(this.props.data[row][this.state.option])} 
                           </td>
                           <td className="_cta-container">
+                            <Link to="/ticker-monitor" onClick={() => this.onEyeClickHandler(row)} nameOfClass="btn btn-outline-primary">
+                              <i className="fas fa-eye" />
+                            </Link>
+                          </td>
+                          <td className="_cta-container">
+                            <Link to="/#" nameOfClass="btn btn-primary">
+                              Trade
+                            </Link>
+                          </td>
+                          <td className="_cta-container">
                             <Link to="/watchlist-monitor" onClick={() => this.removeTickerHandler(this.props.watchListName,row)} nameOfClass="btn btn-danger">
                               Remove {this.state.row===row ? <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> : ''}
                             </Link>
@@ -155,4 +175,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps,{removeTicker})(Table);
+export default connect(mapStateToProps,{removeTicker, getTickerDetails, updateTickerName, updateLocation})(Table);

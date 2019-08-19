@@ -54,9 +54,9 @@ class SearchBox extends Component {
                 this.state.tickersFromSearch.map((ticker, index) => {
                     const tickerArr = Object.keys(ticker);
                     return (
-                        <a key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="list-group-item list-group-item-action">
+                        <a key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="_item">
                             <span className="text-primary">{tickerArr[0]}</span>
-                            <span className="_list-group-separator">|</span>
+                            <span className="_separator">|</span>
                             <span className="text-dark">{ticker[tickerArr[0]]}</span>
                         </a>
                     );
@@ -72,9 +72,12 @@ class SearchBox extends Component {
                         <span className="input-group-text" id="basic-addon1"><i className="fas fa-search"></i></span>
                     </div>
                     <Field name="search" component="input" type="text" placeholder="Search" className="form-control" onChange={this.onChangeHandler}/>
-                    <div className="list-group search-result_container">
-                        {this.renderOptions()}
-                    </div>
+
+                {
+                    (this.state.tickersFromSearch.length>0 && this.props.tickers) ?
+                      <div className="search-result_container">{this.renderOptions()}</div> :
+                      ''
+                }
             </form>
         );
     }

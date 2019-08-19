@@ -6,7 +6,7 @@ class Header extends Component{
         return(
             <div className="dashboard_strategy-list">
               <div className="_strategy-list-item _item-title">
-                <div className="text-dark">{this.props.watchListName}</div>
+                <div>{this.props.watchListName}</div>
               </div>
               <div className="_strategy-list-item">
                 <ContentBlock number={this.props.numberID} unit="%" description={this.props.descriptionID} />

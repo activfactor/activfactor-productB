@@ -75,31 +75,6 @@ $grid-gutter: 15px;
       box-shadow: none;
     }
   }
-
-  &.search-input-group {
-    max-width: 250px;
-    @media (max-width: 992px) {
-      max-width: 150px;
-      padding-left: 7px;
-      padding-right: 7px;
-    }
-
-    .input-group-text {
-      color: $form-control-placeholder-color;
-      padding-right: 10px;
-      padding-left: 15px;
-
-      @media (max-width: 992px) {
-        padding-left: 10px;
-      }
-    }
-
-
-
-    .form-control {
-      padding-left: 0;
-    }
-  }
 }
 
 .input-group-text {

@@ -21,6 +21,7 @@ header {
       @media (max-width: 576px) {
         padding: 10px;
       }
+
       ._btn-auth-container {
         line-height: 1;
         display: flex;
@@ -118,6 +119,87 @@ header {
   }
 }
 
+.search-input-group {
+  position: relative;
+
+  max-width: 250px;
+
+  @media (max-width: 992px) {
+    max-width: 170px;
+    //padding-left: 7px;
+    //padding-right: 7px;
+  }
+
+  .input-group-text {
+    color: $form-control-placeholder-color;
+    padding-right: 10px;
+    padding-left: 15px;
+
+    @media (max-width: 992px) {
+      padding-left: 10px;
+    }
+  }
+
+
+  .form-control {
+    padding-left: 0;
+  }
+}
+
+.search-result_container {
+  @include card-defaults;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  min-width: 250px;
+  z-index: 150;
+  margin-top: 1px;
+  max-height: 400px;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  overflow: hidden;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    width: auto;
+    left: 15px;
+    right: 15px;
+    max-height: 270px;
+  }
+
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+
+  .list-group-item {
+    flex-shrink: 0;
+    padding: 11px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background: #f5f5f5;
+    }
+  }
+
+  ._list-group-separator {
+    margin: 0 6px;
+    color: #111;
+  }
+
+  input.form-control {
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
+  }
+}
+
+
 
 .navbar {
 
@@ -143,6 +225,7 @@ header {
       }
 
       .search-input-group {
+        position: relative;
         flex-shrink: 0;
         @media (max-width: 768px) {
           display: none;
@@ -151,6 +234,7 @@ header {
         }
       }
     }
+
     &.show {
       display: flex;
       max-height: 500px;
@@ -182,11 +266,12 @@ header {
 
       .form-control {
         @media (max-width: 768px) {
-          padding: 8px 12px;
+          padding: 8px 12px 8px 0;
         }
       }
     }
   }
+
   &_wrapper {
 
     @media (max-width: 768px) {
@@ -237,11 +322,6 @@ header {
     }
   }
 }
-
-
-
-
-
 
 
 main {
@@ -574,9 +654,6 @@ footer {
 }
 
 
-
-
-
 /*********************
 ***** =Dashboard *****
 */
@@ -812,6 +889,7 @@ footer {
             }
           }
         }
+
         &:not(:first-of-type) {
           @media (max-width: 576px) {
             flex: 1;
@@ -828,16 +906,20 @@ footer {
 
       &._item-title {
         font-size: 16px;
+        font-family: $font-medium;
+        color: $text-color-dark-blue;
 
         @media (max-width: 768px) {
           font-size: 15px;
         }
       }
+
       ._text-bold {
         font-family: $font-medium;
         font-size: 15px;
         color: $mainBlueColor;
       }
+
       ._btn-list-item {
         font-family: $font-medium;
         font-size: 14px;
@@ -900,7 +982,6 @@ footer {
     padding: 15px 0;
     margin-bottom: 50px;
   }
-
 
 
   &_header {
@@ -1027,6 +1108,7 @@ footer {
     @include make-row;
     margin-bottom: 30px;
   }
+
   &_table {
     @include card-defaults;
   }
@@ -1380,6 +1462,7 @@ footer {
         }
       }
     }
+
     tbody {
       tr {
         border-bottom: 1px solid $border-color-primary;
@@ -1398,6 +1481,7 @@ footer {
           &._td-ticker {
             text-align: start;
           }
+
           &._td-checkbox--item {
 
             .checkbox--item {
@@ -1531,7 +1615,7 @@ footer {
 
     &:hover {
       text-decoration: none;
-      background-color: rgba(0,0,0,.075);
+      background-color: rgba(0, 0, 0, .075);
     }
   }
 }
@@ -1548,6 +1632,7 @@ footer {
       height: auto;
     }
   }
+
   table.table {
     margin-bottom: 0;
 
@@ -1556,9 +1641,11 @@ footer {
     //}
     thead {
       border-color: $mainBlueColor;
+
       tr {
         border-bottom: 1px solid $border-color-primary;
         border-color: $mainBlueColor;
+
         th {
           font-family: $font-medium;
           padding: $gutter-padding;
@@ -1624,12 +1711,14 @@ footer {
               }
             }
           }
+
           &._td-checkbox--item {
 
             .checkbox--item {
               display: inline-block;
             }
           }
+
           &._cta-container {
             padding: 3px 10px;
 
@@ -1638,11 +1727,13 @@ footer {
               font-size: 12px;
             }
           }
+
           ._row-text-medium {
             font-family: $font-medium;
             color: $text-color-dark-blue;
             line-height: 1.3;
           }
+
           ._row-text-small {
             font-size: 10px;
             color: $textColor;
@@ -1657,6 +1748,7 @@ footer {
       thead {
         tr {
           border-color: transparent;
+
           th {
             color: $text-color-dark-blue;
             background-color: transparent;
@@ -1725,6 +1817,7 @@ table.table--primary {
           font-family: $font-medium;
           color: $text-color-dark-blue;
         }
+
         ._row-text-small {
           font-size: 10px;
         }
@@ -1741,7 +1834,6 @@ table.table--primary {
     }
   }
 }
-
 
 
 /**
@@ -1812,10 +1904,6 @@ table.table--primary {
     }
   }
 }
-
-
-
-
 
 
 [class*='col-'] {

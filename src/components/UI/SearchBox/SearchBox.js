@@ -54,7 +54,11 @@ class SearchBox extends Component {
                 this.state.tickersFromSearch.map((ticker, index) => {
                     const tickerArr = Object.keys(ticker);
                     return (
-                        <li style={{cursor: 'pointer'}} key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="list-group-item list-group-item-action"><span className="text-primary">{tickerArr[0]}</span>    |    <span className="text-secondary">{ticker[tickerArr[0]]}</span></li>
+                        <a key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="_item">
+                            <span className="text-primary">{tickerArr[0]}</span>
+                            <span className="_separator">|</span>
+                            <span className="text-dark">{ticker[tickerArr[0]]}</span>
+                        </a>
                     );
                 })
             );
@@ -63,14 +67,17 @@ class SearchBox extends Component {
 
     render(){
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmitHandler)} className="input-group search-input-group position-relative" autoComplete="off">
+            <form onSubmit={this.props.handleSubmit(this.onSubmitHandler)} className="input-group search-input-group" autoComplete="off">
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="basic-addon1"><i className="fas fa-search"></i></span>
                     </div>
                     <Field name="search" component="input" type="text" placeholder="Search" className="form-control" onChange={this.onChangeHandler}/>
-                    <ul className="list-group position-absolute" style={{maxHeight: '300px', overflow: 'scroll', transform:'translateY(42px)', zIndex: '1000'}}>
-                        {this.renderOptions()}
-                    </ul>
+
+                {
+                    (this.state.tickersFromSearch.length>0 && this.props.tickers) ?
+                      <div className="search-result_container">{this.renderOptions()}</div> :
+                      ''
+                }
             </form>
         );
     }

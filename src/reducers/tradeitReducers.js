@@ -1,4 +1,4 @@
-import { TRADEIT_AUTH_URL, TRADEIT_GET_BROKER_LIST } from "../actions/types";
+import { TRADEIT_AUTH_URL, TRADEIT_GET_BROKER_LIST, TRADEIT_AUTH_VERIFIER,TRADEIT_AUTH_TOKEN } from "../actions/types";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -12,6 +12,16 @@ export default (state = {}, action) => {
         ...state,
         oAuthURL: action.payload
       };
+    case TRADEIT_AUTH_VERIFIER:
+        return {
+            ...state,
+            oAuthVerifier: action.payload
+        }
+    case TRADEIT_AUTH_TOKEN:
+        return {
+            ...state,
+            oAuthToken: action.payload
+        }
     default:
       return state;
   }

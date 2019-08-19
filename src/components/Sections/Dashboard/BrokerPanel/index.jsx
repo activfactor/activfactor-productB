@@ -2,12 +2,35 @@ import React, {Component} from 'react';
 // import classes from './index.module.scss';
 import Header from '../../../UI/Header';
 import Input from '../../../UI/Input';
-import { getBrokerList, getAuthLogin } from '../../../../actions/tradeit';
+import { getBrokerList, getAuthLogin, postAuthVerifier, getAuthToken } from '../../../../actions/tradeit';
 import { connect } from 'react-redux';
+
+const new_window = window;
 
 class BrokerPanel extends Component {
   connectBrokerage = () => {
     this.props.getAuthLogin();
+  }
+
+  componentDidMount = () => {
+      new_window.addEventListener("message", (e) => {
+          if (e.data){
+            console.log(e.data);
+            const data = JSON.parse(e.data);
+            const oAuthVerifier = data.oAuthVerifier;
+            this.props.postAuthVerifier(oAuthVerifier);
+          }
+      }, false);
+  }
+
+  componentDidUpdate = () => {
+    if (this.props.oAuthURL){ 
+      new_window.open(this.props.oAuthURL, '_blank');
+    }
+  }
+
+  CreateAccount = () => {
+    this.props.getAuthToken();
   }
 
   render() {
@@ -21,7 +44,7 @@ class BrokerPanel extends Component {
             <Input nameOfClass="btn btn-primary" type="submit" value="Connect Brokerage"
                    onClick={this.connectBrokerage}/>
             <Input nameOfClass="btn btn-secondary" type="submit" value="Create an Account"
-                   onClick={this.props.CreateAccount} color="black"/>
+                   onClick={this.CreateAccount} color="black"/>
           </div>
         </div>
       </div>
@@ -29,4 +52,10 @@ class BrokerPanel extends Component {
   }
 }
 
-export default connect(null,{getBrokerList, getAuthLogin})(BrokerPanel);
+const mapStateToProps = state => {
+  return {
+    oAuthURL: state.tradeitReducers.oAuthURL
+  };
+}
+
+export default connect(mapStateToProps,{getBrokerList, getAuthLogin, postAuthVerifier, getAuthToken})(BrokerPanel);

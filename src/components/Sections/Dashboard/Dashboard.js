@@ -12,7 +12,7 @@ import Spinner from '../../UI/Spinner';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
-import { getBrokerList } from '../../../actions/tradeit';
+import { getBrokerList, getBalance } from '../../../actions/tradeit';
 import { updateLocation } from '../../../actions';
 import { getTickerList } from '../../../actions/ticker'
 
@@ -29,15 +29,12 @@ class Dashboard extends Component {
     componentDidMount(){
       this.props.updateLocation('/dashboard');
       this.props.getBrokerList();
+      this.props.getBalance();
       if (!this.props.data.CAN){
         this.props.getDashboard(this.state.country);
       } else {
         this.setState({country: this.props.data.country});
       }
-      if (!this.props.tickers){
-        this.props.getTickerList();
-      }
-      
     }
 
     BuildStrategy = () => {
@@ -124,6 +121,7 @@ export default connect(
     updateLocation,
     resetFactorScreener,
     getTickerList,
-    getBrokerList
+    getBrokerList,
+    getBalance
   }
 )(requireAuth(Dashboard));

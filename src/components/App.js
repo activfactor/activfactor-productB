@@ -12,16 +12,21 @@ import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
 import {updateLocation} from '../actions';
 import { getTickerList } from '../actions/ticker';
+import { getToken } from '../actions/tradeit'
 import TickerMonitor from '../components/Sections/Ticker';
 
 class App extends React.Component {
 
-  componentDidMount() {
+  componentDidMount = () => {
     if (!this.props.authenticated) {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
+      console.log('App');
       this.props.getTickerList();
+      if (this.props.userId && this.props.userToken){
+        this.props.getToken();
+      }
       this.props.updateLocation(history.location.pathname);
     }
   }
@@ -55,7 +60,9 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     authenticated: state.auth.authenticated,
+    userId: state.tradeitReducers.userId,
+    userToken: state.tradeitReducers.userToken
   }
 }
 
-export default connect(mapStateToProps, {updateLocation,getTickerList})(App);
+export default connect(mapStateToProps, {updateLocation,getTickerList,getToken})(App);

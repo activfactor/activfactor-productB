@@ -54,11 +54,11 @@ class SearchBox extends Component {
                 this.state.tickersFromSearch.map((ticker, index) => {
                     const tickerArr = Object.keys(ticker);
                     return (
-                        <a key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="_item">
+                        <button key={index} onClick={() => this.onClickHandler(tickerArr[0])} className="_item">
                             <span className="text-primary">{tickerArr[0]}</span>
                             <span className="_separator">|</span>
                             <span className="text-dark">{ticker[tickerArr[0]]}</span>
-                        </a>
+                        </button>
                     );
                 })
             );

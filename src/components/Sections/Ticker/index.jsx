@@ -44,8 +44,8 @@ class Ticker extends Component{
                             sector={this.props.tickerDetail.compagny.description.sector}
                             industry={this.props.tickerDetail.compagny.description.industry}
                             priceID={this.props.tickerDetail.compagny.description.last_price}
-                            changeID={this.props.tickerDetail.compagny.description.change_1d}
-                            performanceID={this.props.tickerDetail.compagny.description.perf_1d}
+                            changeID={this.props.tickerDetail.compagny.description.perf_1d}
+                            performanceID={this.props.tickerDetail.compagny.description.change_1d}
                             AddToWatchlist={this.AddToWatchlist}
                             disabled={this.state.disabled}
                         />

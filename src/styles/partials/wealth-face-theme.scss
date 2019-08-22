@@ -180,6 +180,9 @@ header {
 
   ._item {
     display: block;
+    width: 100%;
+    text-align: left;
+    outline: none;
     padding: 10px;
     border-bottom: 1px solid #d4d4d5;
     overflow: hidden;

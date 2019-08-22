@@ -1,50 +1,93 @@
 import React, {Component} from 'react';
-// import classes from './index.module.scss';
 import Header from '../../../UI/Header';
 import Input from '../../../UI/Input';
-import { getBrokerList, getAuthLogin, postAuthVerifier, getAuthToken } from '../../../../actions/tradeit';
+import { getBrokerList, getAuthToken, getAccounts, getToken, getBalance } from '../../../../actions/tradeit';
 import { connect } from 'react-redux';
+import ModalContent from './ModalContent';
 
 const new_window = window;
 
 class BrokerPanel extends Component {
-  connectBrokerage = () => {
-    this.props.getAuthLogin();
-  }
+  state={
+    showModal: false,
+}
 
-  componentDidMount = () => {
-      new_window.addEventListener("message", (e) => {
-          if (e.data){
-            console.log(e.data);
-            const data = JSON.parse(e.data);
-            const oAuthVerifier = data.oAuthVerifier;
-            this.props.postAuthVerifier(oAuthVerifier);
-          }
-      }, false);
-  }
+getTradeitInfo = async (oAuthVerifier) => {
+  await this.props.getAuthToken(oAuthVerifier);
+  await this.props.getToken();
+  await this.props.getAccounts();
+  this.props.getBalance();
+}
 
-  componentDidUpdate = () => {
-    if (this.props.oAuthURL){ 
-      new_window.open(this.props.oAuthURL, '_blank');
+  receiveMessage = async (e) => {
+    if(!this.props.userToken){
+      try{
+        const data = JSON.parse(e.data);
+        const oAuthVerifier = data.oAuthVerifier;
+        await this.getTradeitInfo(oAuthVerifier);
+        this.cancelModal();
+      } catch(err){
+        
+      }
     }
   }
 
-  CreateAccount = () => {
-    this.props.getAuthToken();
+  cancelModal = () => {
+    this.setState({ showModal: false });
+  };
+
+  connectBrokerage = () => {
+    this.setState({showModal: true})
+  }
+
+  componentDidMount = () => {
+    new_window.addEventListener("message",this.receiveMessage, false);
+  }
+
+  componentWillUnmount = () => {
+    new_window.removeEventListener("message",this.receiveMessage, false);
+  }
+
+  renderModal = () => {
+    if (this.state.showModal){
+      return <ModalContent cancelHandler={this.cancelModal} new_window={new_window} />
+    }
+  }
+
+  renderText = () => {
+    if (this.props.userToken){
+      return (
+        <React.Fragment>
+        <div className="_text-title">You are connected to</div>
+        <div className="_text-title text-primary">{this.props.brokerLongName}</div>
+
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <div className="_text-title">No Brokerages Connected</div>
+          <div className="_text-body">
+            You've not connected a brokerage account to stockflare, why
+            not give it a go?
+          </div>
+        </React.Fragment>
+      );
+    }
   }
 
   render() {
     return (
       <div className="dashboard_broker-panel">
+        {this.renderModal()}
         <Header header="My Brokerages"/>
         <div className="_panel-body">
-          <div className="_text-title">No Brokerages Connected</div>
-          <div className="_text-body">You've not connected a brokerage account to stockflare, why not give it a go?</div>
+          {this.renderText()}
           <div className="_btn-block">
             <Input nameOfClass="btn btn-primary" type="submit" value="Connect Brokerage"
                    onClick={this.connectBrokerage}/>
             <Input nameOfClass="btn btn-secondary" type="submit" value="Create an Account"
-                   onClick={this.CreateAccount} color="black"/>
+                   onClick={this.props.CreateAccount} color="black"/>
           </div>
         </div>
       </div>
@@ -54,8 +97,9 @@ class BrokerPanel extends Component {
 
 const mapStateToProps = state => {
   return {
-    oAuthURL: state.tradeitReducers.oAuthURL
+    userToken: state.tradeitReducers.userToken,
+    brokerLongName: state.tradeitReducers.brokerLongName
   };
 }
 
-export default connect(mapStateToProps,{getBrokerList, getAuthLogin, postAuthVerifier, getAuthToken})(BrokerPanel);
+export default connect(mapStateToProps,{getBrokerList,getAuthToken,getAccounts, getToken, getBalance})(BrokerPanel);

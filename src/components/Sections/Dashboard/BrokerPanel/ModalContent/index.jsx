@@ -42,6 +42,7 @@ class ModuleName extends Component {
   };
 
   onSubmitHandler = async () => {
+    if (this.state.brokerName){
       if (!this.props.userToken){
         this.setState({ isSpinner: true });
         this.props.getAuthLogin(this.state.brokerName);
@@ -50,6 +51,7 @@ class ModuleName extends Component {
         await this.props.getToken();
         this.cancelHandler();
       }
+    }
   };
 
   componentWillUnmount(){

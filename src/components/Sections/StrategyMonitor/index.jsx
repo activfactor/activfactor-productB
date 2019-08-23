@@ -18,7 +18,7 @@ class StrategyMonitor extends Component{
     }
 
     componentWillMount(){
-        this.props.updateLocation('/strategy-monitor');
+        this.props.updateLocation('/strategy-monitor/details');
         if (this.props.strategyMonitor.strategyName){
             this.props.getStrategyMonitor(this.props.strategyMonitor.strategyName);
         }

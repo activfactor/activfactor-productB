@@ -18,7 +18,7 @@ class WatchlistMonitor extends Component{
     }
     componentDidMount(){
         if (this.props.watchListName){
-            this.props.updateLocation('/watchlist-monitor')
+            this.props.updateLocation('/watchlist-monitor/details')
             if (!this.props.data){
                 this.props.resetWatchlist();
                 this.props.getWatchlist(this.props.watchListName);

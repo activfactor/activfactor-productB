@@ -64,7 +64,7 @@ class Dashboard extends Component {
 
             <div className="dashboard_title-container">
               <div className="section__title">My strategies</div>
-              <Link to="/#">View all</Link>
+              <Link to="/strategy-monitor">View all</Link>
             </div>
 
             <StrategiesList/>
@@ -76,7 +76,7 @@ class Dashboard extends Component {
 
             <div className="dashboard_title-container">
               <div className="section__title">My Wath List</div>
-              <Link to="/#">View all</Link>
+              <Link to="/watchlist-monitor">View all</Link>
             </div>
 
             <WatchLists />

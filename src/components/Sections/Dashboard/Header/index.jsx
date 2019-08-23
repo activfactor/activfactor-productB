@@ -6,7 +6,7 @@ class Header extends Component{
     renderContent = () => {
         if(this.props.accountOverview){
             return (
-              <div className="dashboard_header" style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gridRowGap: '40px'}}>
+              <div className="dashboard_header" style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', gridRowGap: '20px'}}>
                 <ContentBlock
                   number={this.props.accountOverview.totalValue}
                   unit="$"

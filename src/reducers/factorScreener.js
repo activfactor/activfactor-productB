@@ -1,4 +1,4 @@
-import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR, FACTOR_SCREENER_RESET, FACTOR_SCREENER_SAVE, FACTOR_SCREENER_SAVE_ERROR } from '../actions/types';
+import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR, FACTOR_SCREENER_RESET, FACTOR_SCREENER_SAVE, FACTOR_SCREENER_SAVE_ERROR, FACTOR_SCREENER_ERROR_RESET } from '../actions/types';
 const INITIAL_STATE={
     message:""
 }
@@ -45,6 +45,11 @@ export default (state=INITIAL_STATE , action)=>{
             return{
                 ...state,
                 error_saving_message: action.payload
+            }
+        case FACTOR_SCREENER_ERROR_RESET:
+            return {
+                ...state,
+                error_saving_message: undefined
             }
         default:
             return state;

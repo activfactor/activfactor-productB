@@ -24,14 +24,22 @@ class App extends React.Component {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
-      console.log('App');
-      this.props.getTickerList();
+      if (this.props.token){
+        this.props.getTickerList();
+      }
       if (this.props.userId && this.props.userToken){
         this.props.getToken();
       }
       this.props.updateLocation(history.location.pathname);
     }
   }
+
+  componentDidUpdate = () => {
+    if (!this.props.tickerList && this.props.token){
+      this.props.getTickerList();
+    }
+  }
+
 
   render() {
     return (
@@ -64,8 +72,10 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     authenticated: state.auth.authenticated,
+    token: state.auth.token,
     userId: state.tradeitReducers.userId,
-    userToken: state.tradeitReducers.userToken
+    userToken: state.tradeitReducers.userToken,
+    tickerList: state.tickerReducers.tickerList
   }
 }
 

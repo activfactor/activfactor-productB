@@ -19,18 +19,19 @@ class WatchList extends Component {
         >
           <Header
             header={this.props.watchlistName}
-            nameOfClass="text-primary p-4"
+            nameOfClass="text-primary"
           />
         </Link>
 
-        <div className="dashboard_strategy-list p-2">
-          <div className="_strategy-list-item m-3">
-            <div className="_title">{this.props.watchListQty} Tickers</div>
+        <div className="_card-body">
+          <div className="_title">{this.props.watchListQty} Tickers</div>
+          <div className="_subtitle">4 Stocks</div>
+
+          <div className="dashboard_watchlist-card-info small p-0">
+            Last Update {this.props.lastUpdate}
           </div>
         </div>
-        <div className="dashboard_watchlist-card-info small m-2">
-          Last Update {this.props.lastUpdate}
-        </div>
+
       </div>
     );
   }

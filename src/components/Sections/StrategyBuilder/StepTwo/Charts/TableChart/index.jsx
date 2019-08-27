@@ -11,7 +11,7 @@ class TableChart extends Component {
           <table className="table table-borderless table-hover">
             <thead className={classes.table__header}>
               <tr className={classes.table__headerow}>
-                <th scope="col">{this.props.tableName}</th>
+                <th className="_font-title _normal" scope="col">{this.props.tableName}</th>
                 <th scope="col">Strategy</th>
                 <th scope="col">{this.props.benchmark_name}</th>
               </tr>
@@ -24,7 +24,7 @@ class TableChart extends Component {
                   <tr key={i}>
                     <td
                       data-label={this.props.tableName}
-                      className="_td-title"
+                      className="_td-title _font-title _normal"
                     >
                       {CapString(String(row).split("_").join(" "))}
                     </td>

@@ -14,7 +14,7 @@ class Strategy extends Component{
         <div className="_strategy-list-item">
           <div className="_item-strategy-monitor">
           <Link nameOfClass="_btn-list-item" to='/strategy-monitor/details' onClick={() => {this.props.changeStrategyName(this.props.strategyName); this.props.updateLocation('/strategy-monitor')}}>{this.props.strategyName}</Link>
-            <div className="_text0-normal" >
+            <div className="_text0-normal mt-1" >
               {this.props.benchmark_name}
             </div>
           </div>

@@ -12,6 +12,7 @@ import Spinner from '../../UI/Spinner';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
+import { getBrokerList, getBalance } from '../../../actions/tradeit';
 import { updateLocation } from '../../../actions';
 import { getTickerList } from '../../../actions/ticker'
 
@@ -27,15 +28,13 @@ class Dashboard extends Component {
 
     componentDidMount(){
       this.props.updateLocation('/dashboard');
+      this.props.getBrokerList();
+      this.props.getBalance();
       if (!this.props.data.CAN){
         this.props.getDashboard(this.state.country);
       } else {
         this.setState({country: this.props.data.country});
       }
-      if (!this.props.tickers){
-        this.props.getTickerList();
-      }
-      
     }
 
     BuildStrategy = () => {
@@ -65,7 +64,7 @@ class Dashboard extends Component {
 
             <div className="dashboard_title-container">
               <div className="section__title">My strategies</div>
-              <Link to="/#">View all</Link>
+              <Link to="/strategy-monitor">View all</Link>
             </div>
 
             <StrategiesList/>
@@ -76,8 +75,8 @@ class Dashboard extends Component {
             </div>
 
             <div className="dashboard_title-container">
-              <div className="section__title">My Watch List</div>
-              <Link to="/#">View all</Link>
+              <div className="section__title">My Wath List</div>
+              <Link to="/watchlist-monitor">View all</Link>
             </div>
 
             <WatchLists />
@@ -121,6 +120,8 @@ export default connect(
     updateCuntry,
     updateLocation,
     resetFactorScreener,
-    getTickerList
+    getTickerList,
+    getBrokerList,
+    getBalance
   }
 )(requireAuth(Dashboard));

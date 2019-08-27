@@ -7,24 +7,39 @@ import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import StrategyMonitor from '../components/Sections/StrategyMonitor';
 import WatchListMonitor from './Sections/WatchlistMonitor';
+import StrategyMonitorList from './Sections/Strategies';
+import WatchListMonitorList from './Sections/Watchlists';
 import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
 import {updateLocation} from '../actions';
 import { getTickerList } from '../actions/ticker';
+import { getToken } from '../actions/tradeit'
 import TickerMonitor from '../components/Sections/Ticker';
 
 class App extends React.Component {
 
-  componentDidMount() {
+  componentDidMount = () => {
     if (!this.props.authenticated) {
       history.push('/login');
       this.props.updateLocation('/login')
     } else {
-      this.props.getTickerList();
+      if (this.props.token){
+        this.props.getTickerList();
+      }
+      if (this.props.userId && this.props.userToken){
+        this.props.getToken();
+      }
       this.props.updateLocation(history.location.pathname);
     }
   }
+
+  componentDidUpdate = () => {
+    if (!this.props.tickerList && this.props.token){
+      this.props.getTickerList();
+    }
+  }
+
 
   render() {
     return (
@@ -38,8 +53,10 @@ class App extends React.Component {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signup" component={Signup} />
             <Route path="/strategy-builder" component={StrategyBuilder} />
-            <Route path="/strategy-monitor" component={StrategyMonitor} />
-            <Route path="/watchlist-monitor" component={WatchListMonitor} />
+            <Route path="/strategy-monitor/details" component={StrategyMonitor} />
+            <Route exact path="/strategy-monitor" component={StrategyMonitorList} />
+            <Route exact path="/watchlist-monitor/details" component={WatchListMonitor} />
+            <Route path="/watchlist-monitor" component={WatchListMonitorList} />
             <Route path="/ticker-monitor" component={TickerMonitor} />
           </Switch>
         </main>
@@ -55,7 +72,11 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     authenticated: state.auth.authenticated,
+    token: state.auth.token,
+    userId: state.tradeitReducers.userId,
+    userToken: state.tradeitReducers.userToken,
+    tickerList: state.tickerReducers.tickerList
   }
 }
 
-export default connect(mapStateToProps, {updateLocation,getTickerList})(App);
+export default connect(mapStateToProps, {updateLocation,getTickerList,getToken})(App);

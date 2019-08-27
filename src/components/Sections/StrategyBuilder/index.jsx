@@ -3,7 +3,7 @@ import AnalyzeResults from './StepTwo/AnalyzeResults';
 import BuildStrategy from './StepOne';
 import CustomizedPortfolio from './StepThree';
 import { connect } from 'react-redux';
-import { queryUpdate, resetQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
+import { queryUpdate, resetQuery, resetFactorScreener, resetFactorScreenerError } from '../../../actions/strategyBuilder';
 import requireAuth from '../../hoc/requireAuth';
 
 class StrategyBuilder extends Component{
@@ -41,6 +41,7 @@ class StrategyBuilder extends Component{
             this.props.resetFactorScreener();
             this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
         } else if (this.props.error_saving_message){
+            this.props.resetFactorScreenerError();
             this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
         }
         
@@ -110,4 +111,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps,{queryUpdate,resetQuery,resetFactorScreener})((requireAuth(StrategyBuilder)));
+export default connect(mapStateToProps,{queryUpdate,resetQuery,resetFactorScreener,resetFactorScreenerError})((requireAuth(StrategyBuilder)));

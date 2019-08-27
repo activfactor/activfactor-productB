@@ -14,7 +14,8 @@ import {
     FACTOR_SCREENER_SAVE_ERROR,
     DASHBOARD_RESET,
     STRATEGY_MONITOR_NAME,
-    RESET_STRATEGY_MONITOR
+    RESET_STRATEGY_MONITOR,
+    FACTOR_SCREENER_ERROR_RESET
     
   } from "./types";
 
@@ -86,6 +87,10 @@ import {
   
   export const resetFactorScreener = () => dispatch => {
     dispatch({type: FACTOR_SCREENER_RESET})
+  }
+
+  export const resetFactorScreenerError = () => dispatch => {
+    dispatch({type: FACTOR_SCREENER_ERROR_RESET})
   }
   
   export const saveStrategy = props => async (dispatch, getState) => {

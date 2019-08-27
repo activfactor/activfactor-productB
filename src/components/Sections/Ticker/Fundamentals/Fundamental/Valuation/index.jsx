@@ -20,9 +20,9 @@ class Valuation extends Component{
                       <tbody>
                       <tr>
                           <td>Free cash flow per share</td>
-                          <td className={getClass(this.props.company["free_cash_flow_per_share"])}>{getValue(this.props.company["free_cash_flow_per_share"])}</td>
-                          <td className={getClass(this.props.sector["free_cash_flow_per_share"])}>{getValue(this.props.sector["free_cash_flow_per_share"])}</td>
-                          <td className={getClass(this.props.industry["free_cash_flow_per_share"])}>{getValue(this.props.industry["free_cash_flow_per_share"])}</td>
+                          <td className={getClass(this.props.company["pc_ratio"])}>{getValue(this.props.company["pc_ratio"])}</td>
+                          <td className={getClass(this.props.sector["pc_ratio"])}>{getValue(this.props.sector["pc_ratio"])}</td>
+                          <td className={getClass(this.props.industry["pc_ratio"])}>{getValue(this.props.industry["pc_ratio"])}</td>
                       </tr>
                       <tr>
                           <td>pb ratio</td>

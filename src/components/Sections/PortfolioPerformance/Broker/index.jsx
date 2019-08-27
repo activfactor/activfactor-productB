@@ -3,12 +3,8 @@ import React,{ Component } from 'react';
 class Broker extends Component{
     render(){
         return(
-            <div className="dashboard_strategy-list p-4">
-                <div className="_strategy-list-item m-3">
-                  <div className="_title">
+            <div onClick={() => this.props.BrokerClickHandler(this.props.broker.shortName)} className="dashboard_strategy-list" style={{display: 'flex', flex:1, justifyContent:'center', alignItems:'center', height:'200px', cursor:'pointer'}}>
                     {this.props.children}
-                  </div>
-                </div>
               </div>
         );
     }

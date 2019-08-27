@@ -76,7 +76,7 @@ class Dashboard extends Component {
             </div>
 
             <div className="dashboard_title-container">
-              <div className="section__title">My Wath List</div>
+              <div className="section__title">My Watch List</div>
               <Link to="/#">View all</Link>
             </div>
 

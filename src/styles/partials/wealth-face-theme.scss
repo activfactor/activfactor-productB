@@ -197,11 +197,6 @@ header {
     margin: 0 6px;
     color: #111;
   }
-
-  input.form-control {
-    border-top-right-radius: .25rem;
-    border-top-left-radius: .25rem;
-  }
 }
 
 
@@ -270,6 +265,9 @@ header {
       }
 
       .form-control {
+        border-top-right-radius: .25rem;
+        border-top-left-radius: .25rem;
+
         @media (max-width: 768px) {
           padding: 8px 12px 8px 0;
         }
@@ -333,6 +331,11 @@ main {
   &.site-content {
     flex: 1;
     width: 100%;
+
+
+    @media (min-width: 768px) {
+      padding: 0 5%;
+    }
   }
 }
 
@@ -665,7 +668,7 @@ footer {
 .dashboard {
 
   &_container {
-    padding: 15px;
+    padding: 0 15px;
     margin-bottom: 100px;
     @include clearfix;
 
@@ -681,7 +684,8 @@ footer {
     justify-content: space-around;
     align-items: center;
     padding: 15px;
-    margin-bottom: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     @include card-defaults;
 
 
@@ -699,38 +703,34 @@ footer {
 
 
     ._header-item-title {
-      font-size: 13px;
-      margin-bottom: 12px;
+      font-size: 15px;
+      margin-top: 3px;
+      margin-bottom: 16px;
+      font-family: $font-medium;
 
-      @media (max-width: 768px) {
-        font-size: 13px;
-      }
       @media (max-width: 576px) {
-        font-size: 12px;
+        font-size: 14px;
+        margin-top: 0;
         margin-bottom: 10px;
       }
 
       &:last-of-type {
-        margin-top: 12px;
+        margin-top: 15px;
         margin-bottom: 0;
       }
     }
 
     ._header-item-value {
       color: $text-color-dark-blue;
-      font-size: 20px;
+      font-size: 35px;
       line-height: 1;
 
       @media (max-width: 768px) {
-        font-size: 17px;
+        font-size: 30px;
       }
       @media (max-width: 576px) {
-        font-size: 15px;
+        font-size: 25px;
       }
-    }
-
-    ._header-item-value2 {
-
     }
   }
 
@@ -837,22 +837,16 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
-    margin-bottom: 2px;
-
-
-    .section__title {
-      font-family: $font-medium;
-    }
+    margin-bottom: 5px;
 
     .btn {
-      font-size: 15px;
+      font-size: 18px;
       font-family: $font-medium;
       padding-right: 3px;
       padding-left: 3px;
 
       @media (max-width: 768px) {
-        font-size: 13px;
+        font-size: 16px;
         padding-right: 0;
       }
     }
@@ -863,7 +857,7 @@ footer {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
     padding: 10px $gutter-padding;
-    margin-bottom: $gutter-space;
+    margin-bottom: 20px;
     @include card-defaults;
     @media (max-width: 576px) {
       padding: 10px;
@@ -927,8 +921,7 @@ footer {
 
       ._btn-list-item {
         font-family: $font-medium;
-        font-size: 14px;
-        line-height: 1;
+        font-size: 20px;
         color: $mainBlueColor;
         padding: 0;
         border: 0;
@@ -964,8 +957,8 @@ footer {
   }
 
   &_btn-container {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 80px;
     text-align: center;
 
     @media (max-width: 576px) {
@@ -1577,11 +1570,11 @@ footer {
 
 
 .card__title {
-  font-family: $font-bold;
+  font-family: $font-medium;
   font-size: 15px;
   color: $text-color-dark-blue;
   padding: 10px $gutter-padding;
-  border-bottom: 1px solid $border-color-dark;
+  border-bottom: 1px solid $border-color-primary;
   @media (max-width: 576px) {
     padding: 10px;
   }
@@ -1593,11 +1586,11 @@ footer {
   }
 
   ._header-title {
+    font-family: $font-regular;
+    font-size: 18px;
+
     @media (max-width: 768px) {
-      font-size: 15px;
-    }
-    @media (max-width: 576px) {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
@@ -1627,7 +1620,7 @@ footer {
 
 .card__table {
   @include card-defaults;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 
 
   &._full-height-table {
@@ -1645,21 +1638,17 @@ footer {
     //  border-radius: 0 !important;
     //}
     thead {
-      border-color: $mainBlueColor;
 
       tr {
-        border-bottom: 1px solid $border-color-primary;
-        border-color: $mainBlueColor;
 
         th {
           font-family: $font-medium;
-          padding: $gutter-padding;
+          font-size: 12px;
+          padding: 17px $gutter-padding;
           text-align: center;
           line-height: 1;
           white-space: nowrap;
-          background: $mainBlueColor;
           border: none;
-          color: #fff;
 
           @media (max-width: 576px) {
             padding: 14px 10px;
@@ -1675,7 +1664,7 @@ footer {
     tbody {
 
       tr {
-        border-bottom: 1px solid $border-color-primary;
+        border-top: 1px solid $border-color-primary;
 
         td {
           padding: $gutter-padding;
@@ -1695,14 +1684,14 @@ footer {
           }
 
           &._td-link {
-            font-size: 14px;
+            font-size: 15px;
             color: $text-color-dark-blue;
             font-family: $font-medium;
             line-height: 1;
 
             a,
             .btn {
-              font-size: 14px;
+              font-size: 15px;
               color: $text-color-dark-blue;
               font-family: $font-medium;
               padding: 0;

@@ -151,7 +151,7 @@ class Table extends Component {
                             </Link>
                           </td>
                           <td className="_cta-container">
-                            <Link to="/watchlist-monitor" onClick={() => this.removeTickerHandler(this.props.watchListName,row)} nameOfClass="btn btn-danger">
+                            <Link to="/watchlist-monitor/details" onClick={() => this.removeTickerHandler(this.props.watchListName,row)} nameOfClass="btn btn-danger">
                               Remove {this.state.row===row ? <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> : ''}
                             </Link>
                           </td>

@@ -28,7 +28,9 @@ class Dashboard extends Component {
 
     componentDidMount(){
       this.props.updateLocation('/dashboard');
-      this.props.getBrokerList();
+      if (!this.props.brokerList){
+        this.props.getBrokerList();
+      }
       this.props.getBalance();
       if (!this.props.data.CAN){
         this.props.getDashboard(this.state.country);
@@ -107,7 +109,8 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     data: state.factorDashboard,
-    tickers : state.tickerReducers.tickerList
+    tickers : state.tickerReducers.tickerList,
+    brokerList: state.tradeitReducers.brokerList
   }
 }
 

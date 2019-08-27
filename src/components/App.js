@@ -9,6 +9,7 @@ import StrategyMonitor from '../components/Sections/StrategyMonitor';
 import WatchListMonitor from './Sections/WatchlistMonitor';
 import StrategyMonitorList from './Sections/Strategies';
 import WatchListMonitorList from './Sections/Watchlists';
+import PortfolioPerformance from './Sections/PortfolioPerformance';
 import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
@@ -58,6 +59,7 @@ class App extends React.Component {
             <Route exact path="/watchlist-monitor/details" component={WatchListMonitor} />
             <Route path="/watchlist-monitor" component={WatchListMonitorList} />
             <Route path="/ticker-monitor" component={TickerMonitor} />
+            <Route path="/portfolio-performance" component={PortfolioPerformance} />
           </Switch>
         </main>
 

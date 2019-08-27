@@ -8,7 +8,9 @@ import {
   TRADEIT_UPDATE_STATUS,
   TRADEIT_RESET_AUTH_URL,
   TRADEIT_ACCOUNTS_GET,
-  TRADEIT_BALANCE_GET
+  TRADEIT_BALANCE_GET,
+  TRADEIT_ACCOUNT_NUMBER_UPDATE,
+  TRADEIT_ACCOUNT_NUMBER_RESET
 } from "./types";
 import { getTradeitAPIKey } from '../apis/tradeitApiKey';
 import {removeStorage} from './utils/sessionStorage';
@@ -77,12 +79,21 @@ export const getAccounts = () => async (dispatch, getState) => {
         }
     })
     if (response.data.status === 'SUCCESS'){
-        sessionStorage.setItem("exAccountNumber", response.data.accounts[0].accountNumber);
         dispatch({type: TRADEIT_ACCOUNTS_GET, payload: response.data})
     } else {
         removeStorage();
         dispatch({type: TRADEIT_UPDATE_STATUS, payload: response.data});
     }
+}
+
+export const updateAccountNumber = (accountNumber) => dispatch => {
+    sessionStorage.setItem("exAccountNumber", accountNumber);
+    dispatch({type: TRADEIT_ACCOUNT_NUMBER_UPDATE, payload: accountNumber});
+}
+
+export const resetAccountNumber = () => dispatch => {
+    sessionStorage.removeItem("exAccountNumber")
+    dispatch({type: TRADEIT_ACCOUNT_NUMBER_RESET})
 }
 
 export const getBalance = () => async (dispatch, getState) => {
@@ -92,12 +103,6 @@ export const getBalance = () => async (dispatch, getState) => {
         }
     })
     if (response.data.status === 'SUCCESS'){
-        // sessionStorage.setItem("exAccountTotalValue", response.data.accountOverview.totalValue);
-        // sessionStorage.setItem("exAccountTotalPercentReturn", response.data.accountOverview.totalPercentReturn);
-        // sessionStorage.setItem("exAccountTotalAbsoluteReturn", response.data.accountOverview.totalAbsoluteReturn);
-        // sessionStorage.setItem("exAccountDayPercentReturn", response.data.accountOverview.dayPercentReturn);
-        // sessionStorage.setItem("exAccountDayAbsoluteReturn", response.data.accountOverview.dayAbsoluteReturn);
-        // sessionStorage.setItem("exAccountAvailableCash", response.data.accountOverview.availableCash);
         dispatch({type: TRADEIT_BALANCE_GET, payload: response.data})
     } else {
         removeStorage();

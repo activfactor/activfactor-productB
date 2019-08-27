@@ -1,40 +1,34 @@
 import React,{ Component } from 'react';
-import Modal from '../../../../UI/Modal';
-import DropDown from '../../../../UI/DropDown';
-import classes from '../../../StrategyBuilder/StepThree/WatchListAdd/index.module.scss';
+import Modal from '../../../UI/Modal';
+import DropDown from '../../../UI/DropDown';
+import classes from '../../StrategyBuilder/StepThree/WatchListAdd/index.module.scss';
 import { connect } from 'react-redux';
-import { getAuthLogin, getToken, resetAuthURL } from '../../../../../actions/tradeit';
+import { resetAuthURL, getBalance, updateAccountNumber } from '../../../../actions/tradeit';
 
 class ModuleName extends Component {
   state = {
-    brokerName: "",
+    accountNumber: "",
     isSpinner: false
   };
 
   componentDidMount(){
-    if (this.props.brokerList){
-        const brokerList = this.props.brokerList;
-        this.setState({brokerName: brokerList[Object.keys(brokerList)[0]].shortName})
-    }
-  }
-
-  componentDidUpdate(){
-    if (this.props.oAuthURL && !this.props.userToken){ 
-        this.props.new_window.open(this.props.oAuthURL, '_target');
+    if (this.props.accounts){
+        const accounts = this.props.accounts;
+        this.setState({accountNumber: accounts[Object.keys(accounts)[0]].accountNumber})
     }
   }
 
   DropDownChangeHandler = e => {
-    this.setState({ brokerName: e.target.value });
+    this.setState({ accountNumber: e.target.value });
   };
 
   renderOptions = () => {
-    if (this.props.brokerList) {
-      const brokerList = this.props.brokerList;
-      return Object.keys(brokerList).map((broker, index) => {
+    if (this.props.accounts) {
+      const accounts = this.props.accounts;
+      return Object.keys(accounts).map((account, index) => {
         return (
-          <option key={index} value={brokerList[broker].shortName}>
-            {brokerList[broker].longName}
+          <option key={index} value={accounts[account].accountNumber}>
+            {accounts[account].accountNumber}
           </option>
         );
       });
@@ -42,15 +36,12 @@ class ModuleName extends Component {
   };
 
   onSubmitHandler = async () => {
-    if (this.state.brokerName){
-      if (!this.props.userToken){
-        this.setState({ isSpinner: true });
-        this.props.getAuthLogin(this.state.brokerName);
-      } else {
-        this.setState({ isSpinner: true });
-        await this.props.getToken();
-        this.cancelHandler();
-      }
+    await this.props.updateAccountNumber(this.state.accountNumber);
+    if (this.props.accountNumber){
+      this.setState({isSpinner: true})
+      await this.props.getBalance();
+      this.setState({isSpinner: false})
+      this.props.finishProcess();
     }
   };
 
@@ -68,7 +59,7 @@ class ModuleName extends Component {
         />
       );
     } else {
-      return "Login";
+      return "Connect";
     }
   };
 
@@ -76,18 +67,19 @@ class ModuleName extends Component {
     this.setState({ isSpinner: false });
     this.props.cancelHandler();
     this.props.resetAuthURL();
+    this.props.cancelProcess();
   };
 
   render() {
     return (
       <Modal onDismiss={this.cancelHandler}>
         <div className={classes.modal_content}>
-          <div className={classes.modal_header}>Saving the WatchList</div>
+          <div className={classes.modal_header}>Please Select the account you want to link</div>
           <div className="">
             <div className="form">
               <DropDown
                 color="blue"
-                value={this.state.brokerName}
+                value={this.state.accountNumber}
                 DropDownChangeHandler={this.DropDownChangeHandler}
               >
                 {this.renderOptions()}
@@ -118,8 +110,10 @@ const mapStateToProps = state => {
     return {
         brokerList: state.tradeitReducers.brokerList,
         oAuthURL: state.tradeitReducers.oAuthURL,
-        userToken: state.tradeitReducers.userToken
+        userToken: state.tradeitReducers.userToken,
+        accounts: state.tradeitReducers.accounts,
+        accountNumber: state.tradeitReducers.accountNumber
     };
 }
 
-export default connect(mapStateToProps,{getAuthLogin, getToken,resetAuthURL})(ModuleName);
+export default connect(mapStateToProps,{resetAuthURL, getBalance, updateAccountNumber})(ModuleName);

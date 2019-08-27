@@ -31,7 +31,9 @@ class Dashboard extends Component {
       if (!this.props.brokerList){
         this.props.getBrokerList();
       }
-      this.props.getBalance();
+      if (this.props.accountNumber){
+        this.props.getBalance();
+      }
       if (!this.props.data.CAN){
         this.props.getDashboard(this.state.country);
       } else {
@@ -110,7 +112,8 @@ const mapStateToProps = state => {
   return {
     data: state.factorDashboard,
     tickers : state.tickerReducers.tickerList,
-    brokerList: state.tradeitReducers.brokerList
+    brokerList: state.tradeitReducers.brokerList,
+    accountNumber : state.tradeitReducers.accountNumber
   }
 }
 

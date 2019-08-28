@@ -13,7 +13,7 @@ export const getValue = (value) => {
 export const getClass = (value) => {
   if (value || value===0){
     if (value >= 0){
-      return 'text-dark';
+      return 'text-primary';
     } else {
       return 'text-danger';
     }

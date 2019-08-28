@@ -41,7 +41,7 @@ $border-radius: 4px;
 $gutter-space: 15px;
 $gutter-padding: 15px;
 //
-//@media (max-width: 576px) {
+//@media (max-width: 575.98px) {
 //  $gutter-space: 10px;
 //  $gutter-padding: 10px;
 //}
@@ -75,7 +75,7 @@ $gutter-padding: 15px;
     min-width: 150px;
     border-color: rgba($form-control-background, 0.17);
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       min-width: 100px;
     }
   }
@@ -95,13 +95,21 @@ $gutter-padding: 15px;
 }
 
 @mixin make-row() {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  @media (max-width: 576px) {
-    margin-right: -10px;
-    margin-left: -10px;
+  //@media (max-width: 575.98px) {
+  //  margin-right: -10px;
+  //  margin-left: -10px;
+  //}
+}
+[class*='col-'] {
+  @media (max-width: 575.98px) {
+    //padding-left: 10px;
+    //padding-right: 10px;
   }
 }
 
@@ -123,7 +131,7 @@ $gutter-padding: 15px;
 
 //General
 $mediaMaxWidth: "max-width: 2920px";
-$mediaMediumWidth:"max-width: 1200px";
+$mediaMediumWidth:"max-width: 1199.98px";
 $mediaSmallWidth:"max-width: 542px";
 $mediaXSmallWidth: "max-width: 377px";
 
@@ -148,8 +156,8 @@ $mediaChartPreSmall: "min-width: 500px";
 $mediaChartXSmall:"min-width: 370px";
 
 //Strategy Builder Step One defined by murtaza
-$mediaMinWithLarge: "min-width: 1200px";
-$mediaMinWithMedium:"min-width: 992px";
-$mediaSmallMinWidth:"min-width: 768px";
+$mediaMinWithLarge: "min-width: 1199.98px";
+$mediaMinWithMedium:"min-width: 991.98px";
+$mediaSmallMinWidth:"min-width: 767.98px";
 $mediaXSmallMinWidth: "min-width:600px";
 @import "mixins";

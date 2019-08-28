@@ -18,16 +18,13 @@ header {
       justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
-      @media (max-width: 576px) {
-        padding: 10px;
-      }
 
       ._btn-auth-container {
         line-height: 1;
         display: flex;
         align-items: center;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           display: none;
         }
 
@@ -52,7 +49,7 @@ header {
       padding-left: 5px;
       line-height: 1;
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         font-size: 20px;
         padding-left: 0;
       }
@@ -72,7 +69,7 @@ header {
         height: 46px;
         border-radius: 4px;
 
-        @media (max-width: 576px) {
+        @media (max-width: 575.98px) {
           width: 38px;
           height: 38px;
         }
@@ -94,7 +91,7 @@ header {
       justify-content: center;
       align-items: center;
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         width: 38px;
         height: 38px;
       }
@@ -108,7 +105,7 @@ header {
         border-radius: 50%;
         background: $orange-light;
 
-        @media (max-width: 576px) {
+        @media (max-width: 575.98px) {
           top: 11px;
           right: 11px;
         }
@@ -124,7 +121,7 @@ header {
 
   max-width: 250px;
 
-  @media (max-width: 992px) {
+  @media (max-width: 991.98px) {
     max-width: 170px;
     //padding-left: 7px;
     //padding-right: 7px;
@@ -135,7 +132,7 @@ header {
     padding-right: 10px;
     padding-left: 15px;
 
-    @media (max-width: 992px) {
+    @media (max-width: 991.98px) {
       padding-left: 10px;
     }
   }
@@ -165,7 +162,7 @@ header {
   overflow: hidden;
   overflow-y: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     width: auto;
     left: 15px;
     right: 15px;
@@ -212,7 +209,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       flex-direction: column;
       padding: 0;
 
@@ -222,7 +219,7 @@ header {
     }
 
     &.hide {
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         max-height: 0;
         padding: 0;
       }
@@ -230,7 +227,7 @@ header {
       .search-input-group {
         position: relative;
         flex-shrink: 0;
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           display: none;
           height: 0;
           transition: height 0.3s ease;
@@ -243,12 +240,12 @@ header {
       max-height: 500px;
       transition: max-height 0.3s ease-in, padding 0.3s ease-out;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         padding: 10px 0 0;
       }
 
       .search-input-group {
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           display: flex;
           height: 40px;
         }
@@ -258,7 +255,7 @@ header {
     .search-input-group {
       flex-shrink: 0;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         order: 0;
         width: 100%;
         max-width: none;
@@ -271,7 +268,7 @@ header {
         border-top-right-radius: .25rem;
         border-top-left-radius: .25rem;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           padding: 8px 12px 8px 0;
         }
       }
@@ -280,7 +277,7 @@ header {
 
   &_wrapper {
 
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       display: block;
       order: 1;
       width: 100%;
@@ -292,12 +289,12 @@ header {
       padding: 10px 15px;
       border-radius: 4px;
 
-      @media (max-width: 992px) {
+      @media (max-width: 991.98px) {
         font-size: 12px;
         margin-right: 0;
         padding: 10px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         display: block;
         padding: 10px 15px;
         border-bottom: 1px solid $border-color-primary;
@@ -322,7 +319,7 @@ header {
 
     ._navbar-auth-btn {
       display: none;
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         display: block;
       }
     }
@@ -336,7 +333,7 @@ main {
     width: 100%;
 
 
-    @media (min-width: 768px) {
+    @media (min-width: 767.98px) {
       padding: 0 80px;
     }
   }
@@ -350,7 +347,7 @@ main {
   border-radius: 4px;
   padding: 40px 30px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     padding: 25px 15px;
   }
 
@@ -359,7 +356,7 @@ main {
     color: $mainBlueColor;
     font-size: 1.4rem;
     margin-bottom: 1.2rem;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       font-size: 1.3rem;
     }
   }
@@ -371,7 +368,7 @@ main {
       margin-right: 15px;
       padding-left: 50px;
       padding-right: 50px;
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         padding-left: 35px;
         padding-right: 35px;
       }
@@ -421,7 +418,7 @@ main {
   max-width: 600px;
   margin: 0 auto 0 5%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     margin: 0;
   }
 
@@ -432,7 +429,7 @@ main {
 
     .form-control {
       max-width: 350px;
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         max-width: none;
       }
     }
@@ -450,7 +447,7 @@ main {
   @media (max-width: 991.98px) {
     padding: 0;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     display: block;
   }
 
@@ -464,10 +461,10 @@ main {
     @media (max-width: 991.98px) {
       padding: 0 40px 0 10px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       padding: 0 30px 0 0px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 0 0 30px 0;
       margin-bottom: 30px;
     }
@@ -484,10 +481,10 @@ main {
     ._btn-container {
       display: flex;
       align-items: center;
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         display: block;
       }
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         margin-bottom: 0;
       }
 
@@ -496,7 +493,7 @@ main {
           padding-left: 30px;
           padding-right: 30px;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           margin-bottom: 15px;
         }
       }
@@ -507,7 +504,7 @@ main {
       grid-template-columns: 1fr 1fr;
       grid-gap: 15px;
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         display: block;
       }
     }
@@ -523,7 +520,7 @@ main {
       height: 80%;
       background: $backgroundColor;
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         right: auto;
         top: auto;
         bottom: 0;
@@ -540,10 +537,10 @@ main {
     @media (max-width: 991.98px) {
       padding: 0 10px 0 35px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       padding: 0 0 0 25px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 0;
     }
 
@@ -580,7 +577,7 @@ footer {
       @media (max-width: 991.98px) {
         padding: 20px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         padding: 15px 15px 13px;
         font-size: 12px;
       }
@@ -606,12 +603,12 @@ footer {
       @media (max-width: 991.98px) {
         margin: 0 20px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         margin: 0 10px;
         padding: 0 5px;
         font-size: 12px;
       }
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         margin: 0 5px;
         padding: 0 1px;
         font-size: 10px;
@@ -629,10 +626,10 @@ footer {
   background: $text-color-dark-blue;
   text-align: center;
   padding: 10px;
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     font-size: 12px;
   }
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     font-size: 10px;
   }
   @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
@@ -645,17 +642,20 @@ footer {
   align-items: center;
   margin-bottom: 13px;
 
-  @media (max-width: 576px) {
-    padding: 0 10px;
+  @media (max-width: 575.98px) {
+    display: block;
+    padding: 0 15px;
   }
 
   > div {
     color: $secondBlueColor;
     font-family: $font-regular;
-    font-size: 0.9rem;
+    font-size: 14px;
     margin-right: 15px;
-    @media (max-width: 576px) {
-      font-size: 0.8rem;
+    line-height: 1.8;
+
+    @media (max-width: 575.98px) {
+      font-size: 13px;
     }
 
     &:last-of-type {
@@ -675,10 +675,21 @@ footer {
     margin-bottom: 100px;
     @include clearfix;
 
-    @media (max-width: 576px) {
-      padding-left: 10px;
-      padding-right: 10px;
+    @media (max-width: 575.98px) {
       margin-bottom: 50px;
+    }
+
+    .dashboard_strategy-list {
+      grid-template-columns: 1fr 1fr 1fr;
+
+      > div {
+        &:first-of-type {
+          -ms-grid-column: 1;
+          grid-column-start: 1;
+          grid-column-end: 4;
+          margin-bottom: 20px;
+        }
+      }
     }
   }
 
@@ -692,10 +703,11 @@ footer {
     @include card-defaults;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       padding: 10px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
+      margin-top: 10px;
       padding: 10px 0;
     }
   }
@@ -711,10 +723,9 @@ footer {
       margin-bottom: 16px;
       font-family: $font-medium;
 
-      @media (max-width: 576px) {
-        font-size: 14px;
+      @media (max-width: 575.98px) {
+        font-size: 13px;
         margin-top: 0;
-        margin-bottom: 10px;
       }
 
       &:last-of-type {
@@ -728,11 +739,11 @@ footer {
       font-size: 35px;
       line-height: 1;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         font-size: 30px;
       }
-      @media (max-width: 576px) {
-        font-size: 25px;
+      @media (max-width: 575.98px) {
+        font-size: 22px;
       }
     }
   }
@@ -743,7 +754,7 @@ footer {
 
   &_top-strategies {
     @include card-defaults;
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       margin-bottom: 15px;
     }
 
@@ -753,16 +764,16 @@ footer {
       justify-content: space-between;
       padding: 10px 15px;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         padding: 10px;
       }
 
       ._header-title {
         font-size: 18px;
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 16px;
         }
-        @media (max-width: 576px) {
+        @media (max-width: 575.98px) {
           font-size: 15px;
         }
       }
@@ -777,10 +788,10 @@ footer {
 
       ._header-title {
         font-size: 18px;
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 16px;
         }
-        @media (max-width: 576px) {
+        @media (max-width: 575.98px) {
           font-size: 15px;
         }
       }
@@ -792,7 +803,7 @@ footer {
       @media (max-width: 1199.98px) {
         padding: 10px;
       }
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         padding: 15px 50px;
       }
     }
@@ -804,7 +815,7 @@ footer {
       @media (max-width: 1199.98px) {
         font-size: 14px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         font-size: 16px;
       }
     }
@@ -827,7 +838,7 @@ footer {
         @media (max-width: 1199.98px) {
           font-size: 13px;
         }
-        @media (max-width: 576px) {
+        @media (max-width: 575.98px) {
           width: auto;
           min-width: 200px;
           margin: 8px auto 0;
@@ -848,7 +859,7 @@ footer {
       padding-right: 3px;
       padding-left: 3px;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767.98px) {
         font-size: 16px;
         padding-right: 0;
       }
@@ -862,16 +873,16 @@ footer {
     padding: 10px $gutter-padding;
     margin-bottom: 20px;
     @include card-defaults;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 10px;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 767.98px) {
       padding: 15px 15px 15px 40px;
     }
 
     &._make-title-on-small {
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -881,14 +892,14 @@ footer {
       > div {
 
         &:first-of-type {
-          @media (max-width: 576px) {
+          @media (max-width: 575.98px) {
             width: 100%;
             padding: 10px;
             border-bottom: 1px solid $border-color-primary;
           }
 
           ._item-strategy-monitor {
-            @media (max-width: 576px) {
+            @media (max-width: 575.98px) {
               display: flex;
               justify-content: space-between;
             }
@@ -896,7 +907,7 @@ footer {
         }
 
         &:not(:first-of-type) {
-          @media (max-width: 576px) {
+          @media (max-width: 575.98px) {
             flex: 1;
             padding: 15px 10px;
           }
@@ -914,7 +925,7 @@ footer {
         font-family: $font-medium;
         color: $text-color-dark-blue;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 15px;
         }
       }
@@ -939,14 +950,14 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       grid-template-columns: 1fr;
     }
 
     .card__title-cta {
 
       .card__title {
-        @media (min-width: 768px) {
+        @media (min-width: 767.98px) {
           padding: 17px 40px;
         }
       }
@@ -959,7 +970,7 @@ footer {
         white-space: nowrap;
         overflow: hidden;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 18px;
         }
       }
@@ -971,7 +982,7 @@ footer {
 
     ._card-body {
       padding: 15px;
-      @media (min-width: 768px) {
+      @media (min-width: 767.98px) {
         padding: 25px 40px;
       }
 
@@ -980,14 +991,14 @@ footer {
         font-family: $font-medium;
         color: $text-color-dark-blue;
         margin-bottom: 2px;
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 17px;
         }
       }
       ._subtitle {
         color: $text-color-dark-primary;
         margin-bottom: 20px;
-        @media (max-width: 768px) {
+        @media (max-width: 767.98px) {
           font-size: 13px;
         }
       }
@@ -998,7 +1009,7 @@ footer {
     padding: 0 15px 10px;
     color: $text-color-dark-primary;
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 0 10px 10px;
     }
   }
@@ -1008,9 +1019,19 @@ footer {
     margin-bottom: 80px;
     text-align: center;
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       margin-top: 30px;
       margin-bottom: 60px;
+      display: block;
+      text-align: center;
+    }
+
+    .btn {
+      @media (max-width: 575.98px) {
+        margin: 0 0 10px 0;
+        min-width: 80%;
+        display: inline-block;
+      }
     }
   }
 }
@@ -1024,9 +1045,9 @@ footer {
   margin-bottom: 100px;
   @include clearfix;
 
-  @media (max-width: 576px) {
-    padding: 15px 0;
-    margin-bottom: 50px;
+  @media (max-width: 575.98px) {
+    padding: 0;
+    margin-bottom: 70px;
   }
 
 
@@ -1034,28 +1055,35 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
-    padding: 15px;
     background: #fff;
     border-bottom: 1px solid $border-color-primary;
-    @media (max-width: 576px) {
+    padding: 15px;
+    @media (min-width: 767.98px) {
+      padding: 30px 40px
+    }
+    @media (max-width: 575.98px) {
       grid-gap: 0;
-      padding: 10px 0 0 0;
+      padding: 17px 0 10px 0;
       border-bottom: 0;
     }
 
     ._header-item {
       font-family: $font-bold;
-      font-size: 17px;
-      padding-top: 5px;
+      font-size: 22px;
+      //padding-top: 5px;
       padding-bottom: 5px;
       color: $text-color-dark-primary;
       border-bottom: 3px solid $border-color-dark;
-      @media (max-width: 768px) {
+      @media (max-width: 991.98px) {
+        font-family: $font-medium;
+        font-size: 20px;
+      }
+      @media (max-width: 767.98px) {
         font-size: 16px;
       }
-      @media (max-width: 576px) {
-        font-size: 10px;
-        padding-left: 5px;
+      @media (max-width: 575.98px) {
+        font-size: 14px;
+        text-align: center;
       }
 
       &._header-active {
@@ -1073,31 +1101,32 @@ footer {
   &_build-strategy {
     background-color: #fff;
     padding: 15px;
+    @media (min-width: 767.98px) {
+      padding: 0 40px 20px;
+    }
   }
 
   &_analyze-results {
+    background-color: #fff;
     padding: 15px;
-
-    @media (max-width: 576px) {
-      padding-left: 10px;
-      padding-right: 10px;
-
+    overflow: hidden;
+    @media (min-width: 767.98px) {
+      padding: 30px 40px;
     }
 
     ._full-height-table {
       max-height: 400px;
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         max-height: none;
       }
     }
   }
 
   &_customized-portfolio {
+    background-color: #fff;
     padding: 15px;
-
-    @media (max-width: 576px) {
-      padding-left: 10px;
-      padding-right: 10px;
+    @media (min-width: 767.98px) {
+      padding: 30px 40px;
     }
   }
 
@@ -1114,19 +1143,49 @@ footer {
     margin: 30px 0 0;
     flex-wrap: wrap;
 
+    @media (max-width: 575.98px) {
+      display: block;
+      text-align: center;
+      margin-top: 0;
+    }
+
     .btn-link {
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         padding: 8px 10px;
       }
     }
 
     .btn {
-      margin-left: 30px;
+      margin-left: 20px;
 
-      @media (max-width: 576px) {
-        margin-left: 5px;
-        margin-bottom: 5px;
+      @media (max-width: 575.98px) {
+        margin: 0 0 10px 0;
+        min-width: 80%;
+        display: inline-block;
+      }
+    }
+
+    .btn-group {
+      margin-left: 20px;
+
+      @media (max-width: 575.98px) {
+        margin: 0 0 10px 0;
+        min-width: 80%;
+        display: inline-block;
+      }
+
+      > .btn {
+        margin: 0;
+
+        @media (max-width: 575.98px) {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .dropdown-menu {
+        min-width: 100%;
       }
     }
   }
@@ -1143,7 +1202,7 @@ footer {
     margin-bottom: 100px;
     @include clearfix;
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding-left: 10px;
       padding-right: 10px;
       margin-bottom: 50px;
@@ -1162,23 +1221,24 @@ footer {
 
 .factors-container {
   margin-bottom: 30px;
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 50px;
   }
-  @media (max-width: 576px) {
-    margin-bottom: 10px;
+  @media (max-width: 575.98px) {
+    margin-bottom: 35px;
   }
 
   &_checkboxes {
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 0 15px;
+      grid-gap: 20px;
     }
 
     .checkbox--item {
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         margin-top: 0;
+        margin-bottom: 0;
       }
 
 
@@ -1186,13 +1246,13 @@ footer {
         .tooltip-container {
 
           ._tooltip-content {
-            @media (max-width: 576px) {
+            @media (max-width: 575.98px) {
               right: -45px;
               left: auto;
             }
 
             &::after {
-              @media (max-width: 576px) {
+              @media (max-width: 575.98px) {
                 top: auto;
                 right: 52px;
                 left: auto;
@@ -1214,7 +1274,7 @@ footer {
 
   &-container {
     margin-bottom: 30px;
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       margin-bottom: 20px;
     }
   }
@@ -1223,16 +1283,21 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    margin-bottom: 70px;
 
     @media (max-width: 991.98px) {
       grid-gap: 10px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 767.98px) {
+      margin-bottom: 50px;
+    }
+    @media (max-width: 575.98px) {
       grid-gap: 5px;
+      margin-bottom: 35px;
     }
 
     .btn-company-size {
-      padding: 18px 22px;
+      padding: 15px;
       background-color: $backgroundColor;
       border-radius: 4px;
       cursor: pointer;
@@ -1242,10 +1307,6 @@ footer {
       text-align: start;
       display: flex;
       flex-direction: column;
-
-      @media (max-width: 991.98px) {
-        padding: 15px;
-      }
 
       ._title {
         display: block;
@@ -1275,9 +1336,12 @@ footer {
 }
 
 .country-step-one-container {
-  margin-bottom: 30px;
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
+  margin-bottom: 70px;
+  @media (max-width: 767.98px) {
+    margin-bottom: 50px;
+  }
+  @media (max-width: 575.98px) {
+    margin-bottom: 35px;
   }
 
   ._select-country {
@@ -1286,9 +1350,10 @@ footer {
 }
 
 .nos-step-one-container {
-  margin-bottom: 30px;
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
+  margin-bottom: 35px;
+
+  @media (max-width: 575.98px) {
+    margin-bottom: 50px;
   }
 }
 
@@ -1333,8 +1398,11 @@ footer {
 
 .sectors-selector-container {
   margin-bottom: 30px;
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     margin-bottom: 20px;
+  }
+  @media (max-width: 575.98px) {
+    margin-bottom: 35px;
   }
 
   ._formControl-select {
@@ -1367,16 +1435,16 @@ footer {
 
 .charts-card-container {
   @include make-row;
-  margin-top: 30px;
+  margin-top: 25px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     margin-top: 15px;
   }
 
   ._card-row-item {
     margin-bottom: 30px;
-    @media (max-width: 576px) {
-      margin-bottom: 15px;
+    @media (max-width: 575.98px) {
+      margin-bottom: 30px;
     }
   }
 
@@ -1390,7 +1458,7 @@ footer {
   min-height: 100%;
   width: 100%;
   background: #ffffff;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: $box-shadow;
   overflow: hidden;
   margin: 0;
@@ -1399,7 +1467,7 @@ footer {
     position: relative;
     padding: 15px;
     min-height: 170px;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 15px 10px;
     }
   }
@@ -1410,7 +1478,7 @@ footer {
   width: 100%;
   @include card-defaults;
   margin: 0;
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     height: auto;
   }
 
@@ -1418,7 +1486,7 @@ footer {
     max-height: 400px;
     overflow-y: auto;
 
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       max-height: none;
     }
   }
@@ -1440,7 +1508,7 @@ footer {
           font-size: 15px;
           padding: 15px 20px;
           white-space: nowrap;
-          @media (max-width: 576px) {
+          @media (max-width: 575.98px) {
             padding: 13px 10px;
           }
         }
@@ -1481,65 +1549,9 @@ footer {
         }
       }
     }
+
   }
 
-}
-
-.table-customized-portfolio {
-  box-shadow: $box-shadow;
-  border-radius: 4px;
-
-  .table-responsive {
-    border-radius: 4px;
-  }
-
-  .table {
-    margin: 0;
-    white-space: nowrap;
-
-    thead {
-      tr {
-        background-color: $mainBlueColor;
-        color: #fff;
-
-        th {
-          font-family: $font-medium;
-          text-align: center;
-          padding: 15px;
-          font-size: 15px;
-        }
-      }
-    }
-
-    tbody {
-      tr {
-        border-bottom: 1px solid $border-color-primary;
-
-        &:first-of-type {
-          border-bottom: none;
-        }
-
-        td {
-          text-align: center;
-          font-size: 13px;
-          line-height: 1;
-          vertical-align: middle;
-          padding: 10px 15px;
-
-          &._td-ticker {
-            text-align: start;
-          }
-
-          &._td-checkbox--item {
-
-            .checkbox--item {
-              display: inline-block;
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 .table-top-strategies {
@@ -1560,7 +1572,7 @@ footer {
           line-height: 1;
           white-space: nowrap;
           color: $text-color-dark-blue;
-          @media (max-width: 768px) {
+          @media (max-width: 767.98px) {
             padding: 10px;
           }
         }
@@ -1582,7 +1594,7 @@ footer {
           white-space: nowrap;
           vertical-align: middle;
           font-size: 13px;
-          @media (max-width: 768px) {
+          @media (max-width: 767.98px) {
             padding: 10px;
           }
 
@@ -1591,7 +1603,7 @@ footer {
             padding-left: 15px;
             padding-right: 15px;
 
-            @media (max-width: 576px) {
+            @media (max-width: 575.98px) {
               padding-left: 10px;
               padding-right: 10px;
             }
@@ -1603,7 +1615,7 @@ footer {
               color: $text-color-dark-blue;
               padding: 0;
 
-              @media (max-width: 768px) {
+              @media (max-width: 767.98px) {
                 font-size: 14px;
               }
 
@@ -1625,7 +1637,7 @@ footer {
   color: $text-color-dark-blue;
   padding: 10px $gutter-padding;
   border-bottom: 1px solid $border-color-primary;
-  @media (max-width: 576px) {
+  @media (max-width: 575.98px) {
     padding: 10px;
   }
 
@@ -1639,7 +1651,7 @@ footer {
     font-family: $font-regular;
     font-size: 18px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       font-size: 16px;
     }
   }
@@ -1650,10 +1662,10 @@ footer {
     margin-bottom: 0;
     font-family: $font-regular;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       font-size: 13px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       font-size: 12px;
     }
   }
@@ -1676,7 +1688,7 @@ footer {
   &._full-height-table {
     width: 100%;
     height: 100%;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       height: auto;
     }
   }
@@ -1684,9 +1696,6 @@ footer {
   table.table {
     margin-bottom: 0;
 
-    //&.no-border-radius {
-    //  border-radius: 0 !important;
-    //}
     thead {
 
       tr {
@@ -1700,7 +1709,7 @@ footer {
           white-space: nowrap;
           border: none;
 
-          @media (max-width: 576px) {
+          @media (max-width: 575.98px) {
             padding: 14px 10px;
           }
 
@@ -1732,7 +1741,7 @@ footer {
           vertical-align: middle;
           border: none;
           color: $text-color-dark-blue;
-          @media (max-width: 576px) {
+          @media (max-width: 575.98px) {
             padding: 10px;
           }
 
@@ -1740,6 +1749,14 @@ footer {
             text-align: start;
           }
 
+
+          ._td-title,
+          &._td-title {
+            font-size: 16px;
+            color: $text-color-dark-blue;
+            font-family: $font-medium;
+            line-height: 1;
+          }
           &._td-link {
             font-size: 16px;
             color: $text-color-dark-blue;
@@ -1767,6 +1784,19 @@ footer {
 
             .checkbox--item {
               display: inline-block;
+              margin: 0;
+
+              label {
+                i {
+                  width: 18px;
+                  height: 18px;
+                  margin: 0;
+
+                  &::after {
+                    top: 28%;
+                  }
+                }
+              }
             }
           }
 
@@ -1786,10 +1816,10 @@ footer {
           }
 
           ._row-text-small {
-            font-size: 10px;
-            color: $textColor;
+            font-size: 12px;
+            color: $text-color-dark-primary;
             line-height: 1.3;
-            margin-top: 2px;
+            margin-top: 4px;
           }
 
 
@@ -1819,6 +1849,31 @@ footer {
 
   .table-responsive {
     //border-radius: 4px;
+  }
+
+  &.table-customized-portfolio {
+    @media (min-width: 767.98px) {
+      margin-top: 25px;
+    }
+    table.table {
+      thead {
+        tr {
+          th {
+            font-size: 14px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            padding-top: 12px;
+            padding-bottom: 12px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1930,10 +1985,10 @@ table.table--primary {
     transition: opacity 0.7s ease;
     z-index: 10;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767.98px) {
       font-size: 11px;
     }
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       top: calc(100% + 12px);
       left: -60px;
       transform: translate(0, 0);
@@ -1952,7 +2007,7 @@ table.table--primary {
       //border-left: 1px solid darken(#E0F1FB, 10%);
       //border-bottom: 1px solid darken(#E0F1FB, 10%);
 
-      @media (max-width: 576px) {
+      @media (max-width: 575.98px) {
         top: auto;
         left: 55px;
         bottom: calc(100% - 6px);
@@ -1965,12 +2020,7 @@ table.table--primary {
 }
 
 
-[class*='col-'] {
-  @media (max-width: 576px) {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
+
 
 .mb-30 {
   margin-bottom: 30px !important;

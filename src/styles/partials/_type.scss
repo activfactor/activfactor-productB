@@ -8,19 +8,27 @@
   font-size: 18px;
   color: $text-color-dark-blue;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767.98px) {
     font-size: 16px;
   }
 }
 
 .section-title {
 
+  &_h2 {
+    font-family: $font-medium;
+    color: $text-color-dark-blue;
+    margin: 25px 0 15px 0;
+    font-size: 18px;
+  }
+
   &_h3 {
-    font-family: $font-bold;
+    font-family: $font-medium;
     border-bottom: 1px solid $border-color-primary;
     color: $text-color-dark-blue;
-    margin: 0 0 15px 0;
-    padding: 0 0 10px 0;
+    margin: 25px 0 15px 0;
+    padding: 0 0 15px 0;
+    font-size: 16px;
 
     @media (max-width: 767.98px) {
       margin: 0 0 10px 0;

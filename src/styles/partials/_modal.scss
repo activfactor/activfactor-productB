@@ -10,24 +10,26 @@
     height: 100%;
     overflow: hidden;
     outline: 0;
-    background: rgba(255,255,255, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     transition: opacity .15s linear;
   }
+
   &__wrapper {
     position: relative;
     width: auto;
     margin: .5rem;
     @include card-defaults;
-    box-shadow: $box-shadow-2;
+    box-shadow: $box-shadow-1;
 
-    @media (min-width: 576px) {
+    @media (min-width: 575.98px) {
       max-width: 500px;
       margin: 5rem auto 1rem;
     }
   }
+
   &__body {
     padding: 30px 50px;
-    @media (max-width: 576px) {
+    @media (max-width: 575.98px) {
       padding: 15px;
     }
 
@@ -36,6 +38,7 @@
       padding-bottom: 9px;
     }
   }
+
   &__title {
     font-family: $font-medium;
     font-size: 16px;
@@ -43,6 +46,7 @@
     margin-bottom: 10px;
     margin-top: 5px;
   }
+
   &__response-container {
 
     ._icon {
@@ -51,11 +55,13 @@
       margin-bottom: 15px;
     }
   }
+
   &__response-text {
     font-size: 15px;
     margin-bottom: 20px;
     margin-top: 10px;
   }
+
   &__btn-container {
     text-align: center;
 
@@ -69,11 +75,12 @@
       min-width: 150px;
       padding-top: 7px;
       padding-bottom: 7px;
-@media (max-width: 576px) {
-  min-width: 100px;
-}
+      @media (max-width: 575.98px) {
+        min-width: 100px;
+      }
     }
   }
+
   &__btn-spinner {
     margin: 0 auto;
     transform: translateZ(0);
@@ -84,6 +91,7 @@
       margin: 0 auto !important;
     }
   }
+
   &__active {
 
     #root {

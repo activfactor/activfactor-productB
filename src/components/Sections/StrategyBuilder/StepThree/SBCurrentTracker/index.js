@@ -87,7 +87,7 @@ class SBCurrentTracker extends Component {
         <div className="section__title">Current Stocks</div>
         <p>This list is updated the last date of the month.</p>
 
-        <div className="card__table">
+        <div className="card__table table-customized-portfolio">
           <div className="table-responsive">
             <table className="table table-hover table-borderless">
 
@@ -111,11 +111,8 @@ class SBCurrentTracker extends Component {
                 ? Object.keys(this.props.data).map((row, i) => {
                   return (
                     <tr key={i}>
-                      <td
-                        data-label="Ticker"
-                        className=""
-                      >
-                        <div className="_row-text-medium">{row} </div>
+                      <td data-label="Ticker">
+                        <div className="_td-title">{row}</div>
                         <div className="_row-text-small">{this.props.data[row].name}</div>
                       </td>
                       <td

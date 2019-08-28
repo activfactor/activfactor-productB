@@ -24,7 +24,7 @@ class TableChart extends Component {
                   <tr key={i}>
                     <td
                       data-label={this.props.tableName}
-                      className="_td-title _font-title _normal"
+                      className="_td-title"
                     >
                       {CapString(String(row).split("_").join(" "))}
                     </td>

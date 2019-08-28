@@ -1022,6 +1022,16 @@ footer {
     @media (max-width: 575.98px) {
       margin-top: 30px;
       margin-bottom: 60px;
+      display: block;
+      text-align: center;
+    }
+
+    .btn {
+      @media (max-width: 575.98px) {
+        margin: 0 0 10px 0;
+        min-width: 80%;
+        display: inline-block;
+      }
     }
   }
 }

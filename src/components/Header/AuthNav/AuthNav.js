@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import image from '../../../assets/img/ProfilePic.png';
+import image from '../../../assets/img/avatar.png';
 import ProfilePicture from '../../UI/ProfilePicture/ProfilePicture';
 import NotificationButton from '../../UI/NotificationButton/NotificationButton';
 import AuthButtons from '../../Sections/Login/AuthButtons/AuthButtons';

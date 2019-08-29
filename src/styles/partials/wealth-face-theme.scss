@@ -67,6 +67,9 @@ header {
       height: 46px;
       border-radius: 4px;
       padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       @media (max-width: 575.98px) {
         width: 38px;
@@ -75,8 +78,11 @@ header {
 
       img {
         display: block;
-        width: 100%;
-        height: 100%;
+        width: 50%;
+        height: auto;
+        @media (max-width: 575.98px) {
+          width: 60%;
+        }
       }
     }
 

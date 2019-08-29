@@ -62,16 +62,26 @@ header {
 
     ._profile-picture-avatar {
       margin-left: 10px;
+      background-color: #fff;
+      width: 46px;
+      height: 46px;
+      border-radius: 4px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 575.98px) {
+        width: 38px;
+        height: 38px;
+      }
 
       img {
         display: block;
-        width: 46px;
-        height: 46px;
-        border-radius: 4px;
-
+        width: 50%;
+        height: auto;
         @media (max-width: 575.98px) {
-          width: 38px;
-          height: 38px;
+          width: 60%;
         }
       }
     }
@@ -334,7 +344,7 @@ main {
 
 
     @media (min-width: 767.98px) {
-      padding: 0 80px;
+      padding: 0 40px;
     }
   }
 }
@@ -680,14 +690,18 @@ footer {
     }
 
     .dashboard_strategy-list {
-      grid-template-columns: 1fr 1fr 1fr;
+      @media (max-width: 575.98px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
 
       > div {
         &:first-of-type {
-          -ms-grid-column: 1;
-          grid-column-start: 1;
-          grid-column-end: 4;
-          margin-bottom: 20px;
+          @media (max-width: 575.98px) {
+            -ms-grid-column: 1;
+            grid-column-start: 1;
+            grid-column-end: 4;
+            margin-bottom: 20px;
+          }
         }
       }
     }

@@ -29,6 +29,7 @@ const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
         userToken: sessionStorage.getItem("exUserToken") === null ? undefined : sessionStorage.getItem("exUserToken"),
         token: sessionStorage.getItem("exToken") === null ? undefined : sessionStorage.getItem("exToken"),
         accountNumber: sessionStorage.getItem("exAccountNumber") === null ? undefined : sessionStorage.getItem("exAccountNumber"),
+        accounts: sessionStorage.getItem("exAccounts") === null ? undefined : JSON.parse(sessionStorage.getItem("exAccounts"))
     }
   }
 );

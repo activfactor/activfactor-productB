@@ -3,7 +3,7 @@ import Modal from '../../../UI/Modal';
 import DropDown from '../../../UI/DropDown';
 import classes from '../../StrategyBuilder/StepThree/WatchListAdd/index.module.scss';
 import { connect } from 'react-redux';
-import { resetAuthURL, getBalance, updateAccountNumber } from '../../../../actions/tradeit';
+import { resetAuthURL, getBalance, updateAccountNumber } from '../../../../actions/Tradeit/tradeitPortfolio';
 
 class ModuleName extends Component {
   state = {

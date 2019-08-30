@@ -3,24 +3,12 @@ import Spinner from "../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 import { CapString } from "../../../../utils/textFunctions";
 import Header from "../../../UI/Header";
+import { getColorsByValue } from '../../../../utils/chartColorsPicker';
 
 class BarChart extends Component {
   getFactorColor(factor) {
     const factorString = String(factor).split("_")[0];
-    switch (factorString) {
-      case "momentum":
-        return "#2a5ebe";
-      case "value":
-        return "#e6a52e";
-      case "size":
-        return "#830c7d";
-      case "volatility":
-        return "#168a2f";
-      case "investment":
-        return "#79b5d8";
-      default:
-        return "Orange";
-    }
+    return getColorsByValue(factorString);
   }
   getData = factor => {
     const result = Object.keys(factor).map(key => {
@@ -46,8 +34,8 @@ class BarChart extends Component {
         <Header header={this.props.header} />
         <div className="_card-body">
           <Chart
-            width={"95%"}
-            height={"95%"}
+            width={"100%"}
+            height={"100%"}
             chartType="BarChart"
             loader={<Spinner color="black" />}
             data={this.getData(this.props.factor)}

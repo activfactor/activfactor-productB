@@ -6,11 +6,28 @@ import { updateLocation } from '../../../../actions/index';
 import Link from "../../../UI/Link";
 import DropDown from "../../../UI/DropDown";
 import { getValue, getClass } from '../../../../utils/textFunctions';
+import OrderForm from '../../../UI/OrderForm';
 
 class Table extends Component {
   state={
     option: "daily_return",
-    row: ''
+    row: '',
+    tickerName: undefined,
+    isModal: false
+  }
+
+  onCancelOrderHandler = () => {
+    this.setState({tickerName: undefined, isModal: false});
+  }
+
+  tradeHandler = (tickerName) => {
+    this.setState({tickerName: tickerName, isModal: true});
+  }
+
+  renderOrderForm = () => {
+    if (this.state.tickerName && this.state.isModal){
+      return <OrderForm orderSymbol={this.state.tickerName} onCancelHandler={this.onCancelOrderHandler} />
+    }
   }
 
   optionChangeHandler = (e) => {
@@ -31,7 +48,7 @@ class Table extends Component {
   render() {
     return (
       <div className="card__table">
-
+          {this.renderOrderForm()}
           <div className="card__title with-select">
             <div>
               <div className="_header-title">Current Stocks</div>
@@ -146,9 +163,9 @@ class Table extends Component {
                             </Link>
                           </td>
                           <td className="_cta-container">
-                            <Link to="/#" nameOfClass="btn btn-primary">
+                            <button onClick={() => this.tradeHandler(row)} className="btn btn-primary">
                               Trade
-                            </Link>
+                            </button>
                           </td>
                           <td className="_cta-container">
                             <Link to="/watchlist-monitor/details" onClick={() => this.removeTickerHandler(this.props.watchListName,row)} nameOfClass="btn btn-danger">
@@ -170,7 +187,7 @@ class Table extends Component {
 const mapStateToProps = state => {
   return {
     data: state.watchlistReducers.data.tickers,
-    watchListName: state.watchlistReducers.watchListName
+    watchListName: state.watchlistReducers.watchListName,
   };
 };
 

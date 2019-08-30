@@ -54,5 +54,5 @@ class Signup extends Component {
 }
 
 export default reduxForm({
-    form: 'signupForm'
+  form: "signupForm"
 })(Signup);

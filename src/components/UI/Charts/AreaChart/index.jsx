@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Spinner from "../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 import Header from "../../../UI/Header";
+import { getColorsArray } from '../../../../utils/chartColorsPicker';
 
 class AreaChart extends Component {
   getData = (strategy, benchmark) => {
@@ -26,8 +27,8 @@ class AreaChart extends Component {
           <Header header={this.props.header} />
           <div className="_card-body">
             <Chart
-              width={"99%"}
-              height={"99%"}
+              width={"100%"}
+              height={"100%"}
               chartType="AreaChart"
               loader={<Spinner color="black" />}
               data={this.getData(this.props.strategy, this.props.benchmark)}
@@ -39,7 +40,8 @@ class AreaChart extends Component {
                   startup: true,
                   easing: "out",
                   duration: 1500
-                }
+                },
+                colors: getColorsArray()
               }}
             />
           </div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Spinner from "../../../UI/Spinner";
 import { Chart } from "react-google-charts";
 import Header from "../../../UI/Header";
+import { getColorsArray } from '../../../../utils/chartColorsPicker'
 
 class BarChart extends Component {
   getData = (strategy, benchmark) => {
@@ -33,15 +34,16 @@ class BarChart extends Component {
           <div className="_card-body">
             <Chart
               pattern={"#%"}
-              width={"95%"}
-              height={"95%"}
+              width={"100%"}
+              height={"100%"}
               chartType="ColumnChart"
               loader={<Spinner color="black" />}
               data={this.getData(this.props.strategy, this.props.benchmark)}
               options={{
                 // Material design options
                 legend: { position: "top" },
-                vAxis: { minValue: -1, maxValue: 1, format: "#%" }
+                vAxis: { minValue: -1, maxValue: 1, format: "#%" },
+                colors: getColorsArray()
               }}
             />
           </div>

@@ -12,7 +12,7 @@ import Spinner from '../../UI/Spinner';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
-import { getBrokerList, getBalance } from '../../../actions/tradeit';
+import { getBrokerList, getBalance } from '../../../actions/Tradeit/tradeitPortfolio';
 import { updateLocation } from '../../../actions';
 import { getTickerList } from '../../../actions/ticker'
 

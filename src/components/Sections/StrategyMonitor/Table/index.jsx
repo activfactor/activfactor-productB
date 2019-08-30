@@ -5,10 +5,23 @@ import DropDown from "../../../UI/DropDown";
 import { getValue, getClass } from '../../../../utils/textFunctions';
 import { getTickerDetails, updateTickerName  } from '../../../../actions/ticker';
 import { updateLocation } from '../../../../actions/index';
+import OrderForm from '../../../UI/OrderForm';
 
 class Table extends Component {
   state={
-    option: "daily_return"
+    option: "daily_return",
+    isModal: false,
+    tickerName: undefined
+  }
+
+  tradeHandler = (tickerName) => {
+    this.setState({isModal: true});
+    this.setState({tickerName: tickerName});
+  }
+
+  onCancelOrderHandler = () => {
+    this.setState({isModal: false});
+    this.setState({tickerName: undefined});
   }
 
   optionChangeHandler = (e) => {
@@ -21,8 +34,16 @@ class Table extends Component {
     this.props.updateLocation('/');
   }
 
+  renderOrderForm = () => {
+    if (this.state.tickerName && this.state.isModal){
+      return <OrderForm orderSymbol={this.state.tickerName} onCancelHandler={this.onCancelOrderHandler} />
+    }
+  }
+
   render() {
     return (
+      <React.Fragment>
+      {this.renderOrderForm()}
       <div className="card__table">
 
           <div className="card__title with-select">
@@ -138,9 +159,9 @@ class Table extends Component {
                             </Link>
                           </td>
                           <td className="_cta-container">
-                            <Link to="/#" nameOfClass="btn btn-primary">
+                            <button onClick={() => this.tradeHandler(row)} className="btn btn-primary">
                               Trade
-                            </Link>
+                            </button>
                           </td>
                         </tr>
                       );
@@ -150,13 +171,14 @@ class Table extends Component {
             </table>
           </div>
       </div>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    data: state.strategyMonitor.data.actual_members
+    data: state.strategyMonitor.data.actual_members,
   };
 };
 

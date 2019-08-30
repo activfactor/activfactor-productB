@@ -5,4 +5,5 @@ export const removeStorage = () => {
     sessionStorage.removeItem("exBroker");
     sessionStorage.removeItem("exToken");
     sessionStorage.removeItem("exAccountNumber");
+    sessionStorage.removeItem("exAccounts");
 }

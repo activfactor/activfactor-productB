@@ -2,11 +2,32 @@ import React,{ Component } from 'react';
 import ContentBlock from '../../../UI/ContentBlock';
 import Input from '../../../UI/Input';
 import GroupInput from '../../../UI/Input/GroupInput';
+import OrderForm from '../../../UI/OrderForm';
+import { connect } from 'react-redux';
 
 class Header extends Component{
+    state={
+        isModal: false
+    }
+
+    onClickHandler = () => {
+        this.setState({isModal: true});
+    }
+
+    onCancelOrderHandler = () => {
+        this.setState({isModal: false});
+    }
+
+    renderOrderForm = () => {
+        if (this.props.ticker && this.state.isModal){
+            return <OrderForm orderSymbol={this.props.ticker} onCancelHandler={this.onCancelOrderHandler}/>
+        }
+    }
+
     render(){
         return(
         <div className="dashboard_strategy-list">
+            {this.renderOrderForm()}
             <div className="_strategy-list-item" style={{overflow: 'visible'}}>
                 <div className="_item-strategy-monitor">
                     <div className="_text-normal">{this.props.ticker}</div>
@@ -15,7 +36,7 @@ class Header extends Component{
                     <div className="_text0-normal" >{this.props.industry}</div>
                 </div>
                 <div className="mt-2">
-                    <Input nameOfClass="btn btn-primary mr-2" value="Trade" type="button" />
+                    <Input onClick={this.onClickHandler} nameOfClass="btn btn-primary mr-2" value="Trade" type="button" />
                     <GroupInput buttonName="Add to Watchlist" disabled={this.props.disabled}>
                         <Input nameOfClass="dropdown-item" type="submit" value="Create Watchlist" onClick={() => this.props.AddToWatchlist('new')} />
                         <Input nameOfClass="dropdown-item" type="submit" value="Existing Watchlist" onClick={() => this.props.AddToWatchlist('exist')} />
@@ -43,4 +64,11 @@ class Header extends Component{
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        accountNumber: state.tradeitReducers.accountNumber,
+        token: state.tradeitReducers.token
+    };
+}
+
+export default connect(mapStateToProps)(Header);

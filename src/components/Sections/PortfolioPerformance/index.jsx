@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import Broker from './Broker';
 import Spinner from '../../UI/Spinner';
 import { updateLocation } from '../../../actions/index';
-import { getBrokerList, getAuthLogin, getAuthToken, getToken, getAccounts, resetAccountNumber } from '../../../actions/tradeit';
+import { getBrokerList, getAuthLogin, getAuthToken, getToken, getAccounts, resetAccountNumber } from '../../../actions/Tradeit/tradeitPortfolio';
 import {Link} from 'react-router-dom';
 import Modal from './ModalContent';
 import history from '../../../history';
+import { resetShouldNavigateTo } from '../../../actions/index'
 
 const new_window = window;
 class PortfolioPerformance extends Component{
@@ -66,7 +67,12 @@ class PortfolioPerformance extends Component{
 
     finishProcess = () => {
       this.setState({isSpinner: false})
-      history.push('/dashboard');
+      if (this.props.shouldNavigateTo){
+        history.push(this.props.shouldNavigateTo);
+        this.props.resetShouldNavigateTo();
+      } else {
+        history.push('/dashboard');
+      }
     }
 
     cancelProcess = () => {
@@ -163,8 +169,21 @@ const mapStateToProps = state => {
         userToken: state.tradeitReducers.userToken,
         token: state.tradeitReducers.token,
         brokerName: state.tradeitReducers.brokerName,
-        accountNumber: state.tradeitReducers.accountNumber
+        accountNumber: state.tradeitReducers.accountNumber,
+        shouldNavigateTo: state.toggle.shouldNavigateTo
     };
 }
 
-export default connect(mapStateToProps,{updateLocation, getBrokerList, getAuthLogin, getAuthToken, getToken, getAccounts, resetAccountNumber})(PortfolioPerformance);
+export default connect(
+  mapStateToProps,
+  {
+    updateLocation,
+    getBrokerList,
+    getAuthLogin,
+    getAuthToken,
+    getToken,
+    getAccounts,
+    resetAccountNumber,
+    resetShouldNavigateTo
+  }
+)(PortfolioPerformance);

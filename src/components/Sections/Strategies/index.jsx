@@ -15,7 +15,7 @@ class ModuleName extends Component{
                 return (
                   <div className="dashboard_container">
                     <div className="dashboard_title-container">
-                      <div className="section__title mb-2">
+                      <div className="section__title m-3 text-primary">
                         My strategies
                       </div>
                     </div>

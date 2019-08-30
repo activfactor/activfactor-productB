@@ -7,6 +7,7 @@ import Header from './Header';
 import WatchListAdd from '../StrategyBuilder/StepThree/WatchListAdd';
 import Fundamentals from './Fundamentals';
 import requireAuth from '../../hoc/requireAuth';
+import { updateLocation } from '../../../actions/index';
 
 class Ticker extends Component{
     state = {
@@ -27,6 +28,8 @@ class Ticker extends Component{
     componentDidMount(){
         if (!this.props.tickerName){
             history.push('/dashboard');
+        } else {
+            this.props.updateLocation('/ticker-monitor');
         }
     }
 
@@ -79,4 +82,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(requireAuth(Ticker));
+export default connect(mapStateToProps,{updateLocation})(requireAuth(Ticker));

@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
 import {updateLocation} from '../actions';
 import { getTickerList } from '../actions/ticker';
-import { getToken } from '../actions/tradeit'
+import { getToken } from '../actions/Tradeit/tradeitPortfolio';
 import TickerMonitor from '../components/Sections/Ticker';
 
 class App extends React.Component {

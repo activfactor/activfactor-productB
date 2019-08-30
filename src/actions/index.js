@@ -5,7 +5,9 @@ import {
   TOGGLE_STATUS,
   SIGN_OUT,
   AUTH_RESET,
-  LOCATION_PATH
+  LOCATION_PATH,
+  LOCATION_SHOULD_NAVIGATE_TO,
+  LOCATION_SHOULD_NAVIGATE_TO_RESET
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
@@ -111,4 +113,12 @@ export const toggleClicked = () => (dispatch, getState) => {
 
 export const updateLocation = (location) => (dispatch) => {
   dispatch({type: LOCATION_PATH, payload: location});
+}
+
+export const updateShouldNavigateTo = (location) => (dispatch) => {
+  dispatch({type: LOCATION_SHOULD_NAVIGATE_TO, payload: location});
+}
+
+export const resetShouldNavigateTo = () => (dispatch) => {
+  dispatch({type: LOCATION_SHOULD_NAVIGATE_TO_RESET});
 }

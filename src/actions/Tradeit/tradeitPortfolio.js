@@ -1,4 +1,4 @@
-import tradeit from '../apis/tradeit';
+import tradeit from '../../apis/tradeit';
 import {
   TRADEIT_GET_BROKER_LIST,
   TRADEIT_AUTH_URL,
@@ -11,9 +11,9 @@ import {
   TRADEIT_BALANCE_GET,
   TRADEIT_ACCOUNT_NUMBER_UPDATE,
   TRADEIT_ACCOUNT_NUMBER_RESET
-} from "./types";
-import { getTradeitAPIKey } from '../apis/tradeitApiKey';
-import {removeStorage} from './utils/sessionStorage';
+} from "../types";
+import { getTradeitAPIKey } from '../../apis/tradeitApiKey';
+import {removeStorage} from '../utils/sessionStorage';
 
 export const getBrokerList = () => async dispatch => {
     try{
@@ -79,6 +79,7 @@ export const getAccounts = () => async (dispatch, getState) => {
         }
     })
     if (response.data.status === 'SUCCESS'){
+        sessionStorage.setItem("exAccounts", JSON.stringify(response.data.accounts));
         dispatch({type: TRADEIT_ACCOUNTS_GET, payload: response.data})
     } else {
         removeStorage();

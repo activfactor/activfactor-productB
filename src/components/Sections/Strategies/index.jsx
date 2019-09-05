@@ -3,8 +3,9 @@ import StrategyList from '../Dashboard/StrategiesList';
 import { connect } from 'react-redux';
 import history from '../../../history';
 import { updateLocation } from '../../../actions/index';
+import requireAuth from '../../hoc/requireAuth';
 
-class ModuleName extends Component{
+class Strategies extends Component{
     componentDidMount = () => {
         this.props.updateLocation('/strategy-monitor')
     }
@@ -45,4 +46,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{updateLocation})(ModuleName);
+export default connect(mapStateToProps,{updateLocation})(requireAuth(Strategies));

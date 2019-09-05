@@ -39,12 +39,12 @@ class Graph extends Component {
           loader={<Spinner color="black" />}
           data={this.getData(this.props.data)}
           options={{
-            // pieHole: 0.3,
+            pieHole: 0.4,
             chartArea: { left: 70, width: "100%", height: "90%" },
             with: "100%",
             height: "100%",
             colors: getColorsArray(),
-            is3D: true
+            // is3D: true
           }}
         />
       </div>
@@ -58,12 +58,12 @@ class Graph extends Component {
           loader={<Spinner color="black" />}
           data={this.getData(this.props.data)}
           options={{
-            // pieHole: 0.3,
+            pieHole: 0.4,
             chartArea: { left: 70, width: "100%", height: "90%" },
             with: "100%",
             height: "100%",
             colors: getColorsArray(),
-            is3D: true,
+            // is3D: true,
             animation: {
               duration: 1000,
               easing: "out",

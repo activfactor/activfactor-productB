@@ -3,8 +3,9 @@ import Watchlists from '../Dashboard/WatchLists';
 import { connect } from 'react-redux';
 import history from '../../../history';
 import { updateLocation } from '../../../actions/index';
+import requireAuth from '../../hoc/requireAuth';
 
-class ModuleName extends Component{
+class WatchLists extends Component{
     componentDidMount = () => {
         this.props.updateLocation('/watchlist-monitor')
     }
@@ -44,4 +45,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{updateLocation})(ModuleName);
+export default connect(mapStateToProps,{updateLocation})(requireAuth(WatchLists));

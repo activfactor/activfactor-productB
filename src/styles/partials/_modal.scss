@@ -10,9 +10,26 @@
     height: 100%;
     overflow: hidden;
     outline: 0;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
     transition: opacity .15s linear;
+
+    &._chart-modal {
+
+      .message__wrapper,
+      .modal__wrapper {
+        @media (min-width: 575.98px) {
+          max-width: 80%;
+        }
+        @media (min-width: 767.98px) {
+          max-width: 65%;
+        }
+        @media (min-width: 1199.98px) {
+          max-width: 55%;
+        }
+      }
+    }
   }
+
 
   &__wrapper {
     position: relative;

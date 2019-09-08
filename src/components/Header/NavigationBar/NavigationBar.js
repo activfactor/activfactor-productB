@@ -46,6 +46,15 @@ class NavigationBar extends Component{
                 >
                   Strategy Builder
                 </NavigationItem>
+                  <NavigationItem
+                    onClick={() => this.onClickHandler("/strategy-monitor")}
+                    to="/strategy-monitor"
+                    nameOfClass={`_navbar-item ${
+                      this.props.location === "/strategy-monitor" ? "active" : ""
+                      }`}
+                  >
+                    Strategy Monitor
+                  </NavigationItem>
                 <NavigationItem
                   onClick={() => this.onClickHandler("/watchlist-monitor")}
                   to="/watchlist-monitor"
@@ -53,7 +62,7 @@ class NavigationBar extends Component{
                     this.props.location === "/watchlist-monitor" ? "active" : ""
                   }`}
                 >
-                  Watch List
+                  Watchlist Monitor
                 </NavigationItem>
                 <NavigationItem
                   onClick={() => this.onClickHandler("/portfolio-performance")}
@@ -64,7 +73,7 @@ class NavigationBar extends Component{
                       : ""
                   }`}
                 >
-                  Portofolio Performance
+                  Portfolio Monitor
                 </NavigationItem>
                 <NavigationItem
                   onClick={this.onClickHandler}
@@ -75,15 +84,7 @@ class NavigationBar extends Component{
                 >
                   Transactions
                 </NavigationItem>
-                <NavigationItem
-                  onClick={() => this.onClickHandler("/strategy-monitor")}
-                  to="/strategy-monitor"
-                  nameOfClass={`_navbar-item ${
-                    this.props.location === "/strategy-monitor" ? "active" : ""
-                  }`}
-                >
-                  Strategy Monitor
-                </NavigationItem>
+
                 </nav>
                 <SearchBox />
             </div>

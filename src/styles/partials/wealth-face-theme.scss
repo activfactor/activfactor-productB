@@ -349,6 +349,143 @@ main {
   }
 }
 
+.auth {
+
+  &__container {
+
+  }
+  &__wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #fff;
+
+    @media (max-width: 575.98px) {
+      display: block;
+      background-color: #fff;
+    }
+  }
+  &__screen-image {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (max-width: 575.98px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: blur(3px);
+      display: none;
+    }
+  }
+}
+.login {
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    @media (max-width: 575.98px) {
+      display: block;
+    }
+  }
+  &__wrapper {
+    width: 70%;
+    @media (min-width: 1200px) {
+      width: 100%;
+      max-width: 480px;
+    }
+    @media (max-width: 991.98px) {
+      width: 80%;
+    }
+    @media (max-width: 575.98px) {
+      width: 100%;
+      max-width: none;
+      padding: 50px 20px;
+    }
+
+    ._login-form {
+      margin-bottom: 50px;
+      @media (max-width: 1199.98px) {
+        margin: 0;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-control {
+        padding: 14px;
+      }
+
+      ._links-container {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 20px;
+
+        .checkbox--item {
+          margin: 0;
+
+          input[type="checkbox"] + i {
+            margin-right: 5px;
+            width: 18px;
+            height: 18px;
+          }
+          ._text-label {
+            color: $text-color-dark;
+          }
+        }
+        ._link {
+          a {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            line-height: 1;
+            font-size: 14px;
+          }
+        }
+      }
+
+      ._btn-submit {
+
+        .btn {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    .title__h3 {
+      @media (max-width: 991.98px) {
+        font-size: 20px;
+      }
+      @media (max-width: 575.98px) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__logo-container {
+    margin-bottom: 50px;
+    ._logo {
+      width: 300px;
+      @media (max-width: 991.98px) {
+        width: 250px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 .container-authentication {
   background-color: #fff;
   margin-top: 15px;

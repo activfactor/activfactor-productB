@@ -10,15 +10,15 @@ $grid-gutter: 15px;
   padding: $form-control-padding;
   height: auto;
   line-height: 1.6;
-  background: rgba($form-control-background, 0.9);
-  border-color: $form-control-background;
+  background: $backgroundColor;
+  border-color: $backgroundColor;
   appearance: none;
   font-size: 13px;
   color: $form-control-color;
 
   &:focus {
     color: $form-control-color;
-    background: rgba($form-control-background, 0.9);
+    background: $backgroundColor;
   }
 
   &::-webkit-input-placeholder { /* Edge */
@@ -63,14 +63,14 @@ $grid-gutter: 15px;
 .form-control.is-invalid,
 .was-validated .form-control:invalid {
   padding: $form-control-padding;
-  background: rgba($form-control-background, 0.9);
+  background: $backgroundColor;
   border-color: $redColor;
 }
 
 .input-group {
   .form-control {
     &:focus {
-      background-color: $form-control-background;
+      background-color: $backgroundColor;
       border-color: transparent;
       box-shadow: none;
     }
@@ -81,8 +81,8 @@ $grid-gutter: 15px;
   padding: $form-control-padding;
   height: auto;
   line-height: 1.6;
-  background: rgba($form-control-background, 0.9);
-  border-color: $form-control-background;
+  background: $backgroundColor;
+  border-color: $backgroundColor;
   appearance: none;
   font-size: 16px;
 }

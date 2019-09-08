@@ -37,6 +37,19 @@
   }
 }
 
+.title {
+
+  &__h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: $text-color-dark;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
 
 /**
  * =Utility Classes

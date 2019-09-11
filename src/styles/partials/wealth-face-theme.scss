@@ -1533,12 +1533,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35px;
-    height: 25px;
-    font-size: 0.8rem;
-    color: $textColor;
+    width: 40px;
+    height: 30px;
+    font-size: 14px;
+    color: $text-color-darker;
     margin-left: 0.6rem;
-    background-color: $border-color-dark;
+    background-color: $backgroundColor;
     clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
   }
 }
@@ -1912,17 +1912,13 @@ footer {
 
             a,
             .btn {
-              font-size: 16px;
-              color: $text-color-dark-blue;
+              font-size: 15px;
               font-family: $font-medium;
               padding: 0;
               border: 0;
               line-height: 1;
-              transition: color 0.2s ease;
 
               &:hover {
-                text-decoration: none;
-                color: $mainBlueColor;
               }
             }
           }

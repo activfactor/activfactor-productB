@@ -29,7 +29,7 @@ class WatchLists extends Component{
 
     render(){
         return(
-            <div className="dashboard_watchlist-grid">
+            <div className="card__list-container">
                 {this.renderHandler()}
             </div>
         );

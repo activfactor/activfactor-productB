@@ -1921,7 +1921,7 @@ footer {
       margin-bottom: 16px;
     }
 
-    &.strategy__monitor {
+    &.asHeader {
       display: block;
 
       .card__list-item {
@@ -1932,7 +1932,7 @@ footer {
         ._header {
           width: 40%;
           padding-left: 40px;
-          padding-bottom: 15px;
+          margin-bottom: 5px;
           flex-shrink: 0;
           @media (max-width: 767.98px) {
             padding-left: 15px;
@@ -2047,7 +2047,9 @@ footer {
     }
   }
 }
-
+.fas.fa-compress {
+  margin-left: 10px;
+}
 .card__table {
   @include card-defaults;
   margin-bottom: 30px;

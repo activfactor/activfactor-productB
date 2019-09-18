@@ -51,7 +51,7 @@ class StrategyMonitor extends Component{
                             <div>Last update {this.props.strategyMonitor.data.last_update}</div>
                         </div>
 
-                        <div className="card__list-container strategy__monitor">
+                        <div className="card__list-container asHeader">
                             <Header />
                         </div>
 

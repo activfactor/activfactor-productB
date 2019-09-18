@@ -7,8 +7,8 @@ class Header extends Component {
   render() {
     return (
       <div className="card__list-item">
-        <div className="_header" style={{alignSelf: 'center', lineHeight: 1, margin: 0}}>
-          <div className="_title">{this.props.watchListName}</div>
+        <div className="_header" style={{margin: 0}}>
+          <div className="_title" style={{lineHeight: 1}}>{this.props.watchListName}</div>
         </div>
 
         <div className="_table">

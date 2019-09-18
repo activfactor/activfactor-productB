@@ -13,36 +13,42 @@ class Header extends Component {
   };
   render() {
     return (
-      <div className={`dashboard_strategy-list ${this.props.nameOfClass}`}>
-        <div className="_strategy-list-item">
-          <div className="_item-strategy-monitor">
-            <div className="_text-bold">{this.props.strategyName}</div>
-            <div className="_text0-normal" >
-              {this.props.data.benchmark_name}
-            </div>
-          </div>
+      <div className="card__list-item">
+        <div className="_header">
+          <div className="_title">{this.props.strategyName}</div>
+          <div className="_subtitle">{this.props.data.benchmark_name}</div>
         </div>
-        <ContentBlock
-          number={this.props.data.strategy_perf_1d}
-          unit="%"
-          number2={this.props.data.benchmark_perf_1d}
-          unit2="%"
-          description="1 Day"
-        />
-        <ContentBlock
-          number={this.props.data.strategy_perf_wtd}
-          unit="%"
-          number2={this.props.data.benchmark_perf_wtd}
-          unit2="%"
-          description="WTD"
-        />
-        <ContentBlock
-          number={this.props.data.strategy_perf_mtd}
-          unit="%"
-          number2={this.props.data.benchmark_perf_mtd}
-          unit2="%"
-          description="MTD"
-        />
+
+        <div className="_table">
+          <table className="table">
+            <thead>
+            <tr>
+              <th>1 Day</th>
+              <th>WTD</th>
+              <th>MTD</th>
+            </tr>
+          </thead>
+            <tbody>
+              <ContentBlock
+                number={this.props.data.strategy_perf_1d}
+                unit="%"
+                number2={this.props.data.strategy_perf_wtd}
+                unit2="%"
+                number3={this.props.data.strategy_perf_mtd}
+                unit3="%"
+              />
+              <ContentBlock
+                number={this.props.data.benchmark_perf_1d}
+                unit="%"
+                number2={this.props.data.benchmark_perf_wtd}
+                unit2="%"
+                number3={this.props.data.benchmark_perf_mtd}
+                unit3="%"
+              />
+            </tbody>
+          </table>
+        </div>
+
       </div>
     );
   }

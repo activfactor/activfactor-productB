@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Header from "../../../../UI/Header";
+// import Header from "../../../../UI/Header";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {updateWatchlistName} from "../../../../../actions/watchlist";

@@ -47,11 +47,13 @@ class StrategyMonitor extends Component{
 
                         {this.renderAction()}
 
-                        <div className="main_breadcrumb">
+                        <div className="main_breadcrumb" style={{marginTop: '14px'}}>
                             <div>Last update {this.props.strategyMonitor.data.last_update}</div>
                         </div>
 
-                        <Header nameOfClass="_make-title-on-small" />
+                        <div className="card__list-container strategy__monitor">
+                            <Header />
+                        </div>
 
                         <Charts />
 

@@ -22,12 +22,18 @@ class ContentBlock extends Component {
     return (
 
       <tr>
-        <td>{this.props.description}</td>
+        {
+          this.props.description ?
+            <td>{this.props.description}</td> :
+            null
+        }
+
         {
           this.props.number ?
             <td className={`${getClass(this.props.number)}`}>{getValue(this.props.number)}{this.props.unit}</td> :
             null
         }
+
         {
           this.props.number2 ?
             <td className={`${this.props.number2 ? getClass(this.props.number2) : ''}`}>
@@ -37,6 +43,12 @@ class ContentBlock extends Component {
                   ''
               }
             </td> :
+            null
+        }
+
+        {
+          this.props.number3 ?
+            <td className={`${getClass(this.props.number3)}`}>{getValue(this.props.number3)}{this.props.unit3}</td> :
             null
         }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from '../../../UI/Header';
+// import Header from '../../../UI/Header';
 import Input from '../../../UI/Input';
 import { connect } from 'react-redux';
 import history from '../../../../history';

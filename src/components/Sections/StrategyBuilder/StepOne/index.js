@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
 import { getDashboard } from '../../../../actions/dashboard';
 import Spinner from '../../../UI/Spinner';
+// import Button from "./CompanySize/Button";
 // import Modal from '../../../UI/Modal';
 
 class StepOne extends Component {
@@ -18,6 +19,9 @@ class StepOne extends Component {
     "factors":"",
     "n_stock":1,
     "firm_size":"",
+    activeMonthly: true,
+    activeQuarterly: true,
+    activeSemesterly: true
   }
 
   componentWillMount(){
@@ -97,6 +101,18 @@ class StepOne extends Component {
     }
   }
 
+  onClickFrequency = (frequency) => {
+    if (frequency === 'monthly') {
+      this.setState({activeMonthly: !this.state.activeMonthly})
+    }
+    if (frequency === 'quarterly') {
+      this.setState({activeQuarterly: !this.state.activeQuarterly})
+    }
+    if (frequency === 'semesterly') {
+      this.setState({activeSemesterly: !this.state.activeSemesterly})
+    }
+  }
+
   renderHandler(){
     if(this.props.definition){
       return (
@@ -107,20 +123,56 @@ class StepOne extends Component {
           </div>
 
           <div className="order-0 order-sm-1 order-md-0 col-12 col-md-6 col-lg-7">
+
+            <div className="company-size-container">
+              <div className="section-title_h3">Rebalancing Frequencies</div>
+
+              <div className="company-size_btn-grid">
+                <button className={`btn-company-size ${this.state.activeMonthly ? 'active' : null}`}
+                        onClick={() =>this.onClickFrequency('monthly')}>
+                  <span className="_title mt-2 mb-2">Monthly</span>
+                </button>
+                <button className={`btn-company-size ${this.state.activeQuarterly ? 'active' : null}`}
+                        onClick={() => this.onClickFrequency('quarterly')}>
+                  <span className="_title mt-2 mb-2">Quarterly</span>
+                </button>
+                <button className={`btn-company-size ${this.state.activeSemesterly ? 'active' : null}`}
+                        onClick={() => this.onClickFrequency('semesterly')}>
+                  <span className="_title mt-2 mb-2">Semesterly</span>
+                </button>
+              </div>
+
+            </div>
+
             <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange} buttonDefinition={this.buttonDefinition}/>
             <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
           </div>
 
           <div className="order-0 col-sm-6 col-md-3">
             <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
+
             <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
+
+            <div className="section-title_h3">Muslime</div>
+            <div className="can-toggle">
+              <input id="a"
+                     type="checkbox"/>
+              <label htmlFor="a">
+                <div className="can-toggle__switch"
+                     data-checked="Yes"
+                     data-unchecked="No">
+                </div>
+                <div className="can-toggle__label-text">
+                </div>
+              </label>
+            </div>
           </div>
         </div>
 
         <ActionButtons onClick={() => this.props.onClick(this.state)} resetFilter={this.onResetFilter}/>
       </div>
       );
-      
+
     } else {
       return (
         <Spinner color="white" containerClass="fullScreen" />

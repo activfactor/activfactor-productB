@@ -67,20 +67,22 @@ class Dashboard extends Component {
             </div>
 
             <div className="dashboard_title-container">
-              <div className="section__title">My strategies</div>
-              <Link to="/strategy-monitor">View all</Link>
+              <div className="section__title">My Strategies</div>
+              <Link nameOfClass="section__title" to="/strategy-monitor">View all</Link>
             </div>
 
-            <StrategiesList/>
+            <div className="card__list-container">
+              <StrategiesList/>
+            </div>
 
-            <div className="dashboard_btn-container">
+            <div className="dashboard_btn-container mb-0">
               <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"
                      onClick={this.BuildStrategy}/>
             </div>
 
             <div className="dashboard_title-container">
-              <div className="section__title">My Wath List</div>
-              <Link to="/watchlist-monitor">View all</Link>
+              <div className="section__title">My Watch List</div>
+              <Link nameOfClass="section__title" to="/watchlist-monitor">View all</Link>
             </div>
 
             <WatchLists />

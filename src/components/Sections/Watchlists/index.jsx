@@ -15,11 +15,7 @@ class WatchLists extends Component{
             if (this.props.data.constructor==={}.constructor){
                 return (
                     <div className="dashboard_container">
-                        <div className="dashboard_title-container">
-                          <div className="section__title m-3 text-primary">
-                            My Wath List
-                          </div>
-                        </div>
+                        <div className="section__title">My Watch List</div>
                         <Watchlists />
                     </div>
                 );

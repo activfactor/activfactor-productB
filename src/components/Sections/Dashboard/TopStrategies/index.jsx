@@ -121,22 +121,28 @@ class Table extends Component {
 
   render() {
     return (
-      <div className="card__table">
-        <Header header="Top Strategies" nameOfClass="with-select">
+      <div>
 
-          <DropDown
-            value={this.props.country}
-            color="blue"
-            DropDownChangeHandler={this.props.countryChangeHandler}
-          >
-            <option value="USA">USA</option>
-            <option value="CAN">CAN</option>
-          </DropDown>
-        </Header>
+        <div className="section__title">Top Strategies</div>
 
-        <div className="table-responsive">
-          {this.renderTable()}
+        <div className="card__table m-0">
+          <Header header="" nameOfClass="with-select">
+
+            <DropDown
+              value={this.props.country}
+              color="blue"
+              DropDownChangeHandler={this.props.countryChangeHandler}
+            >
+              <option value="USA">USA</option>
+              <option value="CAN">CAN</option>
+            </DropDown>
+          </Header>
+
+          <div className="table-responsive">
+            {this.renderTable()}
+          </div>
         </div>
+
       </div>
     );
   }

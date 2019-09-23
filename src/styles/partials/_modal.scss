@@ -10,7 +10,7 @@
     height: 100%;
     overflow: hidden;
     outline: 0;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.7);
     transition: opacity .15s linear;
 
     &._chart-modal {
@@ -36,7 +36,7 @@
     width: auto;
     margin: .5rem;
     @include card-defaults;
-    box-shadow: $box-shadow-1;
+    box-shadow: 0px 0 6px rgba(0, 0, 0, 0.25);
 
     @media (min-width: 575.98px) {
       max-width: 500px;

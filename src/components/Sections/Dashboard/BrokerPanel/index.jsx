@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from '../../../UI/Header';
+// import Header from '../../../UI/Header';
 import Input from '../../../UI/Input';
 import { connect } from 'react-redux';
 import history from '../../../../history';
@@ -32,17 +32,21 @@ class BrokerPanel extends Component {
 
   render() {
     return (
-      <div className="dashboard_broker-panel">
-        <Header header="My Brokerages"/>
-        <div className="_panel-body">
-          {this.renderText()}
-          <div className="_btn-block">
-            <Input nameOfClass="btn btn-primary" type="submit" value="Connect Brokerage"
-                   onClick={this.connectBrokerage}/>
-            <Input nameOfClass="btn btn-secondary" type="submit" value="Create an Account"
-                   onClick={this.props.CreateAccount} color="black"/>
+      <div>
+        <div className="section__title">My Brokerages</div>
+
+        <div className="dashboard_broker-panel">
+          <div className="_panel-body">
+            {this.renderText()}
+            <div className="_btn-block">
+              <Input nameOfClass="btn btn-primary" type="submit" value="Connect Brokerage"
+                     onClick={this.connectBrokerage}/>
+              <Input nameOfClass="btn btn-secondary" type="submit" value="Create an Account"
+                     onClick={this.props.CreateAccount} color="black"/>
+            </div>
           </div>
         </div>
+
       </div>
     );
   }

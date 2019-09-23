@@ -54,20 +54,26 @@ class WatchlistMonitor extends Component{
             return (
 
               <div className="strategy-monitor_container">
-                <div className="main_breadcrumb">
+
+                <div className="main_breadcrumb" style={{marginTop: '14px'}}>
                   <div>
                     Last update {this.props.data.last_update}
                   </div>
                 </div>
-                <Header 
-                    watchListName={this.props.watchListName} 
-                    numberID={this.props.data.watchlist_perf_1d}
-                    numberWTD={this.props.data.watchlist_perf_wtd}
-                    numberMTD={this.props.data.watchlist_perf_mtd}
-                    descriptionID="1 Day"
-                    descriptionWTD="WTD"
-                    descriptionMTD="MTD"
-                />
+
+                  <div className="card__list-container asHeader">
+                      <Header
+                        watchListName={this.props.watchListName}
+                        numberID={this.props.data.watchlist_perf_1d}
+                        numberWTD={this.props.data.watchlist_perf_wtd}
+                        numberMTD={this.props.data.watchlist_perf_mtd}
+                        descriptionID="1 Day"
+                        descriptionWTD="WTD"
+                        descriptionMTD="MTD"
+                      />
+                  </div>
+
+
                 <Charts />
                 <Table />
                 <div className="dashboard_btn-container">

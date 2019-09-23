@@ -47,7 +47,7 @@ class StrategyList extends Component {
                     />
                   );
             }
-          
+
           return null;
         });
       } else {

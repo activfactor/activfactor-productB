@@ -1522,6 +1522,11 @@ footer {
       text-align: start;
       display: flex;
       flex-direction: column;
+      @media (max-width: 767.98px) {
+        padding: 12px;
+        border: none;
+      }
+
 
       ._title {
         display: block;

@@ -1441,7 +1441,7 @@ footer {
 
           ._tooltip-content {
             @media (max-width: 575.98px) {
-              right: -45px;
+              right: -30px;
               left: auto;
             }
 
@@ -1552,13 +1552,7 @@ footer {
 }
 
 .country-step-one-container {
-  margin-bottom: 70px;
-  @media (max-width: 767.98px) {
-    margin-bottom: 50px;
-  }
-  @media (max-width: 575.98px) {
-    margin-bottom: 35px;
-  }
+  margin-bottom: 40px;
 
   ._select-country {
     @include formControl-caret;
@@ -1566,17 +1560,17 @@ footer {
 }
 
 .nos-step-one-container {
-  margin-bottom: 35px;
-
-  @media (max-width: 575.98px) {
-    margin-bottom: 50px;
-  }
+  margin-bottom: 40px;
 }
+
 
 .NumberOfStock-rangeSlider {
   display: flex;
   align-items: center;
   position: relative;
+  @media (max-width: 575.98px) {
+    padding-left: 5px;
+  }
 
   ._input {
     flex: 1;
@@ -1586,6 +1580,7 @@ footer {
     outline: none;
     opacity: 0.7;
     transition: opacity .2s;
+    -webkit-tap-highlight-color: transparent;
 
     &::-webkit-slider-thumb {
       appearance: none;

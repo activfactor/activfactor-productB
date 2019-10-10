@@ -87,9 +87,9 @@ class Dashboard extends Component {
 
             <WatchLists />
 
-            <div className="dashboard_btn-container">
-              <Input type="submit" nameOfClass="btn btn-primary" value="+ New Watch List" />
-            </div>
+            {/*<div className="dashboard_btn-container">*/}
+            {/*  <Input type="submit" nameOfClass="btn btn-primary" value="+ New Watch List" />*/}
+            {/*</div>*/}
 
 
           </div>

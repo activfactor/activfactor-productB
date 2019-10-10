@@ -161,7 +161,7 @@ class StepOne extends Component {
 
             <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
 
-            <div className="section-title_h3">Muslime Stocks Only</div>
+            <div className="section-title_h3">Sharia Compliant stocks</div>
             <div className="can-toggle">
               <input id="a"
                      type="checkbox"/>

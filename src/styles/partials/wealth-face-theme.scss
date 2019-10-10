@@ -1401,6 +1401,15 @@ footer {
       padding-right: 10px;
       margin-bottom: 50px;
     }
+
+    .charts-card-container {
+      .card__table._full-height-table {
+        max-height: 400px;
+        @media (max-width: 575.98px) {
+          max-height: none;
+        }
+      }
+    }
   }
 
   &_charts {
@@ -1410,6 +1419,22 @@ footer {
 
   &_table {
     @include card-defaults;
+  }
+
+
+}
+
+.sm_container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0 20px;
+
+  .section__title {
+    margin: 0;
+  }
+  .btn {
+    padding: 8px 12px;
   }
 }
 
@@ -1962,6 +1987,13 @@ footer {
               margin-top: 18px;
             }
           }
+
+          ._buttons {
+            margin-top: 10px;
+            .btn {
+              padding: 8px 16px;
+            }
+          }
         }
 
         ._table {
@@ -1972,6 +2004,16 @@ footer {
             td {
               border: none !important;
             }
+          }
+        }
+      }
+
+      &._ticker {
+        .card__list-item {
+          align-items: center;
+
+          ._header {
+            padding-top: 14px;
           }
         }
       }
@@ -2393,4 +2435,27 @@ table.table--primary {
 
 .mb-30 {
   margin-bottom: 30px !important;
+}
+
+
+
+
+.custom__tabs {
+  margin-top: 50px;
+  margin-bottom: 30px;
+
+  .nav-tabs {
+    margin-bottom: 30px;
+  }
+  .nav-item {
+    .nav-link {
+      font-size: 16px;
+      padding: 8px 16px;
+      color: $text-color-darker;
+
+      &.active {
+        color: $mainBlueColor;
+      }
+    }
+  }
 }

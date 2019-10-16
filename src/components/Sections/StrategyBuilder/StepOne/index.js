@@ -19,9 +19,9 @@ class StepOne extends Component {
     "factors":"",
     "n_stock":1,
     "firm_size":"",
-    activeMonthly: true,
-    activeQuarterly: true,
-    activeSemesterly: true
+    activeMonthly: false,
+    activeQuarterly: false,
+    activeSemesterly: false
   }
 
   componentWillMount(){
@@ -102,6 +102,11 @@ class StepOne extends Component {
   }
 
   onClickFrequency = (frequency) => {
+    this.setState({
+      activeMonthly: false,
+      activeQuarterly: false,
+      activeSemesterly: false
+    });
     if (frequency === 'monthly') {
       this.setState({activeMonthly: !this.state.activeMonthly})
     }
@@ -111,7 +116,7 @@ class StepOne extends Component {
     if (frequency === 'semesterly') {
       this.setState({activeSemesterly: !this.state.activeSemesterly})
     }
-  }
+  };
 
   renderHandler(){
     if(this.props.definition){
@@ -131,14 +136,17 @@ class StepOne extends Component {
                 <button className={`btn-company-size ${this.state.activeMonthly ? 'active' : null}`}
                         onClick={() =>this.onClickFrequency('monthly')}>
                   <span className="_title mt-2 mb-2">Monthly</span>
+                  <span className="_description">Rebalancing occurs at the beginning of each month</span>
                 </button>
                 <button className={`btn-company-size ${this.state.activeQuarterly ? 'active' : null}`}
                         onClick={() => this.onClickFrequency('quarterly')}>
                   <span className="_title mt-2 mb-2">Quarterly</span>
+                  <span className="_description">Rebalancing occurs four times per year: the first of January, April, July, and August</span>
                 </button>
                 <button className={`btn-company-size ${this.state.activeSemesterly ? 'active' : null}`}
                         onClick={() => this.onClickFrequency('semesterly')}>
                   <span className="_title mt-2 mb-2">Semesterly</span>
+                  <span className="_description">Rebalancing occurs twice per year: the first of January and July</span>
                 </button>
               </div>
 
@@ -153,7 +161,7 @@ class StepOne extends Component {
 
             <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
 
-            <div className="section-title_h3">Muslime</div>
+            <div className="section-title_h3">Sharia Compliant stocks</div>
             <div className="can-toggle">
               <input id="a"
                      type="checkbox"/>

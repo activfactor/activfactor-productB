@@ -172,7 +172,7 @@
 @mixin can-toggle-branding(
   $can-toggle-off-color: #777,
   $can-toggle-on-color: $mainBlueColor,
-  $can-toggle-inactive-text: rgba(white, 0.5),
+  $can-toggle-inactive-text: rgba(white, 0.4),
   $can-toggle-transition: cubic-bezier(0,1,0.5,1)
 ) {
 
@@ -256,8 +256,8 @@
   $can-toggle-border-radius: 4px,
   $can-toggle-offset: 2px,
   $can-toggle-label-font-size: 14px,
-  $can-toggle-switch-font-size: 12px,
-  $can-toggle-shadow: 0 3px 3px rgba(black, 0.4)
+  $can-toggle-switch-font-size: 14px,
+  $can-toggle-shadow: 0 2px 2px rgba(black, 0.3)
 ) {
   $can-toggle-switch-width: $can-toggle-width/2;
 
@@ -306,6 +306,7 @@
         line-height: $can-toggle-height;
         width: $can-toggle-width/2;
         padding: 0 12px;
+        font-family: $font-medium;
       }
 
       &:after {
@@ -315,6 +316,7 @@
         width: $can-toggle-switch-width - $can-toggle-offset;
         line-height: $can-toggle-height - ($can-toggle-offset*2);
         font-size: $can-toggle-switch-font-size;
+        font-family: $font-medium;
       }
 
       &:hover {

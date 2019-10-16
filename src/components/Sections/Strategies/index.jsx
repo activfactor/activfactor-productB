@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import history from '../../../history';
 import {updateLocation} from '../../../actions/index';
 import requireAuth from '../../hoc/requireAuth';
+import Input from '../../UI/Input';
 
 
 class Strategies extends Component {
@@ -11,12 +12,21 @@ class Strategies extends Component {
     this.props.updateLocation('/strategy-monitor')
   }
 
+  BuildStrategy = () => {
+    history.push('/strategy-builder')
+  }
+
   renderContent = () => {
     if (this.props.user_strategies) {
       if (this.props.user_strategies !== "Your are not following any strategy") {
         return (
           <div className="strategy-monitor_container">
-            <div className="section__title">My strategies</div>
+            <div className="sm_container-title">
+              <div className="section__title">My strategies</div>
+
+              <Input type="submit" nameOfClass="btn btn-primary" value="Build a New Strategy"
+                     onClick={this.BuildStrategy}/>
+            </div>
 
             <div className="card__list-container">
               <StrategyList/>

@@ -9,34 +9,34 @@ import ContentBlock from "../../../../UI/ContentBlock";
 //   onClickHandler = () => {
 //     this.props.updateWatchlistName(this.props.watchlistName);
 //   };
-//
-//   render() {
-//     return (
-//       <div className="dashboard_watchlist-card">
-//         <Link
-//           className="card__title-cta"
-//           to="/watchlist-monitor/details"
-//           onClick={this.onClickHandler}
-//         >
-//           <Header
-//             header={this.props.watchlistName}
-//             nameOfClass="text-primary"
-//           />
-//         </Link>
-//
-//         <div className="_card-body">
-//           <div className="_title">{this.props.watchListQty} Tickers</div>
-//           <div className="_subtitle">4 Stocks</div>
-//
-//           <div className="dashboard_watchlist-card-info small p-0">
-//             Last Update {this.props.lastUpdate}
-//           </div>
-//         </div>
-//
-//       </div>
-//     );
-//   }
-// }
+
+// //   render() {
+// //     return (
+// //       <div className="dashboard_watchlist-card">
+// //         <Link
+// //           className="card__title-cta"
+// //           to="/watchlist-monitor/details"
+// //           onClick={this.onClickHandler}
+// //         >
+// //           <Header
+// //             header={this.props.watchlistName}
+// //             nameOfClass="text-primary"
+// //           />
+// //         </Link>
+
+// //         <div className="_card-body">
+// //           <div className="_title">{this.props.watchListQty} Tickers</div>
+// //           <div className="_subtitle">4 Stocks</div>
+
+// //           <div className="dashboard_watchlist-card-info small p-0">
+// //             Last Update {this.props.lastUpdate}
+// //           </div>
+// //         </div>
+
+// //       </div>
+// //     );
+// //   }
+// // }
 
 class WatchList extends Component {
   onClickHandler = () => {

@@ -10,14 +10,44 @@ class WatchLists extends Component{
                 if (this.props.location==='/dashboard'){
                     if (index<3){
                         return (
-                            <WatchList key={index} watchlistName={watchlist} numberID={watchLists[watchlist]['watchlist_perf_1d']} descriptionID="1 Day" numberWTD={watchLists[watchlist]['watchlist_perf_wtd']} descriptionWTD="WTD"
-                            numberMTD={watchLists[watchlist]['watchlist_perf_mtd']} descriptionMTD="MTD" watchListQty={watchLists[watchlist]['number_of_tickers']} lastUpdate={watchLists[watchlist]['last_update']} />
+                          <WatchList
+                            key={index}
+                            watchlistName={watchlist}
+                            numberID={
+                              watchLists[watchlist]["watchlist_perf_1d"]
+                            }
+                            descriptionID="1 Day"
+                            numberWTD={
+                              watchLists[watchlist]["watchlist_perf_wtd"]
+                            }
+                            descriptionWTD="WTD"
+                            numberMTD={
+                              watchLists[watchlist]["watchlist_perf_mtd"]
+                            }
+                            descriptionMTD="MTD"
+                            watchListQty={
+                              watchLists[watchlist]["number_of_tickers"]
+                            }
+                            lastUpdate={watchLists[watchlist]["last_update"]}
+                          />
                         );
                     }
                 } else {
                     return (
-                        <WatchList key={index} watchlistName={watchlist} numberID={watchLists[watchlist]['watchlist_perf_1d']} descriptionID="1 Day" numberWTD={watchLists[watchlist]['watchlist_perf_wtd']} descriptionWTD="WTD"
-                        numberMTD={watchLists[watchlist]['watchlist_perf_mtd']} descriptionMTD="MTD" watchListQty={watchLists[watchlist]['number_of_tickers']} lastUpdate={watchLists[watchlist]['last_update']} />
+                      <WatchList
+                        key={index}
+                        watchlistName={watchlist}
+                        numberID={watchLists[watchlist]["watchlist_perf_1d"]}
+                        descriptionID="1 Day"
+                        numberWTD={watchLists[watchlist]["watchlist_perf_wtd"]}
+                        descriptionWTD="WTD"
+                        numberMTD={watchLists[watchlist]["watchlist_perf_mtd"]}
+                        descriptionMTD="MTD"
+                        watchListQty={
+                          watchLists[watchlist]["number_of_tickers"]
+                        }
+                        lastUpdate={watchLists[watchlist]["last_update"]}
+                      />
                     );
                 }
                 

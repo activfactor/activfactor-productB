@@ -2,6 +2,7 @@ import React from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import Header from "./Header/Header";
 import Login from "./Sections/Login/Login";
+// import NewLogin from "./Sections/Login/Login__NewDesign";
 import Dashboard from "./Sections/Dashboard/Dashboard";
 import Signup from "./Sections/Signup/Signup";
 import Footer from "../components/Footer/Footer";

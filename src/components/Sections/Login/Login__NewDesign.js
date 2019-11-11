@@ -28,7 +28,7 @@ class Login extends Component{
             const data = {
                 // email: formValues.username,
                 // password: formValues.password
-                email: "adam_smith14787@gnail.con",
+                email: "adam_smith14787@gnail.con", 
                 password: "123456789"
             }
             this.props.signIn_A(data);

@@ -2,20 +2,17 @@
 .white,
 .white:before,
 .white:after{
-  //color: #fff;
-  //background: #fff;
+  color: #fff;
+  background: #fff;
 }
 
 .black,
 .black:before,
-.black:after
+.black:after 
 {
-  //color: #000;
-  //background: rgba(255,255,255,0.5);
+  color: #000;
+  background: #000;
 }
-
-
-
 
 .loader,
 .loader:before,
@@ -74,5 +71,3 @@
     height: 5em;
   }
 }
-
-  

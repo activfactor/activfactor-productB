@@ -937,6 +937,7 @@ footer {
 
   &_top-content {
     @include make-row;
+    margin-top: 20px;
 
     .section__title {
       @media (min-width: 768px) {

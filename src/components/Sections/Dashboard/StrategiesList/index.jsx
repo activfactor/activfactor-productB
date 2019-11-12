@@ -26,6 +26,8 @@ class StrategyList extends Component {
                         benchmark_perf_mtd={strategies[strategy]["benchmark_perf_mtd"]}
                         descriptionMTD="MTD"
                         benchmark_name={strategies[strategy]["benchmark_name"]}
+                        tickerCount={strategies[strategy]["number_of_tickers"]}
+                        lastUpdate={strategies[strategy]["last_update"]}
                       />
                     );
                   }
@@ -44,6 +46,8 @@ class StrategyList extends Component {
                       benchmark_perf_mtd={strategies[strategy]["benchmark_perf_mtd"]}
                       descriptionMTD="MTD"
                       benchmark_name={strategies[strategy]["benchmark_name"]}
+                      tickerCount={strategies[strategy]["number_of_tickers"]}
+                      lastUpdate={strategies[strategy]["last_update"]}
                     />
                   );
             }

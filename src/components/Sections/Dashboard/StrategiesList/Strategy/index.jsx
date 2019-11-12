@@ -21,8 +21,8 @@ class Strategy extends Component {
                   this.props.updateLocation('/strategy-monitor')
                 }}>{this.props.strategyName}</Link>
 
-          <div className="_subtitle">7 Ticker</div>
-          <div className="_update">Last update - Sep 01, 2019</div>
+              <div className="_subtitle">{this.props.tickerCount ? `${this.props.tickerCount} Tikcers` : ''}</div>
+              <div className="_update">Last update - {this.props.lastUpdate}</div>
         </div>
 
         <div className="_table">

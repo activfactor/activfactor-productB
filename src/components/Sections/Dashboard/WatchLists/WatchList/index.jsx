@@ -66,18 +66,18 @@ class WatchList extends Component {
             </thead>
             <tbody>
               <ContentBlock
-                number="--"
-                unit=""
+                number={this.props.numberID}
+                unit="%"
                 description="1 Day"
               />
               <ContentBlock
-                number="--"
-                unit=""
+                number={this.props.numberWTD}
+                unit="%"
                 description="WTD"
               />
               <ContentBlock
-                number="--"
-                unit=""
+                number={this.props.numberMTD}
+                unit="%"
                 description="MTD"
               />
             </tbody>

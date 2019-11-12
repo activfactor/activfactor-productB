@@ -53,7 +53,7 @@ class Dashboard extends Component {
         return (
           <div className="dashboard_container">
 
-            <Header/>
+            {this.props.userToken && this.props.accountNumber ? <Header/> : ''}
 
             <div className="dashboard_top-content">
 
@@ -115,7 +115,9 @@ const mapStateToProps = state => {
     data: state.factorDashboard,
     tickers : state.tickerReducers.tickerList,
     brokerList: state.tradeitReducers.brokerList,
-    accountNumber : state.tradeitReducers.accountNumber
+    accountNumber : state.tradeitReducers.accountNumber,
+    userToken: state.tradeitReducers.userToken,
+    brokerLongName: state.tradeitReducers.brokerLongName
   }
 }
 

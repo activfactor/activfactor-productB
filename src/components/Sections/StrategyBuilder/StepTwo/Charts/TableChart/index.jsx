@@ -7,7 +7,6 @@ class TableChart extends Component {
   render() {
     return (
       <div className="card__table _full-height-table">
-        <div className="table-responsive">
           <table className="table table-borderless table-hover">
             <thead className={classes.table__header}>
               <tr className={classes.table__headerow}>
@@ -16,7 +15,9 @@ class TableChart extends Component {
                 <th scope="col">{this.props.benchmark_name}</th>
               </tr>
             </thead>
-
+          </table>
+        <div className="table-responsive">
+          <table className="table table-borderless table-hover">
             <tbody>
             {this.props.strategy
               ? Object.keys(this.props.strategy).map((row, i) => {
@@ -32,13 +33,13 @@ class TableChart extends Component {
                       data-label="Strategy"
                       className={`_td-strategy ${this.props.strategy[row] > 0 ? 'text-primary' : 'text-danger'}`}
                     >
-                      {this.props.strategy[row] ? String(this.props.strategy[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio"].includes(String(row)) ? '' : '%'}` : "---"}
+                      {this.props.strategy[row] ? String(this.props.strategy[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio", "yearly_avg_#_of_trades"].includes(String(row)) ? '' : '%'}` : "---"}
                     </td>
                     <td
                       data-label={this.props.benchmark}
                       className={`_td-benchmark ${this.props.benchmark[row] > 0 ? 'text-primary' : 'text-danger'}`}
                     >
-                      {this.props.benchmark[row] ? String(this.props.benchmark[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio"].includes(String(row)) ? '' : '%'}` : "---"}
+                      {this.props.benchmark[row] ? String(this.props.benchmark[row].toFixed(2))+ `${["1_year_sharpe_ratio","3_years_sharpe_ratio","5_years_sharpe_ratio","7_years_sharpe_ratio","beta","sharpe_ratio","sortino_ratio","information_ratio", "yearly_avg_#_of_trades"].includes(String(row)) ? '' : '%'}` : "---"}
                     </td>
                   </tr>
                 );

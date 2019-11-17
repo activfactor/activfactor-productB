@@ -65,7 +65,9 @@ class StrategyBuilder extends Component{
             "sectors": this.props.query.sectors + ",",
             "factors": this.props.query.factors + ",",
             "n_stock": this.props.query.n_stock,
-            "firm_size": this.props.query.firm_size + ","
+            "firm_size": this.props.query.firm_size + ",",
+            "rebalancing": this.props.query.rebalancing,
+            "shariah": this.props.query.shariah
         }
         if (JSON.stringify(oldQuery) !== JSON.stringify(values)){
             this.props.resetFactorScreener();

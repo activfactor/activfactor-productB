@@ -5,6 +5,8 @@ import Sectors from "./Sectors";
 import Country from "./Country";
 import ActionButtons from "./ActionButtons";
 import NumberofStock from "./NumberofStock";
+import RebalancingFreq from './RebalancingFreq';
+import Shariah from './Sharia';
 import { connect } from 'react-redux';
 import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
 import { getDashboard } from '../../../../actions/dashboard';
@@ -19,9 +21,8 @@ class StepOne extends Component {
     "factors":"",
     "n_stock":1,
     "firm_size":"",
-    activeMonthly: false,
-    activeQuarterly: false,
-    activeSemesterly: false
+    "rebalancing":"",
+    "shariah": 0,
   }
 
   componentWillMount(){
@@ -30,15 +31,18 @@ class StepOne extends Component {
 
   componentDidMount(){
     if(this.props.data.country){
-      const {country, sectors, factors, n_stock, firm_size} = this.props.data;
+      const {country, sectors, factors, n_stock, firm_size, rebalancing, shariah} = this.props.data;
       this.setState({
         "country":country,
         "sectors":sectors === '' ? '' : sectors +',',
         "factors":factors === '' ? '' : factors +',',
         "n_stock":n_stock,
         "firm_size":firm_size === '' ? '' : firm_size +',',
+        "rebalancing":rebalancing,
+        "shariah":shariah
       })
     }
+    
   }
 
   onResetFilter = () => {
@@ -49,6 +53,8 @@ class StepOne extends Component {
       "factors":"",
       "n_stock":1,
       "firm_size":"",
+      "rebalancing":"",
+      "shariah": 0,
     })
   }
 
@@ -101,22 +107,13 @@ class StepOne extends Component {
     }
   }
 
-  onClickFrequency = (frequency) => {
-    this.setState({
-      activeMonthly: false,
-      activeQuarterly: false,
-      activeSemesterly: false
-    });
-    if (frequency === 'monthly') {
-      this.setState({activeMonthly: !this.state.activeMonthly})
-    }
-    if (frequency === 'quarterly') {
-      this.setState({activeQuarterly: !this.state.activeQuarterly})
-    }
-    if (frequency === 'semesterly') {
-      this.setState({activeSemesterly: !this.state.activeSemesterly})
-    }
+  onRebalancingFreqClick = (frequency) => {
+    this.setState({rebalancing: frequency});
   };
+
+  onShariahChange = () => {
+    this.setState(prevState => ({shariah: prevState.shariah === 0 ? 1 : 0}));
+  }
 
   renderHandler(){
     if(this.props.definition){
@@ -128,30 +125,7 @@ class StepOne extends Component {
           </div>
 
           <div className="order-0 order-sm-1 order-md-0 col-12 col-md-6 col-lg-7">
-
-            <div className="company-size-container">
-              <div className="section-title_h3">Rebalancing Frequencies</div>
-
-              <div className="company-size_btn-grid">
-                <button className={`btn-company-size ${this.state.activeMonthly ? 'active' : null}`}
-                        onClick={() =>this.onClickFrequency('monthly')}>
-                  <span className="_title mt-2 mb-2">Monthly</span>
-                  <span className="_description">Rebalancing occurs at the beginning of each month</span>
-                </button>
-                <button className={`btn-company-size ${this.state.activeQuarterly ? 'active' : null}`}
-                        onClick={() => this.onClickFrequency('quarterly')}>
-                  <span className="_title mt-2 mb-2">Quarterly</span>
-                  <span className="_description">Rebalancing occurs four times per year: the first of January, April, July, and August</span>
-                </button>
-                <button className={`btn-company-size ${this.state.activeSemesterly ? 'active' : null}`}
-                        onClick={() => this.onClickFrequency('semesterly')}>
-                  <span className="_title mt-2 mb-2">Semesterly</span>
-                  <span className="_description">Rebalancing occurs twice per year: the first of January and July</span>
-                </button>
-              </div>
-
-            </div>
-
+            <RebalancingFreq onRebalancingFreqClick={(frequency) => this.onRebalancingFreqClick(frequency)} />
             <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange} buttonDefinition={this.buttonDefinition}/>
             <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
           </div>
@@ -161,19 +135,8 @@ class StepOne extends Component {
 
             <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
 
-            <div className="section-title_h3">Sharia Compliant stocks</div>
-            <div className="can-toggle">
-              <input id="a"
-                     type="checkbox"/>
-              <label htmlFor="a">
-                <div className="can-toggle__switch"
-                     data-checked="Yes"
-                     data-unchecked="No">
-                </div>
-                <div className="can-toggle__label-text">
-                </div>
-              </label>
-            </div>
+            <Shariah onShariahChange={this.onShariahChange} defaultChecked={this.state.shariah} />
+            
           </div>
         </div>
 

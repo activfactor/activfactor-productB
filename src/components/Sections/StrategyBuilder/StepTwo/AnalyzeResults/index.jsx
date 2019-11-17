@@ -40,7 +40,7 @@ class AnalyzeResults extends Component {
 
           <div className={classes.container}>
             <p>Performance</p>
-            <p className={classes.subheader}>Results of a monthly rebalanced strategy, transaction cost not
+            <p className={classes.subheader}>Results of a {this.props.data.parameters.rebalancing} rebalanced strategy, transaction cost not
               calculated</p>
             <div className={classes.spinnerContainer}>
               {/* <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error || this.props.data.message}</h2> */}
@@ -59,7 +59,7 @@ class AnalyzeResults extends Component {
         <div className="strategy-builder_analyze-results">
 
           <div className="section__title">Performance</div>
-          <p>Results of a monthly rebalanced strategy, transaction cost not calculated</p>
+          <p>Results of a {this.props.data.parameters.rebalancing} rebalanced strategy, transaction cost not calculated</p>
 
           <div className="charts-card-container">
             <div className="col-sm-6 col-lg-4 _card-row-item">

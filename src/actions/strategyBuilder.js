@@ -15,7 +15,9 @@ import {
     DASHBOARD_RESET,
     STRATEGY_MONITOR_NAME,
     RESET_STRATEGY_MONITOR,
-    FACTOR_SCREENER_ERROR_RESET
+    FACTOR_SCREENER_ERROR_RESET,
+    REBALANCING_UPDATE,
+    SHARIAH_UPDATE
     
   } from "./types";
 
@@ -26,6 +28,7 @@ import {
   
   export const getFactorScreener = () => async (dispatch, getState) => {
     try {
+      console.log(getState().queryReducer);
       if (!getState().factorScreener.parameters) {
         const response = await wealthface.get("/factor/screener", {
           params: {...getState().queryReducer, "user_id":getState().auth.userID},
@@ -44,7 +47,7 @@ import {
     }
   };
   
-  export const queryUpdate = props => (dispatch,getState) => {
+  export const queryUpdate = props => (dispatch) => {
     if ("country" in props){
       dispatch({type: COUNTRY_UPDATE, payload: props})
     } 
@@ -57,6 +60,10 @@ import {
       dispatch({type: STOCK_UPDATE, payload: props})
     } if ("firm_size" in props){
       dispatch({type: FIRM_UPDATE, payload: props})
+    } if ("rebalancing" in props){
+      dispatch({type: REBALANCING_UPDATE, payload: props})
+    } if ("shariah" in props){
+      dispatch({type: SHARIAH_UPDATE, payload: props})
     }
   }
   
@@ -71,7 +78,9 @@ import {
             "sectors": props.sectors.join(','),
             "factors": props.factors.join(','),
             "n_stock": props.n_stock,
-            "firm_size": props.firm_size.join(',')
+            "firm_size": props.firm_size.join(','),
+            "rebalancing": props.rebalancing,
+            "shariah":props.shariah
         }
         dispatch({type: UPDATE_STRATEGY_QUERY, payload: query});
         history.push('/strategy-builder');

@@ -1692,7 +1692,7 @@ footer {
 
   .table-responsive {
     margin: 0;
-    height: 100%;
+    max-height: 350px;
   }
 }
 
@@ -1736,7 +1736,7 @@ footer {
   }
 
   .table-responsive {
-    max-height: 400px;
+    max-height: 350px;
     overflow-y: auto;
 
     @media (max-width: 575.98px) {
@@ -2117,17 +2117,18 @@ footer {
           font-family: $font-medium;
           font-size: 13px;
           padding: 17px $gutter-padding;
-          text-align: center;
+          text-align: right;
           line-height: 1;
           white-space: nowrap;
           border: none;
-
+          max-width: 25%;
           @media (max-width: 575.98px) {
             padding: 14px 10px;
           }
 
           &:first-of-type {
             text-align: start;
+            width: 50%;
           }
 
           &._font-title {
@@ -2149,7 +2150,8 @@ footer {
         td {
           font-size: 13px;
           padding: $gutter-padding;
-          text-align: center;
+          max-width: 25% !important;
+          text-align: right;
           line-height: 1;
           white-space: nowrap;
           vertical-align: middle;
@@ -2161,6 +2163,7 @@ footer {
 
           &:first-of-type {
             text-align: start;
+            width: 50%;
           }
 
 

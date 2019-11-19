@@ -791,6 +791,15 @@ footer {
   }
 }
 
+.main_breadcrumb--container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 1140px) {
+    flex-direction: column;
+  }
+}
+
 .main_breadcrumb {
   display: flex;
   align-items: center;

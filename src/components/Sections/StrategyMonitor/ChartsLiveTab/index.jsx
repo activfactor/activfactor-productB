@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import DynamicBarChartVertical from '../../../UI/Charts/DynamicBarChartVertical';
+import DynamicBarChartHorizontal from '../../../UI/Charts/DynamicBarChartHorizontal';
 import {connect} from 'react-redux';
 
 class ChartsLiveTab extends Component{
@@ -15,8 +15,8 @@ class ChartsLiveTab extends Component{
     return (
       <div className="charts-card-container">
 
-        <div className="col-sm-6 col-lg-4 _card-row-item">
-          <DynamicBarChartVertical
+        <div className="col-sm-6 col-lg-6 _card-row-item">
+          <DynamicBarChartHorizontal
             header="Sector Performance"
             factor={
               this.state.sector === "1d"
@@ -33,8 +33,8 @@ class ChartsLiveTab extends Component{
           />
         </div>
 
-        <div className="col-sm-6 col-lg-4 _card-row-item">
-          <DynamicBarChartVertical
+        <div className="col-sm-6 col-lg-6 _card-row-item">
+          <DynamicBarChartHorizontal
             header="Firm Size Performance"
             factor={
               this.state.firm_size === "1d"
@@ -51,7 +51,7 @@ class ChartsLiveTab extends Component{
           />
         </div>
 
-        <div className="col-sm-6 col-lg-4 _card-row-item">
+        {/* <div className="col-sm-6 col-lg-4 _card-row-item">
           <DynamicBarChartVertical
             header="Factor Performance"
             factor={
@@ -67,7 +67,7 @@ class ChartsLiveTab extends Component{
             }
             option={this.state.factor}
           />
-        </div>
+        </div> */}
 
       </div>
     );

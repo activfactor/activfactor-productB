@@ -118,30 +118,71 @@ class StepOne extends Component {
   renderHandler(){
     if(this.props.definition){
       return (
-      <div className="strategy-builder_build-strategy">
-        <div className="row">
-          <div className="order-0 col-sm-6 col-md-3 col-lg-2">
-            <Factors reset={this.state.reset} factorChange={this.factorChange} getTooltip={this.getTooltip}/>
+        <div className="strategy-builder_build-strategy">
+          <div className="row">
+            <div className="order-0 col-sm-6 col-md-3 col-lg-2">
+              <Factors
+                reset={this.state.reset}
+                factorChange={this.factorChange}
+                getTooltip={this.getTooltip}
+              />
+            </div>
+
+            <div className="order-0 order-sm-1 order-md-0 col-10 col-md-6 col-lg-10">
+              <div className="row">
+                <div className="col-lg-9">
+                  <RebalancingFreq
+                    onRebalancingFreqClick={frequency =>
+                      this.onRebalancingFreqClick(frequency)
+                    }
+                  />
+                </div>
+                <div className="col-lg-3">
+                  <Country
+                    reset={this.state.reset}
+                    countryChange={this.countryChange}
+                    value={this.state.country}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-9">
+                  <CompanySize
+                    reset={this.state.reset}
+                    companySizeChange={this.companySizeChange}
+                    buttonDefinition={this.buttonDefinition}
+                  />
+                </div>
+                <div className="col-lg-3">
+                  <NumberofStock
+                    stockChange={this.stockChange}
+                    value={this.state.n_stock}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-9">
+                  <Sectors
+                    reset={this.state.reset}
+                    sectorChange={this.sectorChange}
+                    sectorsFromParent={this.state.sectors}
+                  />
+                </div>
+                <div className="col-lg-3">
+                  <Shariah
+                    onShariahChange={this.onShariahChange}
+                    defaultChecked={this.state.shariah}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="order-0 order-sm-1 order-md-0 col-12 col-md-6 col-lg-7">
-            <RebalancingFreq onRebalancingFreqClick={(frequency) => this.onRebalancingFreqClick(frequency)} />
-            <CompanySize reset={this.state.reset} companySizeChange={this.companySizeChange} buttonDefinition={this.buttonDefinition}/>
-            <Sectors reset={this.state.reset} sectorChange={this.sectorChange} sectorsFromParent={this.state.sectors} />
-          </div>
-
-          <div className="order-0 col-sm-6 col-md-3">
-            <Country reset={this.state.reset} countryChange={this.countryChange} value={this.state.country} />
-
-            <NumberofStock stockChange={this.stockChange} value={this.state.n_stock}/>
-
-            <Shariah onShariahChange={this.onShariahChange} defaultChecked={this.state.shariah} />
-            
-          </div>
+          <ActionButtons
+            onClick={() => this.props.onClick(this.state)}
+            resetFilter={this.onResetFilter}
+          />
         </div>
-
-        <ActionButtons onClick={() => this.props.onClick(this.state)} resetFilter={this.onResetFilter}/>
-      </div>
       );
 
     } else {

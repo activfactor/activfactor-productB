@@ -10,6 +10,8 @@ export default (state=INITIAL_STATE , action)=>{
             return { 
                 ...state, 
                 benchmark:action.payload.benchmark,
+                last_rebalancing:action.payload.last_rebalancing,
+                next_rebalancing:action.payload.next_rebalancing,
                 last_update:action.payload.last_update,
                 next_update:action.payload.next_update,
                 parameters:action.payload.parameters,

@@ -64,7 +64,9 @@ class StrategyBuilder3 extends Component {
           "sectors": this.props.query.sectors.split(','),
           "factors": this.props.query.factors.split(','),
           "n_stock": this.props.query.n_stock,
-          "firm_size": this.props.query.firm_size.split(',')
+          "firm_size": this.props.query.firm_size.split(','),
+          "rebalancing": this.props.query.rebalancing,
+          "shariah": this.props.query.shariah
         }
     };
     this.props.saveStrategy(dataToSend);

@@ -23,7 +23,6 @@ class AnalyzeResults extends Component {
       return (
 
         <div>
-
           <BackDrop>
             <div className="modal__body">
 
@@ -37,17 +36,6 @@ class AnalyzeResults extends Component {
 
             </div>
           </BackDrop>
-
-          <div className={classes.container}>
-            <p>Performance</p>
-            <p className={classes.subheader}>Results of a {this.props.data.parameters.rebalancing} rebalanced strategy, transaction cost not
-              calculated</p>
-            <div className={classes.spinnerContainer}>
-              {/* <h2 style={{color:'red',textAlign:'center'}}>{this.props.data.error || this.props.data.message}</h2> */}
-
-            </div>
-          </div>
-
         </div>
       );
     } else if (!this.props.data.parameters) {
@@ -148,7 +136,8 @@ class AnalyzeResults extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.factorScreener
+    data: state.factorScreener,
+    parameters: state.queryReducer
   };
 }
 

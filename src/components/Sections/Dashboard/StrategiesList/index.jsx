@@ -50,6 +50,8 @@ class StrategyList extends Component {
                       benchmark_name={strategies[strategy]["benchmark_name"]}
                       tickerCount={strategies[strategy]["number_of_tickers"]}
                       lastUpdate={strategies[strategy]["last_update"]}
+                      lastRebalancing={strategies[strategy]["last_rebalancing"]}
+                      nextRebalancing={strategies[strategy]["next_rebalancing"]}
                     />
                   );
             }

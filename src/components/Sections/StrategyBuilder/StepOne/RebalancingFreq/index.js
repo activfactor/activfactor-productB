@@ -55,7 +55,7 @@ const RebalancingFreq = (props) => {
           <span className="_title mt-2 mb-2">Quarterly</span>
           <span className="_description">
             Rebalancing occurs four times per year: the first of January, April,
-            July, and August
+            July, and October
           </span>
         </button>
         <button

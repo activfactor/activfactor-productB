@@ -52,14 +52,25 @@ class StrategyMonitor extends Component {
   renderHandler() {
     if (this.props.strategyMonitor.strategyName) {
       if (this.props.strategyMonitor.data) {
+        const {last_update, last_rebalancing, next_rebalancing} = this.props.strategyMonitor.data;
         return (
           <div className="strategy-monitor_container">
 
             {this.renderAction()}
 
-            <div className="main_breadcrumb" style={{marginTop: '14px'}}>
+            {/* <div className="main_breadcrumb" style={{marginTop: '14px'}}>
               <div>Last update {this.props.strategyMonitor.data.last_update}</div>
-            </div>
+            </div> */}
+
+            <div style={{marginTop: '10px'}} className="main_breadcrumb--container">
+                    <div className="main_breadcrumb">
+                        {last_update ? <div>{`Last Update ${last_update}`}</div> : ''}
+                    </div>
+                    <div className="main_breadcrumb">
+                        {last_rebalancing ? <div>{`Last Rebalancing ${last_rebalancing}`}</div> : ''}
+                        {next_rebalancing ? <div>{`Next Rebalancing ${next_rebalancing}`}</div> : ''}
+                    </div>
+                </div>
 
             <div className="card__list-container asHeader">
               <Header/>

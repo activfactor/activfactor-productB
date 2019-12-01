@@ -82,12 +82,12 @@ class StrategyBuilder extends Component{
             return (
                 <div className="main_breadcrumb--container">
                     <div className="main_breadcrumb">
-                        {last_update ? <div>{`Last Update ${this.props.data.last_update}`}</div> : ''}
-                        {next_update ? <div>{`Next Update ${this.props.data.next_update}`}</div> : ''}
+                        {last_update ? <div>{`Last Update ${last_update}`}</div> : ''}
+                        {next_update ? <div>{`Next Update ${next_update}`}</div> : ''}
                     </div>
                     <div className="main_breadcrumb">
-                        {last_rebalancing ? <div>{`Last Rebalancing ${this.props.data.last_rebalancing}`}</div> : ''}
-                        {next_rebalancing ? <div>{`Next Rebalancing ${this.props.data.next_rebalancing}`}</div> : ''}
+                        {last_rebalancing ? <div>{`Last Rebalancing ${last_rebalancing}`}</div> : ''}
+                        {next_rebalancing ? <div>{`Next Rebalancing ${next_rebalancing}`}</div> : ''}
                     </div>
                 </div>
             )

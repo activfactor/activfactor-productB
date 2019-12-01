@@ -11,13 +11,13 @@ export const getValue = (value) => {
 }
 
 export const getClass = (value) => {
-  if (value || value===0){
-    if (value >= 0){
+  if (value){
+    if (value > 0){
       return 'text-primary';
-    } else {
+    } else if (value<0) {
       return 'text-danger';
     }
-  } else {
-    return 'text-danger';
+  } else if (value===0) {
+    return 'text-secondary';
   }
 }

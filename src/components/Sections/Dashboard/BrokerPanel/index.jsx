@@ -22,7 +22,7 @@ class BrokerPanel extends Component {
         <React.Fragment>
           <div className="_text-title">No Brokerages Connected</div>
           <div className="_text-body">
-            You've not connected a brokerage account to stockflare, why
+            You've not connected a brokerage account to wealthface, why
             not give it a go?
           </div>
         </React.Fragment>

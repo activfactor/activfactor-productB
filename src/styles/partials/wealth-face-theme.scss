@@ -1319,7 +1319,8 @@ footer {
     }
 
     ._full-height-table {
-      max-height: 400px;
+      // max-height: 400px;
+      height: 100%;
       @media (max-width: 575.98px) {
         max-height: none;
       }
@@ -1414,7 +1415,8 @@ footer {
 
     .charts-card-container {
       .card__table._full-height-table {
-        max-height: 400px;
+        // max-height: 400px;
+        height: 100%;
         @media (max-width: 575.98px) {
           max-height: none;
         }
@@ -1701,7 +1703,8 @@ footer {
 
   .table-responsive {
     margin: 0;
-    max-height: 350px;
+    // max-height: 350px;
+    height: 100%;
   }
 }
 

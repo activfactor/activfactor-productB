@@ -29,25 +29,19 @@ class ContentBlock extends Component {
         }
 
         {
-          this.props.number ?
+          this.props.number || this.props.number===0 ?
             <td className={`${getClass(this.props.number)}`}>{getValue(this.props.number)}{this.props.unit}</td> :
             null
         }
 
         {
-          this.props.number2 ?
-            <td className={`${this.props.number2 ? getClass(this.props.number2) : ''}`}>
-              {
-                this.props.number2 ?
-                  `${getValue(this.props.number2)}${this.props.unit2}` :
-                  ''
-              }
-            </td> :
-            null
+          this.props.number2 || this.props.number2===0 ?
+          <td className={`${getClass(this.props.number2)}`}>{getValue(this.props.number2)}{this.props.unit}</td> :
+          null
         }
 
         {
-          this.props.number3 ?
+          this.props.number3 || this.props.number3===0 ?
             <td className={`${getClass(this.props.number3)}`}>{getValue(this.props.number3)}{this.props.unit3}</td> :
             null
         }

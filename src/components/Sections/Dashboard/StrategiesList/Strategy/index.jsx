@@ -22,7 +22,9 @@ class Strategy extends Component {
                 }}>{this.props.strategyName}</Link>
 
               <div className="_subtitle">{this.props.tickerCount ? `${this.props.tickerCount} Tickers` : ''}</div>
-              <div className="_update">Last update - {this.props.lastUpdate}</div>
+              <div style={{marginBottom:'5px'}} className="_update">Last update - {this.props.lastUpdate}</div>
+              <div style={{marginBottom:'5px'}} className="_update">Last rebalancing - {this.props.lastRebalancing}</div>
+              <div className="_update">Next rebalancing - {this.props.nextRebalancing}</div>
         </div>
 
         <div className="_table">

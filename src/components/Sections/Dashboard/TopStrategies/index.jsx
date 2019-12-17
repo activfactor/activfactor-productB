@@ -123,7 +123,7 @@ class Table extends Component {
     return (
       <div>
 
-        <div className="section__title">Top Strategies</div>
+        <div className="section__title">Factor style portfolios</div>
 
         <div className="card__table m-0">
           <Header header="" nameOfClass="with-select">

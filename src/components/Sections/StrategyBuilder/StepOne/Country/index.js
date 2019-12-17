@@ -12,7 +12,7 @@ class Country extends Component {
                 <div className="section-title_h3">Country</div>
 
                 <DropDown value={`${this.props.value}`} color="black" DropDownChangeHandler={this.props.countryChange}>
-                    <option value='CAN'>Canada</option>
+                    <option value='CAN'>CAN</option>
                     <option value='USA'>USA</option>
                 </DropDown>
              </div>

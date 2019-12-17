@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import Tooltip from '../../../../../UI/Tooltip';
 
 class Factor extends Component{
   state ={checked: this.props.checked ? this.props.checked : false}
@@ -27,10 +28,7 @@ class Factor extends Component{
             <span className="_text-label">{this.props.value} </span>
           </label>
 
-          <span className="btn tooltip-container tooltip--icon">
-            <i className="_icon-question fas fa-question"></i>
-            <span className="_tooltip-content">{this.props.tooltip}</span>
-          </span>
+          <Tooltip text={this.props.tooltip} />
 
           {/*<span className="_ruestion-info" />*/}
 

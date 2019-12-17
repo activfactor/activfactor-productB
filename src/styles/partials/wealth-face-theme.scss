@@ -2385,6 +2385,7 @@ table.table--primary {
 .tooltip-container {
   position: relative;
   padding: 0;
+  margin-left: 5px;
 
   &:focus,
   &:active {
@@ -2395,7 +2396,55 @@ table.table--primary {
     ._tooltip-content {
       visibility: visible;
     }
+    ._tooltip-content-bottom{
+      visibility: visible;
+    }
   }
+
+  /* tooltip which is displayed below the icon*/
+
+  ._tooltip-content-bottom {
+    visibility: hidden;
+    position: absolute;
+    max-width: 300px;
+    left: -60px;
+    top: calc(100% + 12px);
+    transform: translate(0, 0);
+    width: 270px;
+    font-size: 12px;
+    color: $mainBlueColor;
+    white-space: pre-wrap !important;
+    text-align: start;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #E0F1FB;
+    //border: 1px solid darken(#E0F1FB, 10%);
+    transition: opacity 0.7s ease;
+    z-index: 10;
+
+    @media (max-width: 767.98px) {
+      font-size: 11px;
+      max-width: 200px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: auto;
+      left: 55px;
+      bottom: calc(100% - 6px);
+      right: calc(100% - 6px);
+      transform: translate(50%, 0) rotate(45deg);
+      border-top: 1px solid darken(#E0F1FB, 10%);
+      border-bottom: none;
+      width: 12px;
+      height: 12px;
+      background: #E0F1FB;
+      //border-left: 1px solid darken(#E0F1FB, 10%);
+      //border-bottom: 1px solid darken(#E0F1FB, 10%);
+    }
+  }
+
 
   ._tooltip-content {
     visibility: hidden;

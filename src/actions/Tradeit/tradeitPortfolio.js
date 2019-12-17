@@ -17,9 +17,12 @@ import {removeStorage} from '../utils/sessionStorage';
 
 export const getBrokerList = () => async dispatch => {
     try{
-        const response = await tradeit.post('/preference/getBrokerList', {apiKey: getTradeitAPIKey()}, {
+        const data = {
+            "apiKey": getTradeitAPIKey()
+        }
+        const response = await tradeit.post('preference/getBrokerList', JSON.stringify(data), {
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
             }
         })
         dispatch({type: TRADEIT_GET_BROKER_LIST, payload: response.data.brokerList});

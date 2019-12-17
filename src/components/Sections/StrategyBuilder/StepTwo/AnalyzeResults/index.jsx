@@ -80,26 +80,27 @@ class AnalyzeResults extends Component {
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <BarChart
-                header="Annual Return"
+                header="Historical annual return"
                 strategy={this.props.data.annual_return_strategy}
                 benchmark={this.props.data.annual_return_benchmark}
                 benchmark_name={this.props.data.benchmark}
-                chartName="Annual Return"
+                chartName="Historical annual return"
               />
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <AreaChart
-                header="Drawdown"
+                header="historical annual drawdown"
                 strategy={this.props.data.drawdown_strategy}
                 benchmark={this.props.data.drawdown_benchmark}
                 benchmark_name={this.props.data.benchmark}
-                chartName="Drawdown"/>
+                chartName="historical annual drawdown"/>
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <Table
                 strategy={this.props.data.return_strategy}
                 benchmark={this.props.data.return_benchmark}
                 benchmark_name={this.props.data.benchmark}
+                tooltips={this.props.tooltips}
                 tableName="Return"/>
             </div>
 
@@ -108,6 +109,7 @@ class AnalyzeResults extends Component {
                 strategy={this.props.data.metrics_strategy}
                 benchmark={this.props.data.metrics_benchmark}
                 benchmark_name={this.props.data.benchmark}
+                tooltips={this.props.tooltips}
                 tableName="Metrics"/>
             </div>
 
@@ -116,6 +118,7 @@ class AnalyzeResults extends Component {
                 strategy={this.props.data.risk_strategy}
                 benchmark={this.props.data.risk_benchmark}
                 benchmark_name={this.props.data.benchmark}
+                tooltips={this.props.tooltips}
                 tableName="Risk"/>
             </div>
 
@@ -137,7 +140,8 @@ class AnalyzeResults extends Component {
 const mapStateToProps = state => {
   return {
     data: state.factorScreener,
-    parameters: state.queryReducer
+    parameters: state.queryReducer,
+    tooltips : state.factorScreener.metric_definition,
   };
 }
 

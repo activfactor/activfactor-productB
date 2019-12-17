@@ -27,27 +27,28 @@ class ChartsHistoricalTab extends Component {
 
         <div className="col-sm-6 col-lg-4 _card-row-item">
           <BarChart
-            header="Annual Return"
+            header="Historical annual return"
             strategy={this.props.strategy.yearly_return['Annual Return']}
             benchmark={this.props.benchmark.yearly_return['Annual Return']}
             benchmark_name='S&P TSX'
-            chartName="Annual Return"
+            chartName="Historical annual return"
           />
         </div>
 
         <div className="col-sm-6 col-lg-4 _card-row-item">
           <AreaChart
-            header="Drawdown"
+            header="Historical annual drawdown"
             strategy={this.props.strategy.drawdown.monthly}
             benchmark={this.props.benchmark.drawdown.monthly}
             benchmark_name='S&P TSX'
-            chartName="Drawdown"/>
+            chartName="Historical annual drawdown"/>
         </div>
         <div className="col-sm-6 col-lg-4 _card-row-item">
               <Table
                 strategy={this.props.strategy.return}
                 benchmark={this.props.benchmark.return}
                 benchmark_name={this.props.benchmark_name}
+                tooltips={this.props.tooltips}
                 tableName="Return"/>
             </div>
 
@@ -56,6 +57,7 @@ class ChartsHistoricalTab extends Component {
                 strategy={this.props.strategy.metrics}
                 benchmark={this.props.benchmark.metrics}
                 benchmark_name={this.props.benchmark_name}
+                tooltips={this.props.tooltips}
                 tableName="Metrics"/>
             </div>
 
@@ -64,6 +66,7 @@ class ChartsHistoricalTab extends Component {
                 strategy={this.props.strategy.risk}
                 benchmark={this.props.benchmark.risk}
                 benchmark_name={this.props.benchmark_name}
+                tooltips={this.props.tooltips}
                 tableName="Risk"/>
             </div>
         
@@ -77,7 +80,8 @@ const mapStateToProps = state => {
   return {
     strategy: state.strategyMonitor.data.historical_strategy_performance,
     benchmark: state.strategyMonitor.data.historical_benchmark_performance,
-    benchmark_name: state.strategyMonitor.data.actual_performance.benchmark_name
+    benchmark_name: state.strategyMonitor.data.actual_performance.benchmark_name,
+    tooltips: state.strategyMonitor.data.metric_definition
   };
 };
 

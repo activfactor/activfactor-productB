@@ -30,7 +30,8 @@ export default (state=INITIAL_STATE , action)=>{
                 metrics_benchmark:action.payload.performance_benchmark.metrics,
                 risk_strategy:action.payload.performance_strategy.risk,
                 risk_benchmark:action.payload.performance_benchmark.risk,
-                strategy_actual_members:action.payload.strategy_actual_members
+                strategy_actual_members:action.payload.strategy_actual_members,
+                metric_definition: action.payload.metric_definition
             }
         case FACTOR_SCREENER_ERROR:
             return {

@@ -44,7 +44,7 @@ class TableChart extends Component {
                       }`}
                     >
                       {this.props.strategy[row]
-                        ? String(this.props.strategy[row].toFixed(2)) +
+                        ? String(["AVG_Number_Of_Trades"].includes(String(row)) ? this.props.strategy[row] : this.props.strategy[row].toFixed(2)) +
                           `${
                             [
                               "Sharpe_Ratio",
@@ -75,7 +75,7 @@ class TableChart extends Component {
                       }`}
                     >
                       {this.props.benchmark[row]
-                        ? String(this.props.benchmark[row].toFixed(2)) +
+                        ? String(["AVG_Number_Of_Trades"].includes(String(row)) ? this.props.benchmark[row] : this.props.benchmark[row].toFixed(2)) +
                           `${
                             [
                               "Sharpe_Ratio",

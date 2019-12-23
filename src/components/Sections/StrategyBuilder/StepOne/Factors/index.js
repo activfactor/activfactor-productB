@@ -15,6 +15,8 @@ class Factors extends Component {
           <Factor tooltip={this.props.getTooltip('volatility')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('volatility') : false} value="volatility" onChange={this.props.factorChange}/>
           <Factor tooltip={this.props.getTooltip('investment')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('investment') : false} value="investment" onChange={this.props.factorChange}/>
           <Factor tooltip={this.props.getTooltip('profitability')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('profitability') : false} value="profitability" onChange={this.props.factorChange}/>
+          <Factor tooltip={this.props.getTooltip('quality')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('quality') : false} value="quality" onChange={this.props.factorChange}/>
+          <Factor tooltip={this.props.getTooltip('beta')} reset={this.props.reset} checked={this.props.factors ? this.props.factors.includes('beta') : false} value="beta" onChange={this.props.factorChange}/>
         </div>
       </div>
     );

@@ -37,11 +37,11 @@ class ChartsHistoricalTab extends Component {
 
         <div className="col-sm-6 col-lg-4 _card-row-item">
           <AreaChart
-            header="Historical annual drawdown"
+            header="Historical drawdown"
             strategy={this.props.strategy.drawdown.monthly}
             benchmark={this.props.benchmark.drawdown.monthly}
             benchmark_name='S&P TSX'
-            chartName="Historical annual drawdown"/>
+            chartName="Historical drawdown"/>
         </div>
         <div className="col-sm-6 col-lg-4 _card-row-item">
               <Table

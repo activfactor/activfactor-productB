@@ -75,6 +75,8 @@ class Table extends Component {
                   <th scope="col">Volatility</th>
                   <th scope="col">Investment</th>
                   <th scope="col">Profitability</th>
+                  <th scope="col">Quality</th>
+                  <th scope="col">Beta</th>
                   <th scope="col">Weight</th>
                   <th scope="col">Performance</th>
                   <th scope="col" />
@@ -140,6 +142,20 @@ class Table extends Component {
                               getClass(this.props.data[row].profitability_rank)}
                           >
                             {getValue(this.props.data[row].profitability_rank)}
+                          </td>
+                          <td
+                            data-label="Quality"
+                            className={
+                              getClass(this.props.data[row].quality_rank)}
+                          >
+                            {getValue(this.props.data[row].quality_rank)!== '---' ? getValue(this.props.data[row].quality_rank).toFixed(0) : getValue(this.props.data[row].quality_rank)}
+                          </td>
+                          <td
+                            data-label="Beta"
+                            className={
+                              getClass(this.props.data[row].beta_rank)}
+                          >
+                            {getValue(this.props.data[row].beta_rank)!== '---' ? getValue(this.props.data[row].beta_rank).toFixed(0) : getValue(this.props.data[row].beta_rank)}
                           </td>
                           <td
                             data-label="Weight"

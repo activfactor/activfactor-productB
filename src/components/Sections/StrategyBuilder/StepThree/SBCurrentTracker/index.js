@@ -102,6 +102,8 @@ class SBCurrentTracker extends Component {
                   <th scope="col">Investment</th>
                   <th scope="col">Profitability</th>
                   <th scope="col">Weight</th>
+                  <th scope="col">Quality</th>
+                  <th scope="col">Beta</th>
                   <th scope="col">Add To Watchlist</th>
                 </tr>
               </thead>
@@ -113,12 +115,11 @@ class SBCurrentTracker extends Component {
                     <tr key={i}>
                       <td data-label="Ticker">
                         <div className="_td-title">{row}</div>
-                        <div className="_row-text-small">{this.props.data[row].name}</div>
+                        <div className="_row-text-small">
+                          {this.props.data[row].name}
+                        </div>
                       </td>
-                      <td
-                        data-label="Sector"
-                        className="text-muted"
-                      >
+                      <td data-label="Sector" className="text-muted">
                         {this.props.data[row].sector}
                       </td>
                       <td
@@ -129,7 +130,8 @@ class SBCurrentTracker extends Component {
                       </td>
                       <td
                         data-label="Value"
-                        className={getClass(this.props.data[row].value_rank)}>
+                        className={getClass(this.props.data[row].value_rank)}
+                      >
                         {getValue(this.props.data[row].value_rank)}
                       </td>
                       <td
@@ -146,23 +148,51 @@ class SBCurrentTracker extends Component {
                       </td>
                       <td
                         data-label="Investment"
-                        className={getClass(this.props.data[row].investment_rank)}>
+                        className={getClass(
+                          this.props.data[row].investment_rank
+                        )}
+                      >
                         {getValue(this.props.data[row].investment_rank)}
                       </td>
                       <td
                         data-label="Profitability"
-                        className={getClass(this.props.data[row].profitability_rank)}>
+                        className={getClass(
+                          this.props.data[row].profitability_rank
+                        )}
+                      >
                         {getValue(this.props.data[row].profitability_rank)}
                       </td>
-                      <td
-                        data-label="Weight"
-                      >
-                        {getValue(this.props.data[row]["weight_%"])!=='---' ? getValue(this.props.data[row]["weight_%"]).toFixed(2)+'%' : getValue(this.props.data[row]["weight_%"])}
+                      <td data-label="Weight">
+                        {getValue(this.props.data[row]["weight_%"]) !== "---"
+                          ? getValue(this.props.data[row]["weight_%"]).toFixed(
+                              2
+                            ) + "%"
+                          : getValue(this.props.data[row]["weight_%"])}
+                      </td>
+                      <td data-label="Quality" className={getClass(this.props.data[row].quality_rank)}>
+                        {getValue(this.props.data[row].quality_rank) !== "---"
+                          ? getValue(this.props.data[row].quality_rank).toFixed(
+                              0
+                            )
+                          : getValue(this.props.data[row].quality_rank)}
+                      </td>
+                      <td data-label="Beta" className={getClass(this.props.data[row].beta_rank)}>
+                        {getValue(this.props.data[row]["beta_rank"]) !== "---"
+                          ? getValue(this.props.data[row]["beta_rank"]).toFixed(
+                              0
+                            )
+                          : getValue(this.props.data[row]["beta_rank"])}
                       </td>
                       <td className="_td-checkbox--item">
                         <div className="checkbox--item">
                           <label htmlFor={row}>
-                            <input onChange={() => this.props.onCheckWatchListHandler(row)} type="checkbox" id={row} />
+                            <input
+                              onChange={() =>
+                                this.props.onCheckWatchListHandler(row)
+                              }
+                              type="checkbox"
+                              id={row}
+                            />
                             <i />
                           </label>
                         </div>

@@ -89,11 +89,11 @@ class AnalyzeResults extends Component {
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <AreaChart
-                header="historical annual drawdown"
+                header="Historical drawdown"
                 strategy={this.props.data.drawdown_strategy}
                 benchmark={this.props.data.drawdown_benchmark}
                 benchmark_name={this.props.data.benchmark}
-                chartName="historical annual drawdown"/>
+                chartName="Historical drawdown"/>
             </div>
             <div className="col-sm-6 col-lg-4 _card-row-item">
               <Table

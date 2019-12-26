@@ -54,7 +54,7 @@ class ColumnChart extends Component {
     chartContent = (
       <div className="_card-body">
           <Chart
-            pattern={"#%"}
+            pattern={"##,##%"}
             width={"100%"}
             height={"100%"}
             chartType="ColumnChart"
@@ -72,9 +72,11 @@ class ColumnChart extends Component {
               vAxis: {
                 textStyle: {
                   fontSize: 11
-                }
-              },
-              hAxis: { minValue: -1, maxValue: 1, format: '##,##%' }
+                },
+                minValue: -1,
+                maxValue: 1,
+                format: ',##%'
+              }
             }}
           />
         </div>
@@ -84,9 +86,9 @@ class ColumnChart extends Component {
       <div className="_card-body">
           <Chart
             pattern={"#%"}
-            width={"95%"}
+            width={"100%"}
             height={500}
-            chartType="BarChart"
+            chartType="ColumnChart"
             loader={<Spinner color="black" />}
             data={this.getData(this.props.factor)}
             options={{
@@ -101,9 +103,11 @@ class ColumnChart extends Component {
               vAxis: {
                 textStyle: {
                   fontSize: 11
-                }
-              },
-              hAxis: { minValue: -1, maxValue: 1, format: '##,##%' }
+                },
+                minValue: -1,
+                maxValue: 1,
+                format: ',##%'
+              }
             }}
           />
         </div>

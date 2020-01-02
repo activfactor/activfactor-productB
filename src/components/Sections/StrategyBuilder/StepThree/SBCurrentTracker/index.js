@@ -88,8 +88,8 @@ class SBCurrentTracker extends Component {
         <p>This list is updated the last date of the month.</p>
 
         <div className="card__table table-customized-portfolio">
-          <div className="table-responsive">
-            <table className="table table-hover table-borderless">
+          <div className="table-responsive table-responsive-customized-portfolio">
+            <table className="table">
 
               <thead>
                 <tr>
@@ -101,10 +101,10 @@ class SBCurrentTracker extends Component {
                   <th scope="col">Volatility</th>
                   <th scope="col">Investment</th>
                   <th scope="col">Profitability</th>
-                  <th scope="col">Weight</th>
                   <th scope="col">Quality</th>
                   <th scope="col">Beta</th>
-                  <th scope="col">Add To Watchlist</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Watchlist</th>
                 </tr>
               </thead>
 
@@ -142,7 +142,7 @@ class SBCurrentTracker extends Component {
                       </td>
                       <td
                         data-label="Volatility"
-                        className={getClass(this.props.data[row].volatility)}
+                        className={getClass(this.props.data[row].volatility_rank)}
                       >
                         {getValue(this.props.data[row].volatility_rank)}
                       </td>
@@ -162,13 +162,6 @@ class SBCurrentTracker extends Component {
                       >
                         {getValue(this.props.data[row].profitability_rank)}
                       </td>
-                      <td data-label="Weight">
-                        {getValue(this.props.data[row]["weight_%"]) !== "---"
-                          ? getValue(this.props.data[row]["weight_%"]).toFixed(
-                              2
-                            ) + "%"
-                          : getValue(this.props.data[row]["weight_%"])}
-                      </td>
                       <td data-label="Quality" className={getClass(this.props.data[row].quality_rank)}>
                         {getValue(this.props.data[row].quality_rank) !== "---"
                           ? getValue(this.props.data[row].quality_rank).toFixed(
@@ -182,6 +175,13 @@ class SBCurrentTracker extends Component {
                               0
                             )
                           : getValue(this.props.data[row]["beta_rank"])}
+                      </td>
+                      <td data-label="Weight">
+                        {getValue(this.props.data[row]["weight_%"]) !== "---"
+                          ? getValue(this.props.data[row]["weight_%"]).toFixed(
+                              2
+                            ) + "%"
+                          : getValue(this.props.data[row]["weight_%"])}
                       </td>
                       <td className="_td-checkbox--item">
                         <div className="checkbox--item">

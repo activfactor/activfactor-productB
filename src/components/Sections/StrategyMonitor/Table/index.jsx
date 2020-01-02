@@ -125,7 +125,7 @@ class Table extends Component {
                           <td
                             data-label="Volatility"
                             className={
-                              getClass(this.props.data[row].volatility)}
+                              getClass(this.props.data[row].volatility_rank)}
                           >
                             {getValue(this.props.data[row].volatility_rank)}
                           </td>

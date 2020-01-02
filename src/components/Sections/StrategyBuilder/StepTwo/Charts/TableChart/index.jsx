@@ -9,17 +9,15 @@ class TableChart extends Component {
     const {tooltips} = this.props;
     return (
       <div className="card__table _full-height-table">
-          <table className="table table-borderless table-hover">
-            <thead className={classes.table__header}>
+        <div className="table-responsive">
+          <table className="table">
+          <thead className={classes.table__header}>
               <tr className={classes.table__headerow}>
                 <th className="_font-title _normal" scope="col">{this.props.tableName}</th>
                 <th scope="col">Strategy</th>
                 <th scope="col">{this.props.benchmark_name}</th>
               </tr>
             </thead>
-          </table>
-        <div className="table-responsive">
-          <table className="table table-borderless table-hover">
             <tbody>
             {this.props.strategy
               ? Object.keys(this.props.strategy).map((row, i) => {

@@ -21,7 +21,7 @@ class Login extends Component{
     
     onSubmit = async formValues => {
         if (formValues.username && formValues.password){
-            if (formValues.username==='wealthface' && formValues.password==='wealthface123'){
+            if (formValues.username==='wealthface' && formValues.password==='Wealthface15'){
                 this.setState({tempError: null})
                 this.props.resetSignInError();
                 this.setState({isSpinner:true});

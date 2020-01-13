@@ -9,7 +9,8 @@ import Link from '../../UI/Link';
 let styleBorder = "none";
 
 class Login extends Component{
-    state = {isSpinner:false}
+    // we set tempError because there is hard coded user and password and need to be removed
+    state = {isSpinner:false, tempError: null}
 
     componentDidMount(){
         if (this.props.authenticated){
@@ -20,13 +21,19 @@ class Login extends Component{
     
     onSubmit = async formValues => {
         if (formValues.username && formValues.password){
-            this.props.resetSignInError();
-            this.setState({isSpinner:true});
-            const data = {
-                email: formValues.username,
-                password: formValues.password
+            if (formValues.username==='wealthface' && formValues.password==='wealthface123'){
+                this.setState({tempError: null})
+                this.props.resetSignInError();
+                this.setState({isSpinner:true});
+                const data = {
+                    email: formValues.username,
+                    password: formValues.password
+                }
+                this.props.signIn_A(data);
+            } else {
+                console.log(formValues);
+                this.setState({tempError: "Username or password is incorrect"});
             }
-            this.props.signIn_A(data);
 
         } else {
             this.validate(formValues);
@@ -77,6 +84,9 @@ class Login extends Component{
     AuthError = () => {
         if (this.props.errorMessage){
             return <div className="invalid-feedback">{this.props.errorMessage}</div>
+        } else if (this.state.tempError){
+            console.log(this.state.tempError);
+            return <div style={{display: 'block'}} className="invalid-feedback">{this.state.tempError}</div>
         }
     }
 

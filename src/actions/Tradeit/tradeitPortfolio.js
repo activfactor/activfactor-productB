@@ -1,4 +1,4 @@
-import tradeit from '../../apis/tradeit';
+import proxy from '../../apis/proxy';
 import {
   TRADEIT_GET_BROKER_LIST,
   TRADEIT_AUTH_URL,
@@ -15,14 +15,15 @@ import {
 import { getTradeitAPIKey } from '../../apis/tradeitApiKey';
 import {removeStorage} from '../utils/sessionStorage';
 
+const bodyData = {};
 export const getBrokerList = () => async dispatch => {
     try{
-        const data = {
-            "apiKey": getTradeitAPIKey()
-        }
-        const response = await tradeit.post('preference/getBrokerList', JSON.stringify(data), {
+        bodyData.endpoint = "preference/getBrokerList";
+        bodyData.data = {apiKey: getTradeitAPIKey()}
+        const response = await proxy.post('/', JSON.stringify(bodyData), {
             headers:{
                 "Content-Type":"application/json",
+                "Access-Control-Allow-Origin":"*"
             }
         })
         dispatch({type: TRADEIT_GET_BROKER_LIST, payload: response.data.brokerList});
@@ -33,7 +34,9 @@ export const getBrokerList = () => async dispatch => {
 }
 
 export const getAuthLogin = (brokerName) => async dispatch => {
-    const response = await tradeit.post('/user/getOAuthLoginPopupUrlForWebApp', {apiKey: getTradeitAPIKey(), broker:brokerName},{
+    bodyData.endpoint = "user/getOAuthLoginPopupUrlForWebApp";
+    bodyData.data = {apiKey: getTradeitAPIKey(), broker:brokerName};
+    const response = await proxy.post('/', JSON.stringify(bodyData),{
         headers: {
             'Content-Type': 'application/json'
         }
@@ -42,7 +45,9 @@ export const getAuthLogin = (brokerName) => async dispatch => {
 }
 
 export const getAuthToken = (oAuthVerifier) =>  async dispatch => {
-    const response = await tradeit.post('/user/getOAuthAccessToken', {apiKey: getTradeitAPIKey(), oAuthVerifier:oAuthVerifier},{
+    bodyData.endpoint = "user/getOAuthAccessToken";
+    bodyData.data={apiKey: getTradeitAPIKey(), oAuthVerifier:oAuthVerifier};
+    const response = await proxy.post('/', JSON.stringify(bodyData),{
         headers: {
             'Content-Type': 'application/json'
         }
@@ -61,7 +66,9 @@ export const getAuthToken = (oAuthVerifier) =>  async dispatch => {
 }
 
 export const getToken = () => async (dispatch, getState) => {
-    const response = await tradeit.post('/user/authenticate', {apiKey: getTradeitAPIKey(), userId: getState().tradeitReducers.userId, userToken: getState().tradeitReducers.userToken}, {
+    bodyData.endpoint="user/authenticate";
+    bodyData.data = {apiKey: getTradeitAPIKey(), userId: getState().tradeitReducers.userId, userToken: getState().tradeitReducers.userToken};
+    const response = await proxy.post('/', JSON.stringify(bodyData), {
         headers: {
             "Content-Type": "application/json"
         }
@@ -76,7 +83,9 @@ export const getToken = () => async (dispatch, getState) => {
 }
 
 export const getAccounts = () => async (dispatch, getState) => {
-    const response = await tradeit.post('/user/getAccounts', {token: getState().tradeitReducers.token}, {
+    bodyData.endpoint="user/getAccounts";
+    bodyData.data={token: getState().tradeitReducers.token};
+    const response = await proxy.post('/', JSON.stringify(bodyData), {
         headers: {
             "Content-Type": "application/json"
         }
@@ -101,7 +110,9 @@ export const resetAccountNumber = () => dispatch => {
 }
 
 export const getBalance = () => async (dispatch, getState) => {
-    const response = await tradeit.post('/balance/getAccountOverview', {token: getState().tradeitReducers.token, accountNumber: getState().tradeitReducers.accountNumber},{
+    bodyData.endpoint="balance/getAccountOverview";
+    bodyData.data={token: getState().tradeitReducers.token, accountNumber: getState().tradeitReducers.accountNumber};
+    const response = await proxy.post('/', JSON.stringify(bodyData),{
         headers: {
             "Content-Type": "application/json"
         }

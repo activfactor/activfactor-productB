@@ -9,6 +9,7 @@ import StrategiesList from './StrategiesList';
 import WatchLists from './WatchLists';
 import Link from '../../UI/Link';
 import Spinner from '../../UI/Spinner';
+import Loader from '../../UI/Loader';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
@@ -96,7 +97,8 @@ class Dashboard extends Component {
         )
       } else {
         return (
-            <Spinner color="white" containerClass="fullScreen" />
+            // <Loader color="white" containerClass="fullScreen" />
+            <Loader wealthface color="black" />
         );
       }
     }

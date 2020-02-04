@@ -1,8 +1,11 @@
 import { TRADEIT_ORDER_PREVIEW, TRADEIT_ORDER_ERROR, TRADEIT_ORDER_RESET } from '../types';
-import tradeit from '../../apis/tradeit';
+import proxy from '../../apis/proxy';
 
+const bodyData={};
 export const previewOrder = (order) => async dispatch => {
-    const response = await tradeit.post('/order/previewStockOrEtfOrder', order, {
+    bodyData.endpoint = "order/previewStockOrEtfOrder";
+    bodyData.data={...order}
+    const response = await proxy.post('/', JSON.stringify(bodyData), {
         headers: {
             'Content-Type': 'application/json'
         }

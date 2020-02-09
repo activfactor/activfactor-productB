@@ -9,7 +9,8 @@ import {
   TRADEIT_ACCOUNTS_GET,
   TRADEIT_BALANCE_GET,
   TRADEIT_ACCOUNT_NUMBER_UPDATE,
-  TRADEIT_ACCOUNT_NUMBER_RESET
+  TRADEIT_ACCOUNT_NUMBER_RESET,
+  TRADEIT_POSITIONS
 } from "../actions/types";
 
 export default (state = {}, action) => {
@@ -73,6 +74,11 @@ export default (state = {}, action) => {
       return {
         ...state,
         accountNumber: undefined
+      }
+    case TRADEIT_POSITIONS:
+      return {
+        ...state,
+        positions: action.payload
       }
     default:
       return state;

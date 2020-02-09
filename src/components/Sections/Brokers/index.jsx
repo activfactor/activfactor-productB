@@ -1,13 +1,14 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import Broker from './Broker';
-import Spinner from '../../UI/Spinner';
+import Loader from '../../UI/Loader';
 import { updateLocation } from '../../../actions/index';
 import { getBrokerList, getAuthLogin, getAuthToken, getToken, getAccounts, resetAccountNumber } from '../../../actions/Tradeit/tradeitPortfolio';
 import {Link} from 'react-router-dom';
 import Modal from './ModalContent';
 import history from '../../../history';
-import { resetShouldNavigateTo } from '../../../actions/index'
+import { resetShouldNavigateTo } from '../../../actions/index';
+import { isObjectEmpty } from '../../../utils/helper';
 
 const new_window = window;
 class PortfolioPerformance extends Component{
@@ -16,8 +17,8 @@ class PortfolioPerformance extends Component{
         isSpinner: false
     }
     componentDidMount = () => {
-        this.props.updateLocation('/portfolio-performance');
-        if (!this.props.brokerList){
+        this.props.updateLocation('/brokers');
+        if (!this.props.brokerList || isObjectEmpty(this.props.brokerList)){
             this.props.getBrokerList();
         }
         new_window.addEventListener("message",this.receiveMessage, false);
@@ -96,7 +97,7 @@ class PortfolioPerformance extends Component{
 
     renderBrokers = () => {
         const brokers = this.props.brokerList;
-        if (brokers){
+        if (brokers || isObjectEmpty(brokers)){
             return Object.keys(brokers).map((item, index) => {
                 return (
                   <Broker
@@ -148,7 +149,7 @@ class PortfolioPerformance extends Component{
             );
         } else {
             return (
-                <Spinner color='white' />
+                <Loader wealthface color='black' />
             );
         }
     }

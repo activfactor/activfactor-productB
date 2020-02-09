@@ -9,6 +9,7 @@ import watchlistReducers from './watchlistReducers';
 import tickerReducers from './tickerReducers';
 import tradeitReducers from './tradeitReducers';
 import tradeitTradeReducers from './tradeitTradeReducers';
+import general from './generalReducer';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
@@ -22,6 +23,7 @@ export default combineReducers({
     watchlistReducers,
     tickerReducers,
     tradeitReducers,
-    trade: tradeitTradeReducers
+    trade: tradeitTradeReducers,
+    general
 })
 

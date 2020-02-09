@@ -8,6 +8,7 @@ import {
   LOCATION_PATH,
   LOCATION_SHOULD_NAVIGATE_TO,
   LOCATION_SHOULD_NAVIGATE_TO_RESET,
+  LOADING_STATE,
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
@@ -122,4 +123,8 @@ export const updateShouldNavigateTo = (location) => (dispatch) => {
 
 export const resetShouldNavigateTo = () => (dispatch) => {
   dispatch({type: LOCATION_SHOULD_NAVIGATE_TO_RESET});
+}
+
+export const updateLoadingState = (loadingState) => dispatch => {
+  dispatch({type: LOADING_STATE, loadingState});
 }

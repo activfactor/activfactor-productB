@@ -10,7 +10,8 @@ import StrategyMonitor from '../components/Sections/StrategyMonitor';
 import WatchListMonitor from './Sections/WatchlistMonitor';
 import StrategyMonitorList from './Sections/Strategies';
 import WatchListMonitorList from './Sections/Watchlists';
-import PortfolioPerformance from './Sections/PortfolioPerformance';
+import Brokers from './Sections/Brokers';
+import Portfolio from './Sections/Portfolio';
 import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
@@ -51,8 +52,9 @@ class App extends React.Component {
 
         <main className="site-content">
           <Switch>
-            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Dashboard} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/strategy-builder" component={StrategyBuilder} />
             <Route path="/strategy-monitor/details" component={StrategyMonitor} />
@@ -60,7 +62,8 @@ class App extends React.Component {
             <Route exact path="/watchlist-monitor/details" component={WatchListMonitor} />
             <Route path="/watchlist-monitor" component={WatchListMonitorList} />
             <Route path="/ticker-monitor" component={TickerMonitor} />
-            <Route path="/portfolio-performance" component={PortfolioPerformance} />
+            <Route path="/brokers" component={Brokers} />
+            <Route path="/portfolio" component={Portfolio} />
           </Switch>
         </main>
 

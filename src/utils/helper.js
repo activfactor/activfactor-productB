@@ -1,0 +1,1 @@
+export const isObjectEmpty = (object) => typeof(object)==='object' && !Object.keys(object).length;

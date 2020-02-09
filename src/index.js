@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 import "./styles/main.scss";
+import ThemeProvider from './constants/Theme';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -35,8 +36,10 @@ const store = composeEnhancers(applyMiddleware(reduxThunk))(createStore)(
 );
 
 ReactDOM.render(
+  <ThemeProvider>
     <Provider store={store}>
         <App />
     </Provider>
-     ,document.querySelector('#root')
+  </ThemeProvider>
+  ,document.querySelector('#root')
 );

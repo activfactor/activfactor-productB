@@ -21,3 +21,15 @@ export const getClass = (value) => {
     return 'text-secondary';
   }
 }
+
+export const getVariant = (value) => {
+  if (value){
+    if (value > 0){
+      return 'primary';
+    } else if (value<0) {
+      return 'danger';
+    }
+  } else if (value===0) {
+    return 'secondary';
+  }
+}

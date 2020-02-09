@@ -10,7 +10,8 @@ import {
   TRADEIT_ACCOUNTS_GET,
   TRADEIT_BALANCE_GET,
   TRADEIT_ACCOUNT_NUMBER_UPDATE,
-  TRADEIT_ACCOUNT_NUMBER_RESET
+  TRADEIT_ACCOUNT_NUMBER_RESET,
+  TRADEIT_POSITIONS
 } from "../types";
 import { getTradeitAPIKey } from '../../apis/tradeitApiKey';
 import {removeStorage} from '../utils/sessionStorage';
@@ -122,6 +123,27 @@ export const getBalance = () => async (dispatch, getState) => {
     } else {
         removeStorage();
         dispatch({type: TRADEIT_UPDATE_STATUS, payload: response.data});
+    }
+}
+
+export const getPositions = () => async (dispatch, getState) => {
+    const {token, accountNumber} = getState().tradeitReducers;
+    bodyData.endpoint="position/getPositions";
+    bodyData.data={token, accountNumber};
+    try {
+
+        const response = await proxy.post('/', JSON.stringify(bodyData),{
+            headers: {
+                "Content-Type":"application/json"
+            }
+        })
+        if (response.data.status==='SUCCESS'){
+            dispatch({type: TRADEIT_POSITIONS, payload: response.data});
+        } else {
+            dispatch({type: TRADEIT_UPDATE_STATUS, payload: response.data});
+        }
+    } catch (err){
+        throw new Error('Problem in getting data');
     }
 }
 

@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import NavigationItem from '../../UI/NavigationItem';
 import SearchBox from '../../UI/SearchBox/SearchBox';
 import { connect } from 'react-redux';
-// import classes from './NavigationBar.module.scss';
 import { toggleClicked, signOut, updateLocation } from '../../../actions/index';
 
 class NavigationBar extends Component{
@@ -65,15 +64,15 @@ class NavigationBar extends Component{
                   Watchlist Monitor
                 </NavigationItem>
                 <NavigationItem
-                  onClick={() => this.onClickHandler("/portfolio-performance")}
-                  to="/portfolio-performance"
+                  onClick={() => this.onClickHandler("/portfolio")}
+                  to="/portfolio"
                   nameOfClass={`_navbar-item ${
-                    this.props.location === "/portfolio-performance"
+                    this.props.location === "/portfolio"
                       ? "active"
                       : ""
                   }`}
                 >
-                  Portfolio Monitor
+                  Portfolio
                 </NavigationItem>
                 <NavigationItem
                   onClick={this.onClickHandler}

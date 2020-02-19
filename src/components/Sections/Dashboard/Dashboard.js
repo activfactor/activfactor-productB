@@ -8,7 +8,7 @@ import BrokerPanel from './BrokerPanel';
 import StrategiesList from './StrategiesList';
 import WatchLists from './WatchLists';
 import Link from '../../UI/Link';
-import Loader from '../../UI/Loader';
+import Loader from '../../Shared/Loader';
 import Input from '../../UI/Input';
 import history from '../../../history';
 import { buildNewStrategyQuery, resetFactorScreener } from '../../../actions/strategyBuilder';
@@ -43,9 +43,8 @@ class Dashboard extends Component {
 
     BuildStrategy = () => {
       this.props.resetFactorScreener();
-      this.props.updateLocation('/strategy-builder');
       this.props.buildNewStrategyQuery();
-      history.push('/strategy-builder')
+      history.push('/builder')
     }
 
     renderContent(){
@@ -68,7 +67,7 @@ class Dashboard extends Component {
 
             <div className="dashboard_title-container">
               <div className="section__title">My Strategies</div>
-              <Link nameOfClass="section__title" to="/strategy-monitor">View all</Link>
+              <Link nameOfClass="section__title" to="/strategy/monitor">View all</Link>
             </div>
 
             <div className="card__list-container">
@@ -82,7 +81,7 @@ class Dashboard extends Component {
 
             <div className="dashboard_title-container">
               <div className="section__title">My Watch List</div>
-              <Link nameOfClass="section__title" to="/watchlist-monitor">View all</Link>
+              <Link nameOfClass="section__title" to="/watchlist/monitor">View all</Link>
             </div>
 
             <WatchLists />

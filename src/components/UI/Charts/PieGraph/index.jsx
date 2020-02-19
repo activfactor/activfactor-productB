@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
-import Spinner from "../../../UI/Spinner";
+import LoadingState from '../../../Shared/LoadingState';
 import Header from "../../../UI/Header";
 import { getColorsArray } from "../../../../utils/chartColorsPicker";
 import ChartModal from "../../ChartModal";
@@ -36,7 +36,7 @@ class Graph extends Component {
           width={"100%"}
           height={500}
           chartType="PieChart"
-          loader={<Spinner color="black" />}
+          loader={<LoadingState width="100px" height="100px" />}
           data={this.getData(this.props.data)}
           options={{
             pieHole: 0.4,
@@ -55,7 +55,7 @@ class Graph extends Component {
           width={"100%"}
           height={"100%"}
           chartType="PieChart"
-          loader={<Spinner color="black" />}
+          loader={<LoadingState width="50px" height="50px" />}
           data={this.getData(this.props.data)}
           options={{
             pieHole: 0.4,

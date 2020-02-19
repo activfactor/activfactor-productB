@@ -8,9 +8,6 @@ class ChartsLiveTab extends Component{
     firm_size: "1d",
     factor: "1d"
   }
-  componentDidUpdate(){
-    console.log(this.state.sector);
-  }
   render(){
     return (
       <div className="charts-card-container">

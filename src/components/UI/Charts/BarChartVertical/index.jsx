@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Spinner from "../../../UI/Spinner";
+import LoadingState from '../../../Shared/LoadingState';
 import { Chart } from "react-google-charts";
 import { CapString } from "../../../../utils/textFunctions";
 import Header from "../../../UI/Header";
@@ -44,7 +44,7 @@ class BarChart extends Component {
             width={"100%"}
             height={"100%"}
             chartType="BarChart"
-            loader={<Spinner color="black" />}
+            loader={<LoadingState width="50px" height="50px" />}
             data={this.getData(this.props.factor)}
             options={{
               // Material design options
@@ -72,7 +72,7 @@ class BarChart extends Component {
             width={"100%"}
             height={500}
             chartType="BarChart"
-            loader={<Spinner color="black" />}
+            loader={<LoadingState width="100px" height="100px" />}
             data={this.getData(this.props.factor)}
             options={{
               // Material design options

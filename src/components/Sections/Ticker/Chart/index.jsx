@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Chart } from "react-google-charts";
-import Spinner from "../../../UI/Spinner";
+import LoadingState from '../../../Shared/LoadingState';
 import Header from "../../../UI/Header";
 
 class Graph extends Component {
@@ -27,7 +27,7 @@ class Graph extends Component {
               width={"100%"}
               height={"400px"}
               chartType="LineChart"
-              loader={<Spinner color="black" />}
+              loader={<LoadingState width="100px" height="100px" />}
               data={this.getData(this.props.data)}
               options={{
                 legend: { position: "top" },

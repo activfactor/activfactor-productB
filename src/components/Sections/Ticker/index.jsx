@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Graph from './Chart';
-import Spinner from '../../UI/Spinner';
+import Loader from '../../Shared/Loader';
 import history from '../../../history';
 import Header from './Header';
 import WatchListAdd from '../StrategyBuilder/StepThree/WatchListAdd';
@@ -28,8 +28,6 @@ class Ticker extends Component {
   componentDidMount() {
     if (!this.props.tickerName) {
       history.push('/dashboard');
-    } else {
-      this.props.updateLocation('/ticker-monitor');
     }
   }
 
@@ -70,7 +68,7 @@ class Ticker extends Component {
 
       );
     } else {
-      return <Spinner color="white"/>;
+      return <Loader wealthface color="black"/>;
     }
   }
 

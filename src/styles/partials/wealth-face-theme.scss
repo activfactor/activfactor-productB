@@ -1962,7 +1962,7 @@ footer {
 
       .card__list-item {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
 
         ._header {
@@ -2133,6 +2133,7 @@ footer {
           line-height: 1;
           white-space: nowrap;
           border: none;
+          text-align: center;
           max-width: 25%;
           @media (max-width: 575.98px) {
             padding: 14px 10px;
@@ -2140,7 +2141,6 @@ footer {
 
           &:first-of-type {
             text-align: start;
-            width: 15%;
           }
 
           &._font-title {
@@ -2162,8 +2162,7 @@ footer {
         td {
           font-size: 13px;
           // padding: $gutter-padding;
-          max-width: 25% !important;
-          text-align: right;
+          text-align: center;
           line-height: 1;
           white-space: nowrap;
           vertical-align: middle;
@@ -2174,8 +2173,7 @@ footer {
           }
 
           &:first-of-type {
-            text-align: start;
-            width: 50%;
+            text-align: left;
           }
 
 

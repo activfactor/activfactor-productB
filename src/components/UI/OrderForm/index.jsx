@@ -197,7 +197,6 @@ class OrderForm extends Component{
     onSubmitHandler = async () => {
       const error = await validation(this.props.form.values, userCanDisableMargin);
       if (error){
-        console.log(error);
         this.setState({error: 'Please check your Order'});
       } else {
         this.setState({isSpinner: true});
@@ -318,7 +317,6 @@ class OrderForm extends Component{
     
 
     renderContent = () => {
-      console.log(this.props.trade);
       if(this.props.trade){
         if (this.props.trade.previewOrder){
           if(this.state.isSpinner){

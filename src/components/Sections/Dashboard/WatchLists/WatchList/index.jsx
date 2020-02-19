@@ -48,7 +48,7 @@ class WatchList extends Component {
       <div className="card__list-item">
         <div className="_header">
           <Link className="_title"
-                to="/watchlist-monitor/details"
+                to="/watchlist/monitor/details"
                 onClick={this.onClickHandler}>
             {this.props.watchlistName}
           </Link>

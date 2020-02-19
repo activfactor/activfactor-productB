@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import Broker from './Broker';
-import Loader from '../../UI/Loader';
+import Loader from '../../Shared/Loader';
 import { updateLocation } from '../../../actions/index';
 import { getBrokerList, getAuthLogin, getAuthToken, getToken, getAccounts, resetAccountNumber } from '../../../actions/Tradeit/tradeitPortfolio';
 import {Link} from 'react-router-dom';
@@ -97,7 +97,7 @@ class PortfolioPerformance extends Component{
 
     renderBrokers = () => {
         const brokers = this.props.brokerList;
-        if (brokers || isObjectEmpty(brokers)){
+        if (brokers || !isObjectEmpty(brokers)){
             return Object.keys(brokers).map((item, index) => {
                 return (
                   <Broker
@@ -121,7 +121,7 @@ class PortfolioPerformance extends Component{
 
     renderContent = () => {
         const brokers = this.props.brokerList;
-        if (brokers){
+        if (brokers || !isObjectEmpty(brokers)){
             return (
               <React.Fragment>
                   {this.renderModal()}

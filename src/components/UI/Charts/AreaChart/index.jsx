@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Spinner from "../../../UI/Spinner";
+import LoadingState from '../../../Shared/LoadingState';
 import { Chart } from "react-google-charts";
 import Header from "../../../UI/Header";
 import { getColorsArray } from "../../../../utils/chartColorsPicker";
@@ -37,7 +37,7 @@ class AreaChart extends Component {
           width={"100%"}
           height={"100%"}
           chartType="AreaChart"
-          loader={<Spinner color="black" />}
+          loader={<LoadingState width="50px" height="50px" />}
           data={this.getData(this.props.strategy, this.props.benchmark)}
           options={{
             legend: { position: "top" },
@@ -60,7 +60,7 @@ class AreaChart extends Component {
           width={"100%"}
           height={500}
           chartType="AreaChart"
-          loader={<Spinner color="black" />}
+          loader={<LoadingState width="100px" height="100px"/>}
           data={this.getData(this.props.strategy, this.props.benchmark)}
           options={{
             legend: { position: "top" },

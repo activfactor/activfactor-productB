@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ContentBlock from "../../../UI/ContentBlock";
 import { connect } from "react-redux";
+import Input from '../../../UI/Input';
+import { ButtonWrapper } from './style';
 
 
 class Header extends Component {
@@ -48,6 +50,9 @@ class Header extends Component {
             </tbody>
           </table>
         </div>
+        <ButtonWrapper>
+          <Input width="100%" nameOfClass="btn btn-primary" onClick={this.props.onTradeClick} type="submit" value="Trade portfolio"/>
+        </ButtonWrapper>
 
       </div>
     );

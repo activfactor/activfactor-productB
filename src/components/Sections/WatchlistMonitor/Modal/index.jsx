@@ -2,7 +2,6 @@ import React from 'react';
 
 class Modal extends React.Component {
     renderSpinner(){
-        console.log(this.props.isSpinner);
         if (this.props.isSpinner){
             return (
                 <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>

@@ -10,9 +10,7 @@ import Shariah from './Sharia';
 import { connect } from 'react-redux';
 import { resetQuery, resetFactorScreener } from '../../../../actions/strategyBuilder';
 import { getDashboard } from '../../../../actions/dashboard';
-import Spinner from '../../../UI/Spinner';
-// import Button from "./CompanySize/Button";
-// import Modal from '../../../UI/Modal';
+import Loader from '../../../Shared/Loader';
 
 class StepOne extends Component {
   state={
@@ -187,7 +185,7 @@ class StepOne extends Component {
 
     } else {
       return (
-        <Spinner color="white" containerClass="fullScreen" />
+        <Loader wealthface color="black" />
       );
     }
   }

@@ -16,8 +16,7 @@ export default ChildComponent => {
     shouldNavigateAway() {
       if (!this.props.accountNumber || !this.props.token) {
         this.props.updateShouldNavigateTo(history.location.pathname);
-        history.push("/portfolio-performance");
-        this.props.updateLocation("/portfolio-performance"); // for active navigation
+        history.push("/brokers");
       }
     }
 

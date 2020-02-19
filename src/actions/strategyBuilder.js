@@ -28,7 +28,6 @@ import {
   
   export const getFactorScreener = () => async (dispatch, getState) => {
     try {
-      console.log(getState().queryReducer);
       if (!getState().factorScreener.parameters) {
         const response = await wealthface.get("/factor/screener", {
           params: {...getState().queryReducer, "user_id":getState().auth.userID},

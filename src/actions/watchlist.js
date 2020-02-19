@@ -124,7 +124,6 @@ export const deleteWatchlist = (watchListName) => async (dispatch, getState) => 
 
 export const removeTicker = (watchListName,tickerName) => async (dispatch, getState) => {
     const tickersCount = Object.keys(getState().watchlistReducers.data.tickers).length;
-    console.log(tickersCount)
     if (tickersCount > 1){
         const dataToSend = {
             headers: {

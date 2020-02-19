@@ -8,12 +8,9 @@ import Input from '../../UI/Input';
 
 
 class Strategies extends Component {
-  componentDidMount = () => {
-    this.props.updateLocation('/strategy-monitor')
-  }
 
   BuildStrategy = () => {
-    history.push('/strategy-builder')
+    history.push('/builder')
   }
 
   renderContent = () => {

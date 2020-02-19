@@ -51,7 +51,7 @@ class Table extends Component {
                 <tr key={index}>
                   <td className="_td-link" key={index}>
                     <Link
-                      to="/strategy-builder"
+                      to="/builder"
                       onClick={() => this.buildStrategy(item)}
                     >
                       {CapString(item)}

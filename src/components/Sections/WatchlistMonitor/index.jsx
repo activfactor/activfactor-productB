@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { getWatchlist, resetWatchlist, deleteWatchlist } from '../../../actions/watchlist';
 import { updateLocation } from '../../../actions/index'
-import Spinner from '../../UI/Spinner';
+import Loader from '../../Shared/Loader';
 import history from '../../../history';
 import Header from './Header';
 import Table from './Table';
@@ -13,8 +13,8 @@ import Charts from './Charts';
 
 class WatchlistMonitor extends Component{
     state ={
-        show: false,
-        isSpinner: false
+        showDelete: false,
+        isSpinner: false,
     }
     componentDidMount(){
         if (this.props.watchListName){
@@ -40,13 +40,14 @@ class WatchlistMonitor extends Component{
     }
 
     renderContent = () => {
-        if (!this.props.data){
-            return <Spinner color="white" />
-        } 
-        else if (this.state.show){
+        const {showDelete, isSpinner} = this.state;
+        const {data, watchListName} = this.props;
+        if (!data){
+            return <Loader wealthface color="black" />
+        } else if (showDelete){
             return (
-                <Modal onDismiss={() => this.setState({show:false})}>
-                    <MessageModal isSpinner={this.state.isSpinner} watchListName={this.props.watchListName} closeHandler={() => this.setState({show:false})} deleteHandler={this.deleteHandler}/>
+                <Modal onDismiss={() => this.setState({showDelete:false})}>
+                    <MessageModal isSpinner={isSpinner} watchListName={watchListName} closeHandler={() => this.setState({showDelete:false})} deleteHandler={this.deleteHandler}/>
                 </Modal>
             );
         }
@@ -77,7 +78,7 @@ class WatchlistMonitor extends Component{
                 <Charts />
                 <Table />
                 <div className="dashboard_btn-container">
-                    <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show:true})} type="submit" value="Delete this Watchlist" />
+                    <Input nameOfClass="btn btn-danger" onClick={() => this.setState({showDelete:true})} type="submit" value="Delete this Watchlist" />
                 </div>
               </div>
               

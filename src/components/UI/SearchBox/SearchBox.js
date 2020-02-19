@@ -16,7 +16,7 @@ class SearchBox extends Component {
         this.setState({tickersFromSearch: []})
         this.props.updateTickerName(ticker);
         this.props.getTickerDetails(ticker);
-        history.push('/ticker-monitor');
+        history.push('/ticker/monitor');
         this.props.updateLocation('/');
     }
 

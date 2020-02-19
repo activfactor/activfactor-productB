@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { variant } from 'styled-system';
 
-export const DataSingle = styled.td`
+export const DataSingle = styled.div`
     text-align: center !important;
     ${props => variant({
         variants: {
@@ -42,4 +42,11 @@ export const Value = styled.div`
             }
         }
     })}
+`
+
+export const LoaderContainer = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

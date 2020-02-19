@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStrategyMonitor, deleteStrategy } from '../../../actions/StrategyMonitor';
-import Spinner from '../../UI/Spinner';
+import { updateTradeStrategy } from '../../../actions/Tradeit/tradeitTrade';
 import Header from './Header';
 import history from '../../../history';
 import { updateLocation } from '../../../actions';
@@ -13,28 +13,37 @@ import MessageModal from './Modal';
 import requireAuth from '../../hoc/requireAuth';
 import ChartsLiveTab from './ChartsLiveTab';
 import ChartsHistoricalTab from './ChartsHistoricalTab';
+import Loader from '../../Shared/Loader';
+import TradeModal from './TradeModal';
 
 class StrategyMonitor extends Component {
   state = {
-    show: false,
+    showDelete: false,
     isSpinner: false,
-    activeTab: 'Live'
+    activeTab: 'Live',
+    showTrade: false
   };
 
   componentWillMount() {
-    this.props.updateLocation('/strategy-monitor/details');
     if (this.props.strategyMonitor.strategyName) {
       this.props.getStrategyMonitor(this.props.strategyMonitor.strategyName);
     }
   }
 
   renderAction() {
-    if (this.state.show) {
+    const {showDelete, showTrade} = this.state;
+    if (showDelete) {
       return (
-        <Modal onDismiss={() => this.setState({show: false})}>
+        <Modal onDismiss={() => this.setState({showDelete: false})}>
           <MessageModal isSpinner={this.state.isSpinner} strategyName={this.props.strategyMonitor.strategyName}
-                        closeHandler={() => this.setState({show: false})} deleteHandler={this.deleteHandler}/>
+                        closeHandler={() => this.setState({showDelete: false})} deleteHandler={this.deleteHandler}/>
         </Modal>
+      );
+    } else if (showTrade){
+      return (
+          <Modal onDismiss={() => this.setState({showTrade:false})}>
+              <TradeModal onDismiss={() => this.setState({showTrade: false})}/>
+          </Modal>
       );
     }
   }
@@ -48,6 +57,12 @@ class StrategyMonitor extends Component {
     event.preventDefault();
     this.setState({activeTab: tab});
   };
+
+  onTradeClick = () => {
+    const {strategyName} = this.props.strategyMonitor;
+    this.props.updateTradeStrategy(strategyName);
+    this.setState({showTrade: true});
+  }
 
   renderHandler() {
     if (this.props.strategyMonitor.strategyName) {
@@ -73,7 +88,7 @@ class StrategyMonitor extends Component {
                 </div>
 
             <div className="card__list-container asHeader">
-              <Header/>
+              <Header onTradeClick={this.onTradeClick}/>
             </div>
 
             <Charts/>
@@ -109,22 +124,16 @@ class StrategyMonitor extends Component {
               </div>
 
             </div>
-
-
-            <div className="dashboard_btn-container">
-              <Input nameOfClass="btn btn-danger" onClick={() => this.setState({show: true})} type="submit"
-                     value="Delete this strategy"/>
-            </div>
+            <Input nameOfClass="btn btn-danger" onClick={() => this.setState({showDelete: true})} type="submit" value="Delete this strategy"/>
 
           </div>
         );
       } else {
         return (
-          <Spinner color="white" containerClass="fullScreen"/>
+          <Loader wealthface color="black" />
         );
       }
     } else {
-      this.props.updateLocation('/dashboard');
       history.push('/dashboard');
     }
 
@@ -148,5 +157,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   getStrategyMonitor,
   updateLocation,
-  deleteStrategy
+  deleteStrategy,
+  updateTradeStrategy
 })(requireAuth(StrategyMonitor));

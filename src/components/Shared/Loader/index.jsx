@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './index.module.scss';
-import LoaderGif from './LoaderGif';
+import LoaderGif from '../LoaderGif';
 const Loader = props => {
   if (!props.wealthface){
     return (

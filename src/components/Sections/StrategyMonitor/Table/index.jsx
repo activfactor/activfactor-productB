@@ -170,13 +170,13 @@ class Table extends Component {
                             {getValue(this.props.data[row][this.state.option])!== '---' ? getValue(this.props.data[row][this.state.option]).toFixed(2) + '%' : getValue(this.props.data[row][this.state.option])} 
                           </td>
                           <td className="_cta-container">
-                            <Link to="/ticker-monitor" onClick={() => this.onEyeClickHandler(row)} nameOfClass="btn btn-outline-primary">
+                            <Link to="/ticker/monitor" onClick={() => this.onEyeClickHandler(row)} nameOfClass="btn btn-outline-primary">
                               <i className="fas fa-eye" />
                             </Link>
                           </td>
                           <td className="_cta-container">
                             <button onClick={() => this.tradeHandler(row)} className="btn btn-primary">
-                              Trade
+                              Buy
                             </button>
                           </td>
                         </tr>

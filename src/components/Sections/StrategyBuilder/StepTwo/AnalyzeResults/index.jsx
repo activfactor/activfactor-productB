@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import classes from './index.module.scss';
 import PieGraph from '../../../../UI/Charts/PieGraph';
 import LineGraph from '../../../../UI/Charts/LineChart';
 import AreaChart from '../../../../UI/Charts/AreaChart';
@@ -8,7 +7,7 @@ import BarChartVertical from '../../../../UI/Charts/BarChartVertical';
 import Table from '../Charts/TableChart';
 import {connect} from 'react-redux';
 import {getFactorScreener, resetFactorScreener} from '../../../../../actions/strategyBuilder';
-import Spinner from '../../../../UI/Spinner';
+import Loader from '../../../../Shared/Loader';
 import BackDrop from '../../../../UI/BackDrop';
 import requireAuth from '../../../../hoc/requireAuth';
 import Buttons from '../ActionButtons';
@@ -40,7 +39,7 @@ class AnalyzeResults extends Component {
       );
     } else if (!this.props.data.parameters) {
       return (
-          <Spinner color="white" containerClass="fullScreen" />
+          <Loader wealthface color="black" />
       );
     } else {
       return (

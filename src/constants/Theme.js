@@ -28,8 +28,14 @@ export const theme = {
   },
   colors: {
     primary: '#109CF1',
+    primaryLight: '#61c3ff',
     danger: '#FF0000',
-    secondary: '#858585'
+    secondary: '#858585',
+    primaryOpacity: 'rgb(16, 155, 241, 0.1)',
+    grayLight: '#EBEFF2',
+    grayDark: '#989898',
+    grayMedium: '#D7D7D7',
+    white: '#fff'
   },
   fonts: {
     bold: `Poppins-Bold, Roboto , Helvetica Neue, Arial`,

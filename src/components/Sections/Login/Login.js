@@ -31,7 +31,6 @@ class Login extends Component{
                 }
                 this.props.signIn_A(data);
             } else {
-                console.log(formValues);
                 this.setState({tempError: "Username or password is incorrect"});
             }
 
@@ -85,7 +84,6 @@ class Login extends Component{
         if (this.props.errorMessage){
             return <div className="invalid-feedback">{this.props.errorMessage}</div>
         } else if (this.state.tempError){
-            console.log(this.state.tempError);
             return <div style={{display: 'block'}} className="invalid-feedback">{this.state.tempError}</div>
         }
     }

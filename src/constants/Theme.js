@@ -35,6 +35,7 @@ export const theme = {
     grayLight: '#EBEFF2',
     grayDark: '#989898',
     grayMedium: '#D7D7D7',
+    success: '#60DFC8',
     white: '#fff'
   },
   fonts: {

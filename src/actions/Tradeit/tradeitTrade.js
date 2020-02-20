@@ -1,4 +1,14 @@
-import { TRADEIT_ORDER_PREVIEW, TRADEIT_ORDER_ERROR, TRADEIT_ORDER_RESET, TRADEIT_STRATEGY_NAME, TRADEIT_CASH_AMOUNT, GET_PORTFOLIO_ORDERS, TRADEIT_ORDERS_PREVIEW, TRADEIT_ORDERS_PLACE } from '../types';
+import {
+  TRADEIT_ORDER_PREVIEW,
+  TRADEIT_ORDER_ERROR,
+  TRADEIT_ORDER_RESET,
+  TRADEIT_STRATEGY_NAME,
+  TRADEIT_CASH_AMOUNT,
+  GET_PORTFOLIO_ORDERS,
+  TRADEIT_ORDERS_PREVIEW,
+  TRADEIT_ORDERS_PLACE,
+  TRADEIT_ORDERS_CLEAR
+} from "../types";
 import proxy from '../../apis/proxy';
 import wealthface from '../../apis/wealthface';
 import axios from 'axios';
@@ -54,34 +64,9 @@ export const getPortfolioOrders = () => async (dispatch, getState) => {
     }).catch(err => dispatch({type: GET_PORTFOLIO_ORDERS, payload: {error: err.message}}))
 }
 
-// this is just for backup
-export const previewOrdersV2 = () => (dispatch, getState) => {
-    const {portfolioOrders: {orders}} = getState().trade;
-    const requests = Object.keys(orders).map(obj => { 
-        const objectToCheck = orders[obj];
-        const {token, accountNumber, orderAction, orderSymbol, orderQuantity, orderPriceType, orderExpiration, orderQuantityType} = objectToCheck;
-        const order = {
-            token,
-            accountNumber,
-            orderAction,
-            orderQuantity,
-            orderSymbol,
-            orderPriceType,
-            orderExpiration,
-            orderQuantityType
-        }
-        bodyData.endpoint = "order/previewStockOrEtfOrder";
-        bodyData.data={...order}
-        const request = proxy.post('/', JSON.stringify(bodyData), {headers: {'Content-Type': 'application/json'}})
-        return request;
-    })
-    axios.all(requests).then(axios.spread((...responses) => {
-        const orders = responses.map(obj => obj.data);
-        dispatch({type: TRADEIT_ORDERS_PREVIEW, payload: orders})
-    })).catch(errs => dispatch({type: TRADEIT_ORDERS_PREVIEW, payload: errs}))
-}
-
-// another version of previewOrders
+// another version of previewOrders using slow process not axios.all 
+// because when we sent all the orders at once , trade.it will return sometime the same 
+// order id to multiple stocks
 export const previewOrders = () => async (dispatch, getState) => {
     const {portfolioOrders: {orders}} = getState().trade;
     const data = tradeitPreviewOrderLoopAsync(orders, callData);
@@ -105,4 +90,8 @@ export const placeOrders = () => async (dispatch, getState) => {
         // const reciepts = responses.map(obj => obj.data);
         dispatch({type: TRADEIT_ORDERS_PLACE, payload: responses})
     })).catch(errs => dispatch({type: TRADEIT_ORDERS_PREVIEW, payload: errs}))
+}
+
+export const clearMultipleTradeState = () => dispatch => {
+    dispatch({type: TRADEIT_ORDERS_CLEAR});
 }

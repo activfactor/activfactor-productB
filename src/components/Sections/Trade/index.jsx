@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AccountSumBlock from '../../Shared/AccountSumBlock';
 import Loader from '../../Shared/Loader';
 import LoadingState from '../../Shared/LoaderGif';
-import { getPortfolioOrders } from '../../../actions/Tradeit/tradeitTrade';
+import { getPortfolioOrders, clearMultipleTradeState } from '../../../actions/Tradeit/tradeitTrade';
 import {ContentWrapper, InputWrapper, Input, ErrorMessage} from './style';
 import history from '../../../history';
 import withBrokersAuth from '../../hoc/requireBrokerConnection';
@@ -50,6 +50,12 @@ const TradePage = () => {
         }
     }, [dispatchAction, strategyName, cashForTrade, portfolioOrders])
 
+    useEffect(() => {
+        return () => {
+            dispatchAction(clearMultipleTradeState());
+        }
+    }, [])
+
     const renderSteps = () => {
         switch(state.activeOption){
             case 1:
@@ -62,6 +68,16 @@ const TradePage = () => {
                 const Step3 = React.lazy(() => import('./Step3'))
                 return <Step3 />
         }
+    }
+
+    const onCancelProcess = () => {
+        dispatchAction(clearMultipleTradeState());
+        history.push('/strategy/monitor');
+    }
+
+    const onPortfolioClick = () => {
+        dispatchAction(clearMultipleTradeState());
+        history.push('/portfolio/monitor');
     }
 
     const renderButtons = () => {
@@ -77,12 +93,15 @@ const TradePage = () => {
                 return (
                     <>
                         <Input className="btn btn-outline-primary" type="button" value="<- Preview" onClick={() => {dispatch({type: 'Previous'})}} />
-                        <Input className="btn btn-primary" type="button" value="Portfolio" onClick={() => history.push('/portfolio/monitor')} />
+                        <Input className="btn btn-primary" type="button" value="Portfolio" onClick={onPortfolioClick} />
                     </>
                 );
             default:
                 return (
-                    <Input className="btn btn-primary" type="button" value="Preview" onClick={() => {dispatch({type: 'Next'})}} />
+                    <>
+                        <Input className="btn btn-danger" type="button" value="Cancel" onClick={onCancelProcess} />
+                        <Input className="btn btn-primary" type="button" value="Preview ->" onClick={() => {dispatch({type: 'Next'})}} />
+                    </>
                 );
         }
     }

@@ -79,7 +79,7 @@ const TableV2 = ({ tableHeaders, tableData }) => {
                               <td>
                                 <DataSingle
                                   key={(index + 1) * 100}
-                                  variant={isNumber(row.value) ? getVariant(row.value) : row.value}
+                                  variant={isNumber(row.value) ? getVariant(row.value) : row.value==='SUCCESS' ? 'success' : row.value==='ERROR' ? 'danger' : ''}
                                 >{`${isNumber(row.value) ? getValue(row.value).toFixed(2) : row.value}${
                                   row.unit ? row.unit : ""
                                 }`}</DataSingle>

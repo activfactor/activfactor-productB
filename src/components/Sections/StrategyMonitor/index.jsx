@@ -24,6 +24,10 @@ class StrategyMonitor extends Component {
     showTrade: false
   };
 
+  componentDidMount() {
+    this.props.updateLocation('/strategy/monitor');
+  }
+
   componentWillMount() {
     if (this.props.strategyMonitor.strategyName) {
       this.props.getStrategyMonitor(this.props.strategyMonitor.strategyName);

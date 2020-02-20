@@ -16,6 +16,9 @@ export const DataSingle = styled.div`
             },
             secondary: {
                 color: props.theme.colors.secondary
+            },
+            success: {
+                color: props.theme.colors.success
             }
         }
     })}

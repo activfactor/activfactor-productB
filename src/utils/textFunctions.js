@@ -1,5 +1,8 @@
 export const CapString = (textString) => {
+  if (textString && typeof(textString)==='string'){
     return textString.charAt(0).toUpperCase() + textString.slice(1);
+  }
+  return textString;
 }
 
 export const getValue = (value) => {

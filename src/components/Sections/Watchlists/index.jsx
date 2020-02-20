@@ -7,7 +7,7 @@ import requireAuth from '../../hoc/requireAuth';
 
 class WatchLists extends Component{
     componentDidMount = () => {
-        this.props.updateLocation('/watchlist-monitor')
+        this.props.updateLocation('/watchlist/monitor')
     }
 
     renderContent = () => {

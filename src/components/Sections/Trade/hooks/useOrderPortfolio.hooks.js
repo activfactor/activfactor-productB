@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { CapString } from '../../../../utils/textFunctions';
 
 export const useOrderPreviewTransformer = () => {
     const {accountNumber, portfolioOrders: {orders}, portfolioOrdersPreview} = useSelector(state => {
@@ -26,14 +27,14 @@ export const useOrderPreviewTransformer = () => {
         })
     
         if (data && data.length>0){
-            const tableHeaders = ['Account','Ticker','Action','Expiration','Value','Weight','Comession'];
+            const tableHeaders = ['Account','Ticker','Action','Expiration','Value ($)','Weight (%)','Comession ($)'];
             const tableData = data.map(obj => {
                 const {accountNumber, tickerName, description, orderAction,orderExpiration, estimatedOrderValue, weight, estimatedOrderCommission} = obj;
                 return [
                   { value: accountNumber },
                   { tickerName, description },
-                  { value: orderAction },
-                  { value: orderExpiration },
+                  { value: CapString(orderAction) },
+                  { value: orderExpiration.toUpperCase() },
                   { value: estimatedOrderValue, unit: "$" },
                   { value: weight, unit: "%" },
                   { value: estimatedOrderCommission, unit: "$" },
@@ -54,14 +55,14 @@ export const usePortfolioOrdersTransformer = () => {
         }
     });
     if (orders){
-        const tableHeaders = ['Account','Tikcer','Action','Expiration','Value','Weight'];
+        const tableHeaders = ['Account','Ticker','Action','Expiration','Value (%)','Weight (%)'];
         const tableData = Object.keys(orders).map(obj => {
             const {name, orderAction,orderQuantity, orderExpiration} = orders[obj];
             return [
               { value: accountNumber },
               { tickerName: obj, description: name },
-              { value: orderAction },
-              { value: orderExpiration },
+              { value: CapString(orderAction) },
+              { value: orderExpiration.toUpperCase() },
               { value: orderQuantity },
               { value: orders[obj]["weight_%"], unit: "%" },
             ];
@@ -99,14 +100,14 @@ export const useOrdersRecieptTransformer = () => {
             }
         });
         if (data && data.length>0){
-            const tableHeaders = ['Account','Ticker','Action','Expiration','Quantity','Status'];
+            const tableHeaders = ['Account','Ticker','Action','Expiration','Value ($)','Status'];
             const tableData = data.map(obj => {
                 const {accountNumber, tickerName, description, orderAction,orderExpiration, orderQuantity, status} = obj;
                 return [
                   { value: accountNumber },
                   { tickerName, description },
-                  { value: orderAction },
-                  { value: orderExpiration },
+                  { value: CapString(orderAction) },
+                  { value: orderExpiration.toUpperCase() },
                   { value: orderQuantity ? orderQuantity : '---', unit: "$" },
                   { value: status},
                 ];

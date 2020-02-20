@@ -1,4 +1,4 @@
-import { TRADEIT_ORDER_PREVIEW, TRADEIT_ORDER_ERROR, TRADEIT_ORDER_RESET, TRADEIT_STRATEGY_NAME, TRADEIT_CASH_AMOUNT,GET_PORTFOLIO_ORDERS, TRADEIT_ORDERS_PREVIEW, TRADEIT_ORDERS_PLACE } from '../actions/types';
+import { TRADEIT_ORDER_PREVIEW, TRADEIT_ORDER_ERROR, TRADEIT_ORDER_RESET, TRADEIT_STRATEGY_NAME, TRADEIT_CASH_AMOUNT,GET_PORTFOLIO_ORDERS, TRADEIT_ORDERS_PREVIEW, TRADEIT_ORDERS_PLACE, TRADEIT_ORDERS_CLEAR } from '../actions/types';
 
 export default (state = {}, action) => {
     switch(action.type){
@@ -38,6 +38,8 @@ export default (state = {}, action) => {
                 ...state,
                 portfolioOrdersReciepts: action.payload
             }
+        case TRADEIT_ORDERS_CLEAR:
+            return {}
         default: 
             return state
     }

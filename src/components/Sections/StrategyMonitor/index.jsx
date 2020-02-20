@@ -15,6 +15,7 @@ import ChartsLiveTab from './ChartsLiveTab';
 import ChartsHistoricalTab from './ChartsHistoricalTab';
 import Loader from '../../Shared/Loader';
 import TradeModal from './TradeModal';
+import { InputWrapper } from './style';
 
 class StrategyMonitor extends Component {
   state = {
@@ -128,8 +129,9 @@ class StrategyMonitor extends Component {
               </div>
 
             </div>
-            <Input nameOfClass="btn btn-danger" onClick={() => this.setState({showDelete: true})} type="submit" value="Delete this strategy"/>
-
+            <InputWrapper>
+              <Input nameOfClass="btn btn-danger" onClick={() => this.setState({showDelete: true})} type="submit" value="Delete this strategy"/>
+            </InputWrapper>
           </div>
         );
       } else {

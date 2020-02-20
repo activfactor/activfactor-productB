@@ -55,7 +55,7 @@ export const usePortfolioOrdersTransformer = () => {
         }
     });
     if (orders){
-        const tableHeaders = ['Account','Ticker','Action','Expiration','Value (%)','Weight (%)'];
+        const tableHeaders = ['Account','Ticker','Action','Expiration','Value ($)','Weight (%)'];
         const tableData = Object.keys(orders).map(obj => {
             const {name, orderAction,orderQuantity, orderExpiration} = orders[obj];
             return [
@@ -63,7 +63,7 @@ export const usePortfolioOrdersTransformer = () => {
               { tickerName: obj, description: name },
               { value: CapString(orderAction) },
               { value: orderExpiration.toUpperCase() },
-              { value: orderQuantity },
+              { value: orderQuantity, unit: "$" },
               { value: orders[obj]["weight_%"], unit: "%" },
             ];
         });

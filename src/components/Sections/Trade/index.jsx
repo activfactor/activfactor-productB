@@ -85,14 +85,13 @@ const TradePage = () => {
             case 2:
                 return (
                     <>
-                        <Input className="btn btn-outline-primary" type="button" value="<- Preview" onClick={() => {dispatch({type: 'Previous'})}} />
+                        <Input className="btn btn-outline-primary" type="button" value="Preview" onClick={() => {dispatch({type: 'Previous'})}} />
                         <Input className="btn btn-primary" type="button" value="Send" onClick={() => {dispatch({type: 'Next'})}} />
                     </>
                 );
             case 3:
                 return (
                     <>
-                        <Input className="btn btn-outline-primary" type="button" value="<- Preview" onClick={() => {dispatch({type: 'Previous'})}} />
                         <Input className="btn btn-primary" type="button" value="Portfolio" onClick={onPortfolioClick} />
                     </>
                 );
@@ -100,7 +99,7 @@ const TradePage = () => {
                 return (
                     <>
                         <Input className="btn btn-danger" type="button" value="Cancel" onClick={onCancelProcess} />
-                        <Input className="btn btn-primary" type="button" value="Preview ->" onClick={() => {dispatch({type: 'Next'})}} />
+                        <Input className="btn btn-primary" type="button" value="Preview" onClick={() => {dispatch({type: 'Next'})}} />
                     </>
                 );
         }

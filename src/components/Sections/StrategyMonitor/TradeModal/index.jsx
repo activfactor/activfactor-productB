@@ -40,7 +40,7 @@ const TradeModal = ({onDismiss}) => {
             <input className="form-control" placeholder="Enter the amount" value={amount} onChange={onChangeHandler} />
             {error ? (<ErrMsg>{error}</ErrMsg>) : ''}
             <ButtonsWrapper>
-                <StyledInput className="btn btn-primary" value="Start" type="button" onClick={onStartClick}/>
+                <StyledInput className="btn btn-primary" value="Trade" type="button" onClick={onStartClick}/>
                 <StyledInput className="btn btn-danger" value="Cancel" type="button" onClick={onDismiss}/>
             </ButtonsWrapper>
         </Wrapper>

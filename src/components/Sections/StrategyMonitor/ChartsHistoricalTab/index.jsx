@@ -21,7 +21,7 @@ class ChartsHistoricalTab extends Component {
             header="Historical Performance"
             strategy={this.props.strategy.cumulative_return.monthly}
             benchmark={this.props.benchmark.cumulative_return.monthly}
-            benchmark_name='S&P TSX'
+            benchmark_name={this.props.benchmark_name}
             chartName="Historical Performance"/>
         </div>
 
@@ -30,7 +30,7 @@ class ChartsHistoricalTab extends Component {
             header="Historical annual return"
             strategy={this.props.strategy.yearly_return['Annual Return']}
             benchmark={this.props.benchmark.yearly_return['Annual Return']}
-            benchmark_name='S&P TSX'
+            benchmark_name={this.props.benchmark_name}
             chartName="Historical annual return"
           />
         </div>
@@ -40,7 +40,7 @@ class ChartsHistoricalTab extends Component {
             header="Historical drawdown"
             strategy={this.props.strategy.drawdown.monthly}
             benchmark={this.props.benchmark.drawdown.monthly}
-            benchmark_name='S&P TSX'
+            benchmark_name={this.props.benchmark_name}
             chartName="Historical drawdown"/>
         </div>
         <div className="col-sm-6 col-lg-4 _card-row-item">

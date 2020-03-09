@@ -7,7 +7,9 @@ import {
   GET_PORTFOLIO_ORDERS,
   TRADEIT_ORDERS_PREVIEW,
   TRADEIT_ORDERS_PLACE,
-  TRADEIT_ORDERS_CLEAR
+  TRADEIT_ORDERS_CLEAR,
+  TRADEIT_ORDERS_STATUS,
+  TRADEIT_ORDER_CANCEL
 } from "../types";
 import proxy from '../../apis/proxy';
 import wealthface from '../../apis/wealthface';
@@ -89,7 +91,80 @@ export const placeOrders = () => async (dispatch, getState) => {
     axios.all(requests).then(axios.spread((...responses) => {
         // const reciepts = responses.map(obj => obj.data);
         dispatch({type: TRADEIT_ORDERS_PLACE, payload: responses})
-    })).catch(errs => dispatch({type: TRADEIT_ORDERS_PREVIEW, payload: errs}))
+    })).catch((...errs) => dispatch({type: TRADEIT_ORDERS_PREVIEW, payload: errs}))
+}
+
+// get Single order based on last portfolioOrdersPlace using the orderNumber from each ticker order 
+// this will not be used now as it has issue with the testing API , testing API returning the orders for sample ticker 
+// not returning the symbol name as per the order number
+export const getOrdersStatus = () => async (dispatch, getState) => {
+    const {portfolioOrdersReciepts, accountNumber, token} = {...getState().trade, ...getState().tradeitReducers};
+
+    const requests = portfolioOrdersReciepts.map(obj => {
+        const {data: {orderNumber}} = obj;
+        const order = {
+            token,
+            accountNumber,
+            orderNumber
+        }
+        bodyData.endpoint = "order/getSingleOrderStatus";
+        bodyData.data={...order}
+        return proxy.post('/', JSON.stringify(bodyData), {headers: {'Content-Type': 'application/json'}})
+    })
+    axios.all(requests).then(axios.spread((...responses) => {
+        const updatedResponses = responses.map(obj => obj.data);
+        dispatch({type: TRADEIT_ORDERS_STATUS, payload: updatedResponses})
+    })).catch(axios.spread((...errs) => dispatch({type: TRADEIT_ORDERS_STATUS, payload: errs})))
+}
+
+export const getAllOrdersStatus = () => async (dispatch, getState) => {
+    const {accountNumber, token} = {...getState().trade, ...getState().tradeitReducers};
+    const order = {
+        token,
+        accountNumber,
+    }
+    bodyData.endpoint = "order/getAllOrderStatus";
+    bodyData.data={...order}
+    try {
+        const response = await proxy.post('/', JSON.stringify(bodyData), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (response.data.status === 'SUCCESS'){
+            dispatch({type: TRADEIT_ORDERS_STATUS, payload: response.data});
+        } else {
+            dispatch({type: TRADEIT_ORDERS_STATUS, payload: response.data.shortMessage});
+        }
+    } catch(err){
+        dispatch({type: TRADEIT_ORDERS_STATUS, payload: err.message});
+    }
+}
+
+
+export const cancelOrder = (orderNumber) => async (dispatch, getState) => {
+    const {accountNumber, token} = getState().tradeitReducers;
+    bodyData.endpoint = "order/cancelOrder";
+    const order = {
+        token,
+        accountNumber,
+        orderNumber
+    }
+    bodyData.data={...order}
+    try{
+        const response = await proxy.post('/', JSON.stringify(bodyData), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (response.data.status === 'SUCCESS'){
+            dispatch({type: TRADEIT_ORDER_CANCEL, payload: response.data});
+        } else {
+            dispatch({type: TRADEIT_ORDER_CANCEL, payload: response.data.shortMessage});
+        }
+    } catch(err){
+        dispatch({type: TRADEIT_ORDER_CANCEL, orderNumber, payload: err.message})
+    }
 }
 
 export const clearMultipleTradeState = () => dispatch => {

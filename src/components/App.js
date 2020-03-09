@@ -13,6 +13,7 @@ import WatchListMonitorList from './Sections/Watchlists';
 import Brokers from './Sections/Brokers';
 import Portfolio from './Sections/Portfolio';
 import TradePage from '../components/Sections/Trade';
+import Transactions from '../components/Sections/TransactionPage';
 import history from "../history";
 import {connect} from 'react-redux';
 import StrategyBuilder from "./Sections/StrategyBuilder";
@@ -64,6 +65,7 @@ class App extends React.Component {
             <Route path="/watchlist/monitor" component={WatchListMonitorList} />
             <Route path="/ticker/monitor" component={TickerMonitor} />
             <Route path="/brokers" component={Brokers} />
+            <Route path="/transactions" component={Transactions} />
             <Route exact path="/portfolio/monitor" component={Portfolio} />
             <Route path="/trade" component={TradePage} />
           </Switch>

@@ -18,12 +18,12 @@ const TradePage = () => {
             let activeOption = state.activeOption;
             switch(action.type){
                 case 'Next':
-                    if (state.activeOption>=1 && state.activeOption<3){
+                    if (state.activeOption>=1 && state.activeOption<4){
                         activeOption = activeOption+1;
                     }
                     return {activeOption};
                 case 'Previous':
-                    if (state.activeOption>1 && state.activeOption<=3){
+                    if (state.activeOption>1 && state.activeOption<=4){
                         activeOption = activeOption-1;
                     }
                     return {activeOption};
@@ -75,9 +75,9 @@ const TradePage = () => {
         history.push('/strategy/monitor');
     }
 
-    const onPortfolioClick = () => {
+    const onTransactionStatusClick = () => {
         dispatchAction(clearMultipleTradeState());
-        history.push('/portfolio/monitor');
+        history.push('/transactions');
     }
 
     const renderButtons = () => {
@@ -92,7 +92,7 @@ const TradePage = () => {
             case 3:
                 return (
                     <>
-                        <Input className="btn btn-primary" type="button" value="Portfolio" onClick={onPortfolioClick} />
+                        <Input className="btn btn-primary" type="button" value="Transaction Monitor" onClick={onTransactionStatusClick} />
                     </>
                 );
             default:

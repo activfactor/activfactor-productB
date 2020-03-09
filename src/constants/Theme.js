@@ -36,7 +36,8 @@ export const theme = {
     grayDark: '#989898',
     grayMedium: '#D7D7D7',
     success: '#60DFC8',
-    white: '#fff'
+    white: '#fff',
+    black: '#000'
   },
   fonts: {
     bold: `Poppins-Bold, Roboto , Helvetica Neue, Arial`,

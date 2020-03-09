@@ -13,12 +13,9 @@ const Step3 = () => {
     const [tableData, tableHeaders] = useOrdersRecieptTransformer();
 
     useEffect(() => {
-        async function getPreviewOrders(){
-            if (!portfolioOrdersReciepts){
-                await dispatch(placeOrders());
-            }
+        if (!portfolioOrdersReciepts){
+            dispatch(placeOrders());
         }
-        getPreviewOrders();
     }, [portfolioOrdersReciepts,dispatch])
 
     return (

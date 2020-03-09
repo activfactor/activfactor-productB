@@ -78,6 +78,13 @@ class NavigationBar extends Component{
                 >
                   Portfolio Monitor
                 </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/transactions")}
+                  to="/transactions"
+                  nameOfClass="_navbar-item"
+                >
+                  Transaction
+                </NavigationItem>
                 {this.renderTradeNavLink()}
 
                 </nav>

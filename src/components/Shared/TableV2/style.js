@@ -3,8 +3,18 @@ import { variant } from 'styled-system';
 
 export const DataSingle = styled.div`
     text-align: center !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     td{
         text-align: center !important;
+    }
+    input{
+        cursor: pointer;
+        max-width: 80px !important;
+        padding: 10px !important;
+        margin: 10px;
+        font-size: 11px;
     }
     ${props => variant({
         variants: {

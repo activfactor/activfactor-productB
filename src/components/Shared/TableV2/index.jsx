@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { getValue, getVariant } from "../../../utils/textFunctions";
 import OrderForm from "../../UI/OrderForm";
 import { DataSingle, TableHeader, LoaderContainer } from './style';
 import LoadingState from '../LoadingState';
 import {isNumber} from 'validate.js';
+import LoaderGif from '../../Shared/LoaderGif';
 
 const TableV2 = ({ tableHeaders, tableData }) => {
   const [isModal, setIsModal] = useState(false);
   const [tickerName, setTickerName] = useState();
+  const [loading, setLoading] = useState(null);
 
   const tradeHandler = tickerName => {
     setIsModal(true);
     setTickerName(tickerName);
   };
+
+  const btnClick = useCallback(async (cb, index) => {
+    setLoading(index);
+    await cb();
+    setLoading(null);
+  }, []);
 
   const onCancelOrderHandler = () => {
     setIsModal(false);
@@ -75,8 +83,13 @@ const TableV2 = ({ tableHeaders, tableData }) => {
                                   Buy
                                 </button>
                               </td>
-                            ) : (
-                              <td>
+                            ) : typeof row === "object" && row.type==="btn" ? (
+                              <DataSingle key={(index +1) * 100}>
+                                {loading===row.index ? (<LoaderGif width="30px" height="30px" />)
+                                : <input type="button" style={{width: '75px'}} className={row.btnClass} disabled={row.btnDisabled} value={row.btnText} onClick={() => btnClick(row.cb, row.index)} />
+                                }
+                              </DataSingle>
+                            ) : (<td key={(index + 1) * 100}>
                                 <DataSingle
                                   key={(index + 1) * 100}
                                   variant={isNumber(row.value) ? getVariant(row.value) : row.value==='SUCCESS' ? 'success' : row.value==='ERROR' ? 'danger' : ''}

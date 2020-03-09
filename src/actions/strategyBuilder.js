@@ -82,10 +82,10 @@ import {
             "shariah":props.shariah
         }
         dispatch({type: UPDATE_STRATEGY_QUERY, payload: query});
-        history.push('/strategy-builder');
+        history.push('/builder');
     } else {
         dispatch({type: BUILD_STRATEGY_QUERY});
-        history.push('/strategy-builder');
+        history.push('/builder');
     }
   }
   
@@ -122,12 +122,12 @@ import {
             payload: { name: strategyName }
           });
         }
-        history.push('/strategy-monitor');
+        history.push('/strategy/monitor');
       }
     } catch (err) {
       dispatch({
         type: FACTOR_SCREENER_SAVE_ERROR,
-        payload: "Unauthorized Action"
+        payload: err.message
       });
     }
   };

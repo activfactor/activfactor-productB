@@ -14,12 +14,9 @@ const Step2 = () => {
     const [tableData, tableHeaders] = useOrderPreviewTransformer();
 
     useEffect(() => {
-        async function getPreviewOrders(){
-            if (!portfolioOrdersPreview){
-                await dispatch(previewOrders());
-            }
+        if (!portfolioOrdersPreview){
+            dispatch(previewOrders());
         }
-        getPreviewOrders();
     }, [portfolioOrdersPreview,dispatch])
 
     return (

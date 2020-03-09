@@ -118,3 +118,47 @@ export const useOrdersRecieptTransformer = () => {
     }
     return [undefined, undefined]
 }
+
+export const useOrdersStatusTransformer = (cancelOrder) => {
+    const {accountNumber, portfolioOrdersStatus} = useSelector(state => {
+        return {
+            ...state.tradeitReducers,
+            ...state.trade
+        }
+    });
+    if (portfolioOrdersStatus){
+        const data = portfolioOrdersStatus.map(obj => {
+            const {orderStatusDetailsList} = obj;
+            const {orderStatus, orderLegs, orderNumber, orderExpiration} = orderStatusDetailsList[0];
+            const {action, symbol, orderedQuantity} = orderLegs[0];
+            return {
+                accountNumber,
+                tickerName: symbol,
+                action,
+                orderExpiration,
+                orderedQuantity,
+                orderStatus,
+                orderNumber
+            }
+        });
+        if (data && data.length>0){
+            const tableHeaders = ['Account','Ticker','Action','Expiration','Value ($)','Status', 'Cancel'];
+            const tableData = data.map(obj => {
+                const {accountNumber, tickerName, action,orderExpiration, orderedQuantity, orderStatus, orderNumber} = obj;
+                return [
+                  { value: accountNumber },
+                  { value: tickerName },
+                  { value: CapString(action) },
+                  { value: orderExpiration.toUpperCase() },
+                  { value: orderedQuantity ? orderedQuantity : '---', unit: "$" },
+                  { value: orderStatus},
+                  { type: 'btn', btnClass: 'btn btn-danger', btnText: 'Cancel', cb: () => cancelOrder(orderNumber)}
+                ];
+            });
+            return [tableData, tableHeaders];
+        }
+        return [undefined,undefined];
+    }
+    return [undefined, undefined]
+}
+

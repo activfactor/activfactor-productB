@@ -54,7 +54,7 @@ class StrategyBuilder3 extends Component {
     const dataToSend = {
       headers: {
         headers: {
-          "Authorization": `JWT ${this.props.auth.token}`,
+          "Authorization": `Bearer ${this.props.auth.token}`,
         }
       },
         data: {

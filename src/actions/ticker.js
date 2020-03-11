@@ -5,7 +5,7 @@ import { getJSON } from '../utils/jsonFunctions';
 export const getTickerList = () => async (dispatch, getState) => {
     const response = await wealthface.get('/tickerlist',{
         headers: {
-            Authorization: `JWT ${getState().auth.token}`
+            Authorization: `Bearer ${getState().auth.token}`
           }
     });
     const jsonResponse = getJSON(response);
@@ -18,7 +18,7 @@ export const getTickerDetails = (tickerName) => async (dispatch, getState) => {
             "ticker":tickerName
         },
         headers:{
-            "Authorization": `JWT ${getState().auth.token}`
+            "Authorization": `Bearer ${getState().auth.token}`
         }
     })
     const jsonResponse = getJSON(response);

@@ -51,7 +51,7 @@ export const getPortfolioOrders = () => async (dispatch, getState) => {
     const {auth: {userID}, tradeitReducers: {accountNumber, token}, trade: {strategyName, cashForTrade}} = getState();
     const dataToSend = {
         headers: {
-            "Authorization": `JWT ${getState().auth.token}`,
+            "Authorization": `Bearer ${getState().auth.token}`,
         },
         params: {
             user_id: userID,

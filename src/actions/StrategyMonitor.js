@@ -20,7 +20,7 @@ export const getStrategyMonitor = (strategyName) => (dispatch, getState) => {
                     strategy_name: getState().strategyMonitor.strategyName
                 },
                 headers: {
-                  Authorization: `JWT ${getState().auth.token}`
+                  Authorization: `Bearer ${getState().auth.token}`
                 }
             }).then(response => {
                 const textContructor = "text".constructor;
@@ -46,7 +46,7 @@ export const getStrategyMonitor = (strategyName) => (dispatch, getState) => {
 export const deleteStrategy = (strategyName) => (dispatch, getState) => {
     const dataToSend = {
           headers: {
-            "Authorization": `JWT ${getState().auth.token}`,
+            "Authorization": `Bearer ${getState().auth.token}`,
           },
           data: {
             "user_id": getState().auth.userID,

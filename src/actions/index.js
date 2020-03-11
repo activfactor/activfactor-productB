@@ -13,11 +13,13 @@ import {
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
 import history from '../history';
+import clients from '../config/clients';
 
 const currentDate = new Date();
+const wealthfaceAuth = clients.wealthface;
 
 export const signIn_A = formProps => dispatch => {
-  wealthface.post("/auth", {username: "wealthface", password: "123"}).then(respond => {
+  wealthface.post("/authenticate", wealthfaceAuth).then(respond => {
     const dataReponse = {
       authenticated: true,
       user: "wealthface",

@@ -1,20 +1,25 @@
 import { DASHBOARD_GET, DASHBOARD_RESET, UPDATE_COUNTRY } from "./types";
 import wealthface from "../apis/wealthface";
 import { getJSON } from "../utils/jsonFunctions";
+import { signOut } from '.';
 
 export const getDashboard = country => async (dispatch, getState) => {
-  const response = await wealthface.get("/factor/dashboard", {
-    params: {
-      user_id: getState().auth.userID
-    },
-    headers: {
-      Authorization: `JWT ${getState().auth.token}`
-    }
-  });
-  dispatch({
-    type: DASHBOARD_GET,
-    payload: { data: getJSON(response).message, country: country }
-  });
+  try{
+    const response = await wealthface.get("/factor/dashboard", {
+      params: {
+        user_id: getState().auth.userID
+      },
+      headers: {
+        Authorization: `Bearer ${getState().auth.token}`
+      }
+    });
+    dispatch({
+      type: DASHBOARD_GET,
+      payload: { data: getJSON(response).message, country: country }
+    });
+  } catch(err){
+    dispatch(signOut());
+  }
 };
 
 export const updateCuntry = country => dispatch => {

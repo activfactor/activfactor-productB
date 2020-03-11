@@ -114,7 +114,7 @@ class WatchListAdd extends Component {
       const dataToSend = {
         headers: {
           headers: {
-            Authorization: `JWT ${this.props.token}`
+            Authorization: `Bearer ${this.props.token}`
           }
         },
         data: {

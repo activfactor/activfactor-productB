@@ -24,7 +24,7 @@ export const addToExistingWatchList = props => async (dispatch, getState) => {
           user_id: getState().auth.userID
         },
         headers: {
-          Authorization: `JWT ${getState().auth.token}`
+          Authorization: `Bearer ${getState().auth.token}`
         }
       });
       dispatch({
@@ -50,7 +50,7 @@ export const addToNewWatchList = props => async (dispatch, getState) => {
           user_id: getState().auth.userID
         },
         headers: {
-          Authorization: `JWT ${getState().auth.token}`
+          Authorization: `Bearer ${getState().auth.token}`
         }
       });
       dispatch({
@@ -74,7 +74,7 @@ export const getWatchlist = watchlistName => async (dispatch, getState) => {
           watchlist_name: watchlistName
         },
         headers: {
-          Authorization: `jwt ${getState().auth.token}`
+          Authorization: `Bearer ${getState().auth.token}`
         }
       });
       dispatch({ type: WATHLIST_GET, payload: getJSON(response).message });
@@ -98,7 +98,7 @@ export const resetWathListMessage = () => dispatch => {
 export const deleteWatchlist = (watchListName) => async (dispatch, getState) => {
     const dataToSend = {
           headers: {
-            "Authorization": `JWT ${getState().auth.token}`,
+            "Authorization": `Bearer ${getState().auth.token}`,
           },
           data: {
             "user_id": getState().auth.userID,
@@ -111,7 +111,7 @@ export const deleteWatchlist = (watchListName) => async (dispatch, getState) => 
           user_id: getState().auth.userID
         },
         headers: {
-          Authorization: `JWT ${getState().auth.token}`
+          Authorization: `Bearer ${getState().auth.token}`
         }
       });
       dispatch({
@@ -127,7 +127,7 @@ export const removeTicker = (watchListName,tickerName) => async (dispatch, getSt
     if (tickersCount > 1){
         const dataToSend = {
             headers: {
-                "Authorization": `JWT ${getState().auth.token}`,
+                "Authorization": `Bearer ${getState().auth.token}`,
             },
             data: {
                 "user_id": getState().auth.userID,
@@ -144,7 +144,7 @@ export const removeTicker = (watchListName,tickerName) => async (dispatch, getSt
                 watchlist_name: watchListName
                 },
                 headers: {
-                Authorization: `jwt ${getState().auth.token}`
+                Authorization: `Bearer ${getState().auth.token}`
                 }
             });
             dispatch({ type: WATHLIST_GET, payload: getJSON(response).message });
@@ -154,7 +154,7 @@ export const removeTicker = (watchListName,tickerName) => async (dispatch, getSt
     } else if (tickersCount === 1){
         const dataToSend = {
             headers: {
-              "Authorization": `JWT ${getState().auth.token}`,
+              "Authorization": `Bearer ${getState().auth.token}`,
             },
             data: {
               "user_id": getState().auth.userID,
@@ -167,7 +167,7 @@ export const removeTicker = (watchListName,tickerName) => async (dispatch, getSt
               user_id: getState().auth.userID
             },
             headers: {
-              Authorization: `JWT ${getState().auth.token}`
+              Authorization: `Bearer ${getState().auth.token}`
             }
           });
           dispatch({

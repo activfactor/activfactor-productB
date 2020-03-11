@@ -32,7 +32,7 @@ import {
         const response = await wealthface.get("/factor/screener", {
           params: {...getState().queryReducer, "user_id":getState().auth.userID},
           headers: {
-            Authorization: `JWT ${getState().auth.token}`
+            Authorization: `Bearer ${getState().auth.token}`
           }
         });
         dispatch({ type: FACTOR_SCREENER, payload: getJSON(response).message });

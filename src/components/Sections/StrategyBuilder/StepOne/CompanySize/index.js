@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
 import Button from './Button';
 import { connect } from 'react-redux';
 
@@ -29,39 +28,44 @@ class CompanySize extends Component {
 
     onClickHandler = (value) => {
        if (value==='large'){
-         this.setState({largeClasses:`${this.state.largeClasses === '' ? classes.active : ''}`})
+         this.setState({largeClasses:`${this.state.largeClasses === '' ? 'active' : ''}`})
+         this.props.companySizeChange(value, this.state.largeClasses === '' ? true : false);
        } else if(value==='medium') {
-        this.setState({mediumClasses:`${this.state.mediumClasses ==='' ? classes.active : ''}`})
+        this.setState({mediumClasses:`${this.state.mediumClasses ==='' ? 'active' : ''}`})
+        this.props.companySizeChange(value, this.state.mediumClasses === '' ? true : false);
        } else if(value==='small') {
-        this.setState({smallClasses:`${this.state.smallClasses === '' ? classes.active : ''}`})
+        this.setState({smallClasses:`${this.state.smallClasses === '' ? 'active' : ''}`})
+        this.props.companySizeChange(value, this.state.smallClasses === '' ? true : false);
        }
-       this.props.companySizeChange(value);
+       
     }
 
   render() {
     return (
-      <div className={classes.companySize}>
-        <div className={classes.companySizeHeading}>Company Size</div>
-        <div className={classes.btns}>
+      <div className="company-size-container">
+        <div className="section-title_h3">Company Size</div>
+
+        <div className="company-size_btn-grid">
           <Button
             value="large"
             valueDisplay="Large"
-            span="Market capitalization greater than 1 billion"
+            span={this.props.buttonDefinition('large')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.largeClasses} />
           <Button
             value="medium"
             valueDisplay="Medium"
-            span="Market capitalization between 2 billion and 10 billion"
+            span={this.props.buttonDefinition('medium')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.mediumClasses} />
           <Button
             value="small"
             valueDisplay="Small"
-            span="Market capitalization between 300 million and 2 billion"
+            span={this.props.buttonDefinition('small')}
             onClick={this.onClickHandler}
             nameOfClass={this.state.smallClasses} />
         </div>
+
       </div>
     );
   }
@@ -69,7 +73,7 @@ class CompanySize extends Component {
 
 const mapStateToProps = state => {
   return {
-    firm_size: state.queryReducer.firm_size
+    firm_size: state.queryReducer.firm_size,
   }
 }
 

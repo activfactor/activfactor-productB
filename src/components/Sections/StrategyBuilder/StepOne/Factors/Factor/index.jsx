@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import classes from './index.module.scss';
+import Tooltip from '../../../../../UI/Tooltip';
 
 class Factor extends Component{
   state ={checked: this.props.checked ? this.props.checked : false}
@@ -14,25 +14,24 @@ class Factor extends Component{
 
     render(){
       return (
-        <div className={classes.control}>
+        <div className="checkbox--item">
+
           <label>
             <input
               type="checkbox"
               value={this.props.value}
-              className={classes.csscheckbox}
               onChange={this.props.onChange}
               checked={this.state.checked}
               onClick={this.onCheckHandler}
             />
             <i />
+            <span className="_text-label">{this.props.value} </span>
           </label>
-          <span>{this.props.value} </span>
-          <span className={classes.questionMark}>
-            <i
-              className={classes.faquestioncircle + " fas fa-question-circle"}
-            />
-          </span>
-          <span className={classes.questionInfo} />
+
+          <Tooltip text={this.props.tooltip} />
+
+          {/*<span className="_ruestion-info" />*/}
+
         </div>
     );
     }

@@ -1,4 +1,4 @@
-import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR, FACTOR_SCREENER_RESET, FACTOR_SCREENER_SAVE, FACTOR_SCREENER_SAVE_ERROR } from '../actions/types';
+import { FACTOR_SCREENER, FACTOR_SCREENER_ERROR, FACTOR_SCREENER_RESET, FACTOR_SCREENER_SAVE, FACTOR_SCREENER_SAVE_ERROR, FACTOR_SCREENER_ERROR_RESET } from '../actions/types';
 const INITIAL_STATE={
     message:""
 }
@@ -10,9 +10,13 @@ export default (state=INITIAL_STATE , action)=>{
             return { 
                 ...state, 
                 benchmark:action.payload.benchmark,
+                last_rebalancing:action.payload.last_rebalancing,
+                next_rebalancing:action.payload.next_rebalancing,
                 last_update:action.payload.last_update,
                 next_update:action.payload.next_update,
                 parameters:action.payload.parameters,
+                factor_intensity: action.payload.factor_intensity,
+                firm_size_allocation:action.payload.firm_size_allocation,
                 culmulative_return_benchmark:action.payload.performance_benchmark.cumulative_return.monthly,
                 culmulative_return_strategy:action.payload.performance_strategy.cumulative_return.monthly,
                 sector_allocation:action.payload.sector_allocation,
@@ -26,7 +30,8 @@ export default (state=INITIAL_STATE , action)=>{
                 metrics_benchmark:action.payload.performance_benchmark.metrics,
                 risk_strategy:action.payload.performance_strategy.risk,
                 risk_benchmark:action.payload.performance_benchmark.risk,
-                strategy_actual_members:action.payload.strategy_actual_members
+                strategy_actual_members:action.payload.strategy_actual_members,
+                metric_definition: action.payload.metric_definition
             }
         case FACTOR_SCREENER_ERROR:
             return {
@@ -43,6 +48,11 @@ export default (state=INITIAL_STATE , action)=>{
             return{
                 ...state,
                 error_saving_message: action.payload
+            }
+        case FACTOR_SCREENER_ERROR_RESET:
+            return {
+                ...state,
+                error_saving_message: undefined
             }
         default:
             return state;

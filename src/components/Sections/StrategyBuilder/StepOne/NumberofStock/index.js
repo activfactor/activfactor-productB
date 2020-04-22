@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import classes from "./index.module.scss";
 import { connect } from 'react-redux';
 
 class NumberofStock extends Component {
   render() {
     return (
-      <div className={classes.stockNumberContainer}>
-        <div className={classes.stockNumberHeading}># Number of Stock</div>
-        <div className={classes.rangeSlider}>
+      <div className="nos-step-one-container">
+        <div className="section-title_h3">Number of Stock</div>
+        <div className="NumberOfStock-rangeSlider">
             <input
             type="range"
             name="stock" 
@@ -16,8 +15,8 @@ class NumberofStock extends Component {
             max="50"
             step="1"
             onChange={this.props.stockChange}
-            className={classes.input}/>
-            <div className={classes.rangelabel}>{this.props.value}</div>
+            className="_input"/>
+            <div className="_label">{this.props.value}</div>
         </div>
       </div>
     );

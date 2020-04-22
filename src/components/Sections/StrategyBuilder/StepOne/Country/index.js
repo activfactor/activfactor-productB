@@ -1,17 +1,20 @@
 
 import React, { Component } from "react";
-import classes from './index.module.scss';
 import { connect } from 'react-redux';
+import DropDown from '../../../../UI/DropDown';
 
 class Country extends Component {
+
     render() {
         return (
-            <div className={classes.Country}>
-                <div className={classes.CountryHeading}>Country</div>
-                <select value={`${this.props.value}`} onChange={this.props.countryChange} className={classes.countryControl}>
-                    <option value='can'>Canada</option>
-                    <option value='usa'>United States of America</option>
-                </select>
+            <div className="country-step-one-container">
+
+                <div className="section-title_h3">Country</div>
+
+                <DropDown value={`${this.props.value}`} color="black" DropDownChangeHandler={this.props.countryChange}>
+                    <option value='CAN'>CAN</option>
+                    <option value='USA'>USA</option>
+                </DropDown>
              </div>
         );
     }

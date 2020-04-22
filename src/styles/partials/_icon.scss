@@ -1,0 +1,22 @@
+
+
+.tooltip--icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: $lightBlueColor;
+
+  &:hover {
+
+  }
+
+  ._icon-question {
+    color: $mainBlueColor;
+    font-size: 10px;
+  }
+}

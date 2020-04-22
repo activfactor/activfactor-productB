@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { updateLocation } from '../../actions';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
@@ -14,6 +15,7 @@ export default ChildComponent => {
     shouldNavigateAway() {
       if (!this.props.authenticated) {
         this.props.history.push("/login");
+        this.props.updateLocation("/login"); // for active navigation
       }
     }
 
@@ -26,5 +28,5 @@ export default ChildComponent => {
     return { authenticated: state.auth.authenticated };
   }
 
-  return connect(mapStateToProps)(ComposedComponent);
+  return connect(mapStateToProps, {updateLocation})(ComposedComponent);
 };

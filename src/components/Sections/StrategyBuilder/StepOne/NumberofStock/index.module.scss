@@ -1,76 +1,75 @@
-@import "../../../../../styles/params/variables";
-
-.rangeSlider {
-  display: flex;
-  flex-basis: 100%;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  .rangelabel{
-    clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
-    width:35px;
-    height: 25px;
-    background-color: $searchColor;
-    text-align: center;
-    font-size: 0.7rem;
-    transform: translateY(-11px);
-    margin-left: 0.6rem;
-    color:$textColor;
-    display: flex;
-    justify-content: center;
-    
-    align-items: center;
-  }
-}
-
-.stockNumberContainer {
-  border: none;
-  margin: 20px 0;
-  padding-top: 10px;
-  flex-basis: 100%;
-}
-
-
-.stockNumberHeading {
-  font-weight: 400;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #d7d7d7;
-  color: #192a3e;
-  margin-left: 0.5rem;
-  max-width: 10rem;
-  margin-bottom: 20px;
-}
-.stockNumbercontrols {
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.6rem;
-  color: #989898;
-  font-size: 0.8em;
-}
-
-.input{
-  flex-basis: 90%;
-  position: relative;
-  -webkit-appearance: none;
-  width: 100%;
-  height: 2px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: $whiteColor;
-    box-shadow: 1px 1px 5px #c2c1c1;
-    cursor: pointer;
-  }
-}
-
-
+//@import "../../../../../styles/params/variables";
+//
+//.rangeSlider {
+//  display: flex;
+//  align-items: center;
+//  position: relative;
+//
+//  .rangelabel{
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    width:35px;
+//    height: 25px;
+//    font-size: 0.8rem;
+//    color: $textColor;
+//    margin-left: 0.6rem;
+//    background-color: $border-color-dark;
+//    clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
+//  }
+//}
+//.input{
+//  flex: 1;
+//  appearance: none;
+//  height: 2px;
+//  background: $border-color-dark;
+//  outline: none;
+//  opacity: 0.7;
+//  transition: opacity .2s;
+//
+//  &::-webkit-slider-thumb {
+//    appearance: none;
+//    width: 25px;
+//    height: 25px;
+//    border-radius: 50%;
+//    background: $whiteColor;
+//    box-shadow: 1px 1px 5px #c2c1c1;
+//    cursor: pointer;
+//  }
+//}
+//
+//.stockNumberContainer {
+//  border: none;
+//  margin: 20px 0;
+//  padding-top: 10px;
+//  flex-basis: 90%;
+//
+//@include respond(ipad) {
+//  flex-basis: 50%;
+//  align-self: flex-start;
+//}
+//@include respond(tab-port) {
+//  flex-basis: 90%;
+//  align-self: flex-start;
+//}
+//}
+//
+//
+//.stockNumberHeading {
+//  font-weight: 400;
+//  font-size: 0.9rem;
+//  border-bottom: 1px solid #d7d7d7;
+//  color: #192a3e;
+//  margin-left: 0.5rem;
+//  max-width: 10rem;
+//  margin-bottom: 20px;
+//}
+//.stockNumbercontrols {
+//  border: none;
+//  display: flex;
+//  justify-content: space-between;
+//  margin-top: 0.6rem;
+//  color: #989898;
+//  font-size: 0.8em;
+//}
+//

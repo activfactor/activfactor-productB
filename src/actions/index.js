@@ -1,67 +1,112 @@
 import { 
-  SIGN_IN, 
+  SIGN_IN_A,
+  SIGN_IN_ERROR, 
   AUTH_ERR, 
   TOGGLE_STATUS,
-  FACTOR_SCREENER, 
-  FACTOR_SCREENER_ERROR,
   SIGN_OUT,
-  COUNTRY_UPDATE,
-  SECTOR_UPDATE,
-  FACTORS_UPDATE,
-  STOCK_UPDATE,
-  FIRM_UPDATE,
-  RESET_QUERY,
-  FACTOR_SCREENER_RESET,
-  FACTOR_SCREENER_SAVE,
-  FACTOR_SCREENER_SAVE_ERROR
+  AUTH_RESET,
+  LOCATION_PATH,
+  LOCATION_SHOULD_NAVIGATE_TO,
+  LOCATION_SHOULD_NAVIGATE_TO_RESET,
+  LOADING_STATE,
 } from "./types";
 import wealthface from "../apis/wealthface";
 import wealthalpha from "../apis/wealthfacea";
 import history from '../history';
+import clients from '../config/clients';
 
 const currentDate = new Date();
+const wealthfaceAuth = clients.wealthface;
 
-export const signIn_A = formProps => async () => {
-  try {
-    const response = await wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}});
-    console.log(formProps);
-    console.log(response);
-  } catch(error){
-    console.log(error);
-  }
+export const signIn_A = formProps => dispatch => {
+  wealthface.post("/authenticate", wealthfaceAuth).then(respond => {
+    const dataReponse = {
+      authenticated: true,
+      user: "wealthface",
+      regtime: currentDate,
+      userID: 36,
+      token: respond.data.access_token
+    }; 
+    dispatch({type: SIGN_IN_A, payload: dataReponse});
+    sessionStorage.setItem("user", "wealthface");
+    sessionStorage.setItem("authenticated", dataReponse.authenticated);
+    sessionStorage.setItem("regtime", dataReponse.regtime);
+    sessionStorage.setItem("userID", 36);
+    sessionStorage.setItem("token", dataReponse.token);
+    dispatch({type: LOCATION_PATH, payload: '/dashboard'}); // this is for the active navigation button
+    history.push("/dashboard");
+  }).catch(err => {
+    let errorMessage = ''
+    if (err.response === 'undefined'){
+      errorMessage='system error, kindly contact the system administrator';
+    } else {
+      errorMessage = err.response
+    }
+    dispatch({type: AUTH_ERR, payload: errorMessage});
+  })
 }
 
-export const signIn = formProps => async dispatch => {
-  try {
-    const response = await wealthface.post("/auth", formProps);
-    const dataReponse = {
-      authenticated: response.data.access_token ? true : false,
-      username: formProps.username,
-      regtime: currentDate,
-      token: response.data.access_token,
-    };
-    dispatch({ type: SIGN_IN, payload: dataReponse });
-    localStorage.setItem("username", dataReponse.username);
-    localStorage.setItem("authenticated", dataReponse.authenticated);
-    localStorage.setItem("regtime", currentDate);
-    localStorage.setItem("t", response.data.access_token);
-    history.push("/dashboard");
-  } catch (error) {
-    dispatch({ type: AUTH_ERR, payload: error.response.data.description });
-  }
-};
+// export const signIn_A = formProps => dispatch => {
+//   wealthalpha.post("/login", formProps, {headers: {"Content-Type": "application/json"}})
+//   .then(res => {
+//     if (res.data.success){
+//       wealthface.post("/auth", {username: "wealthface", password: "123"}).then(respond => {
+//         const dataReponse = {
+//           authenticated: res.data.success,
+//           user: res.data.data.user,
+//           regtime: currentDate,
+//           userID: res.data.data.id,
+//           token: respond.data.access_token
+//         }; 
+//         dispatch({type: SIGN_IN_A, payload: dataReponse});
+//         // sessionStorage.setItem("user", dataReponse.user);
+//         sessionStorage.setItem("authenticated", dataReponse.authenticated);
+//         sessionStorage.setItem("regtime", dataReponse.regtime);
+//         sessionStorage.setItem("userID", dataReponse.userID);
+//         sessionStorage.setItem("token", dataReponse.token);
+//         dispatch({type: LOCATION_PATH, payload: '/dashboard'}); // this is for the active navigation button
+//         history.push("/dashboard");
+//       }).catch(err => {
+//         let errorMessage = ''
+//         if (err.response === 'undefined'){
+//           errorMessage='system error, kindly contact the system administrator';
+//         } else {
+//           errorMessage = err.response
+//         }
+//         dispatch({type: AUTH_ERR, payload: errorMessage});
+//       })
+//     }
+//     else {
+//       const dataReponse = {
+//         errorMessage: res.data.message
+//       };
+//       dispatch({type: SIGN_IN_ERROR, payload: dataReponse});
+//     }
+//   }).catch(error => {
+//     let errorMessage = ''
+//     if (error.response === undefined){
+//       errorMessage='system error, kindly contact the system administrator'
+//     } else {
+//       errorMessage = error.response
+//     }
+//     dispatch({type: AUTH_ERR, payload: errorMessage});
+//   })
+// }
+
+export const resetSignInError = () => dispatch => {
+  dispatch({type: AUTH_RESET})
+}
 
 export const signOut = () => {
-  localStorage.removeItem("username");
-  localStorage.removeItem("authenticated");
-  localStorage.removeItem("regtime");
-  localStorage.removeItem("t");
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("authenticated");
+  sessionStorage.removeItem("regtime");
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("userID");
   return {
     type: SIGN_OUT
   }
 }
-
-
 
 export const toggleClicked = () => (dispatch, getState) => {
   dispatch({
@@ -70,66 +115,18 @@ export const toggleClicked = () => (dispatch, getState) => {
   });
 };
 
-
-
-export const getFactorScreener = () => async (dispatch, getState) => {
-  try {
-    if (!getState().factorScreener.parameters) {
-      const response = await wealthface.get("/factor/screener", {
-        params: getState().queryReducer,
-        headers: {
-          Authorization: `JWT ${getState().auth.token}`
-        }
-      });
-      const responseData = JSON.parse(response.data.replace(/\bNaN\b/g, null));
-      dispatch({ type: FACTOR_SCREENER, payload: responseData.message });
-    }
-  } catch (error) {
-    dispatch({
-      type: FACTOR_SCREENER_ERROR,
-      payload: error.response
-    });
-  }
-};
-
-export const queryUpdate = props => dispatch => {
-  if ("country" in props){
-    dispatch({type: COUNTRY_UPDATE, payload: props})
-  } 
-  if ("sectors" in props){
-    dispatch({type: SECTOR_UPDATE, payload: props})
-  }
-   if ("factors" in props){
-    dispatch({type: FACTORS_UPDATE, payload: props})
-  } if ("n_stock" in props){
-    dispatch({type: STOCK_UPDATE, payload: props})
-  } if ("firm_size" in props){
-    dispatch({type: FIRM_UPDATE, payload: props})
-  }
+export const updateLocation = (location) => (dispatch) => {
+  dispatch({type: LOCATION_PATH, payload: location});
 }
 
-export const resetQuery = () => dispatch => {
-  dispatch({type: RESET_QUERY})
+export const updateShouldNavigateTo = (location) => (dispatch) => {
+  dispatch({type: LOCATION_SHOULD_NAVIGATE_TO, payload: location});
 }
 
-export const resetFactorScreener = () => dispatch => {
-  dispatch({type: FACTOR_SCREENER_RESET})
+export const resetShouldNavigateTo = () => (dispatch) => {
+  dispatch({type: LOCATION_SHOULD_NAVIGATE_TO_RESET});
 }
 
-export const saveStrategy = props => (dispatch) => {
-    console.log("Strategy Posted");
-    if (props) {
-        wealthface.post("/factor/strategy", props.data, props.headers)
-        .then(res => 
-        {
-          console.log(res);
-          dispatch({ type: FACTOR_SCREENER_SAVE, payload: `${props.data.strategy_name} saved successfully` })
-        }
-      ).catch(err => 
-        {
-          console.log(err);
-          dispatch({type: FACTOR_SCREENER_SAVE_ERROR, payload: "Unauthorized Action"})
-        }
-      )
-    }
-  }
+export const updateLoadingState = (loadingState) => dispatch => {
+  dispatch({type: LOADING_STATE, loadingState});
+}

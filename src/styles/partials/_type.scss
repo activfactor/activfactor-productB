@@ -1,0 +1,87 @@
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  //margin-bottom: 1rem;
+}
+
+.section__title {
+  font-family: $font-medium;
+  font-size: 18px;
+  color: $text-color-dark-blue;
+  margin-top: 35px;
+  margin-bottom: 16px;
+
+  @media (max-width: 767.98px) {
+    font-size: 16px;
+  }
+}
+a.section__title {
+  color: $mainBlueColor;
+}
+
+.section-title {
+
+  &_h2 {
+    font-family: $font-medium;
+    color: $text-color-dark-blue;
+    margin: 25px 0 15px 0;
+    font-size: 18px;
+  }
+
+  &_h3 {
+    font-family: $font-medium;
+    border-bottom: 1px solid $border-color-primary;
+    color: $text-color-dark-blue;
+    margin: 25px 0 15px 0;
+    padding: 0 0 15px 0;
+    font-size: 16px;
+
+    @media (max-width: 767.98px) {
+      margin: 0 0 10px 0;
+      padding: 0 0 5px 0;
+    }
+  }
+}
+
+.title {
+
+  &__h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: $text-color-dark;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+/**
+ * =Utility Classes
+ */
+.text-primary {
+  color: $mainBlueColor !important;
+}
+.text-danger {
+  color: $redColor !important;
+}
+.text-success {
+  color: $secondBlueColor !important;
+}
+.text-dark {
+  color: $text-color-dark-blue !important;
+}
+.text-muted {
+  color: $text-color-dark-primary !important;
+}
+
+
+.text-medium {
+  font-family: $font-medium;
+  color: $text-color-dark-primary;
+  margin-bottom: 0.5rem;
+}
+
+.text-start {
+  text-align: start !important;
+}

@@ -1,10 +1,9 @@
 import React,{ Component } from 'react';
-import classes from './index.module.scss';
 import AnalyzeResults from './StepTwo/AnalyzeResults';
 import BuildStrategy from './StepOne';
 import CustomizedPortfolio from './StepThree';
 import { connect } from 'react-redux';
-import { queryUpdate, resetQuery, resetFactorScreener } from '../../../actions/index';
+import { queryUpdate, resetQuery, resetFactorScreener, resetFactorScreenerError } from '../../../actions/strategyBuilder';
 import requireAuth from '../../hoc/requireAuth';
 
 class StrategyBuilder extends Component{
@@ -42,6 +41,7 @@ class StrategyBuilder extends Component{
             this.props.resetFactorScreener();
             this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
         } else if (this.props.error_saving_message){
+            this.props.resetFactorScreenerError();
             this.setState({BuildStrategy:false,AnalyzeResults:null,CustomizedPortfolio:null});
         }
         
@@ -60,26 +60,53 @@ class StrategyBuilder extends Component{
     }
 
     onSubmitHandler = (values) => {
+        const oldQuery = {
+            "country": this.props.query.country,
+            "sectors": this.props.query.sectors + ",",
+            "factors": this.props.query.factors + ",",
+            "n_stock": this.props.query.n_stock,
+            "firm_size": this.props.query.firm_size + ",",
+            "rebalancing": this.props.query.rebalancing,
+            "shariah": this.props.query.shariah
+        }
+        if (JSON.stringify(oldQuery) !== JSON.stringify(values)){
+            this.props.resetFactorScreener();
+        }
         this.props.queryUpdate(values);
         this.setState({BuildStrategy:true,AnalyzeResults:false,query:values});
     }
 
+    renderHeaders = () => {
+        if (this.state.BuildStrategy){
+            const {last_update, next_update, last_rebalancing, next_rebalancing} = this.props.data;
+            return (
+                <div className="main_breadcrumb--container">
+                    <div className="main_breadcrumb">
+                        {last_update ? <div>{`Last Update ${last_update}`}</div> : ''}
+                        {next_update ? <div>{`Next Update ${next_update}`}</div> : ''}
+                    </div>
+                    <div className="main_breadcrumb">
+                        {last_rebalancing ? <div>{`Last Rebalancing ${last_rebalancing}`}</div> : ''}
+                        {next_rebalancing ? <div>{`Next Rebalancing ${next_rebalancing}`}</div> : ''}
+                    </div>
+                </div>
+            )
+        }
+    }
+
     render(){
         return(
-            <section>
-                <div className={classes.headers}>
-                    <p>{`Last Update ${this.props.data.last_update}`}</p>
-                    <p>{`Next Update ${this.props.data.next_update}`}</p>
-                </div>
-                <div className={classes.container}>
-                    <ul>
-                      <li className={`${this.state.BuildStrategy===false ? classes.active : this.state.BuildStrategy===true ? classes.done : ''}`}>Build your strategy</li>
-                      <li className={`${this.state.AnalyzeResults===false ? classes.active : this.state.AnalyzeResults===true ? classes.done : ''}`}>Analyze results</li>
-                      <li className={`${this.state.CustomizedPortfolio===false ? classes.active : this.state.CustomizedPortfolio===true ? classes.done : ''}`}>Customized portfolio</li>
-                    </ul>
+            <div className="strategy-builder">
+                {this.renderHeaders()}
+                <div className="strategy-builder_container">
+                    <div className="strategy-builder_header">
+                      <div className={`_header-item ${this.state.BuildStrategy===false ? '_header-active' : this.state.BuildStrategy===true ? '_header-done' : ''}`}>Build your strategy</div>
+                      <div className={`_header-item ${this.state.AnalyzeResults===false ? '_header-active' : this.state.AnalyzeResults===true ? '_header-done' : ''}`}>Analyze results</div>
+                      <div className={`_header-item ${this.state.CustomizedPortfolio===false ? '_header-active' : this.state.CustomizedPortfolio===true ? '_header-done' : ''}`}>Customized portfolio</div>
+                    </div>
                     {this.renderWizard()}
                 </div>
-            </section>
+            </div>
         );
     }
 }
@@ -88,8 +115,9 @@ const mapStateToProps = state => {
     return {
         data: state.factorScreener,
         saving_message: state.factorScreener.saving_message,
-        error_saving_message: state.factorScreener.error_saving_message
+        error_saving_message: state.factorScreener.error_saving_message,
+        query: state.queryReducer
     };
 }
 
-export default connect(mapStateToProps,{queryUpdate,resetQuery,resetFactorScreener})((requireAuth(StrategyBuilder)));
+export default connect(mapStateToProps,{queryUpdate,resetQuery,resetFactorScreener,resetFactorScreenerError})((requireAuth(StrategyBuilder)));

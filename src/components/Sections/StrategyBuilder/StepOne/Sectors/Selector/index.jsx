@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./index.module.scss";
 import { connect } from 'react-redux'
-import { queryUpdate } from '../../../../../../actions/index';
+import { queryUpdate } from '../../../../../../actions/strategyBuilder';
 
 class Selector extends Component {
   state={checked: this.props.checked}
@@ -9,7 +9,6 @@ class Selector extends Component {
   onChangeHandler = (value,checked) => {
     this.setState(prevState => ({
       checked:!prevState.checked,
-      sector:value
     }))
     this.props.onClick(value,checked);
   }
@@ -20,7 +19,7 @@ class Selector extends Component {
 
   render() {
     return (
-      <div className={classes.checkboxitem} onClick={() => this.onChangeHandler(this.props.id, !this.state.checked)}>
+      <div className="checkbox--item" onClick={() => this.onChangeHandler(this.props.id, !this.state.checked)}>
         <label htmlFor={this.props.id}>
           <input value={this.props.id} type="checkbox" className={classes.csscheckbox} checked={this.state.checked} onChange={this.props.onClick}/>
           <i />

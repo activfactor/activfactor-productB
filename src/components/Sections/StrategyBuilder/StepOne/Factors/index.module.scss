@@ -1,34 +1,36 @@
-@import "../../../../../styles/params/variables";
-.factors {
-  align-items: center;
-}
-
-.factorsHeading {
-  font-weight: 400;
-  border-bottom: 1px solid #d7d7d7;
-  color: #192a3e;
-  margin-left: 0.5rem;
-  max-width: 8rem;
-}
-
-.factorscontrols {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: 0.5rem;
-}
-.checkbox {
-  margin-right: 0.5rem;
-}
-// css checkbox mixin
-
-//Large Screens
-@media only screen and ($mediaSmallMinWidth){
-  .factorscontrols {
-   
-    justify-content: flex-start;
-
- 
-  }
-
-}
+//@import "../../../../../styles/params/variables";
+//
+//.factors {
+//  align-items: center;
+//}
+//
+//.factorsHeading {
+//  @include allControllerHeading();
+//}
+//
+//.factorscontrols {
+//  //display: flex;
+//  //justify-content: flex-start;
+//  //flex-wrap: wrap;
+//  //flex-direction: column;
+//  //margin: 0.5rem;
+//  display: block;
+//  @include respond(phone) {
+//
+//}
+//}
+//.checkbox {
+//  margin-right: 0.5rem;
+//}
+//// css checkbox mixin
+//
+////Large Screens
+//@media only screen and ($mediaSmallMinWidth){
+//  .factorscontrols {
+//
+//    //justify-content: flex-start;
+//
+//
+//  }
+//
+//}

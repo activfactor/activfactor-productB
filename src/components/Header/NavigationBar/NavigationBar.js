@@ -1,13 +1,12 @@
 import React,{ Component } from 'react';
-import NavigationItem from '../../UI/NavigationItem';
+import NavigationItem from '../../Shared/NavigationItem';
 import SearchBox from '../../UI/SearchBox/SearchBox';
 import { connect } from 'react-redux';
-import classes from './NavigationBar.module.scss';
-import { toggleClicked, signOut } from '../../../actions/index';
+import { toggleClicked, signOut, updateLocation } from '../../../actions/index';
 
 class NavigationBar extends Component{
-
-    onClickHandler = () => {
+    onClickHandler = (path) => {
+        this.props.updateLocation(path);
         this.props.toggleClicked();
     }
 
@@ -16,35 +15,95 @@ class NavigationBar extends Component{
         this.props.signOut();
     }
 
+    renderTradeNavLink = () => {
+      const {strategyName, cashForTrade}= this.props.trade;
+      if (strategyName && cashForTrade){
+        return (
+          <NavigationItem
+            onClick={this.onClickHandler}
+            to="/trade"
+            nameOfClass="_navbar-item"
+          >
+            Trade
+          </NavigationItem>
+        )
+      }
+    }
+
     renderAuthButtons = () => {
+      
         if (this.props.authenticated){
             return (
-                <NavigationItem onClick={this.onSignOutHandler} to="#" nameOfClass={`${classes.link} ${classes.auth}`}>Logout</NavigationItem>
+                <div className={`navbar_container ${!this.props.clicked && this.props.initialStatus ? 'hide' : this.props.clicked && this.props.initialStatus ? 'show' : ""}`}>
+                <nav className="navbar_wrapper">
+                <NavigationItem
+                  onClick={this.onSignOutHandler}
+                  to="#"
+                  nameOfClass={`_navbar-item _navbar-auth-btn`}
+                >
+                  Logout
+                </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/dashboard")}
+                  to="/dashboard"
+                  nameOfClass="_navbar-item"
+                >
+                  Dashboard
+                </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/strategy/builder")}
+                  to="/builder"
+                  nameOfClass="_navbar-item"
+                >
+                  Strategy Builder
+                </NavigationItem>
+                  <NavigationItem
+                    onClick={() => this.onClickHandler("/strategy/monitor")}
+                    to="/strategy/monitor"
+                    nameOfClass="_navbar-item"
+                  >
+                    Strategy Monitor
+                  </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/watchlist/monitor")}
+                  to="/watchlist/monitor"
+                  nameOfClass="_navbar-item"
+                >
+                  Watchlist Monitor
+                </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/portfolio/monitor")}
+                  to="/portfolio/monitor"
+                  nameOfClass="_navbar-item"
+                >
+                  Portfolio Monitor
+                </NavigationItem>
+                <NavigationItem
+                  onClick={() => this.onClickHandler("/transactions")}
+                  to="/transactions"
+                  nameOfClass="_navbar-item"
+                >
+                  Transaction
+                </NavigationItem>
+                {this.renderTradeNavLink()}
+
+                </nav>
+                <SearchBox />
+            </div>
             );
         }
         return (
-            <React.Fragment>
-                <NavigationItem onClick={this.onClickHandler} to="/login" nameOfClass={`${classes.link} ${classes.auth}`}>Login</NavigationItem>
-                <NavigationItem onClick={this.onClickHandler} to="/signup" nameOfClass={`${classes.link} ${classes.auth}`}>Sign up</NavigationItem>
-            </React.Fragment>
+            <div style={{padding: 0}} className={`navbar_container ${!this.props.clicked && this.props.initialStatus ? 'hide' : this.props.clicked && this.props.initialStatus ? 'show' : ""}`}>
+                <nav className="navbar_wrapper">
+                    <NavigationItem onClick={() => this.onClickHandler("/login")} to="/login" nameOfClass={`_navbar-item _navbar-auth-btn ${(this.props.location ==='/login') ? 'active' : ''}`}>Login</NavigationItem>
+                    <NavigationItem onClick={() => this.onClickHandler("/signup")} to="/signup" nameOfClass={`_navbar-item _navbar-auth-btn ${(this.props.location ==='/signup') ? 'active' : ''}`}>Sign up</NavigationItem>
+                </nav>
+            </div>
         );
     }
 
     renderNavigation(){
-        return (
-            <div className={`${classes.container} ${!this.props.clicked && this.props.initialStatus ? classes.remove : this.props.clicked && this.props.initialStatus ? classes.show : ""}`}>
-                <nav className={classes.navitems}>
-                    {this.renderAuthButtons()}
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Dashboard</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/strategy-builder" nameOfClass={classes.link}>Strategy Builder</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/strategy-builder-step-two" nameOfClass={classes.link}>Watch List</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Portofolio Performance</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Transactions</NavigationItem>
-                    <NavigationItem onClick={this.onClickHandler} to="/dashboard" nameOfClass={classes.link}>Strategy Monitor</NavigationItem>
-                </nav>
-                <SearchBox />
-            </div>
-        );
+        return <React.Fragment>{this.renderAuthButtons()}</React.Fragment>;
     }
 
     render(){
@@ -56,8 +115,10 @@ const mapStateToProps = (state) => {
     return {
         clicked : state.toggle.clicked,
         initialStatus: state.toggle.initial,
-        authenticated: state.auth.authenticated
+        authenticated: state.auth.authenticated,
+        location: state.toggle.location,
+        trade: state.trade
     }
 }
 
-export default connect(mapStateToProps, {toggleClicked,signOut})(NavigationBar);
+export default connect(mapStateToProps, {toggleClicked,signOut, updateLocation})(NavigationBar);

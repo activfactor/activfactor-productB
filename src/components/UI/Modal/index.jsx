@@ -1,16 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import classes from './index.module.scss';
+// import classes from './index.module.scss';
 
-const Modal = props => {
-  return ReactDOM.createPortal(
-    <div onClick={props.onDismiss} className={classes.container}>
-        <div onClick={(e) => e.stopPropagation()} className={classes.subcontainer}>
-            {props.children}
-        </div>
-    </div>,
-    document.querySelector("#modal")
-  );
+class Message extends React.Component {
+  componentDidMount(){
+    document.body.classList.add('modal__active');
+  }
+
+  componentWillUnmount(){
+    document.body.classList.remove('modal__active');
+  }
+
+  render(){
+    return ReactDOM.createPortal(
+      <div onClick={this.props.onDismiss} className="message__container">
+          <div onClick={(e) => e.stopPropagation()} className="message__wrapper">
+              {this.props.children}
+          </div>
+      </div>,
+      document.querySelector("#message")
+    );
+  }
 };
 
-export default Modal;
+export default Message;

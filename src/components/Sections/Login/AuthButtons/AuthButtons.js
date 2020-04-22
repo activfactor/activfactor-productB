@@ -1,29 +1,33 @@
 import React, { Component } from "react"; 
-import Button from '../../../UI/Button';
-import classes from './AuthButtons.module.scss';
 import { connect } from 'react-redux';
-import { signOut } from '../../../../actions/index';
-import { Link } from 'react-router-dom';
+import { signOut, updateLocation } from '../../../../actions/index';
+import { resetTickerList } from '../../../../actions/ticker'
+import Link from '../../../UI/Link';
 
 class AuthButtons extends Component {
+  onSignOut = () => {
+    this.props.updateLocation('/login');
+    this.props.resetTickerList();
+    this.props.signOut();
+  }
+
   renderAuthButtons = () => {
     if (!this.props.authenticated){
       return (
-        <div className={classes.container}>
-          <Button to="/login" nameOfClass={classes.button}>Login</Button>
-          <span className={classes.button}>|</span>
-          <Button to="/signup" nameOfClass={classes.button}>Sign up</Button>
+        <div className="_btn-auth-container">
+          <Link nameOfClass="btn btn-link" to="/login" onClick={() => this.props.updateLocation('/login')}>Login</Link>
+          <span className="_separator">|</span>
+          <Link nameOfClass="btn btn-link" to="/signup" onClick={() => this.props.updateLocation('/signup')}>Sign up</Link>
         </div>
       );
     } else {
       return (
-        <div className={classes.container}>
-          <Link className={classes.button} to="#" onClick={this.props.signOut}>Logout</Link>
+        <div className="_btn-auth-container">
+          <Link nameOfClass="btn-link" to="#" onClick={this.onSignOut}>Logout</Link>
         </div>
       );
     }
   }
-
 
   render() {
     return (
@@ -38,4 +42,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, {signOut})(AuthButtons);
+export default connect(mapStateToProps, {signOut, updateLocation, resetTickerList})(AuthButtons);

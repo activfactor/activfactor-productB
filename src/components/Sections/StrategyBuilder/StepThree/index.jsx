@@ -1,17 +1,45 @@
 import React, { Component } from "react";
 import SBCurrentTracker from "./SBCurrentTracker";
 import ActionButtons from "./ActionButtons/index";
-import classes from "./index.module.scss";
 import { connect } from 'react-redux';
-import { saveStrategy } from '../../../../actions/index';
+import { saveStrategy } from '../../../../actions/strategyBuilder'; 
+import WatchListAdd from './WatchListAdd';
 
 class StrategyBuilder3 extends Component {
   state = {
     show: false,
     isSpinner: false,
     strategyName: "",
-    responseMessage: ""
+    responseMessage: "",
+    showAddToWatchList: false,
+    watchListKind: 'new',
+    tickers:[],
+    disabled: true,
   };
+
+  onCheckWatchListHandler = (value) => {
+    let tickers = this.state.tickers;
+    let updatedTickers;
+    if (tickers.includes(value)){
+      updatedTickers = tickers.filter(ticker => ticker!==value);
+    } else {
+      updatedTickers = tickers;
+      updatedTickers.push(value);
+    }
+    if (updatedTickers.length>0){
+      this.setState({disabled: false});
+    } else {
+      this.setState({disabled: true})
+    }
+    this.setState({tickers: updatedTickers});
+  }
+
+  AddToWatchlist = (kind) => {
+    this.setState(prevState => ({
+      showAddToWatchList: !prevState.showAddToWatchList,
+      watchListKind: kind
+    }));
+  }
 
   ReplicateStrategy = () => {
     this.setState({ show: true });
@@ -23,21 +51,22 @@ class StrategyBuilder3 extends Component {
 
   onSubmit = () => {
     this.setState({ isSpinner: true });
-    console.log(this.props.auth.token);
     const dataToSend = {
       headers: {
         headers: {
-          "Authorization": `JWT ${this.props.auth.token}`,
+          "Authorization": `Bearer ${this.props.auth.token}`,
         }
       },
         data: {
-          "user_id": 2,
+          "user_id": this.props.auth.userID,
           "strategy_name": this.state.strategyName,
           "country": this.props.query.country,
           "sectors": this.props.query.sectors.split(','),
           "factors": this.props.query.factors.split(','),
           "n_stock": this.props.query.n_stock,
-          "firm_size": this.props.query.firm_size.split(',')
+          "firm_size": this.props.query.firm_size.split(','),
+          "rebalancing": this.props.query.rebalancing,
+          "shariah": this.props.query.shariah
         }
     };
     this.props.saveStrategy(dataToSend);
@@ -49,27 +78,26 @@ class StrategyBuilder3 extends Component {
 
   render() {
     return (
-      <section className={classes.maincontainer}>
-        <div className={classes.container}>
-          <div className={classes.strategy}>
-            <SBCurrentTracker
-              cancelModal={this.cancelModal}
-              show={this.state.show}
-              onSubmit={this.onSubmit}
-              isSpinner={this.state.isSpinner}
-              getStrategyName={this.getStrategyName}
-              responseMessage={this.state.responseMessage}
-              DismissMessage={this.props.DismissMessage}
-            />
-          </div>
-          <div className={classes.ActionButtonsContainer}>
+      <div className="strategy-builder_customized-portfolio">
+        <WatchListAdd kind={this.state.watchListKind} tickers={this.state.tickers} show={this.state.showAddToWatchList} cancelHandler={() => this.setState(prevState => ({showAddToWatchList: !prevState.showAddToWatchList}))} />
+          <SBCurrentTracker
+            cancelModal={this.cancelModal}
+            show={this.state.show}
+            onSubmit={this.onSubmit}
+            isSpinner={this.state.isSpinner}
+            getStrategyName={this.getStrategyName}
+            responseMessage={this.state.responseMessage}
+            DismissMessage={this.props.DismissMessage}
+            onCheckWatchListHandler={this.onCheckWatchListHandler}
+          />
+
             <ActionButtons
               AnalyuzeResult={this.props.AnalyuzeResult}
               ReplicateStrategy={this.ReplicateStrategy}
+              AddToWatchlist={this.AddToWatchlist}
+              disabled={this.state.disabled}
             />
-          </div>
-        </div>
-      </section>
+      </div>
     );
   }
 }

@@ -2,90 +2,120 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { signIn, signIn_A } from '../../../actions';
-import { Link } from 'react-router-dom';
-import classes from './Login.module.scss';
-import Spinner from '../../UI/Spinner/SpinnerButton';
+import {signIn_A, resetSignInError, updateLocation } from '../../../actions';
+import history from '../../../history';
+import Link from '../../UI/Link';
 
 let styleBorder = "none";
 
 class Login extends Component{
-    state = {isSpinner:true}
+    // we set tempError because there is hard coded user and password and need to be removed
+    state = {isSpinner:false, tempError: null}
 
-    onSubmit = formValues => {
+    componentDidMount(){
+        if (this.props.authenticated){
+            history.push('/dashboard');
+            this.props.updateLocation('/dashboard');
+        }
+    }
+    
+    onSubmit = async formValues => {
         if (formValues.username && formValues.password){
-            this.setState({isSpinner:false});
-            this.props.signIn(formValues);
-            // const data = {
-            //     "email":formValues.username,
-            //     "password":formValues.password
-            // }
-            // this.props.signIn_A(data);
+            if (formValues.username==='wealthface' && formValues.password==='Wealthface1505'){
+                this.setState({tempError: null})
+                this.props.resetSignInError();
+                this.setState({isSpinner:true});
+                const data = {
+                    email: formValues.username,
+                    password: formValues.password
+                }
+                this.props.signIn_A(data);
+            } else {
+                this.setState({tempError: "Username or password is incorrect"});
+            }
+
         } else {
             this.validate(formValues);
         }
     }
 
     renderSubmit = isinput => {
-        if (isinput){
+        if (!isinput || this.props.errorMessage){
             return (
-                <input className={classes.submit} type="submit" value="Login" />
+                <input className={`btn btn-primary`} type="submit" value="Login" />
             );
         } else {
             return(
                 <React.Fragment>
-                    <input className={classes.submit} type="submit" value='' />
-                    <Spinner color='white' nameOfClass={classes.spinner}/>
+                    <button className={`btn btn-primary btn__login`} type="submit">
+                        Login <span className="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true"></span>
+                    </button>
                 </React.Fragment>
             );
         }
     }
 
-    renderError({ error, touched} , input ,type, placeholder){
+    // renderError({ error, touched}){
+    //     if (touched && error){
+    //         styleBorder = "4px solid #a30808";
+    //     } else {
+    //         styleBorder = "none";
+    //     }
+    // }
+
+    renderError({ error, touched}){
         if (touched && error){
-            styleBorder = "4px solid #a30808";
+            styleBorder = "is-invalid";
         } else {
-            styleBorder = "none";
+            styleBorder = "";
         }
     }
 
     renderInput = ({meta, input, type, placeholder}) => {
         this.renderError(meta);
         return (
-            <div>
-                {/* {this.renderError(meta, input, type, placeholder)} */}
-                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={classes.input} style={{border:styleBorder}} />
+            <div className="form-group">
+                <input {...input} autoComplete='off' type={type} placeholder={placeholder} className={`${styleBorder} form-control`} />
             </div>
         );
     }
 
     AuthError = () => {
         if (this.props.errorMessage){
-            return <div className={classes.error}>{this.props.errorMessage}</div>
+            return <div className="invalid-feedback">{this.props.errorMessage}</div>
+        } else if (this.state.tempError){
+            return <div style={{display: 'block'}} className="invalid-feedback">{this.state.tempError}</div>
         }
     }
 
+    btnBtnLink = "btn btn-link";
+
     render(){
         return(
-            <section className={classes.section}>
-                <div className={classes.container}>
-                    <form onSubmit={this.props.handleSubmit(this.onSubmit)} className={classes.form}>
-                        <h4 className={classes.header}>Login</h4>
-                        <Field name="username" component={this.renderInput} placeholder="Email Address"  />
-                        <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
-                        {this.AuthError()}
-                        <div className={classes.buttons}>
-                            <span>
+            <div className="container-fluid">
+                <div className="container-authentication col">
+                    <div className="form-login_wrapper">
+                        <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="_login-form">
+                            <div className="h4">Login</div>
+                            <Field name="username" component={this.renderInput} placeholder="Email Address"  />
+                            <Field name="password" type="password" component={this.renderInput} placeholder="Password" />
+
+                            {this.AuthError()}
+
+                            <div className="_btn-container">
                                 {this.renderSubmit(this.state.isSpinner)}
-                            </span>
-                            <Link to="/reset">Forgot Password?</Link>
-                        </div>
-                        <span className={classes.register}>Don't have an account? <Link to="/signup">Sign up</Link></span>
-                    </form>
-                    <div></div>
-                    <div></div>
+                                <span>
+                                    <Link to="/reset">Forgot Password?</Link>
+                                </span>
+                            </div>
+
+                            <div className="_btn-text-container">Don't have an account? <span><Link to="/signup">Sign up</Link></span></div>
+                        </form>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
-            </section>
+            </div>
         );
     }
 }
@@ -107,13 +137,8 @@ const mapStateToProps = state => {
     return { 
         token: state.auth.token,
         uername: state.auth.username,
-        errorMessage: state.auth.errorMessage
+        errorMessage: state.auth.errorMessage,
+        authenticated: state.auth.authenticated
     }
 }
-
-// this is the exact same way to wrap the redux form like below 
-export default compose(connect(mapStateToProps, {signIn,signIn_A}), reduxForm({ form: 'loginForm' ,validate}))(Login);
-
-// export default connect(mapStateToProps,{signIn})(
-//     reduxForm({form: 'loginForm',validate})(Login)
-// );
+export default compose(connect(mapStateToProps, {signIn_A,resetSignInError, updateLocation}), reduxForm({ form: 'loginForm',validate}))(Login);

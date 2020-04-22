@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import SignupForm from "./SignupForm/SignupForm";
 import SignupSidebar from "./SignupSidebar/SignupSidebar";
-import classes from './Signup.module.scss';
+
+// import classes from './Signup.module.scss';
 
 class Signup extends Component {
-  render() {
-    return (
-      <section className={classes.section}>
-        <div className={classes.container}>
-        <div className={classes.sections}>
-          <SignupForm />
-          <SignupSidebar />
-          </div>
-        </div>
-      </section>
-    );
-  }
+    render() {
+        return (
+            <div className="container-fluid">
+                <div className="container-authentication col">
+                    <div className="form-signup_wrapper">
+                        <SignupForm/>
+                        <SignupSidebar/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Signup;

@@ -55,6 +55,17 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noubarhanno/wealthface-react.git"
+  },
+  "keywords": [],
   "author": "noubar hanno <noubar.hanno@hotmail.com>",
-  "license": "wealthface limited L.L.C"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noubarhanno/wealthface-react/issues"
+  },
+  "homepage": "https://github.com/noubarhanno/wealthface-react#readme"
 }

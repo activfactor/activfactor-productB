@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {signIn_A, resetSignInError, updateLocation } from '../../../actions';
+import { signIn } from '../../../store/actions/auth';
 import history from '../../../history';
 import Link from '../../UI/Link';
 
@@ -29,7 +30,7 @@ class Login extends Component{
                     email: formValues.username,
                     password: formValues.password
                 }
-                this.props.signIn_A(data);
+                this.props.signIn(data);
             } else {
                 this.setState({tempError: "Username or password is incorrect"});
             }
@@ -141,4 +142,4 @@ const mapStateToProps = state => {
         authenticated: state.auth.authenticated
     }
 }
-export default compose(connect(mapStateToProps, {signIn_A,resetSignInError, updateLocation}), reduxForm({ form: 'loginForm',validate}))(Login);
+export default compose(connect(mapStateToProps, {signIn_A,resetSignInError, updateLocation, signIn}), reduxForm({ form: 'loginForm',validate}))(Login);

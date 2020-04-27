@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import requireAuth from "../../hoc/requireAuth";
 import { connect } from 'react-redux';
 import { getDashboard, resetDashboard, updateCuntry } from '../../../actions/dashboard';
+// import { getDashboard } from '../../../store/actions/dashboard';
 import Table from './TopStrategies';
 import Header from '../../Shared/AccountSumBlock';
 import BrokerPanel from './BrokerPanel';

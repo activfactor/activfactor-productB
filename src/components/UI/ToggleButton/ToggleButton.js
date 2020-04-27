@@ -1,6 +1,4 @@
 import React,{ Component } from "react";
-import { connect } from 'react-redux';
-import { toggleClicked } from '../../../actions/index';
 import classes from './ToggleButton.module.scss';
 
 
@@ -20,10 +18,4 @@ class ToggleButton extends Component {
     } 
 }
 
-const mapStateToProps = state => {
-    return {
-        clicked: state.toggle.clicked
-    };
-}
-
-export default connect(mapStateToProps,{toggleClicked})(ToggleButton);
+export default ToggleButton;

@@ -1,42 +1,31 @@
 import React from "react";
 import {Router, Route, Switch} from "react-router-dom";
-import Header from "./Header/Header";
-import Login from "./Sections/Login/Login";
+import Header from "./components/Header/Header";
+import Login from "./components/Sections/Login/Login";
 // import NewLogin from "./Sections/Login/Login__NewDesign";
-import Dashboard from "./Sections/Dashboard/Dashboard";
-import Signup from "./Sections/Signup/Signup";
-import Footer from "../components/Footer/Footer";
-import StrategyMonitor from '../components/Sections/StrategyMonitor';
-import WatchListMonitor from './Sections/WatchlistMonitor';
-import StrategyMonitorList from './Sections/Strategies';
-import WatchListMonitorList from './Sections/Watchlists';
-import Brokers from './Sections/Brokers';
-import Portfolio from './Sections/Portfolio';
-import TradePage from '../components/Sections/Trade';
-import Transactions from '../components/Sections/TransactionPage';
-import history from "../history";
+import Dashboard from "./components/Sections/Dashboard/Dashboard";
+import Signup from "./components/Sections/Signup/Signup";
+import Footer from "./components/Footer/Footer";
+import StrategyMonitor from './components/Sections/StrategyMonitor';
+import WatchListMonitor from './components/Sections/WatchlistMonitor';
+import StrategyMonitorList from './components/Sections/Strategies';
+import WatchListMonitorList from './components/Sections/Watchlists';
+import Brokers from './components/Sections/Brokers';
+import Portfolio from './components/Sections/Portfolio';
+import TradePage from './components/Sections/Trade';
+import Transactions from './components/Sections/TransactionPage';
+import history from "./history";
 import {connect} from 'react-redux';
-import StrategyBuilder from "./Sections/StrategyBuilder";
-import {updateLocation} from '../actions';
-import { getTickerList } from '../actions/ticker';
-import { getToken } from '../actions/Tradeit/tradeitPortfolio';
-import TickerMonitor from '../components/Sections/Ticker';
+import StrategyBuilder from "./components/Sections/StrategyBuilder";
+import {updateLocation} from './actions';
+import { getTickerList } from './actions/ticker';
+import { getToken } from './actions/Tradeit/tradeitPortfolio';
+import TickerMonitor from './components/Sections/Ticker';
 
 class App extends React.Component {
 
   componentDidMount = () => {
-    if (!this.props.authenticated) {
-      history.push('/login');
-      this.props.updateLocation('/login')
-    } else {
-      if (this.props.token){
-        this.props.getTickerList();
-      }
-      if (this.props.userId && this.props.userToken){
-        this.props.getToken();
-      }
-      this.props.updateLocation(history.location.pathname);
-    }
+    
   }
 
   componentDidUpdate = () => {
@@ -49,8 +38,6 @@ class App extends React.Component {
   render() {
     return (
       <Router history={history}>
-
-        <Header/>
 
         <main className="site-content">
           <Switch>
@@ -81,11 +68,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    authenticated: state.auth.authenticated,
     token: state.auth.token,
-    userId: state.tradeitReducers.userId,
-    userToken: state.tradeitReducers.userToken,
-    tickerList: state.tickerReducers.tickerList
   }
 }
 

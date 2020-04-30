@@ -5,12 +5,15 @@ import { Provider } from 'react-redux';
 import store from './store';
 import "./styles/main.scss";
 import ThemeProvider from './constants/Theme';
+import MaterialThemeProvider from './constants/MaterialTheme';
 
 ReactDOM.render(
-  <ThemeProvider>
-    <Provider store={store}>
-        <App />
-    </Provider>
-  </ThemeProvider>
+  <MaterialThemeProvider>
+    <ThemeProvider>
+      <Provider store={store}>
+          <App />
+      </Provider>
+    </ThemeProvider>
+  </MaterialThemeProvider>
   ,document.querySelector('#root')
 );

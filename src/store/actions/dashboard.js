@@ -1,7 +1,7 @@
-import { DASHBOARD_GET, DASHBOARD_RESET, UPDATE_COUNTRY } from "../types";
-import wealthface from "../../apis/wealthface";
-import { getJSON } from "../../utils/jsonFunctions";
-import { signOut } from '../../actions';
+import { DASHBOARD_GET, DASHBOARD_RESET, UPDATE_COUNTRY } from "./types";
+import wealthface from "../apis/wealthface";
+import { getJSON } from "../utils/jsonFunctions";
+import { signOut } from '.';
 
 export const getDashboard = country => async (dispatch, getState) => {
   try{

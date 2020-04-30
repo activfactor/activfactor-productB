@@ -46,7 +46,6 @@ export const theme = {
     light: `Poppins-Light, Roboto, Helvetica Neue, Arial`,
     semiBold: `Poppins-SemiBold, Roboto, Helvetica Neue, Arial`,
   }
-  
 }
 
 const Theme = ({children}) => (

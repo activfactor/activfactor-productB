@@ -1,6 +1,6 @@
 import React from "react";
 import {Router, Route, Switch} from "react-router-dom";
-import Header from "./components/Header/Header";
+import Header from "components/Header";
 import Login from "./components/Sections/Login/Login";
 // import NewLogin from "./Sections/Login/Login__NewDesign";
 import Dashboard from "./components/Sections/Dashboard/Dashboard";
@@ -38,7 +38,7 @@ class App extends React.Component {
   render() {
     return (
       <Router history={history}>
-
+        <Header />
         <main className="site-content">
           <Switch>
             <Route exact path="/" component={Dashboard} />

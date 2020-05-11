@@ -36,6 +36,7 @@ body {
     padding: 0;
     color: $textColor;
     background-color: $backgroundColor;
+    box-sizing: border-box;
 }
 
 button, input, optgroup, select, textarea {

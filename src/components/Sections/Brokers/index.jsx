@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 import Modal from './ModalContent';
 import history from '../../../history';
 import { resetShouldNavigateTo } from '../../../actions/index';
-import { isObjectEmpty } from '../../../utils/helper';
+import { isObjectEmpty } from '../../../utils/validator';
 
 const new_window = window;
 class PortfolioPerformance extends Component{

@@ -1,6 +1,8 @@
+const token = window.localStorage.getItem('token');
+const userId = window.localStorage.getItem('userId');
 export default {
     auth: {
-        token: null,
-        userId: 36,
+        token,
+        userId
     }
 }

@@ -1,5 +1,5 @@
 import {
-  SIGN_IN_A,
+  SIGN_IN,
   TOGGLE_STATUS,
   SIGN_OUT,
   AUTH_RESET,
@@ -12,44 +12,43 @@ import wfAxios from "../../apis/wealthface";
 import CLIENTS from "../../config/clients";
 import { activfactor, production } from "../../constants/endpoints";
 import { setAuthentication } from "../middleware";
+import history from '../../history';
 
-export const signIn_A = formProps => (dispatch) => {
-  wfAxios
-    .post(activfactor.authenticate, CLIENTS.wealthface)
-    .then((response) => {
+export const signin = formProps => async (dispatch) => {
+  const {email, password} = formProps;
+  if (email === 'fouad@wealthface.com' && password === 'Wealthface1505'){
+    try {
+      const response = await wfAxios.post(activfactor.authenticate, CLIENTS.wealthface)
       if (response.data.access_token) {
         const dataReponse = {
           authenticated: true,
-          user: "wealthface",
+          userName: "wealthface",
           userId: 36,
           token: response.data.access_token,
         };
-        setAuthentication(dataReponse.token, dataReponse.userID);
-        dispatch({ type: SIGN_IN_A, payload: dataReponse });
+        setAuthentication(dataReponse.token, dataReponse.userId);
+        dispatch({ type: SIGN_IN, payload: dataReponse });
+        history.push('/dashboard');
       } else {
-        throw new Error(response.data.messge);
+        throw new Error(response.data.message);
       }
-    })
-    .catch((err) => {
-      throw new Error(err.message);
-    });
+    } catch(error){
+      throw new Error(error.nessage);
+    }
+  } else {
+    throw new Error("Invalid credentials");
+  }
 };
 
-export const singOut = () => {
+export const signOut = () => dispatch => {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("userId");
   window.location.href = production.login;
+  dispatch({type: SIGN_OUT});
 };
 
 export const resetSignInError = () => (dispatch) => {
   dispatch({ type: AUTH_RESET });
-};
-
-export const signOut = () => {
-  sessionStorage.removeItem("token");
-  return {
-    type: SIGN_OUT,
-  };
 };
 
 export const toggleClicked = () => (dispatch, getState) => {

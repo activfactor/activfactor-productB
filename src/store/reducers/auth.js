@@ -1,4 +1,4 @@
-import { SIGN_IN_A , SIGN_IN_ERROR , SIGN_OUT, AUTH_ERR ,AUTH_RESET } from '../actions/types';
+import { SIGN_IN , SIGN_IN_ERROR , SIGN_OUT, AUTH_ERR ,AUTH_RESET } from '../types';
 const INITIAL_STATE = {
     authenticated: false,
     user: null,
@@ -10,7 +10,7 @@ export default (state = INITIAL_STATE, action)=>{
     switch (action.type){
         case AUTH_RESET:
             return state=INITIAL_STATE
-        case SIGN_IN_A:
+        case SIGN_IN:
             return { 
                 ...state, 
                 authenticated: action.payload.authenticated,
@@ -26,12 +26,10 @@ export default (state = INITIAL_STATE, action)=>{
         case SIGN_OUT:
             return {
                 ...state,
-                authenticated: null,
-                user: null,
-                regtime: null,
+                authenticated: false,
                 token: null,
-                userID: null,
-                errorMessage:null
+                userId: null,
+                userName: null
             }
         case AUTH_ERR:
             return {

@@ -1,10 +1,11 @@
 import React from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import Header from "components/Header";
-import Login from "./components/Sections/Login/Login";
-// import NewLogin from "./Sections/Login/Login__NewDesign";
+import SectionPage from 'components/MaterialUIs/SectionPage';
+import Login from 'screens/AuthScreen/Login';
+import Logout from 'screens/AuthScreen/Logout';
 import Dashboard from "./components/Sections/Dashboard/Dashboard";
-import Signup from "./components/Sections/Signup/Signup";
+import Signup from "./screens/AuthScreen/Singup";
 import Footer from "./components/Footer/Footer";
 import StrategyMonitor from './components/Sections/StrategyMonitor';
 import WatchListMonitor from './components/Sections/WatchlistMonitor';
@@ -15,35 +16,23 @@ import Portfolio from './components/Sections/Portfolio';
 import TradePage from './components/Sections/Trade';
 import Transactions from './components/Sections/TransactionPage';
 import history from "./history";
-import {connect} from 'react-redux';
 import StrategyBuilder from "./components/Sections/StrategyBuilder";
-import {updateLocation} from './actions';
-import { getTickerList } from './actions/ticker';
-import { getToken } from './actions/Tradeit/tradeitPortfolio';
 import TickerMonitor from './components/Sections/Ticker';
+import { AuthFooter } from 'components/Shared';
+import { useSelector } from 'react-redux';
 
-class App extends React.Component {
-
-  componentDidMount = () => {
-    
-  }
-
-  componentDidUpdate = () => {
-    if (!this.props.tickerList && this.props.token){
-      this.props.getTickerList();
-    }
-  }
-
-
-  render() {
+const App = () => {
+  const {token} = useSelector(state => state.auth);
     return (
       <Router history={history}>
-        <Header />
-        <main className="site-content">
+        {token ? <Header /> : ''}
+        <SectionPage>
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
+            <Route exact path="/watchlist" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/builder" component={StrategyBuilder} />
             <Route path="/strategy/monitor/details" component={StrategyMonitor} />
@@ -56,20 +45,11 @@ class App extends React.Component {
             <Route exact path="/portfolio/monitor" component={Portfolio} />
             <Route path="/trade" component={TradePage} />
           </Switch>
-        </main>
+        </SectionPage>
 
-        <Footer/>
-
+        {token ? <Footer /> : <AuthFooter label="© Wealthface 2020"/>}
       </Router>
     );
-  }
 }
 
-
-const mapStateToProps = state => {
-  return {
-    token: state.auth.token,
-  }
-}
-
-export default connect(mapStateToProps, {updateLocation,getTickerList,getToken})(App);
+export default App;

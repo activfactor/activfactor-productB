@@ -17,7 +17,7 @@ export const getDashboard = country => async (dispatch, getState) => {
       type: DASHBOARD_GET,
       payload: { data: getJSON(response).message, country: country }
     });
-  } catch(err){
+  } catch(err) {
     dispatch(signOut());
   }
 };

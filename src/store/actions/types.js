@@ -1,3 +1,8 @@
+// API 
+export const API_START = 'API_START'; 
+export const API_END = 'API_END';
+export const API_ERROR = 'API_ERROR';
+// AUTH
 export const SIGN_IN_A = 'SIGN_IN_A';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 export const SIGN_OUT = 'SIGN_OUT';

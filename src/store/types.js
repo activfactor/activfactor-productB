@@ -2,7 +2,6 @@ export const GET_CLIENTS = 'GET_CLIENTS';
 
 // old patterns
 export const SIGN_IN = 'SIGN_IN';
-export const SIGN_IN_A = 'SIGN_IN_A';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
 export const SIGN_OUT = 'SIGN_OUT';
 export const AUTH_ERR = 'AUTH_ERR';

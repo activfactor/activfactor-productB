@@ -16,6 +16,15 @@ export const theme = createMuiTheme({
     fontWeightMedium: 500,
     fontWeightBold: 600
   },
+  breakpoints: {
+    values: {
+        xs: 400,
+        sm: 600,
+        md: 900,
+        lg: 1080,
+        xl: 1280, 
+    }
+  },
   palette:{
     primary:{
       light: '#4495EC',
@@ -31,12 +40,26 @@ export const theme = createMuiTheme({
     text: {
       primary: '#8E8E8E',
       secondary: '#F5F6F8',
+      light: '#E2E2E2',
       link: '#323C47'
+    },
+    error: {
+      main: '#FF0000',
+      light: '#FCDDDD'
+    },
+    background: {
+      default: '#E5E5E5'
     }
   },
   customShadows:[
-    '0px 4px 20px rgba(0, 0, 0, 0.05)'
-  ] 
+    '0px 4px 20px rgba(0, 0, 0, 0.05)',
+    '0px 6px 18px rgba(0, 0, 0, 0.06)'
+  ],
+  customColors: {
+    white: '#fff',
+    black: '#000000',
+    lightBlue: 'rgba(16, 156, 241, 0.12)'
+  }
 })
 
 const Theme = ({children}) => (

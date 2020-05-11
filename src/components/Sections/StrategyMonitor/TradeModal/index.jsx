@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { Wrapper, Title, StyledInput, ButtonsWrapper, ErrMsg } from './style';
-import { isAmountCorrect, isFloat } from '../../../../utils/helper';
+import { isAmountCorrect, isFloat } from '../../../../utils/validator';
 import withBrokerAuth from '../../../hoc/requireBrokerConnection';
 import { updateTradeCash } from '../../../../actions/Tradeit/tradeitTrade';
 import history from '../../../../history';

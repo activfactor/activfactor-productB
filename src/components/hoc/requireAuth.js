@@ -4,28 +4,29 @@ import { updateLocation } from '../../actions';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
+    state = {
+      error: null,
+      errorInfo: null
+    }
     componentDidMount() {
       this.shouldNavigateAway();
     }
 
-    componentDidUpdate() {
-      this.shouldNavigateAway();
-    }
-
     shouldNavigateAway() {
-      if (!this.props.authenticated) {
+      if (!this.props.token) {
         this.props.history.push("/login");
-        this.props.updateLocation("/login"); // for active navigation
       }
     }
 
     render() {
-      return <ChildComponent {...this.props} />
+      return (
+        <ChildComponent {...this.props}/>
+      )
     }
   }
 
-  function mapStateToProps(state) {
-    return { authenticated: state.auth.authenticated };
+  const mapStateToProps = (state) => {
+    return { token: state.auth.token };
   }
 
   return connect(mapStateToProps, {updateLocation})(ComposedComponent);

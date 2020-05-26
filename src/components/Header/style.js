@@ -12,9 +12,9 @@ export const StyledAppBar = withStyles((theme) => ({
 
 export const StyledToolBar = withStyles(({
     root: {
-        maxWidth: '1400px',
+        maxWidth: '1440px',
         margin: 'auto',
-        width: '100%'
+        width: '90%'
     }
 }))(Toolbar);
 
@@ -22,12 +22,8 @@ export const NavigationsWrapper = withStyles((theme) => ({
     root: {
         display: 'flex',
         alignItems: 'center',
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
         width: '100%',
-        [theme.breakpoints.up('lg')]: {
-            paddingLeft: theme.spacing(6),
-        }
+        padding: '0px 30px'
     }
 }))(Box);
 

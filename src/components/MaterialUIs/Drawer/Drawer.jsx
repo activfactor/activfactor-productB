@@ -13,7 +13,7 @@ const StyledDrawer = ({opened, anchor, children, toggleDrawer}) => {
         aria-label="open drawer"
         onClick={toggleDrawer(true)}
         edge="end"
-        size="large"
+        size="medium"
       >
         <MenuIcon fontSize="large"/>
       </StyledIconButton>

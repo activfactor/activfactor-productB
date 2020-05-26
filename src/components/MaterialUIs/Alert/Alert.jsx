@@ -1,27 +1,29 @@
 import React from 'react';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { StyledTitle, StyledAlert } from './style'
 import PropTypes from 'prop-types';
 
 const CustomAlert = ({message, title, variant, severity, onClose, action}) => {
     return (
-        <Alert severity={severity} variant={variant} action={action} onClose={onClose}>
-            {title && <AlertTitle>{title}</AlertTitle>}
+        <StyledAlert severity={severity} variant={variant} action={action} onClose={onClose}>
+            {title && <StyledTitle>{title}</StyledTitle>}
             {message}
-        </Alert>
+        </StyledAlert>
     );
 };
 
 CustomAlert.propTypes = {
-    message: PropTypes.string.isRequired,
+    message: PropTypes.string,
     title: PropTypes.string,
     variant: PropTypes.oneOf(['standard','filled','outlined']),
     severity: PropTypes.oneOf(['error','info','success','warning']).isRequired,
     onClose: PropTypes.func,
-    action: PropTypes.node
+    action: PropTypes.node,
+    fontSize: PropTypes.string
 }
 
 CustomAlert.defaultProps = {
     variant: 'standard',
+    fontSize: '14px'
 }
 
 export default CustomAlert;

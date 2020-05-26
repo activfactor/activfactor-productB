@@ -1,53 +1,76 @@
-import axios from "axios";
-import { accessDenied, apiError, apiStart, apiEnd } from "../actions/api";
-import { NetworkRequest } from './api.middleware.helper';
+import { apiError, apiStart, apiEnd } from "../actions/api.actions";
+import { API } from "../types";
+import {
+  NetworkRequest,
+  NetworkMultipleRequests,
+} from "./api.middleware.helper";
+import qs from 'qs';
 
-
-const apiMiddleware = ({ dispatch }) => next => async action => {
-    const {payload, type} = action;
-
-    if (payload && !payload.url) {
-        return ;
-    }
-
-    if(!payload.apiOptions){
-        return ;
-    }
-
+const apiMiddleware = ({ dispatch }) => (next) => (action) => {
   next(action);
+
+  if (action.type !== API) return;
 
   const {
     url,
-    apiVersion,
-    apiOptions,
+    method,
+    dataToSend,
     onSuccess,
     onFailure,
     label,
-  } = payload;
+    apiVersion,
+    requests,
+  } = action.payload;
 
+  if (requests && requests.length > 0) {
+    if (label) {
+      dispatch(apiStart(label));
+    }
 
-  if (label) {
-    dispatch(apiStart(label));
-  }
-  try{
-      const {data} = await NetworkRequest({apiVersion, url, apiOptions});
-      if(onSuccess){
+    NetworkMultipleRequests({ apiVersion: 1, requests })
+      .then((responses) => {
+        const transformedResponses = responses.map(
+          (response) => response.data
+        );
+        if (onSuccess) {
+          dispatch(onSuccess(transformedResponses));
+        }
+      })
+      .catch((error) => {
+        dispatch(apiError(error, label));
+        if (onFailure) {
+          dispatch(onFailure(error));
+        }
+      })
+      .finally(() => {
+        dispatch(apiEnd(label));
+      });
+  } else {
+    const dataOrParams = ["GET"].includes(method) ? "params" : "data";
+    if (label) {
+      dispatch(apiStart(label));
+    }
+
+    const apiOptions = {
+      method,
+      [dataOrParams]: dataToSend,
+    };
+    NetworkRequest({ apiVersion, apiRequestURL: url, apiOptions })
+      .then(({ data }) => {
+        if (onSuccess) {
           dispatch(onSuccess(data));
-      } else {
-        dispatch(apiEnd());
-      }
-  } catch(error) {
-      let errorMessage;
-    if (/network\serror/gi.test(error)) {
-        errorMessage = "Network Error"
-    }
-    if(onFailure){
-        dispatch(onFailure(errorMessage || error.message))
-    } else {
-        dispatch(apiError);
-    }
+        }
+      })
+      .catch((error) => {
+        dispatch(apiError(error, label));
+        if (onFailure) {
+          dispatch(onFailure(error));
+        }
+      })
+      .finally(() => {
+        dispatch(apiEnd(label));
+      });
   }
-
-}
+};
 
 export default apiMiddleware;

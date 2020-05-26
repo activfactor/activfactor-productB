@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   ContentWrapper,
   HText,
@@ -17,9 +17,13 @@ import {
 import SignupImage from "assets/Images/signup.png";
 import PropTypes from "prop-types";
 import { AuthScreen } from "components/Layout";
-import { countries } from 'constants/appConstants';
+import { SUPPORTED_COINTRIES, INITIAL_COUNTRY } from 'config/appConfig';
 
 const Signup = () => {
+  const [country, setCountry] = useState(INITIAL_COUNTRY);
+  const onChangeHandler = (e) => {
+    setCountry(e.target.value);
+  }
   return (
     <AuthScreen imageSrc={SignupImage}>
       <ContentWrapper>
@@ -37,7 +41,7 @@ const Signup = () => {
           label="Password"
           fullWidth={true}
         />
-        <Select label="Select your country" id="signup-select" errorId="signup-select-error" options={countries} value={null} error={false} theme="primary"/>
+        <Select onChange={onChangeHandler} label="Select your country" id="signup-select" errorId="signup-select-error" options={SUPPORTED_COINTRIES} value={country} error={false} theme="primary"/>
         <ButtonWrapper>
         <Button label="Sign up" fullWidth={true} />
         </ButtonWrapper>

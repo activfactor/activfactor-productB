@@ -1,28 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Router, Route, Switch} from "react-router-dom";
 import Header from "components/Header";
 import SectionPage from 'components/MaterialUIs/SectionPage';
 import Login from 'screens/AuthScreen/Login';
-import Logout from 'screens/AuthScreen/Logout';
-import Dashboard from "./components/Sections/Dashboard/Dashboard";
 import Signup from "./screens/AuthScreen/Singup";
-import Footer from "./components/Footer/Footer";
-import StrategyMonitor from './components/Sections/StrategyMonitor';
-import WatchListMonitor from './components/Sections/WatchlistMonitor';
-import StrategyMonitorList from './components/Sections/Strategies';
-import WatchListMonitorList from './components/Sections/Watchlists';
-import Brokers from './components/Sections/Brokers';
-import Portfolio from './components/Sections/Portfolio';
-import TradePage from './components/Sections/Trade';
-import Transactions from './components/Sections/TransactionPage';
+import Logout from 'screens/AuthScreen/Logout';
+import Dashboard from "screens/Dashboard";
+import Footer from "./components/Footer";
+import StrategyBuilder from "./screens/StrategyBuilder";
+import StrategyMonitor from "./screens/StrategyMonitor";
+import WatchlistMonitor from './screens/WatchlistMonitor';
 import history from "./history";
-import StrategyBuilder from "./components/Sections/StrategyBuilder";
-import TickerMonitor from './components/Sections/Ticker';
-import { AuthFooter } from 'components/Shared';
-import { useSelector } from 'react-redux';
+import AuthFooter from 'components/Custom/AuthFooter';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAppConfig } from './store/actions/appConfig.actions';
 
 const App = () => {
-  const {token} = useSelector(state => state.auth);
+  const {token, descriptions} = useSelector(state => ({...state.auth, ...state.appConfig}));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token && !descriptions){
+      dispatch(fetchAppConfig());
+    }
+  }, [dispatch, token,descriptions]);
+
     return (
       <Router history={history}>
         {token ? <Header /> : ''}
@@ -32,18 +34,10 @@ const App = () => {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
-            <Route exact path="/watchlist" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/builder" component={StrategyBuilder} />
-            <Route path="/strategy/monitor/details" component={StrategyMonitor} />
-            <Route exact path="/strategy/monitor" component={StrategyMonitorList} />
-            <Route exact path="/watchlist/monitor/details" component={WatchListMonitor} />
-            <Route path="/watchlist/monitor" component={WatchListMonitorList} />
-            <Route path="/ticker/monitor" component={TickerMonitor} />
-            <Route path="/brokers" component={Brokers} />
-            <Route path="/transactions" component={Transactions} />
-            <Route exact path="/portfolio/monitor" component={Portfolio} />
-            <Route path="/trade" component={TradePage} />
+            <Route exact path="/strategy/builder" component={StrategyBuilder} />
+            <Route exact path="/strategy/monitor" component={StrategyMonitor} />
+            <Route exact path="/watchlist/monitor" component={WatchlistMonitor} />
           </Switch>
         </SectionPage>
 

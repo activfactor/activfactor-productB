@@ -9,7 +9,7 @@ export const getValue = (value) => {
   if (value || value===0){
     return value;
   } else {
-    return "---";
+    return "0";
   }
 }
 
@@ -22,6 +22,12 @@ export const getClass = (value) => {
     }
   } else if (value===0) {
     return 'text-secondary';
+  }
+}
+
+export const getColor = (value) => {
+  if (value && value!==0){
+    return value<0 ? '#FF0000' : value>0 ? '#109CF1' : null
   }
 }
 

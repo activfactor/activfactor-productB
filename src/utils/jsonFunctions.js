@@ -3,10 +3,10 @@ export const getJSON = (response) => {
     const objectConstructor = {}.constructor;
     let responseData;
     try{
-        if (response.data.constructor === objectConstructor){
-            responseData = JSON.stringify(response.data);
-        } else if (response.data.constructor === textContructor) {
-            responseData = response.data.replace(/\bNaN\b/g, null);
+        if (response.constructor === objectConstructor){
+            responseData = JSON.stringify(response);
+        } else if (response.constructor === textContructor) {
+            responseData = response.replace(/\bNaN\b/g, null);
             responseData = responseData.replace(/-\bInfinity\b/g, null);
             responseData = responseData.replace(/\bInfinity\b/g, null);
         }

@@ -1,31 +1,38 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import { Logo } from '../Icons';
 import { StyledAppBar, StyledToolBar, DesktopNavigationContainer, MobileNavigationContainer } from './style';
-import SearchField from '../MaterialUIs/SearchField';
+import {Drawer, Link} from '../MaterialUIs';
+import AutoCompleteTickers from '../Custom/Navigation/AutoCompleteTickers';
 import Navigations from './Navigations';
-import Button from '../MaterialUIs/Button';
-import Drawer from '../MaterialUIs/Drawer';
-import { routes } from 'constants/endpoints';
+import { routes } from 'config/appConfig';
 import DrawerList from './DrawerList/DrawerList';
-import Link from '../MaterialUIs/Link';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTickersList } from 'store/actions/navigation.actions';
 
 const Header = () => {
     const [opened, setOpened] = useState(false);
+    const dispatch = useDispatch();
+    const {tickers} = useSelector(state => state.navigation);
+
+    useEffect(() => {
+        if (!tickers){
+            dispatch(getTickersList())
+        }
+    }, [dispatch, tickers]);
 
     const toggleDrawer = useCallback((open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
           return;
         }
-        console.log(open);
         setOpened(open);
       }, []);
 
     return (
         <StyledAppBar position="static" color="primary">
-            <StyledToolBar component="div">
+            <StyledToolBar style={{padding: '0px'}} component="div">
                 <Logo withPointer={true} color="primary" />
                 <DesktopNavigationContainer>
-                    <SearchField placeholder="Search for stocks" />
+                    <AutoCompleteTickers />
                     <Navigations routes={routes}/>
                     <Link label="logout" to="/logout" />
                 </DesktopNavigationContainer>

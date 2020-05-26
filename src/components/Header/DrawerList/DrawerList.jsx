@@ -1,10 +1,9 @@
 import React,{useCallback} from 'react';
-import { ListItem, ListItemText, List, Divider } from '@material-ui/core';
+import { ListItem, List } from '@material-ui/core';
 import NavigationLink from '../../MaterialUIs/NavigationLink';
 import { useCustomStyles, IconWrapper, ControlWrapper } from './style';
 import PropTypes from 'prop-types';
-import SearchField from '../../MaterialUIs/SearchField';
-import Button from '../../MaterialUIs/Button';
+import AutoCompleteTickers from '../../Custom/Navigation/AutoCompleteTickers';
 import WealthfaceIcon from '../../Icons/assets/logo';
 
 
@@ -12,14 +11,14 @@ const DrawerList = ({routes, anchor, toggleDrawer}) => {
     const classes = useCustomStyles();
     const getNavigationLinkComp = useCallback((route) => {
         const {label, to} = route;
-        const CustomLink = () => <NavigationLink label={label} to={to} />
         return (
           <ListItem
               button
               key={route.label}
-              component={CustomLink}
+              component="div"
+              disableTouchRipple={true}
           >
-              <ListItemText primary={route.label} />
+              <NavigationLink label={label} to={to} />
           </ListItem>
         )
     }, []);
@@ -50,7 +49,7 @@ const DrawerList = ({routes, anchor, toggleDrawer}) => {
             <WealthfaceIcon fontSize="small"/>
           </IconWrapper>
           <ControlWrapper>
-          <SearchField placeholder="Search for stocks" fullWidth={true}/>
+          <AutoCompleteTickers noMargin={true}/>
         </ControlWrapper>
         {getListItems()}
         </>

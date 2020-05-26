@@ -1,14 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import { StyledLabel, StyledFormHelperText, StyledFormControl, StyledOutlinedInput } from "./style";
 
 const Input = ({ value, onChange, id, fullWidth, label, error, errorId, errorMsg, padding, endAdorment, type, ...rest}) => {
+  const [inputValue, setInputValue] = useState();
+  useEffect(() => {
+    if(value){
+      setInputValue(value);
+    }
+  }, [value]);
   return (
     <StyledFormControl variant="outlined" error={error} fullWidth={fullWidth}>
       <StyledLabel htmlFor={id}>{label}</StyledLabel>
       <StyledOutlinedInput
         id={id}
-        value={value}
+        defaultValue={value}
+        // value={inputValue}
         onChange={onChange}
         label={label}
         fullWidth={fullWidth}

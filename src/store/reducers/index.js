@@ -1,29 +1,24 @@
+import auth from './auth.reducers';
+import api from './api.reducers';
+import dashboard from './dashboard.reducers';
+import navigation from './navigation.reducers';
+import strategyBuilder from './strategyBuilder.reducers';
+import watchlists from './watchlist.reducers';
+import strategies from './strategies.reducers';
+import resources from './resources.reducers';
+import appConfig from './appConfig.reducers';
 import { combineReducers } from 'redux';
-import auth from './auth';
-import toggle from './toggleStatusReducer';
-import queryReducer from './queryReducer';
-import factorScreener from './factorScreener';
-import factorDashboard from './factorDashboard';
-import strategyMonitor from './strategyMonitor';
-import watchlistReducers from './watchlistReducers';
-import tickerReducers from './tickerReducers';
-import tradeitReducers from './tradeitReducers';
-import tradeitTradeReducers from './tradeitTradeReducers';
-import general from './generalReducer';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
     auth,
-    toggle,
+    appConfig,
+    api,
+    dashboard,
+    navigation,
+    strategyBuilder,
+    watchlists,
+    strategies,
+    resources,
     form: formReducer,
-    factorScreener,
-    queryReducer,
-    factorDashboard,
-    strategyMonitor,
-    watchlistReducers,
-    tickerReducers,
-    tradeitReducers,
-    trade: tradeitTradeReducers,
-    general
 })
-

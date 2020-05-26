@@ -1,70 +1,32 @@
-@import "params/variables";
-@import "params/mixins";
-
-
-// @font-face {
-// font-family: "Poppins-Medium";
-// src: url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
-// }
-
-@font-face {
-    font-family: "Poppins-Medium";
-    src: url("../assets/fonts/Poppins-Medium.otf");
-}
-
-@font-face {
-    font-family: "Poppins-Regular";
-    src: url("../assets/fonts/Poppins-Regular.otf");
-}
-
-@font-face {
-    font-family: "Poppins-Bold";
-    src: url("../assets/fonts/Poppins-Bold.otf");
-}
-
-$font-regular:      "Poppins-Regular", Roboto, "Helvetica Neue", Arial !default;
-$font-medium:       "Poppins-Medium", Roboto, "Helvetica Neue", Arial !default;
-$font-bold:         "Poppins-Bold", Roboto, "Helvetica Neue", Arial !default;
-
-
-:root {
-    font-size: 14px;
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 body {
-    font-family: $font-regular;
     margin: 0;
     padding: 0;
-    color: $textColor;
-    background-color: $backgroundColor;
     box-sizing: border-box;
-}
-
-button, input, optgroup, select, textarea {
-    font-family: $font-regular;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #F5F6F8;
 }
 ul {
     list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.MuiBackdrop-root{
+    filter: blur(1.5px);
+    -webkit-filter: blur(1.5px);
+    background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 section {
     margin: 0;
     padding: 0;
 }
-
-
-$box-shadow: 0px 0 6px rgba(0, 0, 0, 0.07);
-$box-shadow-1: 0px 0 6px rgba(0, 0, 0, 0.1);
-$box-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-$box-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-$box-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-$box-shadow-5: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-
-
-
-// Custom Theme Styling
-@import "partials/type";
-@import "partials/icon";
-@import "partials/buttons";
-@import "partials/forms";
-@import "partials/modal";
-@import "partials/wealth-face-theme";

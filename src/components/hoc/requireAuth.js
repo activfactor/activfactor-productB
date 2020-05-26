@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateLocation } from '../../actions';
+import { URL } from 'config/appConfig';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
@@ -12,10 +12,21 @@ export default ChildComponent => {
       this.shouldNavigateAway();
     }
 
-    shouldNavigateAway() {
-      if (!this.props.token) {
-        this.props.history.push("/login");
+    componentDidUpdate(){
+      const pathname = window.location.pathname;
+      if (!this.props.token && pathname!=='/login'){
+        this.shouldLogin();
+      } else if (this.props.token && ['/login','/'].includes(pathname)){
+        this.shouldGoToDashboard();
       }
+    }
+
+    shouldLogin() {
+        window.location.href=URL.login;
+    }
+
+    shouldGoToDashboard(){
+      this.props.history.push('/dashboard');
     }
 
     render() {
@@ -29,5 +40,5 @@ export default ChildComponent => {
     return { token: state.auth.token };
   }
 
-  return connect(mapStateToProps, {updateLocation})(ComposedComponent);
+  return connect(mapStateToProps)(ComposedComponent);
 };

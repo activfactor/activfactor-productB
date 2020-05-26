@@ -1,16 +1,22 @@
-import { API_START, API_END, API_ERROR } from "../actions/types";
+import { API_START, API_END, API_ERROR, API_CLEAR } from "../types";
 
 export const apiStart = label => ({
   type: API_START,
-  payload: label
+  label
 });
 
 export const apiEnd = label => ({
   type: API_END,
-  payload: label
+  label
 });
 
-export const apiError = error => ({
+export const apiError = (error, label) => ({
   type: API_ERROR,
-  payload: error
+  label,
+  error
 });
+
+export const clearApi = (label) => ({
+  type: API_CLEAR,
+  label
+})

@@ -4,8 +4,8 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 import "./styles/main.scss";
-import ThemeProvider from './constants/Theme';
-import MaterialThemeProvider from './constants/MaterialTheme';
+import ThemeProvider from './Theme/Theme';
+import MaterialThemeProvider from 'Theme/MaterialTheme';
 
 ReactDOM.render(
   <MaterialThemeProvider>

@@ -13,14 +13,14 @@ export const useStyles = makeStyles((theme) => ({
     },
     navigationLink: {
         wordWrap: 'nowrap',
-        color: theme.palette.text.link,
+        color: props => props.variant === 'footer' ? theme.customColors.footerLink : theme.palette.text.link,
         fontWeight: 600,
         fontSize: 13,
         '&:hover': {
-            color: theme.palette.primary.light
+            color: props => props.variant === 'footer' ? theme.palette.common.white : theme.palette.primary.light
         }
     },
     activeNavigationLink: {
-        color: theme.palette.primary.light,
+        color: props => props.variant === 'footer' ? theme.palette.common.white : theme.palette.primary.light,
     }
 }));

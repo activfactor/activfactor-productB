@@ -7,9 +7,9 @@ const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to='/' {...props} />
 ));
 
-const Link = ({label, to, isUnerLine, fontSize}) => {
+const Link = ({label, to, isUnerLine, fontSize, theme, onClick, align, ...rest}) => {
     return (
-        <StyledLink fontSize={fontSize} underline={isUnerLine} component={LinkBehavior} to={to}>{label}</StyledLink>
+        <StyledLink {...rest} align={align} onClick={onClick} theme={theme} fontSize={fontSize} underline={isUnerLine} component={LinkBehavior} to={to}>{label}</StyledLink>
     );
 };
 
@@ -17,11 +17,15 @@ Link.propTypes = {
     label: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     isUnerLine: PropTypes.oneOf(['none','hover','always']),
-    fontSize: PropTypes.string
+    fontSize: PropTypes.string,
+    theme: PropTypes.oneOf(['primary','secondary']),
+    onClick: PropTypes.func,
+    align: PropTypes.oneOf(['left','center','right'])
 }
 
 Link.defaultProps = {
     isUnerLine: 'none',
+    theme: 'primary'
 }
 
 export default Link;

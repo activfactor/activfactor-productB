@@ -11,7 +11,6 @@ export const useOrderPreviewTransformer = () => {
     if(portfolioOrdersPreview && portfolioOrdersPreview.constructor === [].constructor){
         const previewOrdersDetails = portfolioOrdersPreview.map(obj => obj.orderDetails);
         const data = Object.keys(orders).map(obj => {
-            console.log(orders, obj, orders[obj]);
             const {name, orderSymbol} = orders[obj];
             const orderDetails = previewOrdersDetails.filter(item => item.orderSymbol===orderSymbol)[0];
             const { orderExpiration, orderAction, estimatedOrderValue, estimatedOrderCommission } = orderDetails;

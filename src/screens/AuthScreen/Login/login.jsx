@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useState, useMemo} from "react";
 import {
   ContentWrapper,
   CheckboxWrapper,
@@ -6,7 +6,8 @@ import {
   PText,
   PTextWrapper,
   ButtonWrapper,
-  useStyles
+  useStyles,
+  NotificationWrapper
 } from "../style";
 import {
   PasswordField,
@@ -21,25 +22,32 @@ import PropTypes from "prop-types";
 import { AuthScreen } from "components/Layout";
 import { Field, reduxForm } from 'redux-form';
 import { LoginValidator } from '../utils/validator';
-import { useDispatch } from 'react-redux';
-import { signin } from 'store/actions/auth';
-import ErrorBoundary from 'components/hoc/ErrorBoundary';
+import { useDispatch, useSelector } from 'react-redux';
+import { signin } from 'store/actions/auth.actions';
+import ForceNavigation from 'components/hoc/ForceNavigation';
 
-const Login = ({handleSubmit, reset, rootError, rootErrorInfo}) => {
+const Login = ({handleSubmit, reset}) => {
   const { formContainer } = useStyles();
-  const [isLoading, setIsLoading] = useState(false);
+  const [formError, setFormError] = useState();
+  const {SIGN_IN} = useSelector(state => state.api)
   const dispatch = useDispatch();
 
+  const {isLoading, error} = useMemo(() => {
+    if (SIGN_IN){
+        return SIGN_IN
+    }
+    return {isLoading: false, error: null}
+}, [SIGN_IN]);
+
   const onSubmitHandler = useCallback((values) => {
-    setIsLoading(true);
-    try{
-      dispatch(signin(values));
-      reset();
-    } catch(error){
-      console.log(error);
+    const {email, password} = values;
+    if (email === 'fouad@wealthface.com' && password === 'Wealthface1505'){
+      dispatch(signin());
+    } else {
+      setFormError("Invalid Credentials")
     }
     
-  }, [reset, dispatch]);
+  }, [dispatch]);
 
   const renderField = useCallback((props) => {
     const {input,label, meta: {error, touched}} = props;
@@ -76,18 +84,18 @@ const Login = ({handleSubmit, reset, rootError, rootErrorInfo}) => {
 
   return (
     <AuthScreen imageSrc={LoginImage}>
-      {rootError && <Alert message={rootError} title="Error"/>}
+      {(formError || error) && <NotificationWrapper><Alert message={formError || error} title="Error" severity="error"/></NotificationWrapper>}
       <ContentWrapper>
         <HText component="h1">Login</HText>
         <form className={formContainer} onSubmit={handleSubmit(onSubmitHandler)}>
           <Field component={renderField} name="email" label="Email address" />
           <Field component={renderField} name="password" label="Password" />
         <CheckboxWrapper>
-          <Checkbox label="Remember me" checked={false} />
+          <Checkbox label="Remember me" />
           <Link label="Forget password?" to="/reset" />
         </CheckboxWrapper>
         <ButtonWrapper>
-        <Button label="Login" fullWidth={true} type="submit" isLoading={isLoading}/>
+        <Button label="Login" fullWidth={true} type="submit" isLoading={isLoading} />
         </ButtonWrapper>
         </form>
         <PTextWrapper>
@@ -105,7 +113,7 @@ AuthScreen.propTypers = {
   children: PropTypes.node,
 };
 
-export default ErrorBoundary(reduxForm({
+export default ForceNavigation(reduxForm({
   form: 'login',
   validate: LoginValidator
 })(Login));

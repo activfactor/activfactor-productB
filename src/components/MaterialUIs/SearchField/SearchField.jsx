@@ -4,7 +4,7 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import { useStyles } from './style';
 import PropTypes from 'prop-types';
 
-const SearchField = ({placeholder, onChange, onFocus, fullWidth}) => {
+const SearchField = ({placeholder, onChange, onFocus, fullWidth, ...rest}) => {
     const { searchIcon, inputInput, inputRoot, search } = useStyles();
     return (
         <div className={search} style={{width: fullWidth ? '100%' : 'auto', marginLeft: fullWidth ? '' : '32px'}}>
@@ -20,6 +20,7 @@ const SearchField = ({placeholder, onChange, onFocus, fullWidth}) => {
                 input: inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              {...rest}
             />
           </div>
     );
@@ -29,7 +30,8 @@ SearchField.protoTypes = {
     placeholder: PropTypes.string.isRequired,
     onchange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,
-    fullWidth: PropTypes.bool
+    fullWidth: PropTypes.bool,
+    rest: PropTypes.any
 }
 
 SearchField.defaultProps = {

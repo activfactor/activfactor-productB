@@ -1,0 +1,80 @@
+export const SUPPORTED_COINTRIES = [
+    {value: 'USA', label: 'USA'},
+    {value: 'UAE', label: 'UAE'},
+    {value: 'CAN', label: 'CAN'},
+    {value: 'UK', label: 'UK'}
+]
+
+export const INITIAL_COUNTRY = 'USA'
+
+export const endPoints = {
+    authenticate: 'authenticate',
+    fetchTickers: 'tickers',
+    fetchDashboard: 'insights/performance/historical',
+    fetchWatchlists: 'watchlists',
+    sectorsDescription: 'sectorslist',
+    firmsizeDescription: 'firmsizelist',
+    factorsDescription: 'factorslist',
+    metricDescription: 'metricslist',
+    runStrategy: 'factor/backtest',
+    saveWatchlist: 'watchlist',
+    updateWatchlist: '/ticker/watchlist',
+    saveStrategy: 'factor/monitor',
+    fetchStrategies: 'monitors',
+    fetchStrategyDetails: 'monitor',
+    deleteStrategy: 'monitor',
+    fetchWatchlistDetails: 'watchlist',
+    deleteWatchlist: 'watchlist',
+    deleteTicker: 'ticker/watchlist'
+}
+
+export const requestMethods = {
+    GET: 'GET',
+    POST: 'POST',
+    DELETE: 'DELETE'
+}
+
+export const URL = {
+    login: '/login'
+}
+
+export const routes = [
+    {label: 'Dashboard', to: '/dashboard'},
+    {label: 'Strategy builder', to: '/strategy/builder'},
+    {label: 'Strategy monitor', to: '/strategy/monitor'},
+    {label: 'Watch list', to: '/watchlist/monitor'}
+]
+
+export const tokenTypes = {
+    jwt: 'JWT',
+    bearer: 'Bearer'
+}
+
+export const API_CONFIG = {
+    baseURL: {
+        v1: 'http://api.activfactor.com/api',
+        v2: 'http://api.activfactor.com/api2'
+    },
+    API_HEADERS_COMMON_CONFIG: {
+        "Content-Type" : "application/json",
+        "Access-Control-Allow-Origin": "*"
+    }
+}
+
+export const initialParams = {
+    tickers: {
+        countries: 'usa,uae,uk,can'
+    },
+    historicalPerformance: {
+        country: 'usa,uk,can,uae'
+    }
+}
+
+export const INITIAL_STRATEGY_FILTERS = {
+    country: INITIAL_COUNTRY,
+    halal: 0,
+    factors: [],
+    rebalancingFreq: 'monthly',
+    firmSizes: ['medium','large','small'],
+    nStocks: 25,
+}

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useStyles } from './style';
 import { NavLink } from 'react-router-dom';
 
-const NavigationLink = ({to, label}) => {
-    const classes = useStyles();
+const NavigationLink = ({to, label, ...props}) => {
+    const classes = useStyles(props);
     const { navigationLinkWrapper, activeNavigationLink, navigationLink } = classes;
     return (
         <div className={navigationLinkWrapper}>
@@ -15,7 +15,8 @@ const NavigationLink = ({to, label}) => {
 
 NavigationLink.propTypes = {
     to: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    variant: PropTypes.oneOf(['header','footer'])
 }
 
 export default NavigationLink;

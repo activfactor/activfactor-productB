@@ -7,7 +7,7 @@ const Navigations = ({routes}) => {
     if (routes && routes.length>0){
         return (
             <NavigationsWrapper>
-                {routes.map(({label, to}) => <NavigationLink to={to} label={label}/>)}
+                {routes.map(({label, to}) => <NavigationLink key={label} to={to} label={label}/>)}
             </NavigationsWrapper>
         );
     }

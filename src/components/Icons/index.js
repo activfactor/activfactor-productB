@@ -3,5 +3,5 @@ import BigLogo from './assets/BigLogo';
 
 export {
     Logo,
-    BigLogo
+    BigLogo,
 }

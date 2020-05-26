@@ -7,7 +7,7 @@ const AuthScreen = ({imageSrc, children}) => {
     return (
         <section>
             <IconWrapper>
-                <BigLogo width="250px" height="100px" fontSize="custom"/>
+                <BigLogo width="250px" height="100px" iconSize="custom"/>
             </IconWrapper>
         <FullWidthWrapper component="section">
             <Container>

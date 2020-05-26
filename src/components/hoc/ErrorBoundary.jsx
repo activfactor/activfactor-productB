@@ -1,23 +1,33 @@
 import React, { Component } from "react";
+import {Alert, SectionPage} from '../MaterialUIs';
+import { Container } from './style';
 
-export default ChildComponent => {
-  class ComposedComponent extends Component {
-    state = {
-      error: null,
-      errorInfo: null
+class ErrorBoundary extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      hasError: false
     }
-
-    componentDidCatch(error, errorInfo){
-      this.setState({error, errorInfo})
-    }
-
-    render() {
-      const {error, errorInfo} = this.state;
-      return (
-        error ? <ChildComponent {...this.props} rootError={error} rootErrorInfo={errorInfo}/> : <ChildComponent {...this.props}/>
-      )
+  }
+  static getDerivedStateFromError(error){
+    return {
+      hasError: true
     }
   }
 
-  return ComposedComponent;
-};
+  componentDidCatch(error, info){
+    this.setState({error, info});
+  }
+
+  render(){
+    const {children} = this.props
+    if (this.state.hasError){
+      return (
+            <Alert error={this.state.error || "Something went wrong"} title="Error" severity="error"/>
+      )
+    }
+    return children;
+  }
+}
+
+export default ErrorBoundary;

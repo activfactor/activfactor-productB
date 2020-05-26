@@ -43,9 +43,9 @@ export const ImageWrapper = withStyles((theme) => ({
     }
 }))(Box);
 
-export const ContentContainer = withStyles((theme) => ({
+export const ContentContainer = withStyles(({
     root: {
         flex: 1,
-        display: 'flex'
+        alignSelf: 'center'
     }
 }))(Box);

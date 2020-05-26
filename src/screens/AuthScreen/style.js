@@ -77,3 +77,9 @@ export const ButtonWrapper = withStyles((theme) => ({
         margin: '10px 0px'
     }
 }))(Box);
+
+export const NotificationWrapper = withStyles(({
+    root: {
+        margin: '10px'
+    }
+}))(Box);

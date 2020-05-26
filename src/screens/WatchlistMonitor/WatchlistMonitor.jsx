@@ -16,6 +16,7 @@ import history from '../../history';
 import { ButtonWrapper } from '../common.style';
 import DeleteWatchlistModal from './Modals/DeleteWatchlist';
 import Watchlists from './Watchlists';
+import AuthRequire from 'components/hoc/ForceNavigation';
 
 const WatchlistMonitor = () => {
     const dispatch = useDispatch();
@@ -173,4 +174,4 @@ const WatchlistMonitor = () => {
     );
 };
 
-export default WatchlistMonitor;
+export default AuthRequire(WatchlistMonitor);

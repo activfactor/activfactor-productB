@@ -31,7 +31,7 @@ const TopHeader = () => {
                         </LeftTextWrapper>
                     </Grid>
                     <Grid container item md={6} justify="space-between" direction="row">
-                        {actual.watchlist && actual.watchlist.length>0 && actual.watchlist.map((performance, index) => (
+                        {actual.performance.watchlist && actual.performance.watchlist.length>0 && actual.performance.watchlist.map((performance, index) => (
                             <MiddleTextWrapper key={`${index}_${performance.metric}`}>
                                 <PerformanceValue component="p">{performance.metric}</PerformanceValue>
                                 <PerformanceValue component="p" color={getColor(performance.watchlist)}>{getValue(performance.watchlist)}%</PerformanceValue>

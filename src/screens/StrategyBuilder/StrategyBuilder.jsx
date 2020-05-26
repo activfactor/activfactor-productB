@@ -10,6 +10,7 @@ import { runStrategy, setStrategyFilters } from 'store/actions/strategyBuilder.a
 import { isEmpty } from 'utils/app.utils';
 import { Grid } from '@material-ui/core';
 import { Autorenew, ShowChart } from '@material-ui/icons';
+import AuthRequire from 'components/hoc/ForceNavigation';
 
 const StrategyBuilder = () => {
     const {selectOptions, list, strategyResults} = useSelector(state => ({...state.appConfig, ...state.watchlists, ...state.strategyBuilder}));
@@ -87,4 +88,4 @@ const StrategyBuilder = () => {
     );
 };
 
-export default StrategyBuilder;
+export default AuthRequire(StrategyBuilder);

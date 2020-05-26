@@ -2,6 +2,7 @@ import React from 'react';
 import { DashboardTable, BrokerageControl } from 'components/Custom/Dashboard';
 import { Grid } from '@material-ui/core';
 import { Strategies, Watchlists } from 'components/Custom/Dashboard';
+import AuthRequire from 'components/hoc/ForceNavigation';
 
 const Dashboard = () => {
     return (
@@ -20,4 +21,4 @@ const Dashboard = () => {
         )
 };
 
-export default Dashboard;
+export default AuthRequire(Dashboard);

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch, Redirect} from "react-router-dom";
 import Header from "components/Header";
 import SectionPage from 'components/MaterialUIs/SectionPage';
 import Login from 'screens/AuthScreen/Login';
@@ -30,7 +30,8 @@ const App = () => {
         {token ? <Header /> : ''}
         <SectionPage>
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Redirect exact path="/" from="/" to="/dashboard" />
+            {/* <Route exact path="/" component={Dashboard} /> */}
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />

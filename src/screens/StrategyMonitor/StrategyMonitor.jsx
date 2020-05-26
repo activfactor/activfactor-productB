@@ -24,6 +24,7 @@ import { ButtonWrapper } from "../common.style";
 import { Grid } from "@material-ui/core";
 import history from "../../history";
 import DeleteStrategyModal from "./Modals/DeleteStrategy";
+import AuthRequire from 'components/hoc/ForceNavigation';
 
 const StrategyMonitor = () => {
   const { strategyName, oneStrategyDetails } = useSelector((state) => ({
@@ -151,4 +152,4 @@ const StrategyMonitor = () => {
   );
 };
 
-export default StrategyMonitor;
+export default AuthRequire(StrategyMonitor);

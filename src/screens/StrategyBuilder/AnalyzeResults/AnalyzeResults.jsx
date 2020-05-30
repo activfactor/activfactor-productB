@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import { HeaderWrapper, Header, Title, TableWrapper, ButtonWrapper } from './style';
 import { AnalyzeResultTable } from 'components/Custom/StrategyBuilder';
 import { ChartCard } from 'components/Custom/common';
-import { PieChart, BarChart, AreaChart, ColumnChart } from 'components/Charts';
+import { PieChart, BarChart, AreaChart, ColumnChart, LineChart } from 'components/Charts';
 import { Button, Snackbar } from 'components/MaterialUIs';
 import { isEmpty } from 'utils/app.utils';
 import ChartDataTransformer from './Service/DataTransformer.service';
@@ -52,7 +52,7 @@ const AnalyzeResults = ({onModifyStrategy, onCustomizePortfolio, handleErrorClos
           </Grid>
           <Grid item lg={4} md={6} sm={12} xs={12} style={{ marginBottom: "20px" }}>
             <ChartCard title="Historical Performance">
-              <AreaChart
+              <LineChart
                 data={transformedData.cumulativePerformance.data}
                 categories={transformedData.cumulativePerformance.categories}
               />

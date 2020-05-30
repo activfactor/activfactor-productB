@@ -23,6 +23,7 @@ export const StyledFormHelperText = withStyles((theme) => ({
 
 export const StyledSelect = withStyles((theme) => ({
   root: {
+    fontSize: '14px',
     color: (props) =>
       props.theme === "primary"
         ? theme.customColors.black

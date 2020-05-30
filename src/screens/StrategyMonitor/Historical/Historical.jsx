@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Tab } from '@material-ui/core';
-import { AreaChart, ColumnChart } from 'components/Charts';
+import { Grid } from '@material-ui/core';
+import { AreaChart, ColumnChart, LineChart } from 'components/Charts';
 import { ChartCard } from 'components/Custom/common';
 import { HistoricalTable } from 'components/Custom/StrategyMonitor';
 import { TableWrapper } from './style';
@@ -10,7 +10,7 @@ const Historical = ({strategyDetails}) => {
       <Grid container>
         <Grid item md={4} xs={12} style={{marginBottom: '20px'}}>
           <ChartCard title="Historical performance">
-            <AreaChart
+            <LineChart
               data={strategyDetails.cumulativePerformance.data}
               categories={strategyDetails.cumulativePerformance.categories}
             />

@@ -26,6 +26,6 @@ export function signin () {
 export const signOut = () => dispatch => {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("userId");
-  window.location.href = URL.login;
   dispatch({type: SIGN_OUT});
+  window.location.href = URL.login;
 };

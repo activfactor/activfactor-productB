@@ -20,6 +20,7 @@ export const Wrapper = withStyles((theme) => ({
 
 export const OptionHighlight = withStyles((theme) => ({
     root: {
+        fontSize: '14px',
         color: theme.palette.primary.main,
         fontWeight: '500'
     }
@@ -27,6 +28,7 @@ export const OptionHighlight = withStyles((theme) => ({
 
 export const OptionText = withStyles((theme) => ({
     root: {
+        fontSize: '14px',
         margin: '0px',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',

@@ -14,8 +14,8 @@ export const TickersNumber = withStyles((theme) => ({
 export const RebalancingWrapper = withStyles((theme) => ({
     root: {
         display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         width: '100%',
         alignItems: 'center',
         flexWrap: 'wrap',
@@ -31,7 +31,8 @@ export const Rebalancing = withStyles((theme) => ({
         fontSize: '13px',
         color: theme.palette.common.black,
         fontWeight: 500,
-        marginBottom: '10px'
+        marginBottom: '10px',
+        marginRight: '3px'
     }
 }))(Typography);
 
@@ -68,7 +69,7 @@ export const DescriptionWrapper = withStyles((theme) => ({
 
 export const StyledCard = withStyles((theme) => ({
     root: {
-        minWidth: '400px',
+        width: '400px',
         margin: '10px',
         [theme.breakpoints.down('sm')]: {
             minWidth: 'unset',

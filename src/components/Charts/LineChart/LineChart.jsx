@@ -5,46 +5,22 @@ import { formatNumberWithCommas, formatDecimal, convertToK } from 'utils/app.uti
 import PropTypes from 'prop-types';
 import { size } from '../charts.constants';
 
-const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, variant}) => {
+const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, variant}) => {
     const dataToDisplay = [
         {
             ...data[0],
             showInLegend: false,
-            fillColor: {
-                linearGradient: {
-                    x1: 1,
-                    y1: 1,
-                    x2: 0.5,
-                    y2: 0.8
-                },
-                stops: [
-                    [0, '#358ff0'],
-                    [1, 'rgba(86, 157, 227, 0.1)']
-                ]
-            },
             color: '#358ff0',
         },
         {
             ...data[1],
             showInLegend: false,
-            fillColor: {
-                linearGradient: {
-                    x1: 1,
-                    y1: 1,
-                    x2: 0.5,
-                    y2: 0.8
-                },
-                stops: [
-                    [0, '#60DFC8'],
-                    [1, 'rgba(96, 223, 200, 0.1)']
-                ]
-            },
             color: '#60DFC8'
         }
     ]
     const options = {
         chart:{
-            type: "areaspline",
+            type: "line",
             ...size
         },
         legend: {
@@ -113,7 +89,7 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
     );
 }
 
-AreaChart.propTypes = {
+LineChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     xTitle: PropTypes.string,
     yTitle: PropTypes.string,
@@ -123,9 +99,9 @@ AreaChart.propTypes = {
     variant: PropTypes.oneOf(['drawdown'])
 }
 
-AreaChart.defaultProps = {
+LineChart.defaultProps = {
   showxAxis: true,
   showyAxis: true
 }
 
-export default AreaChart;
+export default LineChart;

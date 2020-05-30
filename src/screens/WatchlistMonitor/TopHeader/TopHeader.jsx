@@ -1,5 +1,5 @@
 import React,{useMemo} from 'react';
-import { Date, LeftTextWrapper, MiddleTextWrapper, PerformanceValue, TickersText } from '../../common.style';
+import { Date, LeftHeaderTitle, MiddleTextWrapper, PerformanceValue, TickersText } from '../../common.style';
 import { useSelector } from 'react-redux';
 import { Card, Button } from '../../../components/MaterialUIs';
 import { Grid } from '@material-ui/core';
@@ -25,12 +25,16 @@ const TopHeader = () => {
             </Grid>
             <Card style={{padding: '25px 30px', marginBottom: '25px'}}>
                 <Grid container justify="space-between" alignItems="center">
-                    <Grid item md={3}>
+                    {/* <Grid container item md={3} alignItems="flex-end">
                         <LeftTextWrapper>
                             <h2>{watchlistName}</h2>
                         </LeftTextWrapper>
-                    </Grid>
-                    <Grid container item md={6} justify="space-between" direction="row">
+                    </Grid> */}
+                    <Grid container item md={9} justify="space-between" direction="row">
+                        <MiddleTextWrapper>
+                            <LeftHeaderTitle></LeftHeaderTitle>
+                            <LeftHeaderTitle>{watchlistName}</LeftHeaderTitle>
+                        </MiddleTextWrapper>
                         {actual.performance.watchlist && actual.performance.watchlist.length>0 && actual.performance.watchlist.map((performance, index) => (
                             <MiddleTextWrapper key={`${index}_${performance.metric}`}>
                                 <PerformanceValue component="p">{performance.metric}</PerformanceValue>

@@ -1,4 +1,4 @@
-import { SIGN_IN } from '../types';
+import { SIGN_IN, SIGN_OUT } from '../types';
 import INITIAL_STATE from '../initialState';
 
 const { auth } = INITIAL_STATE;
@@ -9,6 +9,12 @@ export default (state = auth, action)=>{
             return { 
                 ...state, 
                 token: action.payload,
+            }
+        case SIGN_OUT:
+            return {
+                ...state,
+                userId: null,
+                tolen: null
             }
         default:
             return state;

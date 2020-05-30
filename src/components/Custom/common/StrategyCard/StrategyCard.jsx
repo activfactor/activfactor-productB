@@ -76,8 +76,8 @@ const StrategyCard = ({strategyName, to, tickersNumber, rebalancingLast, rebalan
             <RebalancingWrapper>
                 <Rebalancing component="span">Rebalancing</Rebalancing>
                 <div style={{marginBottom: '10px'}}>
-                    <Badge {...last} color="secondary" variant="default" label={rebalancingLast} />
-                    <Badge {...next} color="primary" variant="default" label={rebalancingNext} />
+                    {rebalancingLast && <Badge {...last} color="secondary" variant="default" label={`Last: ${rebalancingLast}`} />}
+                    {rebalancingNext && <Badge {...next} color="primary" variant="default" label={`Next: ${rebalancingNext}`} />}
                 </div>
             </RebalancingWrapper>
             </DescriptionWrapper>

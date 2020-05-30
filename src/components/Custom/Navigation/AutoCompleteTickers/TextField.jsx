@@ -8,14 +8,14 @@ const TextInput = ({ params, loading, noMargin, placeholder = "Search for stocks
   return (
     <TextField
       {...params}
-      style={{ margin: noMargin ? "0px" : "0px 20px" }}
+      style={{ margin: noMargin ? "0px" : "0px 20px"}}
       label={placeholder}
       variant="outlined"
       fullWidth={true}
       InputProps={{
         ...params.InputProps,
         style: {
-          padding: '2px 8px'
+          padding: '2px 8px',
         },
         endAdornment: (
           <React.Fragment>
@@ -25,6 +25,7 @@ const TextInput = ({ params, loading, noMargin, placeholder = "Search for stocks
       }}
       InputLabelProps={{
         color: "primary",
+        variant: "outlined",
         disabled: true,
         classes: {
             ...classes

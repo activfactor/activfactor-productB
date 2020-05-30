@@ -50,7 +50,7 @@ const AutoCompleteTickers = ({noMargin}) => {
         freeSolo
         fullWidth={true}
         options={options}
-        getOptionLabel={(option) => option.ticker}
+        getOptionLabel={(option) => `${option.ticker} | ${option.companyname}`}
         open={open}
         onOpen={() => {
           setOpen(true);

@@ -10,7 +10,7 @@ import {
 export const Cell = withStyles((theme) => ({
     head:{
         color: theme.palette.common.white,
-        fontSize: '12px',
+        fontSize: '14px',
         fontWeight: 500,
         backgroundColor: theme.palette.primary.light,
         minWidth: '90px'
@@ -20,7 +20,7 @@ export const Cell = withStyles((theme) => ({
     },
     body: {
         color: props => props.color ? props.color : theme.palette.text.secondary,
-        fontSize: 11,
+        fontSize: 14,
     },
 }))(TableCell);
 

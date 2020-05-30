@@ -6,9 +6,17 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core';
 
-const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
     const theme = useTheme();
     // only one series supplied 
+    const lengthOfData = useMemo(() => {
+        if (data && [].constructor === data.constructor){
+            console.log(data[0].data.length);
+            return data[0].data.length
+        } else if (data){
+            return data.data.length;
+        }
+    }, [data]);
     const transformedData = useMemo(() => {
         if (data && [].constructor === data.constructor){
             return data.map((obj, index) => ({...obj, color: getColorByIndex(index)}))
@@ -70,7 +78,7 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
                 }
             },
             series: {
-                pointWidth: 20
+                pointWidth: lengthOfData<10 ? 20 : null
             }
         },
         legend: {
@@ -95,7 +103,7 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
     );
 }
 
-BarChart.propTypes = {
+ColumnChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     title: PropTypes.string,
     Ytitle: PropTypes.string,
@@ -107,11 +115,11 @@ BarChart.propTypes = {
     roundTo: PropTypes.number
 }
 
-BarChart.defaultProps = {
+ColumnChart.defaultProps = {
     showLegends: false,
     minAxis: -100,
     maxAxis: 100,
     roundTo: 0
 }
 
-export default BarChart;
+export default ColumnChart;

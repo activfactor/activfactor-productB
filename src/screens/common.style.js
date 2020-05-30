@@ -26,6 +26,15 @@ export const LeftTextWrapper = withStyles((theme) => ({
     }
 }))(Box);
 
+export const LeftHeaderTitle = withStyles((theme) => ({
+    root: {
+        color: theme.palette.common.black,
+        fontSize: '16px',
+        fontWeight: 500,
+        margin: '0px',
+    }
+}))(Typography);
+
 export const MiddleTextWrapper = withStyles((theme) => ({
     root: {
         margin: '0px 20px',

@@ -1,7 +1,22 @@
+html {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+html::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
+
 #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    ::-webkit-scrollbar {
+        display: none;
+     }
 }
 body {
     margin: 0;

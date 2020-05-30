@@ -9,21 +9,20 @@ import { useTheme } from '@material-ui/core';
 const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
     // only one series supplied 
     const theme = useTheme();
-    const dataToDisplay = data;
     const transformedData = useMemo(() => {
-        if (dataToDisplay && [].constructor === dataToDisplay.constructor){
-            return [{data: dataToDisplay.map((obj, index) => ({...obj, color: getColorByIndex(index)}))}]
+        if (data && [].constructor === data.constructor){
+            return [{data: data.map((obj, index) => ({...obj, color: getColorByIndex(index)}))}]
         } else if (data) {
-            const {data: dataValues} = dataToDisplay;
+            const {data: dataValues} = data;
             const dataToInject = dataValues.map(obj => {
                 if (obj.y>0){
                     return {...obj, color: theme.palette.primary.main}
                 }
                 return {...obj, color: theme.palette.error.main}
             })
-            return [{name: dataToDisplay.name, data: dataToInject}];
+            return [{name: data.name, data: dataToInject}];
         }
-    }, [dataToDisplay, theme, data]);
+    }, [data, theme]);
     const options = {
         chart: {
             type: 'bar',
@@ -67,9 +66,6 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
                     }
                 }
             },
-            series: {
-                pointWidth: 20
-            }
         },
         legend: {
             layout: 'horizontal',

@@ -6,7 +6,8 @@ import AnalyzeResults from './AnalyzeResults';
 import CustomizePortfolio from './CustomizePortfolio';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWatchlists } from 'store/actions/watchlist.actions';
-import { runStrategy, setStrategyFilters } from 'store/actions/strategyBuilder.actions';
+import { runStrategy, setStrategyFilters, updateStrategyFilters } from 'store/actions/strategyBuilder.actions';
+import { INITIAL_STRATEGY_FILTERS } from 'config/appConfig';
 import { isEmpty } from 'utils/app.utils';
 import { Grid } from '@material-ui/core';
 import { Autorenew, ShowChart } from '@material-ui/icons';
@@ -22,6 +23,17 @@ const StrategyBuilder = () => {
             dispatch(getWatchlists());
         }
     }, [dispatch, list]);
+
+    useEffect(() => {
+      return () => {
+        dispatch(
+          updateStrategyFilters({
+            ...INITIAL_STRATEGY_FILTERS,
+            sectors: selectOptions.sectors,
+          })
+        );
+      }
+    }, []);
 
     const [lastUpdate, nextUpdate, lastRebalancing, nextRebalancing] = useMemo(() => {
       if (strategyResults && !isEmpty(strategyResults)){

@@ -3,6 +3,8 @@ export default (oneStrategyDetails) => {
     const strategyDetails = {};
     if (oneStrategyDetails){
         const {
+        strategyName,
+        benchmarkName,
           strategy: {
             actual: {
               sectorAllocation,
@@ -32,11 +34,12 @@ export default (oneStrategyDetails) => {
             }))
         }
         if (factorIntensity){
-            const fethcedData = Object.keys(factorIntensity).map(factor => ({
-                y: factorIntensity[factor], name:factor
+            const fetchedData = Object.keys(factorIntensity).map(factor => ({
+                name: factor,
+                data: [{y: factorIntensity[factor], name: factor}],
             }))
             strategyDetails.factorIntensity = {
-                data: fethcedData,
+                data: fetchedData,
                 categories: Object.keys(factorIntensity)
             }
         }
@@ -55,7 +58,7 @@ export default (oneStrategyDetails) => {
                 const strategyCumulative = Object.keys(strategyCumulativePerformance).map(key => ({y: strategyCumulativePerformance[key], name: key}));
                 const benchmarkCumulative = Object.keys(benchmarkCumulativePerformance).map(key => ({y: benchmarkCumulativePerformance[key], name: key}));
                 strategyDetails.cumulativePerformance = {
-                    data: [{name: 'strategy',data:strategyCumulative},{name: 'benchmark', data:benchmarkCumulative}],
+                    data: [{name: strategyName,data:strategyCumulative},{name: benchmarkName, data:benchmarkCumulative}],
                     categories: Object.keys(benchmarkCumulativePerformance)
                 }
             }
@@ -63,7 +66,7 @@ export default (oneStrategyDetails) => {
                 const strategyAnnual = Object.keys(strategyAnnualReturn).map(key => ({y: strategyAnnualReturn[key], name: key}));
                 const benchmarkAnnual = Object.keys(benchmarkAnnualReturn).map(key => ({y: benchmarkAnnualReturn[key], name: key}));
                 strategyDetails.annualReturn = {
-                    data: [{name: 'strategy', data:strategyAnnual},{name: 'benchmark', data:benchmarkAnnual}],
+                    data: [{name: strategyName, data:strategyAnnual},{name: benchmarkName, data:benchmarkAnnual}],
                     categories: Object.keys(benchmarkAnnualReturn)
                 }
             }
@@ -71,7 +74,7 @@ export default (oneStrategyDetails) => {
                 const strategyDrawDownData = Object.keys(strategyDrawdown).map(key => ({y: strategyDrawdown[key]*100, name: key}));
                 const benchmarkDrawDownData = Object.keys(benchmarkDrawdown).map(key => ({y: benchmarkDrawdown[key]*100, name: key}));
                 strategyDetails.drawdown = {
-                    data: [{name: 'strategy', data:strategyDrawDownData},{name: 'benchmark', data:benchmarkDrawDownData}],
+                    data: [{name: strategyName, data:strategyDrawDownData},{name: benchmarkName, data:benchmarkDrawDownData}],
                     categories: Object.keys(benchmarkDrawdown)
                 }
             }
@@ -82,7 +85,7 @@ export default (oneStrategyDetails) => {
             byFirmSize.forEach(obj => {
                 const filteredFirmSizeObj = filterObject(obj, 'metric');
                 transformedFirmSizeLiveData[obj.metric] = {
-                    data: Object.keys(filteredFirmSizeObj).map(key => ({y: obj[key], name: key})),
+                    data: Object.keys(filteredFirmSizeObj).map(key => ({data: [{y: obj[key], name: key}], name: key})),
                     categories: Object.keys(filteredFirmSizeObj)
                 }
             })
@@ -90,7 +93,7 @@ export default (oneStrategyDetails) => {
             bySector.forEach(obj => {
                 const filteredSectorObj = filterObject(obj, 'metric');
                 transformedSectorLiveData[obj.metric]= {
-                    data: Object.keys(filteredSectorObj).map(key => ({y: obj[key], name: key})),
+                    data: Object.keys(filteredSectorObj).map(key => ({name: key, data: [{y: obj[key], name: key}]})),
                     categories: Object.keys(filteredSectorObj)
                 }
             })

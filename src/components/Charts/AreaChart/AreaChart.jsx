@@ -9,7 +9,7 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
     const dataToDisplay = [
         {
             ...data[0],
-            showInLegend: false,
+            showInLegend: true,
             fillColor: {
                 linearGradient: {
                     x1: 1,
@@ -26,7 +26,7 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
         },
         {
             ...data[1],
-            showInLegend: false,
+            showInLegend: true,
             fillColor: {
                 linearGradient: {
                     x1: 1,
@@ -46,12 +46,6 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
         chart:{
             type: "areaspline",
             ...size
-        },
-        legend: {
-          layout: 'vertical',
-          align: 'left',
-          verticalAlign: 'top',
-          floating: true,
         },
         credits:{
           enabled: false

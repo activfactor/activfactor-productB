@@ -6,19 +6,27 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core';
 
-const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, uniColor}) => {
     const theme = useTheme();
     // only one series supplied 
     const lengthOfData = useMemo(() => {
         if (data && [].constructor === data.constructor){
-            console.log(data[0].data.length);
             return data[0].data.length
         } else if (data){
             return data.data.length;
         }
     }, [data]);
+
     const transformedData = useMemo(() => {
         if (data && [].constructor === data.constructor){
+            if (uniColor){
+                return data.map(obj => {
+                    if (obj && obj.data && obj.data.length>0 && obj.data[0].y>0){
+                        return {...obj, color: theme.palette.primary.main}
+                    }
+                    return {...obj, color: theme.palette.error.main}
+                })
+            }
             return data.map((obj, index) => ({...obj, color: getColorByIndex(index)}))
         } else if (data) {
             const {data: dataValues} = data;
@@ -30,7 +38,7 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             })
             return [{name: data.name, data: dataToInject}];
         }
-    }, [data, theme]);
+    }, [data, theme, uniColor]);
     const options = {
         chart: {
             type: 'column',
@@ -45,10 +53,11 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             title: {
                 text: Xtitle || null
             },
+            visible: false
         },
         yAxis: {
-            min: minAxis,
-            max: maxAxis,
+            min: minAxis ? minAxis : null,
+            max: maxAxis ? maxAxis : null,
             title: {
                 text: Ytitle || null,
                 align: 'high'
@@ -82,14 +91,6 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             }
         },
         legend: {
-            layout: 'horizontal',
-            align: 'bottom',
-            verticalAlign: 'top',
-            floating: true,
-            borderWidth: 1,
-            backgroundColor:
-                HighCharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-            shadow: true,
             enabled: showLegends
         },
         credits: {
@@ -112,14 +113,14 @@ ColumnChart.propTypes = {
     showLegends: PropTypes.bool,
     minAxis: PropTypes.number,
     maxAxis: PropTypes.number,
-    roundTo: PropTypes.number
+    roundTo: PropTypes.number,
+    uniColor: PropTypes.bool
 }
 
 ColumnChart.defaultProps = {
-    showLegends: false,
-    minAxis: -100,
-    maxAxis: 100,
-    roundTo: 0
+    showLegends: true,
+    roundTo: 0,
+    uniColor: false
 }
 
 export default ColumnChart;

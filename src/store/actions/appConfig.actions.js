@@ -10,7 +10,8 @@ export const fetchAppConfig = () => {
             {url: endPoints.sectorsDescription, method: requestMethods.GET},
             {url: endPoints.factorsDescription, method: requestMethods.GET},
             {url: endPoints.firmsizeDescription, method: requestMethods.GET},
-            {url: endPoints.metricDescription, method:requestMethods.GET}
+            {url: endPoints.metricDescription, method:requestMethods.GET},
+            {url: endPoints.rebalancingDescription, method: requestMethods.GET}
         ],
         onSuccess: responses => dispatch => {
             const sectorOptions = Object.keys(responses[0].data).map(sector => ({value: sector, label: sector}))
@@ -19,7 +20,8 @@ export const fetchAppConfig = () => {
                     sectors: responses[0].data,
                     factors: responses[1].data, 
                     firmSizes: responses[2].data,
-                    metrics: responses[3].data
+                    metrics: responses[3].data,
+                    rebalancingFreq: responses[4].data
                 },
                 selectOptions: {
                     sectors: sectorOptions,

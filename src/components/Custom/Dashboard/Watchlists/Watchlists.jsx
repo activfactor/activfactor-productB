@@ -3,19 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { getWatchlists, clearWatchlistDetails } from "store/actions/watchlist.actions";
 import { setWatchlistName } from "store/actions/resources.actions";
 import { HeadersWrapper, ButtonWrapper } from "../commonStyle";
-import { WatchlistCard } from "../../common";
+import { WatchlistCard, CardListing, AddButton, FeedBackAlert } from "../../common";
 import { DashboardSection } from "../../../Layout";
 import { Link, Button } from "../../../MaterialUIs";
-import { StyledGrid, AddWatchlisButton } from "./style";
 import { WatchlistsSkeleton } from "../../../Skeleton";
 import { useApiInfo } from "screens/hooks/screens.hooks";
 import { FETCH_WATCHLISTS } from "store/types";
 import history from "../../../../history";
-import { useTheme, useMediaQuery } from '@material-ui/core';
+import { useTheme, useMediaQuery, Grid } from '@material-ui/core';
 
 const Strategies = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const { list } = useSelector((state) => state.watchlists);
   const dispatch = useDispatch();
   const [isLoading, error, done] = useApiInfo(FETCH_WATCHLISTS);
@@ -33,11 +32,11 @@ const Strategies = () => {
     return (
       <>
         <HeadersWrapper>
-          <h2>My Watchlist</h2>
+          <h2>My Watchlists</h2>
           {lastUpdate && <p>Last update: {lastUpdate}</p>}
         </HeadersWrapper>
         <Link
-          label="+ New strategy"
+          label="+ New Watchlist"
           to="/strategy/builder"
           theme="primary"
           fontSize="16px"
@@ -57,7 +56,7 @@ const Strategies = () => {
 
   const onviewAllClick = () => {
     dispatch(clearWatchlistDetails());
-    history.push('/watchlist/monitor');
+    history.push('/watchlists/monitor');
   }
 
   const renderContent = () => {
@@ -69,7 +68,7 @@ const Strategies = () => {
     const numberOfAddButtons = 4 - (dashboardWatchlists.length || 0);
     return (
       <>
-        <StyledGrid container justify="space-between">
+        <CardListing repeat={4}>
           {dashboardWatchlists &&
             dashboardWatchlists.length > 0 &&
             dashboardWatchlists.map((strategy, index) => {
@@ -79,38 +78,32 @@ const Strategies = () => {
                 { value: performance[obj], unit: "%" },
               ]);
               return (
-                <StyledGrid key={`${index}_${strategy.watchlistName}`} style={{marginBottom: '20px', width: isMobile ? '100%' : 'auto'}}>
                   <WatchlistCard
+                    key={`${index}_${strategy.watchlistName}`}
                     watchlistName={watchlistName}
                     tickersNumber={tickers}
                     tableData={tableData}
-                    to="/watchlist/monitor"
+                    to="/watchlists/monitor"
                     onClick={handleWatchlistClick(watchlistName)}
                   />
-                </StyledGrid>
               );
             })}
           {numberOfAddButtons > 0 && !isMobile &&
             Array.from(Array(numberOfAddButtons), (e, i) => {
               return (
-                <AddWatchlisButton
+                <AddButton
                   key={`${i}_watchlist`}
-                  disableTouchRipple={true}
                   onClick={onAddWatchlistClick}
-                  variant="outlined"
-                  color="primary"
-                >
-                  +
-                </AddWatchlisButton>
+                />
               );
             })}
-        </StyledGrid>
+        </CardListing>
         {userWatchlistPerformance.length > 4 && (
-          <StyledGrid container justify="center" alignItems="center">
+          <Grid container justify="center" alignItems="center">
             <ButtonWrapper>
               <Button label="View all" fullWidth={true} onClick={onviewAllClick}/>
             </ButtonWrapper>
-          </StyledGrid>
+          </Grid>
         )}
       </>
     );
@@ -125,9 +118,9 @@ const Strategies = () => {
   ) : isLoading ? (
     <WatchlistsSkeleton />
   ) : error ? (
-    <h1>error</h1>
+    <FeedBackAlert isError={true} message={error} />
   ) : (
-    ""
+    <FeedBackAlert />
   );
 };
 

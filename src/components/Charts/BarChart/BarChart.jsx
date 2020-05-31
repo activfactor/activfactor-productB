@@ -6,12 +6,12 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core';
 
-const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
+const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, unit}) => {
     // only one series supplied 
     const theme = useTheme();
     const transformedData = useMemo(() => {
         if (data && [].constructor === data.constructor){
-            return [{data: data.map((obj, index) => ({...obj, color: getColorByIndex(index)}))}]
+            return data.map((obj, index) => ({...obj, color: getColorByIndex(index)}));
         } else if (data) {
             const {data: dataValues} = data;
             const dataToInject = dataValues.map(obj => {
@@ -37,6 +37,7 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
             title: {
                 text: Xtitle || null
             },
+            visible: false
         },
         yAxis: {
             min: minAxis,
@@ -51,7 +52,7 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
         },
         tooltip: {
             formatter: function(){
-                return `<b>${this.key} <br/>${formatDecimal(this.y, roundTo)}%</b>`
+                return `<b>${this.key} <br/>${formatDecimal(this.y, roundTo)} ${unit ? unit : ''}</b>`
             },
         },
         plotOptions: {
@@ -62,20 +63,12 @@ const BarChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis
                 dataLabels: {
                     enabled: true,
                     formatter: function(){
-                        return `<br>${formatDecimal(this.y, roundTo)} %`
+                        return `<br>${formatDecimal(this.y, roundTo)} ${unit ? unit : ''}`
                     }
                 }
             },
         },
         legend: {
-            layout: 'horizontal',
-            align: 'bottom',
-            verticalAlign: 'top',
-            floating: true,
-            borderWidth: 1,
-            backgroundColor:
-                HighCharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-            shadow: true,
             enabled: showLegends
         },
         credits: {
@@ -98,11 +91,12 @@ BarChart.propTypes = {
     showLegends: PropTypes.bool,
     roundTo: PropTypes.number,
     minAxis: PropTypes.number,
-    maxAxis: PropTypes.number
+    maxAxis: PropTypes.number,
+    unit: PropTypes.string
 }
 
 BarChart.defaultProps = {
-    showLegends: false,
+    showLegends: true,
     roundTo: 0,
 }
 

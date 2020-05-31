@@ -72,7 +72,7 @@ const DeleteWatchlist = ({ open, onClose, onFinish, watchlistName ,message}) => 
       themeColor="error"
     >
       <Grid container justify="center">
-        <DeleteMessage component="p">{message || `Are you sure you want to delete <em>{ ${watchlistName} } </em>watchllist`}</DeleteMessage>
+        <DeleteMessage component="p">{message || `Are you sure you want to delete ${watchlistName} watchllist`}</DeleteMessage>
       </Grid>
     </Dialog>
   );

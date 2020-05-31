@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import { Table, Checkbox, Snackbar } from '../../../MaterialUIs';
+import { Table, Snackbar } from '../../../MaterialUIs';
 import { useSelector , useDispatch} from 'react-redux';
 import { Cell, TickerDescription, TickerName, TickerWrapper, StyledDeleteIcon, ViewButton, StyledProgress, ProgressWrapper } from './style';
 import { getColor, getValue, formatDecimal } from 'utils/app.utils';
@@ -11,7 +11,7 @@ import { useApiInfo } from 'screens/hooks/screens.hooks';
 import { DELETE_TICKERS } from 'store/types';
 import { clearApi } from 'store/actions/api.actions';
 
-const CustomizePortfolio = ({addOrRemoveTicker, tickersWallet, onDeleteTicker}) => {
+const CustomizePortfolio = ({onDeleteTicker}) => {
     const { oneWatchlistDetails } = useSelector(state => state.watchlists);
     const [isLoading, error, done] = useApiInfo(DELETE_TICKERS);
     const dispatch = useDispatch();
@@ -28,27 +28,21 @@ const CustomizePortfolio = ({addOrRemoveTicker, tickersWallet, onDeleteTicker}) 
     )
   , [headers]);
 
-  const getRowValue = useCallback((value, unit='') => {
-    let formatedValue = formatDecimal(getValue(value), 2);
+  const getRowValue = useCallback((value, roundTo,  unit='') => {
+    let formatedValue = formatDecimal(getValue(value), roundTo);
     return `${formatedValue}${unit}`
   }, []);
 
-  const isChecked = useCallback((ticker) => {
-    return tickersWallet.filter(item => item === ticker).length>0
-  }, [tickersWallet]);
-
-  const onDeleteTickerHandler = useCallback((tickerName) => () => {
-    console.log(tickerName);
-    onDeleteTicker(tickerName);
+  const onDeleteTickerHandler = useCallback((tickerId) => () => {
+    onDeleteTicker(tickerId);
   }, [onDeleteTicker]);
 
-  const renderActions = useCallback((ticker) => (
+  const renderActions = useCallback((tickerId) => (
       <Grid container direction="row" alignItems="center" justify="center" wrap="nowrap">
         <ViewButton variant="outlined" color="primary"><Visibility /></ViewButton>
-        <Checkbox margin="0px 5px 0px 5px" size="small" checked={isChecked(ticker)} value={ticker} onChange={addOrRemoveTicker}/>
-        <StyledDeleteIcon onClick={onDeleteTickerHandler(ticker)} />
+        <StyledDeleteIcon onClick={onDeleteTickerHandler(tickerId)} />
       </Grid>
-  ), [addOrRemoveTicker, isChecked, onDeleteTickerHandler]);
+  ), [onDeleteTickerHandler]);
 
   const onCloseDeleteFailureErrorHandler = () => {
     dispatch(clearApi(DELETE_TICKERS));
@@ -59,7 +53,7 @@ const renderRows = useCallback(() => {
         const {actual: {members}} = oneWatchlistDetails;
         if (members && members.length>0){
             return members.map((member, index) => {
-              const {ticker, companyname,  sector, WTD, MTD, firm_size, value, size, volatility, momentum, profitability, investment, weight} = member;
+              const {ticker, companyname,  sector, WTD, MTD, firm_size, value, size, volatility, momentum, profitability, investment, tradingitemid} = member;
                 return (
                     <React.Fragment key={`${ticker}_${index}`}>
                   <TableRow>
@@ -71,16 +65,16 @@ const renderRows = useCallback(() => {
                     </Cell>
                     <Cell variant="body" align="center">{sector}</Cell>
                     <Cell variant="body" align="center" >{firm_size}</Cell>
-                    <Cell variant="body" align="center" color={getColor(member['1D'])}>{getValue(member['1D'])}</Cell>
-                    <Cell variant="body" align="center" color={getColor(WTD)}>{getValue(WTD)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(MTD)}>{getValue(MTD)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(value)}>{getRowValue(value)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(size)}>{getRowValue(size)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(volatility)}>{getRowValue(volatility)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(momentum)}>{getRowValue(momentum)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(profitability)}>{getRowValue(profitability)}</Cell>
-                    <Cell variant="body" align="center" color={getColor(investment)}>{getRowValue(investment)}</Cell>
-                    <Cell variant="body" align="center">{renderActions(ticker)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(member['1D'])}>{getValue(member['1D'])}%</Cell>
+                    <Cell variant="body" align="center" color={getColor(WTD)}>{getValue(WTD)}%</Cell>
+                    <Cell variant="body" align="center" color={getColor(MTD)}>{getValue(MTD)}%</Cell>
+                    <Cell variant="body" align="center" color={getColor(value)}>{getRowValue(value, 0)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(size)}>{getRowValue(size, 0)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(volatility)}>{getRowValue(volatility, 0)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(momentum)}>{getRowValue(momentum, 0)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(profitability)}>{getRowValue(profitability, 0)}</Cell>
+                    <Cell variant="body" align="center" color={getColor(investment)}>{getRowValue(investment, 0)}</Cell>
+                    <Cell variant="body" align="center">{renderActions(tradingitemid)}</Cell>
                   </TableRow>
                   </React.Fragment>
                 );

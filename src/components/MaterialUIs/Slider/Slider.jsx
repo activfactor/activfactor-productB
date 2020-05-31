@@ -12,12 +12,16 @@ const CustomSlider = ({value, min, max, step=1, onChange, defaultValue}) => {
         label: min
     },
     {
-        value: (max*(1/3)).toFixed(0),
-        label: (max*(1/3)).toFixed(0)
+        value: (min + 10),
+        label: (min + 10)
     },
     {
-        value: (max*(2/3)).toFixed(0),
-        label: (max*(2/3)).toFixed(0),
+      value: (min + 20),
+      label: (min + 20)
+    },
+    {
+      value: (min + 30),
+      label: (min + 30)
     },
     {
         value: max,

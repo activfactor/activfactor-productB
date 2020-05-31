@@ -22,7 +22,7 @@ const CustomizePortfolio = ({addOrRemoveWatchList, watchlistWallet}) => {
   , [headers]);
 
   const getRowValue = useCallback((value, unit='', roundTo) => {
-    let formatedValue = formatDecimal(getValue(value), roundTo=0);
+    let formatedValue = formatDecimal(getValue(value), roundTo);
     return `${formatedValue}${unit}`
   }, []);
 
@@ -35,7 +35,7 @@ const renderRows = useCallback(() => {
         const {strategy: {actual: {members}}} = strategyResults;
         if (members && members.length>0){
             return members.map((member, index) => {
-              const {ticker, companyname,  sector, industry, firm_size, value, size, volatility, momentum, profitability, investment, weight, last_rebalancing} = member;
+              const {ticker, companyname,  sector, industry, firm_size, value, size, volatility, momentum, profitability, investment, weight, tradingitemid} = member;
                 return (
                   <TableRow key={`${ticker}_${index}`}>
                     <Cell align="left">
@@ -54,7 +54,7 @@ const renderRows = useCallback(() => {
                     <Cell variant="body" align="center" color={getColor(profitability)}>{getRowValue(profitability)}</Cell>
                     <Cell variant="body" align="center" color={getColor(investment)}>{getRowValue(investment)}</Cell>
                     <Cell variant="body" align="center">{getRowValue(weight, '%', 2)}</Cell>
-                    <Cell variant="body" align="center"><Checkbox checked={isChecked(ticker)} value={ticker} onChange={addOrRemoveWatchList}/></Cell>
+                    <Cell variant="body" align="center"><Checkbox checked={isChecked(tradingitemid)} value={tradingitemid} onChange={addOrRemoveWatchList}/></Cell>
                   </TableRow>
                 );
             })

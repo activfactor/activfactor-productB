@@ -42,6 +42,13 @@ const StrategyMonitor = () => {
       dispatch(fetchStrategy());
     }
   }, [strategyName, oneStrategyDetails, dispatch, strategyDetails]);
+
+  useEffect(() => {
+    // cleanup the strategy details
+    return () => {
+      dispatch(clearStrategyDetails())
+    }
+  }, [dispatch]);
   const handleTabClick = (value) => {
     setTabValue(value);
   };

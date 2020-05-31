@@ -101,7 +101,7 @@ const ReturnTable = ({ keyToExtract, title, theme, tableFirstHeader }) => {
           ))}
       </>
     ),
-    [tableData, getRowValue]
+    [tableData, getRowValue, metrics]
   );
 
   const renderDetails = useCallback(() => {

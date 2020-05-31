@@ -36,8 +36,8 @@ const App = () => {
             <Route path="/logout" component={Logout} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/strategy/builder" component={StrategyBuilder} />
-            <Route exact path="/strategy/monitor" component={StrategyMonitor} />
-            <Route exact path="/watchlist/monitor" component={WatchlistMonitor} />
+            <Route exact path="/strategies/monitor" component={StrategyMonitor} />
+            <Route exact path="/watchlists/monitor" component={WatchlistMonitor} />
           </Switch>
         </SectionPage>
 

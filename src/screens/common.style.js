@@ -29,7 +29,7 @@ export const LeftTextWrapper = withStyles((theme) => ({
 export const LeftHeaderTitle = withStyles((theme) => ({
     root: {
         color: theme.palette.common.black,
-        fontSize: '16px',
+        fontSize: '18px',
         fontWeight: 500,
         margin: '0px',
     }
@@ -60,7 +60,7 @@ export const PerformanceValue = withStyles((theme) => ({
 export const TickersText = withStyles((theme) => ({
     root: {
         color: theme.palette.text.secondary,
-        fontSize: '12px',
+        fontSize: '14px',
         fontWeight: 500,
         margin: '0px',
         marginBottom: theme.spacing(2),

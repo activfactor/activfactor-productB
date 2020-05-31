@@ -1,6 +1,7 @@
 import { tokenTypes, API_CONFIG } from 'config/appConfig';
 import { API } from '../types';
 import axios from 'axios';
+import history from '../../history';
 
 export const apiAction = ({
   url,
@@ -103,5 +104,10 @@ const handleSuccess = (response) => {
 }
 
 const handleError = (error) => {
+  if (error && error.response && [422].includes(error.response.status)){
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('userId');
+    window.location.href="/logout";
+  }
   return Promise.reject(error);
 }

@@ -14,7 +14,7 @@ export default (state = auth, action)=>{
             return {
                 ...state,
                 userId: null,
-                tolen: null
+                token: null
             }
         default:
             return state;

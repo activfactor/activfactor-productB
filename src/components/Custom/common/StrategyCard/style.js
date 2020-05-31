@@ -3,7 +3,7 @@ import { Card } from 'components/MaterialUIs';
 
 export const TickersNumber = withStyles((theme) => ({
     root: {
-        fontSize: '12px',
+        fontSize: '13px',
         color: theme.palette.text.secondary,
         fontWeight: 500,
         marginBottom: '15px',
@@ -14,8 +14,8 @@ export const TickersNumber = withStyles((theme) => ({
 export const RebalancingWrapper = withStyles((theme) => ({
     root: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         width: '100%',
         alignItems: 'center',
         flexWrap: 'wrap',
@@ -69,8 +69,7 @@ export const DescriptionWrapper = withStyles((theme) => ({
 
 export const StyledCard = withStyles((theme) => ({
     root: {
-        width: '400px',
-        margin: '10px',
+        width: '100%',
         [theme.breakpoints.down('sm')]: {
             minWidth: 'unset',
             margin: 'unset'

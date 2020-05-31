@@ -1,1 +1,1 @@
-export {default as AuthFooter} from './AuthFooter';
+export {default as AuthFooter} from '../Custom/AuthFooter';

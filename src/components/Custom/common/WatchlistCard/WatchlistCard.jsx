@@ -43,7 +43,7 @@ const WatchlistCard = ({watchlistName, to, tickersNumber, tableData, onClick}) =
     return (
         <StyledCard>
             <DescriptionWrapper>
-            <Link align="left" fontSize="18px" label={watchlistName} to={to} theme="primary" onClick={onClick} />
+            <Link align="left" fontSize="20px" label={watchlistName} to={to} theme="primary" onClick={onClick} />
             <TickersNumber component="p">{`${tickersNumber} Tickers`}</TickersNumber>
             </DescriptionWrapper>
             <Table minWidth="auto" renderHeaders={renderHeaders} renderRows={renderRows} theme="primary" />

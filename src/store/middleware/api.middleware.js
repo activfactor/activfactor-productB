@@ -4,7 +4,6 @@ import {
   NetworkRequest,
   NetworkMultipleRequests,
 } from "./api.middleware.helper";
-import qs from 'qs';
 
 const apiMiddleware = ({ dispatch }) => (next) => (action) => {
   next(action);

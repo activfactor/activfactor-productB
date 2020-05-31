@@ -37,6 +37,13 @@ const DrawerList = ({routes, anchor, toggleDrawer}) => {
                   {routes.map((route => (
                     getNavigationLinkComp(route)
                   )))}
+                  <ListItem
+                      button
+                      component="div"
+                      disableTouchRipple={true}
+                  >
+                      <NavigationLink label="Logout" to="/logout" />
+                  </ListItem>
                 </List>
               </div>
             );

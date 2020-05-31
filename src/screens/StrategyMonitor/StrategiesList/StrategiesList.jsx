@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStrategies } from 'store/actions/strategies.actions';
 import { setStrategyName } from 'store/actions/resources.actions';
-import { HeadersWrapper, AddStrategyButton } from './style';
-import { StrategyCard } from 'components/Custom/common';
+import { HeadersWrapper } from './style';
+import { StrategyCard, CardListing, AddButton, FeedBackAlert } from 'components/Custom/common';
 import { DashboardSection } from 'components/Layout';
 import { Link } from 'components/MaterialUIs';
-import { Grid, useMediaQuery, useTheme } from '@material-ui/core';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 import { StrategiesSkeleton } from 'components/Skeleton';
 import { useApiInfo } from 'screens/hooks/screens.hooks';
 import { FETCH_STRATEGIES } from 'store/types';
@@ -17,7 +17,7 @@ const Strategies = () => {
     const dispatch = useDispatch();
     const [isLoading, error, done] = useApiInfo(FETCH_STRATEGIES);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     // fetch all strategies in dashboard
     useEffect(() => {
@@ -53,33 +53,32 @@ const Strategies = () => {
         const numberOfAddButtons = 3-(userStrategyPerformance.length || 0)
         return (
             <>
-            <Grid container justify={isMobile ? "center" : "space-between"}>
-                {userStrategyPerformance && userStrategyPerformance.length>0 && userStrategyPerformance.map(strategy => {
+            <CardListing repeat={3}>
+                {userStrategyPerformance && userStrategyPerformance.length>0 && userStrategyPerformance.map((strategy, index) => {
                     const {lastRebalancing,nextRebalancing,strategyName,benchmarkName,tickers,performance} = strategy
                     const tableData = performance.map(item => ([{value: item.metric},{value: item.strategy, unit: '%'},{value: item.benchmark, unit:'%'}]));
                     return (
-                        <Grid item md={4} xs={12} style={{marginBottom: '20px'}}>
-                            <StrategyCard 
-                                strategyName={strategyName}
-                                rebalancingLast={lastRebalancing}
-                                rebalancingNext={nextRebalancing}
-                                benchmark={benchmarkName}
-                                tickersNumber={tickers}
-                                tableData={tableData}
-                                onClick={handleStrategyClick(strategyName)}
-                                to="/strategy/monitor"
-                            />
-                        </Grid>
+                        <StrategyCard 
+                            key={`${index}_${strategyName}`}
+                            strategyName={strategyName}
+                            rebalancingLast={lastRebalancing}
+                            rebalancingNext={nextRebalancing}
+                            benchmark={benchmarkName}
+                            tickersNumber={tickers}
+                            tableData={tableData}
+                            onClick={handleStrategyClick(strategyName)}
+                            to="/strategies/monitor"
+                        />
                     )
                 })}
                 {numberOfAddButtons>0 && !isMobile && (
                     Array.from(Array(numberOfAddButtons), (e,i) => {
                         return (
-                            <AddStrategyButton disableFocusRipple={true} disableTouchRipple={true} onClick={onAddStrategyClick} variant="outlined" color="primary">+</AddStrategyButton>
+                            <AddButton key={`${i}_strategy`} onClick={onAddStrategyClick} />
                         )
                     })
                 )}
-            </Grid>
+            </CardListing>
             </>
         )
     }
@@ -87,7 +86,7 @@ const Strategies = () => {
     return (
         list && list.userStrategyPerformance && done ? (
             <DashboardSection margin="10px 0px" renderHeader={renderHeader} renderContent={renderContent}/>
-        ) : isLoading ? <StrategiesSkeleton /> : error ? <h1>error</h1> : ''
+        ) : isLoading ? <StrategiesSkeleton /> : error ? <FeedBackAlert isError={true} message={error}/> : <FeedBackAlert />
     );
 };
 

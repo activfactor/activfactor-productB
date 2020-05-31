@@ -3,7 +3,7 @@ import { Card } from 'components/MaterialUIs';
 
 export const TickersNumber = withStyles((theme) => ({
     root: {
-        fontSize: '12px',
+        fontSize: '13px',
         color: theme.palette.text.secondary,
         fontWeight: 500,
         marginBottom: '15px',
@@ -44,11 +44,7 @@ export const DescriptionWrapper = withStyles((theme) => ({
 
 export const StyledCard = withStyles((theme) => ({
     root: {
-        minWidth: '250px',
-        margin: '10px',
-        [theme.breakpoints.down('sm')]:{
-            margin: 'unset'
-        }
+        width: '100%'
     }
 }))(Card);
 

@@ -1,37 +1,10 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {Badge, Table, Link} from '../../../MaterialUIs';
 import { TickersNumber, Rebalancing, StyledTableCell, StyledTableRow, RebalancingWrapper, DescriptionWrapper, StyledCard } from './style';
 import { getColor, getValue } from 'utils/app.utils';
 import PropTypes from 'prop-types';
-import { useMediaQuery, useTheme } from '@material-ui/core';
 
 const StrategyCard = ({strategyName, to, tickersNumber, rebalancingLast, rebalancingNext, tableData, benchmark, onClick}) => {
-    const theme = useTheme();
-    const mobileView = useMediaQuery(theme.breakpoints.down('xs'));
-    const {last, next} = useMemo(() => {
-        if (mobileView){
-            return {
-                last: {
-                    fontSize: '11px',
-                    margin: '0px 5px 0px 0px'
-                },
-                next: {
-                    fontSize: '11px',
-                    margin: '0px 0px 0px 5px'
-                }
-            }
-        }
-        return {
-            last: {
-                fontSize: '13px',
-                margin: '0px 5px 0px 0px'
-            },
-            next: {
-                fontSize: '13px',
-                margin: '0px 0px 0px 5px'
-            }
-        }
-    }, [mobileView]);
     const renderHeaders = () => {
         return (
             <>
@@ -71,13 +44,13 @@ const StrategyCard = ({strategyName, to, tickersNumber, rebalancingLast, rebalan
     return (
         <StyledCard>
             <DescriptionWrapper>
-            <Link align="left" fontSize="18px" label={strategyName} to={to} onClick={onClick} theme="primary" />
+            <Link align="left" fontSize="20px" label={strategyName} to={to} onClick={onClick} theme="primary" />
             <TickersNumber component="p">{`${tickersNumber} Tickers`}</TickersNumber>
             <RebalancingWrapper>
                 <Rebalancing component="span">Rebalancing</Rebalancing>
                 <div style={{marginBottom: '10px'}}>
-                    {rebalancingLast && <Badge {...last} color="secondary" variant="default" label={`Last: ${rebalancingLast}`} />}
-                    {rebalancingNext && <Badge {...next} color="primary" variant="default" label={`Next: ${rebalancingNext}`} />}
+                    {rebalancingLast && <Badge fontSize="13px" margin="0px 5px 5px 0px" color="secondary" variant="default" label={`Last: ${rebalancingLast}`} />}
+                    {rebalancingNext && <Badge fontSize="13px" margin="0px 5px 5px 0px" color="primary" variant="default" label={`Next: ${rebalancingNext}`} />}
                 </div>
             </RebalancingWrapper>
             </DescriptionWrapper>

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Tabs } from "../../../components/MaterialUIs";
-import { ChartCard } from "../../../components/Custom/common";
+import { ChartCard, CardListing } from "../../../components/Custom/common";
 import { LiveTable } from "../../../components/Custom/StrategyMonitor";
 import { ColumnChart } from "../../../components/Charts";
 import { Grid } from "@material-ui/core";
@@ -24,22 +24,9 @@ const Live = ({ strategyDetails }) => {
   const handleFirmSizeTabChange = (value) => {
     setFirmSizePerformance(value);
   };
-  const addOrRemoveTicker = (value) => {
-    let newList = [];
-    if (tickersWaller.length > 0) {
-      if (!tickersWaller.includes(value)) {
-        newList = [...tickersWaller, value];
-      } else {
-        newList = tickersWaller.filter((ticker) => ticker !== value);
-      }
-    } else {
-      newList = [value];
-    }
-    setTickersWaller(newList);
-  };
   return (
-    <Grid container>
-        <Grid item md={6} xs={12} style={{marginBottom: '20px'}}>
+    <>
+    <CardListing repeat={2}>
           <ChartCard
             margin="0px auto 0px 0px"
             title={
@@ -56,19 +43,15 @@ const Live = ({ strategyDetails }) => {
           >
             <ColumnChart
               roundTo={2}
-              minAxis={-2}
-              maxAxis={2}
-              data={{
-                name: "sector",
-                data: strategyDetails.liveSector[sectorPerformance].data,
-              }}
+              uniColor={true}
+              data={
+                strategyDetails.liveSector[sectorPerformance].data
+              }
               categories={
                 strategyDetails.liveSector[sectorPerformance].categories
               }
             />
           </ChartCard>
-        </Grid>
-        <Grid item md={6} xs={12} style={{marginBottom: '20px'}}>
           <ChartCard
             margin="0px 0px 0px auto"
             title={
@@ -84,26 +67,21 @@ const Live = ({ strategyDetails }) => {
             }
           >
             <ColumnChart
+              uniColor={true}
               roundTo={2}
-              minAxis={-2}
-              maxAxis={2}
-              data={{
-                name: "firmSize",
-                data: strategyDetails.liveFirmSize[firmSizePerformance].data,
-              }}
+              data={
+                strategyDetails.liveFirmSize[firmSizePerformance].data
+              }
               categories={
                 strategyDetails.liveFirmSize[firmSizePerformance].categories
               }
             />
           </ChartCard>
-        </Grid>
-      <Grid item xs={12}>
-        <LiveTable
-          addOrRemoveTicker={addOrRemoveTicker}
-          tickersWallet={tickersWaller}
-        />
-      </Grid>
-    </Grid>
+          </CardListing>
+      <CardListing repeat={1} style={{marginTop: '15px'}}>
+        <LiveTable />
+    </CardListing>
+    </>
   );
 };
 

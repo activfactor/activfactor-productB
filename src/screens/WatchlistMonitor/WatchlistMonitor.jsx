@@ -17,12 +17,12 @@ import { ButtonWrapper } from '../common.style';
 import DeleteWatchlistModal from './Modals/DeleteWatchlist';
 import Watchlists from './Watchlists';
 import AuthRequire from 'components/hoc/ForceNavigation';
+import { CardListing } from 'components/Custom/common';
 
 const WatchlistMonitor = () => {
     const dispatch = useDispatch();
     const { watchlistName, oneWatchlistDetails } = useSelector(state => ({...state.watchlists, ...state.resources}));
     const [isLoading, error, done] = useApiInfo(FETCH_ONE_WATCHLIST_DETAILS);
-    const [tickersWallet, setTickersWallet] = useState([]);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [successDeleteMessage, setSuccessDeleteMessage] = useState();
     const [watchlistDetails] = useWatchlistDetails();
@@ -32,23 +32,16 @@ const WatchlistMonitor = () => {
         }
     }, [watchlistName, oneWatchlistDetails, dispatch, watchlistDetails]);
 
+    useEffect(() => {
+      // clear the watchlist details from redux when the component will unmount
+      return () => {
+        dispatch(clearWatchlistDetails());
+      }
+    }, [dispatch]);
+
     const handleErrorClosed = () => {
         history.push('/dashboard');
     }
-
-    const addOrRemoveTicker = (value) => {
-        let newList = [];
-        if (tickersWallet.length > 0) {
-          if (!tickersWallet.includes(value)) {
-            newList = [...tickersWallet, value];
-          } else {
-            newList = tickersWallet.filter((ticker) => ticker !== value);
-          }
-        } else {
-          newList = [value];
-        }
-        setTickersWallet(newList);
-    };
 
     const onDeleteStrategyClick = () => {
         setShowDeleteModal(true);
@@ -73,8 +66,8 @@ const WatchlistMonitor = () => {
         setSuccessDeleteMessage("");
     }
 
-    const onDeleteTickerHandler = (tickerName) => {
-        dispatch(deleteTickers([tickerName],watchlistName));
+    const onDeleteTickerHandler = (tickerId) => {
+        dispatch(deleteTickers([tickerId],watchlistName));
     }
 
     const onCloseEmptyWatchlist = () => {
@@ -110,12 +103,12 @@ const WatchlistMonitor = () => {
         {!isEmpty(oneWatchlistDetails) && (
           <>
         <TopHeader />
-        <UnControlledCharts watchlistDetails={watchlistDetails} />
-        <ControlledCharts watchlistDetails={watchlistDetails} />
+        <CardListing repeat={3}>
+          <UnControlledCharts watchlistDetails={watchlistDetails} />
+          <ControlledCharts watchlistDetails={watchlistDetails} />
+        </CardListing>
         <Grid container style={{ marginTop: "20px" }}>
           <WatchlistMonitorTable
-            tickersWallet={tickersWallet}
-            addOrRemoveTicker={addOrRemoveTicker}
             onDeleteTicker={onDeleteTickerHandler}
           />
         </Grid>

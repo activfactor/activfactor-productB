@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const StyledTable = ({renderHeaders, renderRows, theme, stickyHeader,maxHeight, ...props}) => {
   const classes = useStyles(props);
   return (
-    <TableContainer component={TableWrapper} theme={theme} maxheight={maxHeight}>
-      <Table stickyHeader={stickyHeader} className={classes.table} >
+    <TableContainer component={TableWrapper} theme={theme} maxheight={maxHeight} noshadow={props.noshadow}>
+      <Table stickyHeader={stickyHeader} className={classes.table}>
         <StyledTableHead theme={theme}>
           <TableRow>
             {renderHeaders()}

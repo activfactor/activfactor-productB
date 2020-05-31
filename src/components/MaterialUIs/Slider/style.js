@@ -34,6 +34,7 @@ export const StyledSlider = withStyles((theme) => ({
   },
   valueLabel: {
     top: -30,
+    left: -3,
     '& *': {
       background: theme.customColors.backgroundBlue,
       color: theme.palette.primary.light,

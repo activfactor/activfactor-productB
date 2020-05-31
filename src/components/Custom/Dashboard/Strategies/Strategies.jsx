@@ -3,22 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchStrategies, clearStrategyDetails } from 'store/actions/strategies.actions';
 import { setStrategyName } from 'store/actions/resources.actions';
 import { HeadersWrapper, ButtonWrapper } from '../commonStyle';
-import { StrategyCard } from '../../common';
+import { StrategyCard, CardListing, AddButton, FeedBackAlert } from '../../common';
 import { DashboardSection } from '../../../Layout';
 import { Link, Button } from '../../../MaterialUIs';
-import { StyledGrid, AddStrategyButton } from './style';
 import { StrategiesSkeleton } from '../../../Skeleton';
 import { useApiInfo } from 'screens/hooks/screens.hooks';
 import { FETCH_STRATEGIES } from 'store/types';
 import history from '../../../../history';
-import { useTheme, useMediaQuery } from '@material-ui/core';
+import { useTheme, useMediaQuery, Grid } from '@material-ui/core';
 
 const Strategies = () => {
     const {list} = useSelector(state => state.strategies);
     const dispatch = useDispatch();
     const [isLoading, error, done] = useApiInfo(FETCH_STRATEGIES);
     const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     // fetch all strategies in dashboard
     useEffect(() => {
@@ -51,7 +50,7 @@ const Strategies = () => {
 
     const onViewAllClick = () => {
         dispatch(clearStrategyDetails());
-        history.push('/strategy/monitor');
+        history.push('/strategies/monitor');
     }
 
     const renderContent = () => {
@@ -60,37 +59,36 @@ const Strategies = () => {
         const numberOfAddButtons = 3 - (dashboardStrategies.length | 0);
         return (
             <>
-            <StyledGrid container justify="space-between">
+            <CardListing repeat={3}>
                 {dashboardStrategies && dashboardStrategies.length>0 && dashboardStrategies.map((strategy,index) => {
                     const {lastRebalancing,nextRebalancing,strategyName,benchmarkName,tickers,performance} = strategy
                     const tableData = performance.map(item => ([{value: item.metric},{value: item.strategy, unit: '%'},{value: item.benchmark, unit:'%'}]));
                     return (
-                        <StyledGrid key={`${index}_${strategy.strategyName}`} style={{marginBottom: '20px', width: isMobile ? '100%' : 'auto'}}>
-                            <StrategyCard 
-                                strategyName={strategyName}
-                                rebalancingLast={lastRebalancing}
-                                rebalancingNext={nextRebalancing}
-                                benchmark={benchmarkName}
-                                tickersNumber={tickers}
-                                tableData={tableData}
-                                onClick={handleStrategyClick(strategyName)}
-                                to="/strategy/monitor"
-                            />
-                        </StyledGrid>
+                        <StrategyCard 
+                            key={`${index}_${strategy.strategyName}`}
+                            strategyName={strategyName}
+                            rebalancingLast={lastRebalancing}
+                            rebalancingNext={nextRebalancing}
+                            benchmark={benchmarkName}
+                            tickersNumber={tickers}
+                            tableData={tableData}
+                            onClick={handleStrategyClick(strategyName)}
+                            to="/strategies/monitor"
+                        />
                     )
                 })}
                 {numberOfAddButtons > 0 && !isMobile && Array.from(Array(numberOfAddButtons), (e,i) => {
                     return (
-                        <AddStrategyButton key={`${i}_strategy`} disableTouchRipple={true} onClick={onAddStrategyClick} variant="outlined" color="primary">+</AddStrategyButton>
+                        <AddButton key={`${i}_strategy`} onClick={onAddStrategyClick} />
                     )
                 })}
-            </StyledGrid>
+            </CardListing>
             {userStrategyPerformance.length>3 && 
-                <StyledGrid container justify="center" alignItems="center">
+                <Grid container justify="center" alignItems="center">
                     <ButtonWrapper>
                         <Button label="View all" fullWidth={true} onClick={onViewAllClick}/>
                     </ButtonWrapper>
-                </StyledGrid>
+                </Grid>
             }
             </>
         )
@@ -99,7 +97,7 @@ const Strategies = () => {
     return (
         list && list.userStrategyPerformance && done ? (
             <DashboardSection margin="30px 0px" renderHeader={renderHeader} renderContent={renderContent}/>
-        ) : isLoading ? <StrategiesSkeleton /> : error ? <h1>error</h1> : ''
+        ) : isLoading ? <StrategiesSkeleton /> : error ? <FeedBackAlert isError={true} message={error} /> : <FeedBackAlert />
     );
 };
 

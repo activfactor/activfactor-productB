@@ -16,6 +16,7 @@ export const endPoints = {
     firmsizeDescription: 'firmsizelist',
     factorsDescription: 'factorslist',
     metricDescription: 'metricslist',
+    rebalancingDescription: 'rebalancinglist',
     runStrategy: 'factor/backtest',
     saveWatchlist: 'watchlist',
     updateWatchlist: '/ticker/watchlist',
@@ -41,8 +42,8 @@ export const URL = {
 export const routes = [
     {label: 'Dashboard', to: '/dashboard'},
     {label: 'Strategy builder', to: '/strategy/builder'},
-    {label: 'Strategy monitor', to: '/strategy/monitor'},
-    {label: 'Watch list', to: '/watchlist/monitor'}
+    {label: 'Strategies monitor', to: '/strategies/monitor'},
+    {label: 'Watchlists Monitor', to: '/watchlists/monitor'}
 ]
 
 export const tokenTypes = {
@@ -75,6 +76,6 @@ export const INITIAL_STRATEGY_FILTERS = {
     halal: 0,
     factors: [],
     rebalancingFreq: 'monthly',
-    firmSizes: ['medium','large','small'],
+    firmSizes: ['medium','large','small','micro'],
     nStocks: 25,
 }

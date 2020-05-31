@@ -1,32 +1,58 @@
-import React,{useCallback} from 'react';
+import React,{useCallback, useMemo} from 'react';
 import { ToggleButton } from 'components/MaterialUIs';
 import { ActionsBlock } from 'components/Custom/StrategyBuilder';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 const RebalancingFreq = ({onUpdate, initialValue}) => {
+    const {descriptions} = useSelector(state => state.appConfig);
+    const getSubLabel = useCallback((freq) => {
+        if (descriptions){
+            return descriptions.rebalancingFreq[freq]
+        }
+    }, [descriptions]);
+
     const handleClick = useCallback((freq) => () => {
         if(onUpdate){
             onUpdate(freq);
         }
     }, [onUpdate]);
+
+    const colorsProps = useMemo(() => ({
+        monthly: "darkness",
+        quarterly: "dark",
+        semesterly: "main",
+        yearly: "light"
+    }), []);
+
+    const getProps = useCallback((freq, label) => ({
+        onClick: handleClick(freq),
+        height: "135px",
+        label: label,
+        subLabel: getSubLabel(freq),
+        colorTheme: "primary",
+        colorDarkness: colorsProps[freq],
+        active: initialValue === freq
+    }), [getSubLabel, handleClick,initialValue, colorsProps]);
+
     return (
         <ActionsBlock title="Rebalancing Frequencies">
             <Grid container direction="row">
                 <Grid container item direction="row" md={6} sm={12}>
                     <Grid item sm={6} xs={6}>
-                        <ToggleButton onClick={handleClick("monthly")} height="135px" label="Monthly" subLabel="Rebalancing occurs at the beginning of each month" colorTheme="primary" colorDarkness="darkness" active={initialValue==="monthly"} />
+                        <ToggleButton {...getProps('monthly', 'Monthly')} />
                     </Grid>
                     <Grid item sm={6} xs={6}>
-                        <ToggleButton onClick={handleClick("quarterly")} height="135px" label="Quarterly" subLabel="Rebalancing occurs four times per year" colorTheme="primary" colorDarkness="dark" active={initialValue==="quarterly"} />
+                        <ToggleButton {...getProps('quarterly', 'Quarterly')}/>
                     </Grid>
                 </Grid>
                 <Grid container item direction="row" md={6} sm={12}>
                     <Grid item sm={6} xs={6}>
-                        <ToggleButton onClick={handleClick("semesterly")} height="135px" label="Semesterly" subLabel="Rebalancing occurs twice per year" colorTheme="primary" colorDarkness="main" active={initialValue==="semesterly"} />
+                        <ToggleButton {...getProps('semesterly', 'Semesterly')} />
                     </Grid>
                     <Grid item sm={6} xs={6}>
-                        <ToggleButton onClick={handleClick("yearly")} height="135px" label="Yearly" subLabel="Rebalancing occrs one time per year" colorTheme="primary" colorDarkness="light" active={initialValue==="yearly"} />
+                        <ToggleButton {...getProps('yearly','Yearly')}/>
                     </Grid>
                 </Grid>
             </Grid>

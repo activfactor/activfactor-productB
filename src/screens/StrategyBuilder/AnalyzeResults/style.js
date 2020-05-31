@@ -29,8 +29,7 @@ export const Title = withStyles((theme) => ({
 
 export const TableWrapper = withStyles(({
     root: {
-        width: '96%',
-        margin: 'auto'
+        width: '98.5%',
     }
 }))(Box);
 

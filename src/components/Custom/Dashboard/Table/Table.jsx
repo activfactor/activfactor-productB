@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useState, useEffect } from "react";
-import { StyledTableCell, StyledTableRow, SelectWrapper } from "./style";
+import { StyledTableCell, StyledTableRow, SelectWrapper, Tip } from "./style";
 import { HeaderTitle } from "../commonStyle";
 import { Table } from "components/MaterialUIs";
 import { useSelector, useDispatch } from "react-redux";
@@ -127,7 +127,7 @@ const DashboardTable = () => {
   const renderSectionHeader = useCallback(
     () => (
       <>
-        <HeaderTitle component="h2">Factor style portfolios</HeaderTitle>
+        <HeaderTitle component="h2">Top quantile factor portfolios</HeaderTitle>
         <SelectWrapper>
           <Select
             padding="10px 20px 10px 10px"
@@ -147,11 +147,14 @@ const DashboardTable = () => {
 
   const renderSectionContent = useCallback(
     () => (
+      <>
       <Table
         renderHeaders={renderHeaders}
         renderRows={renderRows}
         theme="primary"
       />
+      <Tip component="span">Monthly rebalanced single-factor equaly weighted portfolios including the top 20% (quantile) of all the stock in the country universe</Tip>
+      </>
     ),
     [renderHeaders, renderRows]
   );

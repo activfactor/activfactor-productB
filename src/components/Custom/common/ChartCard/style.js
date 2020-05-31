@@ -5,7 +5,7 @@ export const StyledCard = withStyles((theme) => ({
         borderRadius: theme.shape.borderRadius,
         backgroundColor: theme.palette.common.white,
         boxShadow: theme.customShadows[0],
-        width: ({width}) => width ? width : '96%',
+        width: ({width}) => width ? width : '100%',
         margin: ({margin}) => margin ? margin : 'auto',
         [theme.breakpoints.down('md')]: {
             width:  '100% !important',

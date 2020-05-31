@@ -14,9 +14,7 @@ const Logout = () => {
 
     const classes = useStyles();
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(signOut())
-        } ,1000)
+        dispatch(signOut())
     } , [dispatch]);
     return (
         <Backdrop open={true} className={classes.backdrop} transitionDuration={100}>

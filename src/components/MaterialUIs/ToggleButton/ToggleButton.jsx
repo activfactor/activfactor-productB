@@ -4,14 +4,23 @@ import PropTypes from 'prop-types';
 import { Skeleton } from '@material-ui/lab';
 
 const ToggledButton = ({label, subLabel, colorTheme, colorDarkness, active, onClick,height, maxHeight, margin , fullWidth, maxWidth}) => {
-    return (
-        label && subLabel
-        ? (
-        <StyledButton maxwidth={maxWidth} fullWidth={fullWidth} margin={margin} height={height} maxheight={maxHeight} colortheme={colorTheme} colordarkness={colorDarkness} active={active ? 'true' : 'false'} onClick={onClick}>
-            <span>{label}</span>
-            <span>{subLabel}</span>
-        </StyledButton>
-        ) : <Skeleton animation="wave" variant="rect" width={165} height={135}/>
+    return label && subLabel ? (
+      <StyledButton
+        maxwidth={maxWidth}
+        fullWidth={fullWidth}
+        margin={margin}
+        height={height}
+        maxheight={maxHeight}
+        colortheme={colorTheme}
+        colordarkness={colorDarkness}
+        active={active ? "true" : "false"}
+        onClick={onClick}
+      >
+        <span>{label}</span>
+        <span>{subLabel}</span>
+      </StyledButton>
+    ) : (
+      <Skeleton animation="wave" variant="rect" width={165} height={135} />
     );
 };
 

@@ -97,9 +97,9 @@ const BuildStrategy = ({runStrategy, options}) => {
               <ActionsBlock title="Number of stocks">
                 <Slider
                   defaultVal={10}
-                  min={1}
+                  min={10}
                   max={50}
-                  step={1}
+                  step={5}
                   value={nStocks}
                   onChange={handleNumberOfStocksChange}
                 />

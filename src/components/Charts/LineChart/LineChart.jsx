@@ -9,12 +9,12 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
     const dataToDisplay = [
         {
             ...data[0],
-            showInLegend: false,
+            showInLegend: true,
             color: '#358ff0',
         },
         {
             ...data[1],
-            showInLegend: false,
+            showInLegend: true,
             color: '#60DFC8'
         }
     ]
@@ -22,12 +22,6 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
         chart:{
             type: "line",
             ...size
-        },
-        legend: {
-          layout: 'vertical',
-          align: 'left',
-          verticalAlign: 'top',
-          floating: true,
         },
         credits:{
           enabled: false

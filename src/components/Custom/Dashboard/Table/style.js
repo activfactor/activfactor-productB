@@ -3,6 +3,7 @@ import {
   TableCell,
   TableRow,
   Box,
+  Typography
 } from "@material-ui/core";
 
 export const StyledTableCell = withStyles((theme) => ({
@@ -26,3 +27,13 @@ export const SelectWrapper = withStyles(({
         width: '100px'
     }
 }))(Box);
+
+export const Tip = withStyles((theme) => ({
+  root: {
+    color: theme.palette.primary.light,
+    fontSize: '13px',
+    fontWeight: 500,
+    marginTop: '12px',
+    marginBottom: '12px'
+  }
+}))(Typography)

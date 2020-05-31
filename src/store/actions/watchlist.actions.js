@@ -59,7 +59,7 @@ export const deleteTickers = (tickers, watchlistName) => {
         method: requestMethods.DELETE,
         apiVersion: "2",
         label: DELETE_TICKERS,
-        dataToSend: {tickers: tickers.join(','), watchlistName},
+        dataToSend: {tradingitemid: tickers, watchlistName},
         onSuccess: () => dispatch => {
             dispatch(fetchWatchlist());
         }
@@ -70,14 +70,14 @@ export const clearWatchlistDetails = () => ({
     type: CLEAR_WATCHLIST
 })
 
-export const saveNewWatchList = (watchlistName, tickerList) => {
+export const saveNewWatchList = (watchlistName, tickersIdsList) => {
   return apiAction({
     label: SET_NEW_WATCHLIST,
     url: endPoints.saveWatchlist,
     method: requestMethods.POST,
     dataToSend: {
       watchlistName,
-      tickers: tickerList.join(","),
+      tradingitemid: tickersIdsList,
     },
     apiVersion: "2",
     onSuccess: () => dispatch => {
@@ -93,7 +93,7 @@ export const updateWatchlist = (watchlistName, tickerList) => {
     method: requestMethods.POST,
     dataToSend: {
       watchlistName,
-      tickers: tickerList.join(","),
+      tradingitemid: tickerList,
     },
     apiVersion: "2",
   });

@@ -7,7 +7,7 @@ import AuthRequire from 'components/hoc/ForceNavigation';
 const Dashboard = () => {
     return (
         <>
-            <Grid container justify="space-between">
+            <Grid container justify="space-between" style={{marginBottom: '15px'}}>
                 <Grid item md={9} xs={12}>
                     <DashboardTable />
                 </Grid>

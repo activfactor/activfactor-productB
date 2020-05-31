@@ -18,7 +18,6 @@ const CustomizePortfolio = ({onAnalyzeResults}) => {
     const [successWatchlistSaveMessage, setSuccessWatchlistSaveMessage] = useState();
     const [showReplicateStrategy, setShowReplicateStrategy] = useState(false);
     const [successReplicateStrategyMessage, setSuccessReplicateStrategyMessage] = useState();
-    const [savedStrategyName, setSavedStrategyName] = useState();
     const {list: {userWatchlistPerformance}} = useSelector(state => ({...state.watchlists}));
     const dispatch = useDispatch();
 
@@ -45,7 +44,6 @@ const CustomizePortfolio = ({onAnalyzeResults}) => {
 
     const onFinishReplicateStrategyHandler = (strategyName) => {
       setShowReplicateStrategy(false);
-      setSavedStrategyName(strategyName)
       setSuccessReplicateStrategyMessage(`Your strategy: ${strategyName} has been replicated successfuly`);
     }
 
@@ -54,19 +52,19 @@ const CustomizePortfolio = ({onAnalyzeResults}) => {
     }
 
     const onCloseReplicateSuccessMessage = () => {
-      history.push(`/strategy/monitor`)
+      history.push(`/strategies/monitor`)
     }
 
-    const addOrRemoveWatchList = useCallback((value) => {
+    const addOrRemoveWatchList = useCallback((tickerId) => {
       let newList=[];
       if (watchlistToSave.length>0){
-          if (!watchlistToSave.includes(value)){
-              newList = [...watchlistToSave, value];
+          if (!watchlistToSave.includes(tickerId)){
+              newList = [...watchlistToSave, tickerId];
           } else {
-              newList = watchlistToSave.filter(ticker => ticker!==value);
+              newList = watchlistToSave.filter(id => id!==tickerId);
           }
       } else {
-          newList=[value]
+          newList=[tickerId]
       }
         setWatchlistToSave(newList);
     },[setWatchlistToSave, watchlistToSave]);

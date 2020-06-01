@@ -40,10 +40,11 @@ export const getValue = (value) => {
 export const convertToK = (value) => {
     if (value){
         if (value>999){
-            return `${value/1000}K`
+            return `${formatNumberWithCommas(value/1000)}K`
         }
         return value
     }
+    return value
 }
 
 export const filterObject = (obj, keyToRemove) => {

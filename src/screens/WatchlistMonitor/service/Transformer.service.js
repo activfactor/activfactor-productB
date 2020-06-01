@@ -34,12 +34,10 @@ export default (oneWatchlistDetails) => {
         bySector.forEach((obj) => {
           const filteredSectorObj = filterObject(obj, "metric");
           transformedSectorPerformance[obj.metric] = {
-            data: Object.keys(filteredSectorObj).map(key => ({data: [{y: obj[key], name: key}], name: key})),
-            // old model of data in graph
-            // data: Object.keys(filteredSectorObj).map((key) => ({
-            //   y: obj[key],
-            //   name: key,
-            // })),
+            data: Object.keys(filteredSectorObj).map((key) => ({
+              y: obj[key],
+              name: key,
+            })),
             categories: Object.keys(filteredSectorObj),
           };
         });
@@ -47,7 +45,7 @@ export default (oneWatchlistDetails) => {
         byFirmSize.forEach((obj) => {
           const filteredFirmSizeObj = filterObject(obj, "metric");
           transformedFirmSizePerformance[obj.metric] = {
-            data: Object.keys(filteredFirmSizeObj).map((key) => ({data: [{y: obj[key],name: key}], name: key})),
+            data: Object.keys(filteredFirmSizeObj).map((key) => ({y: obj[key], name: key})),
             categories: Object.keys(filteredFirmSizeObj),
           };
         });
@@ -55,7 +53,7 @@ export default (oneWatchlistDetails) => {
         byCountry.forEach((obj) => {
           const filteredCountryObj = filterObject(obj, "metric");
           transformedCountryPerformance[obj.metric] = {
-            data: Object.keys(filteredCountryObj).map((key) => ({data: [{y: obj[key],name: key}], name: key})),
+            data: Object.keys(filteredCountryObj).map((key) => ({y: obj[key], name: key})),
             categories: Object.keys(filteredCountryObj),
           };
         });

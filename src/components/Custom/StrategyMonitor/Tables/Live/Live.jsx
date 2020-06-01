@@ -58,7 +58,7 @@ const renderRows = useCallback(() => {
                     <Cell variant="body" align="center" color={getColor(momentum)}>{getRowValue(momentum, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(profitability)}>{getRowValue(profitability, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(investment)}>{getRowValue(investment, 0)}</Cell>
-                    <Cell variant="body" align="center">{getRowValue(weight, '%')}</Cell>
+                    <Cell variant="body" align="center">{getRowValue(weight,2,'%')}</Cell>
                     <Cell variant="body" align="center">{renderActions()}</Cell>
                   </TableRow>
                 );

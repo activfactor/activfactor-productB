@@ -1,7 +1,7 @@
 import React from 'react';
-import { Date, LeftHeaderTitle, TickersText } from '../../common.style';
+import { Date, LeftHeaderTitle, TickersText, TickersNumber } from '../../common.style';
 import { useSelector } from 'react-redux';
-import { Card, Button, Table } from '../../../components/MaterialUIs';
+import { Card, Table } from '../../../components/MaterialUIs';
 import { Grid } from '@material-ui/core';
 import { Autorenew, ShowChart } from '@material-ui/icons';
 import { getValue, getColor } from '../../../utils/app.utils';
@@ -15,6 +15,7 @@ const TopHeader = () => {
       lastRebalancing,
       nextRebalancing,
       tickersInUniverse,
+      tickersInStrategy,
       strategy: {
         actual: {
           performance: { strategy },
@@ -60,6 +61,9 @@ const TopHeader = () => {
                     {getValue(performance.strategy)}%
                   </StyledCell>
                 ))}
+                <StyledCell align="center">
+                <TickersText component="span">Stocks in portfolio <TickersNumber component="span">{tickersInStrategy}</TickersNumber></TickersText>
+                </StyledCell>
             </StyledRow>
             <StyledRow>
               <StyledCell align="left">
@@ -77,6 +81,9 @@ const TopHeader = () => {
                     {getValue(performance.benchmark)}%
                   </StyledCell>
                 ))}
+                <StyledCell align="center">
+                <TickersText component="span">Stocks in universe <TickersNumber component="span">{tickersInUniverse}</TickersNumber></TickersText>
+                </StyledCell>
             </StyledRow>
           </>
         );
@@ -95,11 +102,8 @@ const TopHeader = () => {
             </Grid>
             <Card style={{padding: '25px 30px', marginBottom: '25px'}}>
                 <Grid container justify="space-between" alignItems="center">
-                    <Grid item md={9} xs={12}>
-                        <Table minWidth="auto" noshadow={true} renderHeaders={renderHeaders} renderRows={renderRows}/>
-                    </Grid>
-                    <Grid container item md={3} direction="column" justify="center" alignItems="center">
-                        <TickersText>{tickersInUniverse} Tickers</TickersText>
+                    <Grid item xs={12}>
+                        <Table minWidth="515px" noshadow={true} renderHeaders={renderHeaders} renderRows={renderRows}/>
                     </Grid>
                 </Grid>
             </Card>

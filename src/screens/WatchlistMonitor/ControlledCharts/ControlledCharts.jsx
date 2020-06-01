@@ -30,15 +30,14 @@ const ControlledCharts = ({watchlistDetails}) => {
             <ColumnChart
               roundTo={2}
               // old model of how object is transfered to graph check the commented section in transformer
-              // data={{
-              //   name: "Country",
-              //   data: countryPerformance[countryTab].data,
-              // }}
-              data={countryPerformance[countryTab].data}
+              data={{
+                name: "Country",
+                data: countryPerformance[countryTab].data,
+              }}
               categories={
                 countryPerformance[countryTab].categories
               }
-              uniColor={true}
+              showLegends={false}
             />
           </ChartCard>
           <ChartCard
@@ -57,13 +56,14 @@ const ControlledCharts = ({watchlistDetails}) => {
           >
             <ColumnChart
               roundTo={2}
-              data={
-                sectorPerformance[sectorTab].data
-              }
+              data={{
+                data: sectorPerformance[sectorTab].data,
+                name: 'sector'
+              }}
               categories={
                 sectorPerformance[sectorTab].categories
               }
-              uniColor={true}
+              showLegends={false}
             />
           </ChartCard>
           <ChartCard
@@ -82,13 +82,14 @@ const ControlledCharts = ({watchlistDetails}) => {
           >
             <ColumnChart
               roundTo={2}
-              data={
-                firmSizePerformance[firmSizeTab].data
-              }
+              data={{
+                data: firmSizePerformance[firmSizeTab].data,
+                name: 'Firm Size'
+              }}
               categories={
                 firmSizePerformance[firmSizeTab].categories
               }
-              uniColor={true}
+              showLegends={false}
             />
           </ChartCard>
       </>

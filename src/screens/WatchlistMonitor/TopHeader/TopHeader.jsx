@@ -1,7 +1,7 @@
 import React,{useMemo} from 'react';
-import { Date, LeftHeaderTitle, MiddleTextWrapper, PerformanceValue, TickersText } from '../../common.style';
+import { Date, LeftHeaderTitle, TickersText, TickersNumber } from '../../common.style';
 import { useSelector } from 'react-redux';
-import { Card, Button, Table } from '../../../components/MaterialUIs';
+import { Card, Table } from '../../../components/MaterialUIs';
 import { Grid } from '@material-ui/core';
 import { Autorenew } from '@material-ui/icons';
 import { getValue, getColor } from '../../../utils/app.utils';
@@ -30,7 +30,7 @@ const TopHeader = () => {
       const renderRows = () => {
           return (
             <StyledRow>
-              <StyledCell align="left">
+              <StyledCell variant="body" align="left">
                 <LeftHeaderTitle>{watchlistName}</LeftHeaderTitle>
               </StyledCell>
               {actual.performance.watchlist &&
@@ -45,6 +45,12 @@ const TopHeader = () => {
                     {getValue(performance.watchlist)}%
                   </StyledCell>
                 ))}
+              <StyledCell variant="body" align="right">
+                <TickersText component="p">
+                  Stocks in watchlist{" "}
+                  <TickersNumber component="span">{tickers}</TickersNumber>
+                </TickersText>
+              </StyledCell>
             </StyledRow>
           );
       }
@@ -59,11 +65,8 @@ const TopHeader = () => {
             </Grid>
             <Card style={{padding: '25px 30px', marginBottom: '25px'}}>
                 <Grid container justify="space-between" alignItems="center">
-                    <Grid item md={9} xs={12}>
-                        <Table minWidth="auto" noshadow={true} theme="primary" renderHeaders={renderHeaders} renderRows={renderRows} />
-                    </Grid>
-                    <Grid container item md={3} direction="column" justify="center" alignItems="center">
-                        <TickersText>{tickers} Tickers</TickersText>
+                    <Grid item xs={12}>
+                        <Table minWidth="515px" noshadow={true} theme="primary" renderHeaders={renderHeaders} renderRows={renderRows} />
                     </Grid>
                 </Grid>
             </Card>

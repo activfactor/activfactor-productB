@@ -3,8 +3,8 @@ import { Tabs } from "../../../components/MaterialUIs";
 import { ChartCard, CardListing } from "../../../components/Custom/common";
 import { LiveTable } from "../../../components/Custom/StrategyMonitor";
 import { ColumnChart } from "../../../components/Charts";
-import { Grid } from "@material-ui/core";
 import { ChartTitle } from "../../common.style";
+import { Grid } from '@material-ui/core';
 
 const Live = ({ strategyDetails }) => {
   const tabOptions = useMemo(
@@ -15,7 +15,6 @@ const Live = ({ strategyDetails }) => {
     ],
     []
   );
-  const [tickersWaller, setTickersWaller] = useState([]);
   const [sectorPerformance, setSectorPerformance] = useState("1D");
   const [firmSizePerformance, setFirmSizePerformance] = useState("1D");
   const handleSectorTabChange = (value) => {
@@ -43,10 +42,11 @@ const Live = ({ strategyDetails }) => {
           >
             <ColumnChart
               roundTo={2}
-              uniColor={true}
-              data={
-                strategyDetails.liveSector[sectorPerformance].data
-              }
+              showLegends={false}
+              data={{
+                data: strategyDetails.liveSector[sectorPerformance].data,
+                name: 'Sector'
+              }}
               categories={
                 strategyDetails.liveSector[sectorPerformance].categories
               }
@@ -67,20 +67,21 @@ const Live = ({ strategyDetails }) => {
             }
           >
             <ColumnChart
-              uniColor={true}
+              showLegends={false}
               roundTo={2}
-              data={
-                strategyDetails.liveFirmSize[firmSizePerformance].data
-              }
+              data={{
+                data: strategyDetails.liveFirmSize[firmSizePerformance].data,
+                name: 'Firm size'
+              }}
               categories={
                 strategyDetails.liveFirmSize[firmSizePerformance].categories
               }
             />
           </ChartCard>
           </CardListing>
-      <CardListing repeat={1} style={{marginTop: '15px'}}>
+      <Grid container item xs={12} style={{marginTop: '15px'}}>
         <LiveTable />
-    </CardListing>
+    </Grid>
     </>
   );
 };

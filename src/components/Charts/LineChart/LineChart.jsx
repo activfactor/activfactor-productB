@@ -45,7 +45,7 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
                     if (variant==='drawdown'){
                         return `${this.value}%`
                     }
-                    return convertToK(this.value)
+                    return `$${convertToK(this.value)}`
                 },
             }
             

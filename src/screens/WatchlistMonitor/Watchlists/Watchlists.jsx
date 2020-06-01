@@ -31,7 +31,7 @@ const Strategies = () => {
         return (
             <>
                 <HeadersWrapper>
-                    <h2>My Watchlist</h2>
+                    <h2>My Watchlists</h2>
                     {lastUpdate && <p>Last update: {lastUpdate}</p>}
                 </HeadersWrapper>
                 <Link label="+ New strategy" to="/strategy/builder" theme="primary" fontSize="16px" align="left"/>

@@ -6,7 +6,7 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core';
 
-const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, uniColor}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
     const theme = useTheme();
     // only one series supplied 
     const lengthOfData = useMemo(() => {
@@ -19,14 +19,6 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
 
     const transformedData = useMemo(() => {
         if (data && [].constructor === data.constructor){
-            if (uniColor){
-                return data.map(obj => {
-                    if (obj && obj.data && obj.data.length>0 && obj.data[0].y>0){
-                        return {...obj, color: theme.palette.primary.main}
-                    }
-                    return {...obj, color: theme.palette.error.main}
-                })
-            }
             return data.map((obj, index) => ({...obj, color: getColorByIndex(index)}))
         } else if (data) {
             const {data: dataValues} = data;
@@ -38,7 +30,7 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             })
             return [{name: data.name, data: dataToInject}];
         }
-    }, [data, theme, uniColor]);
+    }, [data, theme]);
     const options = {
         chart: {
             type: 'column',
@@ -71,7 +63,7 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
         },
         tooltip: {
             formatter: function(){
-                return `<b>${this.series.name}</b><br>${this.key} <b>${formatDecimal(this.y, roundTo)}%</b>`
+                return `${this.key} <b>${formatDecimal(this.y, roundTo)}%</b>`
             },
         },
         plotOptions: {

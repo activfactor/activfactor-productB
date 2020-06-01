@@ -52,7 +52,7 @@ const ReturnTable = ({ keyToExtract, title, theme, tableFirstHeader }) => {
     if (index === 0) {
       return value.replace(/_/g, " ");
     }
-    const noPercentageKeys = ["Ratio", "Number"];
+    const noPercentageKeys = ["Ratio", "Number", "Beta"];
     let formatedValue = getValue(value);
     const withPercentage = noPercentageKeys.filter(
       (key) => description.indexOf(key) > 0

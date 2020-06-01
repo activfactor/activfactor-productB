@@ -85,7 +85,7 @@ export default (oneStrategyDetails) => {
             byFirmSize.forEach(obj => {
                 const filteredFirmSizeObj = filterObject(obj, 'metric');
                 transformedFirmSizeLiveData[obj.metric] = {
-                    data: Object.keys(filteredFirmSizeObj).map(key => ({data: [{y: obj[key], name: key}], name: key})),
+                    data: Object.keys(filteredFirmSizeObj).map(key => ({y: obj[key], name: key})),
                     categories: Object.keys(filteredFirmSizeObj)
                 }
             })
@@ -93,7 +93,7 @@ export default (oneStrategyDetails) => {
             bySector.forEach(obj => {
                 const filteredSectorObj = filterObject(obj, 'metric');
                 transformedSectorLiveData[obj.metric]= {
-                    data: Object.keys(filteredSectorObj).map(key => ({name: key, data: [{y: obj[key], name: key}]})),
+                    data: Object.keys(filteredSectorObj).map(key => ({y: obj[key], name: key})),
                     categories: Object.keys(filteredSectorObj)
                 }
             })

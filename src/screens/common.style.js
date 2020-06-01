@@ -63,8 +63,15 @@ export const TickersText = withStyles((theme) => ({
         fontSize: '14px',
         fontWeight: 500,
         margin: '0px',
-        marginBottom: theme.spacing(2),
-        textAlign: 'center',
+    }
+}))(Typography);
+
+export const TickersNumber = withStyles((theme) => ({
+    root: {
+        color: theme.palette.primary.light,
+        fontSize: '14px',
+        fontWeight: 500,
+        margin: '0px',
     }
 }))(Typography);
 
@@ -72,7 +79,10 @@ export const ChartTitle = withStyles((theme) => ({
     root: {
         color: theme.palette.common.black,
         fontWeight: 500,
-        fontSize: '14px'
+        fontSize: '14px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '8px'
+        }
     }
 }))(Typography);
 

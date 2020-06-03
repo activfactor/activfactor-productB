@@ -1,5 +1,5 @@
 import React from 'react';
-import { Date, LeftHeaderTitle, TickersText, TickersNumber } from '../../common.style';
+import { Date, LeftHeaderTitle, TickersText, TickersNumber, DateTitle } from '../../common.style';
 import { useSelector } from 'react-redux';
 import { Card, Table } from '../../../components/MaterialUIs';
 import { Grid } from '@material-ui/core';
@@ -92,11 +92,11 @@ const TopHeader = () => {
         <>
             <Grid container justify="space-between" alignItems="center" style={{marginBottom: '15px'}}>
                 <Grid item xs={12} md={6}>
-                    <Autorenew /> Updates:
+                    <Autorenew /> <DateTitle component="span">Updates:</DateTitle>
                     <Date component="span">Last: {lastUpdate}</Date>
                 </Grid>
                 <div>
-                    <ShowChart /> Rebalancing:
+                    <ShowChart /> <DateTitle component="span">Rebalancing:</DateTitle>
                     <Date component="span">Last: {lastRebalancing} - Next: {nextRebalancing}</Date>
                 </div>
             </Grid>

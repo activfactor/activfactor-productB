@@ -1,4 +1,4 @@
-import { Box,Typography, withStyles } from '@material-ui/core';
+import { Box, withStyles } from '@material-ui/core';
 
 export const Container = withStyles((theme) => ({
     root: {
@@ -11,13 +11,3 @@ export const Container = withStyles((theme) => ({
         }
     }
 }))(Box);
-
-export const Date = withStyles((theme) => ({
-    root: {
-        fontSize: '12px',
-        fontWeight: 500,
-        color: theme.palette.text.secondary,
-        marginLeft: '5px',
-        alignSelf: 'center'
-    }
-}))(Typography);

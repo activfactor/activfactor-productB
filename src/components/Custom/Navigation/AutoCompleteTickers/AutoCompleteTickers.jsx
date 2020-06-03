@@ -5,6 +5,7 @@ import { Wrapper, OptionHighlight, OptionText } from "./style";
 import { useSelector, useDispatch } from "react-redux";
 import { List } from "react-virtualized";
 import { setTickerId } from 'store/actions/resources.actions';
+import { clearTickerDetails } from 'store/actions/ticker.actions';
 import history from '../../../../history';
 
 const ListboxComponent = React.forwardRef((props, ref) => {
@@ -44,9 +45,12 @@ const AutoCompleteTickers = ({noMargin}) => {
     }
   }, [tickers]);
 
-  const onChangeHandler = (event, {tradingitemid}) =>{
-    dispatch(setTickerId(tradingitemid));
-    history.push('/ticker/monitor')
+  const onChangeHandler = (event, value) =>{
+    if (value && value.tradingitemid){
+      dispatch(clearTickerDetails());
+      dispatch(setTickerId(value.tradingitemid));
+      history.push('/ticker/monitor')
+    }
   }
 
   const loading = useMemo(() => open && options.length === 0, [open, options]);

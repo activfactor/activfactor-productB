@@ -10,12 +10,12 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
         {
             ...data[0],
             showInLegend: true,
-            color: '#358ff0',
+            color: '#60DFC8',
         },
         {
             ...data[1],
             showInLegend: true,
-            color: '#60DFC8'
+            color: '#3895FE'
         }
     ]
     const options = {

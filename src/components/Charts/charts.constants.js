@@ -17,13 +17,13 @@ export const chartColors = [
 export const getColorByIndex = (index) => {
   switch(index){
     case 0:
-      return '#3895FE'
-    case 1:
       return '#60DFC8'
+    case 1:
+      return '#3895FE'
     case 2:
-      return '#D6D6D6'
+      return '#9A46EF'
     case 3:
-      return '#A735F8'
+      return '#e34fa8'
     case 4:
       return '#004678'
     case 5:

@@ -4,7 +4,7 @@ import { Button, Dialog, Input } from "components/MaterialUIs";
 import { useDispatch } from "react-redux";
 import { saveNewWatchList } from "store/actions/watchlist.actions";
 import { clearApi } from 'store/actions/api.actions';
-import { useApiInfo } from '../../../hooks/screens.hooks';
+import { useApiInfo } from 'screens/hooks/screens.hooks';
 import { SET_NEW_WATCHLIST } from 'store/types';
 import { isEmpty } from 'utils/app.utils';
 import PropTypes from 'prop-types';

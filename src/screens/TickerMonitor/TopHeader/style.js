@@ -1,5 +1,15 @@
-import { TableCell, withStyles, TableRow, Typography } from '@material-ui/core';
+import { TableCell, withStyles, TableRow, Typography, Box, makeStyles } from '@material-ui/core';
 
+export const useStyles = makeStyles((theme) => ({
+    CardContainer : {
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        padding: '25px 30px', 
+        flexDirection: 'column',
+        marginBottom: '20px'
+    }
+}))
 export const StyledCell = withStyles((theme) => ({
     root: {
         border: 'none',
@@ -48,3 +58,25 @@ export const Description = withStyles((theme) => ({
         fontWeight: 500
     }
 }))(Typography);
+
+export const ButtonWrapper = withStyles((theme) => ({
+    root: {
+        width: '200px',
+        marginBottom: '10px',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%'
+        }
+    }
+}))(Box);
+
+export const HeaderContainer = withStyles((theme) => ({
+    root: {
+        display: 'grid',
+        gridColumnGap: '30px',
+        gridRowGap: '30px',
+        gridTemplateColumns: '7fr 3fr',
+        [theme.breakpoints.down('sm')]: {
+            gridTemplateColumns: '1fr'
+        }
+    }
+}))(Box);

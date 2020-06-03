@@ -1,4 +1,4 @@
-import { FETCH_TICKER_DETAILS, SET_TICKER_DETAILS } from '../types';
+import { FETCH_TICKER_DETAILS, SET_TICKER_DETAILS, CLEAR_TICKER } from '../types';
 import { endPoints, requestMethods } from 'config/appConfig';
 import { apiAction } from '../middleware/api.middleware.helper';
 
@@ -16,3 +16,7 @@ export const fetchTickerDetails = (tickerId) => (
         })
     })
 )
+
+export const clearTickerDetails = () => ({
+    type: CLEAR_TICKER
+})

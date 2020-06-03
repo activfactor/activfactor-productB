@@ -1,13 +1,16 @@
 import React, {useMemo} from 'react';
-import { Date } from '../../common.style';
+import { Date, DateTitle } from '../../common.style';
 import { useSelector } from 'react-redux';
 import { Card, Table, Button } from '../../../components/MaterialUIs';
+import AddTickerControl from 'components/Custom/AddTickerControl';
 import { Grid } from '@material-ui/core';
 import { Autorenew } from '@material-ui/icons';
-import { StyledCell, StyledRow, StyledTickerCell, Description, DescriptionTitle } from './style';
+import { StyledCell, StyledRow, StyledTickerCell, Description, DescriptionTitle, ButtonWrapper, HeaderContainer, useStyles } from './style';
 import { filterObject, capitalize, getColor, getValue } from 'utils/app.utils';
 
+
 const TopHeader = () => {
+    const {CardContainer } = useStyles();
     const {tickerDetails} = useSelector((state) => state.ticker);
     const renderHeaders = () => {
         const {ticker, performance} = tickerDetails;
@@ -26,6 +29,10 @@ const TopHeader = () => {
               ))}
           </>
         );
+    }
+
+    const onTradeClick = (tickerId) => () => {
+        console.log(`open trade order to order ${tickerId}`)
     }
 
     const dataTable = useMemo(() => {
@@ -81,22 +88,32 @@ const TopHeader = () => {
         }
     }
 
-    const {lastUpdate} = tickerDetails;
+    const {lastUpdate, tradingitemid} = tickerDetails;
     return (
         <>
             <Grid container justify="space-between" alignItems="center" style={{marginBottom: '15px'}}>
                 <Grid item xs={12} md={6}>
-                    <Autorenew /> Updates:
+                    <Autorenew /> <DateTitle component="span">Updates:</DateTitle>
                     <Date component="span">Last: {lastUpdate}</Date>
                 </Grid>
             </Grid>
-            <Card style={{padding: '25px 30px', marginBottom: '25px'}}>
-                <Grid container justify="space-between" alignItems="center">
-                    <Grid item xs={12}>
-                        <Table minWidth="515px" noshadow={true} renderHeaders={renderHeaders} renderRows={renderRows}/>
+            <HeaderContainer>
+                <Card className={CardContainer}>
+                    <Grid container justify="space-between" alignItems="center">
+                        <Grid item xs={12}>
+                            <Table minWidth="515px" noshadow={true} renderHeaders={renderHeaders} renderRows={renderRows}/>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Card>
+                </Card>
+                <Card className={CardContainer}>
+                    <ButtonWrapper>
+                        <AddTickerControl watchlistToSave={[tradingitemid]} />
+                    </ButtonWrapper>
+                    <ButtonWrapper>
+                        <Button label="Trade" onClick={onTradeClick(tradingitemid)} fullWidth={true}/>
+                    </ButtonWrapper>
+                </Card>
+            </HeaderContainer>
         </>
     );
 };

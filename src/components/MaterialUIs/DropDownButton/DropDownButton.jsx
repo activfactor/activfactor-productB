@@ -45,7 +45,7 @@ const DropDownButton = ({
 
   return (
     <Grid container direction="column" alignItems="center">
-      <Grid item sx={12}>
+      <Grid item xs={12} style={{width: fullWidth ? '100%' : 'unset'}}>
         <StyledButtonGroup
           fullWidth={fullWidth}
           variant="contained"
@@ -74,6 +74,7 @@ const DropDownButton = ({
           role={undefined}
           transition
           disablePortal
+          style={{zIndex: 1000}}
         >
           {({ TransitionProps, placement }) => (
             <Grow

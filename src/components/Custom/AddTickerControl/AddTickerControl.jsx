@@ -43,7 +43,9 @@ const AddTickerControl = ({watchlistToSave, onFinishSavingWatch}) => {
         );
         setWatchListOption('');
         dispatch(getWatchlists());
-        onFinishSavingWatch();
+        if (onFinishSavingWatch){
+            onFinishSavingWatch();
+        }
     }, [dispatch, watchlistOption, onFinishSavingWatch]);
 
     const handleWatchlistSavingOptionClick = (value) => {

@@ -9,7 +9,7 @@ export const StyledCard = withStyles((theme) => ({
         margin: ({margin}) => margin ? margin : 'auto',
         [theme.breakpoints.down('md')]: {
             width:  '100% !important',
-            margin: '0px !important'
+            margin: props => props.margin ? props.margin : '0px !important'
         }
     }
 }))(Card);

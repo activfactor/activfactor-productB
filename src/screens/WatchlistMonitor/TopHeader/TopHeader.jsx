@@ -1,5 +1,5 @@
 import React,{useMemo} from 'react';
-import { Date, LeftHeaderTitle, TickersText, TickersNumber } from '../../common.style';
+import { Date, LeftHeaderTitle, TickersText, TickersNumber, DateTitle } from '../../common.style';
 import { useSelector } from 'react-redux';
 import { Card, Table } from '../../../components/MaterialUIs';
 import { Grid } from '@material-ui/core';
@@ -59,7 +59,7 @@ const TopHeader = () => {
         <>
             <Grid container justify="space-between" alignItems="center" style={{marginBottom: '15px'}}>
                 <Grid item sx={12}>
-                    <Autorenew /> Updates:
+                    <Autorenew /> <DateTitle component="span">Updates:</DateTitle>
                     <Date component="span">Last: {lastUpdate}</Date>
                 </Grid>
             </Grid>

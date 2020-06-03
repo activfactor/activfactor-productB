@@ -10,6 +10,15 @@ export const Date = withStyles((theme) => ({
     }
 }))(Typography);
 
+export const DateTitle = withStyles((theme) => ({
+    root: {
+        fontSize: '13px',
+        fontWeight: 500,
+        color: theme.palette.common.black,
+        alignSelf: 'center'
+    }
+}))(Typography);
+
 export const LeftTextWrapper = withStyles((theme) => ({
     root: {
         display: 'flex',

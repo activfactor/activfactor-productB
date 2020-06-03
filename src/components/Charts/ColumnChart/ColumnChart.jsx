@@ -4,10 +4,11 @@ import HighChartsReact from 'highcharts-react-official';
 import { formatDecimal } from 'utils/app.utils';
 import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
-import { useTheme } from '@material-ui/core';
+import { useTheme, useMediaQuery } from '@material-ui/core';
 
-const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, showXaxisLabel}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, showXaxisLabel, dataUnit}) => {
     const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     // only one series supplied 
     const lengthOfData = useMemo(() => {
         if (data && [].constructor === data.constructor){
@@ -57,13 +58,13 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             labels: {
                 overflow: 'justify',
                 formatter: function() {
-                    return `${this.value}%`
+                    return `${this.value}${dataUnit ? dataUnit : ''}`
                 },
             }
         },
         tooltip: {
             formatter: function(){
-                return `${this.key} <b>${formatDecimal(this.y, roundTo)}%</b>`
+                return `<b>${this.series.name}</b><br/> ${this.key} <b>${formatDecimal(this.y, roundTo)}${dataUnit ? dataUnit : ''}</br>`
             },
         },
         plotOptions: {
@@ -74,16 +75,20 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
                 dataLabels: {
                     enabled: true,
                     formatter: function(){
-                        return `<br>${formatDecimal(this.y, roundTo)} %`
+                        return `<br>${formatDecimal(this.y, roundTo)}${dataUnit ? dataUnit : ''}`
                     }
                 }
             },
             series: {
-                pointWidth: lengthOfData<10 ? 20 : null
+                pointWidth: lengthOfData<10 && !isMobile ? 20 : lengthOfData<10 && isMobile ? 10 : null
             }
         },
         legend: {
-            enabled: showLegends
+            enabled: showLegends,
+            align: isMobile ? 'center' : 'right',
+            verticalAlign: isMobile ? 'bottom' : 'middle',
+            layout: isMobile ? 'horizontal' : 'vertical',
+            itemMarginBottom: isMobile ? 0 : 20
         },
         credits: {
             enabled: false
@@ -107,13 +112,15 @@ ColumnChart.propTypes = {
     maxAxis: PropTypes.number,
     roundTo: PropTypes.number,
     uniColor: PropTypes.bool,
-    showXaxisLabel: PropTypes.bool
+    showXaxisLabel: PropTypes.bool,
+    dataUnit: PropTypes.string
 }
 
 ColumnChart.defaultProps = {
     showLegends: true,
     roundTo: 0,
-    uniColor: false
+    uniColor: false,
+    dataUnit: '%'
 }
 
 export default ColumnChart;

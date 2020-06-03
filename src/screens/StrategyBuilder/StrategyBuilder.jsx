@@ -1,6 +1,7 @@
 import React,{useState, useMemo, useEffect} from 'react';
 import { Stepper } from 'components/MaterialUIs';
-import { Container, Date } from './style';
+import { Container } from './style';
+import { Date, DateTitle } from '../common.style';
 import BuildStrategy from './BuildStrategy';
 import AnalyzeResults from './AnalyzeResults';
 import CustomizePortfolio from './CustomizePortfolio';
@@ -70,11 +71,11 @@ const StrategyBuilder = () => {
       <>
       <Grid container justify="space-between" alignItems="center" style={{marginBottom: '15px'}}>
             {lastUpdate && nextUpdate && activeStepIndex>0 && (<Grid item xs={12} md={6}>
-                <Autorenew /> Updates:
+                <Autorenew /> <DateTitle component="span">Updates:</DateTitle>
                 <Date component="span">Last: {lastUpdate} - Next: {nextUpdate}</Date>
             </Grid>)}
             {lastRebalancing && nextRebalancing && activeStepIndex>0 && (<div>
-                <ShowChart /> Rebalancing:
+                <ShowChart /> <DateTitle component="span">Rebalancing:</DateTitle>
                 <Date component="span">Last: {lastRebalancing} - Next: {nextRebalancing}</Date>
             </div>)}
           </Grid>

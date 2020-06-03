@@ -3,48 +3,21 @@ import Highcharts from 'highcharts/highcharts';
 import HighChartsReact from 'highcharts-react-official';
 import { formatNumberWithCommas, formatDecimal, convertToK } from 'utils/app.utils';
 import PropTypes from 'prop-types';
-import { size } from '../charts.constants';
+import { size } from '../../Charts/charts.constants';
+import { useTheme } from '@material-ui/core';
 
-const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, variant}) => {
+const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, variant, showFullXLabel, showLegends}) => {
+    const theme = useTheme();
     const dataToDisplay = [
         {
-            ...data[0],
+            ...data,
             showInLegend: true,
-            fillColor: {
-                linearGradient: {
-                    x1: 1,
-                    y1: 1,
-                    x2: 0.5,
-                    y2: 0.8
-                },
-                stops: [
-                    [0, '#60DFC8'],
-                    [1, 'rgba(96, 223, 200, 0.1)']
-                ]
-            },
-            color: '#60DFC8',
+            color: theme.palette.primary.light,
         },
-        {
-            ...data[1],
-            showInLegend: true,
-            fillColor: {
-                linearGradient: {
-                    x1: 1,
-                    y1: 1,
-                    x2: 0.5,
-                    y2: 0.8
-                },
-                stops: [
-                    [0, '#358ff0'],
-                    [1, 'rgba(96, 223, 200, 0.1)']
-                ]
-            },
-            color: '#358ff0'
-        }
     ]
     const options = {
         chart:{
-            type: "areaspline",
+            type: "line",
             ...size
         },
         credits:{
@@ -69,7 +42,7 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
                     if (variant==='drawdown'){
                         return `${this.value}%`
                     }
-                    return convertToK(this.value)
+                    return `$${convertToK(this.value)}`
                 },
             }
             
@@ -82,11 +55,18 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
           },
           labels: {
             formatter: function() {
-              const date = this.value.split('-');
-              return date[1] || this.value
+                if (showFullXLabel){
+                    return this.value;
+                }
+                const date = this.value.split('-');
+                return date[1] || this.value
             },
           },
           categories: categories,
+          tickInterval: 5
+        },
+        legend: {
+            enabled: showLegends
         },
         title: {
           text: ''
@@ -96,6 +76,9 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
             marker: {
               enabled: false
             }
+          },
+          series: {
+            turboThreshold: 10000
           }
         },
         // colors: chartColors(),
@@ -107,19 +90,22 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
     );
 }
 
-AreaChart.propTypes = {
+LineChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     xTitle: PropTypes.string,
     yTitle: PropTypes.string,
     categories: PropTypes.arrayOf(PropTypes.string),
     showyAxis: PropTypes.bool,
     showxAxis: PropTypes.bool,
-    variant: PropTypes.oneOf(['drawdown'])
+    variant: PropTypes.oneOf(['drawdown']),
+    showFullXLabel: PropTypes.bool,
+    showLegends: PropTypes.bool
 }
 
-AreaChart.defaultProps = {
+LineChart.defaultProps = {
   showxAxis: true,
-  showyAxis: true
+  showyAxis: true,
+  showLegends: true
 }
 
-export default AreaChart;
+export default LineChart;

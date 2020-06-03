@@ -5,6 +5,7 @@ import navigation from './navigation.reducers';
 import strategyBuilder from './strategyBuilder.reducers';
 import watchlists from './watchlist.reducers';
 import strategies from './strategies.reducers';
+import ticker from './ticker.reducers';
 import resources from './resources.reducers';
 import appConfig from './appConfig.reducers';
 import { combineReducers } from 'redux';
@@ -20,5 +21,6 @@ export default combineReducers({
     watchlists,
     strategies,
     resources,
+    ticker,
     form: formReducer,
 })

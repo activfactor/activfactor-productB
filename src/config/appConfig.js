@@ -16,6 +16,7 @@ export const endPoints = {
     firmsizeDescription: 'firmsizelist',
     factorsDescription: 'factorslist',
     metricDescription: 'metricslist',
+    countryDescription: 'countrieslist',
     rebalancingDescription: 'rebalancinglist',
     runStrategy: 'factor/backtest',
     saveWatchlist: 'watchlist',
@@ -26,7 +27,8 @@ export const endPoints = {
     deleteStrategy: 'monitor',
     fetchWatchlistDetails: 'watchlist',
     deleteWatchlist: 'watchlist',
-    deleteTicker: 'ticker/watchlist'
+    deleteTicker: 'ticker/watchlist',
+    fetchTicker: 'ticker'
 }
 
 export const requestMethods = {

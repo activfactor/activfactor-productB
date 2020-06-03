@@ -16,7 +16,7 @@ const BrokerageControl = () => {
         <Card>
             <StyledCardContent>
                 <ImageWrapper>
-                    <img src={BrokerageImg} alt="wealthface brokerage connection" width="120px" height="120px"/>
+                    <img src={BrokerageImg} alt="wealthface brokerage connection" width="200px" height="200px"/>
                 </ImageWrapper>
                 <Title component="h2">No Brokerage Connected</Title>
                 <SubTitle component="p">You've not connected a brokerage account to Wealthface. Why not give it a go?</SubTitle>

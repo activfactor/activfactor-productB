@@ -1,4 +1,4 @@
-import { SET_STRATEGY_NAME, CLEAR_STRATEGY, SET_WATCHLIST_NAME, CLEAR_WATCHLIST } from '../types';
+import { SET_STRATEGY_NAME, CLEAR_STRATEGY, SET_WATCHLIST_NAME, CLEAR_WATCHLIST, SET_TICKER_ID, CLEAR_TICKER } from '../types';
 
 export default (state = {}, {type, payload}) => {
     switch(type){
@@ -21,6 +21,16 @@ export default (state = {}, {type, payload}) => {
             return {
                 ...state,
                 watchlistName: ''
+            }
+        case SET_TICKER_ID:
+            return {
+                ...state,
+                tickerId: payload
+            }
+        case CLEAR_TICKER:
+            return {
+                ...state,
+                tickerId: null
             }
         default:
             return state;

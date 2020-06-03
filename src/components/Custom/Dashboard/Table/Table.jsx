@@ -5,7 +5,6 @@ import { Table } from "components/MaterialUIs";
 import { useSelector, useDispatch } from "react-redux";
 import { Select, Link } from "components/MaterialUIs";
 import {
-  SUPPORTED_COINTRIES,
   INITIAL_COUNTRY,
   INITIAL_STRATEGY_FILTERS,
 } from "../../../../config/appConfig";
@@ -16,7 +15,7 @@ import { updateStrategyFilters } from "store/actions/strategyBuilder.actions";
 import { fetchHistoricalPerformanceData } from "store/actions/dashboard.actions";
 import { useApiInfo } from "screens/hooks/screens.hooks";
 import { FETCH_HISTORICAL_PERFORMANCE } from "store/types";
-import { HistoricalPerformanceSkeleton } from "../../../Skeleton";
+import { HistoricalPerformanceSkeleton, CountriesDropDownSkeleton } from "../../../Skeleton";
 import { useTheme, useMediaQuery } from '@material-ui/core';
 
 const DashboardTable = () => {
@@ -129,20 +128,24 @@ const DashboardTable = () => {
       <>
         <HeaderTitle component="h2">Top quantile factor portfolios</HeaderTitle>
         <SelectWrapper>
-          <Select
-            padding="10px 20px 10px 10px"
-            fullWidth={true}
-            theme="secondary"
-            id="dashboard-table-dropdown"
-            errorId="dashboard-table-dropdown-error"
-            options={SUPPORTED_COINTRIES}
-            onChange={onChangeHandler}
-            value={country}
-          />
+          {
+            selectOptions.countries.length>0
+            ? <Select
+                padding="10px 20px 10px 10px"
+                fullWidth={true}
+                theme="secondary"
+                id="dashboard-table-dropdown"
+                errorId="dashboard-table-dropdown-error"
+                options={selectOptions.countries}
+                onChange={onChangeHandler}
+                value={country}
+              />
+            : <CountriesDropDownSkeleton height="39px"/>
+          }
         </SelectWrapper>
       </>
     ),
-    [country, onChangeHandler]
+    [country, onChangeHandler, selectOptions]
   );
 
   const renderSectionContent = useCallback(
@@ -152,6 +155,7 @@ const DashboardTable = () => {
         renderHeaders={renderHeaders}
         renderRows={renderRows}
         theme="primary"
+        maxHeight="485px"
       />
       <Tip component="span">Monthly rebalanced single-factor equaly weighted portfolios including the top 20% (quantile) of all the stock in the country universe</Tip>
       </>

@@ -29,11 +29,10 @@ const StrategyBuilder = () => {
         dispatch(
           updateStrategyFilters({
             ...INITIAL_STRATEGY_FILTERS,
-            sectors: selectOptions.sectors,
           })
         );
       }
-    }, []);
+    }, [dispatch]);
 
     const [lastUpdate, nextUpdate, lastRebalancing, nextRebalancing] = useMemo(() => {
       if (strategyResults && !isEmpty(strategyResults)){

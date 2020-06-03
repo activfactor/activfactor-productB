@@ -20,7 +20,7 @@ const ToggledButton = ({label, subLabel, colorTheme, colorDarkness, active, onCl
         <span>{subLabel}</span>
       </StyledButton>
     ) : (
-      <Skeleton animation="wave" variant="rect" width={165} height={135} />
+      <Skeleton animation="wave" variant="rect" width={165} height={135} style={{margin: '5px'}}/>
     );
 };
 

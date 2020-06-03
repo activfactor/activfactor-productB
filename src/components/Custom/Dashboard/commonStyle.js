@@ -14,6 +14,7 @@ export const HeadersWrapper = withStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
+        fontFamily: theme.typography.fontFamily,
         '& h2':{
             fontSize: '18px',
             fontWeight: 600,

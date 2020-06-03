@@ -35,5 +35,9 @@ export const StyledCardContent = withStyles((theme) => ({
         borderTopWidth: '2px',
         borderTopColor: theme.palette.background.default,
         borderTopStyle: 'solid',
+        padding: props => props.padding ? props.padding : '16px 16px 24px',
+        '&:last-child':{
+            paddingBottom: props => props.padding ? props.padding : '24px'
+        }
     }
 }))(CardContent);

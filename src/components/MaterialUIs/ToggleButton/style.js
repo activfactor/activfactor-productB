@@ -5,7 +5,7 @@ export const StyledButton = withStyles((theme) => ({
     outline: 'none !important',
     maxHeight: props => props.maxheight ? props.maxheight : "unset",
     height: props => props.height ? props.height : "100%",
-    margin: props => props.margin ? props.margin : '2px',
+    margin: props => props.margin ? props.margin : '5px',
     overflow: "hidden",
     borderTopWidth: "6px",
     textAlign: 'left',

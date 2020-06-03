@@ -5,6 +5,7 @@ export const StyledLink = withStyles((theme) => ({
         fontSize: props => props.fontSize ? props.fontSize : '14px',
         alignSelf: props => props.align ? props.align : 'center',
         color: props => props.theme === 'secondary' ? 'inherit' : theme.palette.primary.main,
+        fontFamily: theme.typography.fontFamily,
         '&:hover': {
             color: theme.palette.primary.light
         }

@@ -1,9 +1,10 @@
-import React,{useCallback, useState, useMemo, useEffect} from 'react';
+import React,{useCallback,useMemo} from 'react';
 import { ToggleButton } from 'components/MaterialUIs';
 import { ActionsBlock } from 'components/Custom/StrategyBuilder';
 import { Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { CardListing } from 'components/Custom/common';
 
 const RebalancingFreq = ({onUpdate, initialValues}) => {
     const {descriptions} = useSelector(state => state.appConfig);
@@ -45,30 +46,26 @@ const RebalancingFreq = ({onUpdate, initialValues}) => {
     return (
       <ActionsBlock title="Company Size">
         <Grid container direction="row">
-          <Grid container item direction="row" md={6} sm={12}>
-            <Grid item sm={6} xs={6}>
+            <Grid item sm={3} xs={6}>
               <ToggleButton
                 {...getProps("large","Large")}
               />
             </Grid>
-            <Grid item sm={6} xs={6}>
+            <Grid item sm={3} xs={6}>
               <ToggleButton
                 {...getProps("medium","Medium")}
               />
             </Grid>
-          </Grid>
-          <Grid container item direction="row" md={6} sm={12}>
-            <Grid item sm={6} xs={6}>
+            <Grid item sm={3} xs={6}>
               <ToggleButton
                 {...getProps("small","Small")}
               />
             </Grid>
-            <Grid item sm={6} xs={6}>
+            <Grid item sm={3} xs={6}>
               <ToggleButton
                 {...getProps("micro","Micro")}
               />
             </Grid>
-          </Grid>
         </Grid>
       </ActionsBlock>
     );

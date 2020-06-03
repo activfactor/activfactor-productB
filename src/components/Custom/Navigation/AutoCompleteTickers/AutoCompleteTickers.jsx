@@ -2,8 +2,10 @@ import React, { useEffect, useState, useMemo } from "react";
 import TextField from "./TextField";
 import { Autocomplete } from "@material-ui/lab";
 import { Wrapper, OptionHighlight, OptionText } from "./style";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { List } from "react-virtualized";
+import { setTickerId } from 'store/actions/resources.actions';
+import history from '../../../../history';
 
 const ListboxComponent = React.forwardRef((props, ref) => {
   const { children, role, ...other } = props;
@@ -34,6 +36,7 @@ const AutoCompleteTickers = ({noMargin}) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const { tickers } = useSelector((state) => state.navigation);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (tickers) {
@@ -41,10 +44,16 @@ const AutoCompleteTickers = ({noMargin}) => {
     }
   }, [tickers]);
 
+  const onChangeHandler = (event, {tradingitemid}) =>{
+    dispatch(setTickerId(tradingitemid));
+    history.push('/ticker/monitor')
+  }
+
   const loading = useMemo(() => open && options.length === 0, [open, options]);
   return (
     <Wrapper>
       <Autocomplete
+        onChange={onChangeHandler}
         style={{margin: '0px'}}
         id="autocomplete-tickers"
         freeSolo

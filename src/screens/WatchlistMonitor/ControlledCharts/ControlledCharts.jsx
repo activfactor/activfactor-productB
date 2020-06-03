@@ -29,7 +29,7 @@ const ControlledCharts = ({watchlistDetails}) => {
           >
             <ColumnChart
               roundTo={2}
-              // old model of how object is transfered to graph check the commented section in transformer
+              showXaxisLabel={true}
               data={{
                 name: "Country",
                 data: countryPerformance[countryTab].data,
@@ -56,6 +56,7 @@ const ControlledCharts = ({watchlistDetails}) => {
           >
             <ColumnChart
               roundTo={2}
+              showXaxisLabel={true}
               data={{
                 data: sectorPerformance[sectorTab].data,
                 name: 'sector'
@@ -82,6 +83,7 @@ const ControlledCharts = ({watchlistDetails}) => {
           >
             <ColumnChart
               roundTo={2}
+              showXaxisLabel={true}
               data={{
                 data: firmSizePerformance[firmSizeTab].data,
                 name: 'Firm Size'

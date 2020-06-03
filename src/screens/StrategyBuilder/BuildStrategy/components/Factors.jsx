@@ -46,13 +46,31 @@ const Factors = ({onUpdate, initialValues}) => {
         tooltipTitle: getTooltipTitle(factor),
         withArrow: true
     }) ,[getTooltipTitle, handleChange, factors]);
+
+    const [group1, group2] = useMemo(() => {
+      if (factorsList){
+        const group1 = factorsList.slice(0, (factorsList.length/2).toFixed(0));
+        const group2 = factorsList.slice((factorsList.length/2).toFixed(0), factorsList.length);
+        return [group1, group2];
+      }
+      return [[], []]
+    }, [factorsList]);
     return (
       <ActionsBlock title="Factors">
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container direction="row">
+          <Grid item md={12} xs={6}>
           {
-            factorsList && factorsList.length>0 
-            ? factorsList.map(factor => (
+            group1 && group1.length>0 
+            ? group1.map(factor => (
+              <Checkbox key={factor} {...getProps(factor)}/>
+            ))
+            : <FactorsSkeleton />
+          }
+          </Grid>
+          <Grid item md={12} xs={6}>
+          {
+            group2 && group2.length>0 
+            ? group2.map(factor => (
               <Checkbox key={factor} {...getProps(factor)}/>
             ))
             : <FactorsSkeleton />

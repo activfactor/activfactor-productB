@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import StrategyBuilder from "./screens/StrategyBuilder";
 import StrategyMonitor from "./screens/StrategyMonitor";
 import WatchlistMonitor from './screens/WatchlistMonitor';
+import TickerMonitor from './screens/TickerMonitor';
 import history from "./history";
 import AuthFooter from 'components/Custom/AuthFooter';
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,6 +39,7 @@ const App = () => {
             <Route exact path="/strategy/builder" component={StrategyBuilder} />
             <Route exact path="/strategies/monitor" component={StrategyMonitor} />
             <Route exact path="/watchlists/monitor" component={WatchlistMonitor} />
+            <Route exact path="/ticker/monitor" component={TickerMonitor} />
           </Switch>
         </SectionPage>
 

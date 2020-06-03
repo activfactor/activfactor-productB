@@ -58,3 +58,10 @@ export const filterObject = (obj, keyToRemove) => {
     }
     return result;
 }
+
+export const capitalize = (text) => {
+  if (text){
+    return text[0].toUpperCase() + text.slice(1);
+  }
+  return text;
+}

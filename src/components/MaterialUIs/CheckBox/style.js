@@ -22,14 +22,22 @@ export const StyledFormControlLabel = withStyles((theme) => ({
         margin: props => props.margin ? props.margin : 0,
         color: theme.palette.text.secondary,
         '& .MuiTypography-body1': {
-            marginLeft: '10px'
+            fontSize: '16px',
+            marginLeft: '10px',
+            [theme.breakpoints.down('xs')]: {
+                marginLeft: '0px',
+                fontSize: '13px',
+            }
         }
     }
 }))(FormControlLabel);
 
 export const HelpIcon = withStyles((theme) => ({
     root: {
-        marginLeft: theme.spacing(1)
+        marginLeft: theme.spacing(1),
+        [theme.breakpoints.down('xs')]:{
+            marginLeft: '3px'
+        }
     },
     colorPrimary: {
         color: theme.palette.primary.light

@@ -39,22 +39,18 @@ const RebalancingFreq = ({onUpdate, initialValue}) => {
     return (
         <ActionsBlock title="Rebalancing Frequencies">
             <Grid container direction="row">
-                <Grid container item direction="row" md={6} sm={12}>
-                    <Grid item sm={6} xs={6}>
+                    <Grid item sm={3} xs={6}>
                         <ToggleButton {...getProps('monthly', 'Monthly')} />
                     </Grid>
-                    <Grid item sm={6} xs={6}>
+                    <Grid item sm={3} xs={6}>
                         <ToggleButton {...getProps('quarterly', 'Quarterly')}/>
                     </Grid>
-                </Grid>
-                <Grid container item direction="row" md={6} sm={12}>
-                    <Grid item sm={6} xs={6}>
+                    <Grid item sm={3} xs={6}>
                         <ToggleButton {...getProps('semesterly', 'Semesterly')} />
                     </Grid>
-                    <Grid item sm={6} xs={6}>
+                    <Grid item sm={3} xs={6}>
                         <ToggleButton {...getProps('yearly','Yearly')}/>
                     </Grid>
-                </Grid>
             </Grid>
         </ActionsBlock>
     );

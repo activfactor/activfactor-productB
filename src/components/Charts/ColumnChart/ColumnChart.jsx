@@ -6,7 +6,7 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme } from '@material-ui/core';
 
-const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, showXaxisLabel}) => {
     const theme = useTheme();
     // only one series supplied 
     const lengthOfData = useMemo(() => {
@@ -45,7 +45,7 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
             title: {
                 text: Xtitle || null
             },
-            visible: false
+            visible: showXaxisLabel
         },
         yAxis: {
             min: minAxis ? minAxis : null,
@@ -106,7 +106,8 @@ ColumnChart.propTypes = {
     minAxis: PropTypes.number,
     maxAxis: PropTypes.number,
     roundTo: PropTypes.number,
-    uniColor: PropTypes.bool
+    uniColor: PropTypes.bool,
+    showXaxisLabel: PropTypes.bool
 }
 
 ColumnChart.defaultProps = {

@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
     navigationLink: {
+        fontFamily: theme.typography.fontFamily,
         wordWrap: 'nowrap',
         color: props => props.variant === 'footer' ? theme.customColors.footerLink : theme.palette.text.link,
         fontWeight: 600,

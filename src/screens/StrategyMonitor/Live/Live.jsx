@@ -41,6 +41,7 @@ const Live = ({ strategyDetails }) => {
             }
           >
             <ColumnChart
+              showXaxisLabel={true}
               roundTo={2}
               showLegends={false}
               data={{
@@ -67,6 +68,7 @@ const Live = ({ strategyDetails }) => {
             }
           >
             <ColumnChart
+              showXaxisLabel={true}
               showLegends={false}
               roundTo={2}
               data={{

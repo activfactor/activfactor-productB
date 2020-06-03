@@ -9,6 +9,7 @@ import CompanySize from './components/ComponySize';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetStrategyFilters, updateStrategyFilters } from 'store/actions/strategyBuilder.actions';
+import { CountriesDropDownSkeleton } from 'components/Skeleton';
 
 const BuildStrategy = ({runStrategy, options}) => {
     const {initialStrategyFilters: {
@@ -82,12 +83,16 @@ const BuildStrategy = ({runStrategy, options}) => {
             </Grid>
             <Grid item lg={3} xs={12}>
               <ActionsBlock title="Country">
-                <Select
-                  options={options.countries}
-                  value={country}
-                  onChange={handleCountryChange}
-                  theme="default"
-                />
+                {
+                  options.countries.length>0
+                  ? <Select
+                      options={options.countries}
+                      value={country}
+                      onChange={handleCountryChange}
+                      theme="default"
+                    />
+                  : <CountriesDropDownSkeleton />
+                }
               </ActionsBlock>
             </Grid>
             <Grid item lg={9} xs={12}>

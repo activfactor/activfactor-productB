@@ -6,9 +6,24 @@ import { chartColors, getColorByIndex, size } from '../charts.constants';
 import PropTypes from 'prop-types';
 import { useTheme, useMediaQuery } from '@material-ui/core';
 
-const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, showXaxisLabel, dataUnit}) => {
+const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minAxis, maxAxis, roundTo, showXaxisLabel, dataUnit, isLegendLeft}) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const legendAlignment = useMemo(() => {
+        if(isLegendLeft){
+            return {
+                align: isMobile ? 'center' : 'right',
+                verticalAlign: isMobile ? 'bottom' : 'middle',
+                layout: isMobile ? 'horizontal' : 'vertical',
+                itemMarginBottom: isMobile ? 0 : 20
+            }
+        } else {
+            return {
+                align: 'center',
+                verticalAlign: 'bottom'
+            }
+        }
+    }, [isLegendLeft, isMobile]);
     // only one series supplied 
     const lengthOfData = useMemo(() => {
         if (data && [].constructor === data.constructor){
@@ -85,10 +100,7 @@ const ColumnChart = ({data, title, Ytitle, Xtitle, categories, showLegends, minA
         },
         legend: {
             enabled: showLegends,
-            align: isMobile ? 'center' : 'right',
-            verticalAlign: isMobile ? 'bottom' : 'middle',
-            layout: isMobile ? 'horizontal' : 'vertical',
-            itemMarginBottom: isMobile ? 0 : 20
+            ...legendAlignment
         },
         credits: {
             enabled: false

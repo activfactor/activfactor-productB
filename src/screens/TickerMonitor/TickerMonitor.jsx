@@ -46,22 +46,40 @@ const TickerMonitor = () => {
         )
     } else if (done && !isEmpty(detailsData)) {
         return (
-            <>
-                <TopHeader />
-                <ChartCard title="Factor intensity" margin="0px 0px 20px 0px">
-                    <ColumnChart dataUnit='' showLegends={true} data={detailsData.factorRanking.data} categories={detailsData.factorRanking.categories} name="Factor Intensity" showXaxisLabel={true} />  
-                </ChartCard>
-                <CardListing repeat={2}>
-                    <TickerCard title="Valuation" tableData={detailsData.valuation} />
-                    <TickerCard title="Profitability" tableData={detailsData.profitability} />
-                    <TickerCard title="Technical" tableData={detailsData.technical} />
-                    <TickerCard title="Risk" tableData={detailsData.risk} />
-                </CardListing>
-                <ChartCard title="Company prices" margin="20px 0px">
-                    <LineChart showLegends={false} showFullXLabel={true} data={detailsData.dailyPrice.data} categories={detailsData.dailyPrice.categories} name="Company prices" showXaxisLabel={true}/>
-                </ChartCard>
-            </>
-        )
+          <>
+            <TopHeader />
+            <ChartCard title="Factor intensity" margin="0px 0px 20px 0px">
+              <ColumnChart
+                isLegendLeft
+                dataUnit=""
+                showLegends={true}
+                data={detailsData.factorRanking.data}
+                categories={detailsData.factorRanking.categories}
+                name="Factor Intensity"
+                showXaxisLabel={true}
+              />
+            </ChartCard>
+            <CardListing repeat={2}>
+              <TickerCard title="Valuation" tableData={detailsData.valuation} />
+              <TickerCard
+                title="Profitability"
+                tableData={detailsData.profitability}
+              />
+              <TickerCard title="Technical" tableData={detailsData.technical} />
+              <TickerCard title="Risk" tableData={detailsData.risk} />
+            </CardListing>
+            <ChartCard title="Company prices" margin="20px 0px">
+              <LineChart
+                showLegends={false}
+                showFullXLabel={true}
+                data={detailsData.dailyPrice.data}
+                categories={detailsData.dailyPrice.categories}
+                name="Company prices"
+                showXaxisLabel={true}
+              />
+            </ChartCard>
+          </>
+        );
     } else {
         return (
             <h1>Something wrong</h1>

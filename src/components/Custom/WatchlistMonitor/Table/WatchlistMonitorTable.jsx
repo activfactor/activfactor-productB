@@ -10,6 +10,9 @@ import { Grid } from '@material-ui/core';
 import { useApiInfo } from 'screens/hooks/screens.hooks';
 import { DELETE_TICKERS } from 'store/types';
 import { clearApi } from 'store/actions/api.actions';
+import { setTickerId } from 'store/actions/resources.actions';
+import { clearTickerDetails } from 'store/actions/ticker.actions';
+import history from '../../../../history';
 
 const CustomizePortfolio = ({onDeleteTicker}) => {
     const { oneWatchlistDetails } = useSelector(state => state.watchlists);
@@ -37,12 +40,18 @@ const CustomizePortfolio = ({onDeleteTicker}) => {
     onDeleteTicker(tickerId);
   }, [onDeleteTicker]);
 
+  const onClickTickerView = useCallback((tickerId) => () => {
+    dispatch(clearTickerDetails());
+    dispatch(setTickerId(tickerId));
+    history.push('/ticker/monitor');
+  }, [dispatch]);
+
   const renderActions = useCallback((tickerId) => (
       <Grid container direction="row" alignItems="center" justify="center" wrap="nowrap">
-        <ViewButton variant="outlined" color="primary"><Visibility /></ViewButton>
+        <ViewButton onClick={onClickTickerView(tickerId)} variant="outlined" color="primary"><Visibility /></ViewButton>
         <StyledDeleteIcon onClick={onDeleteTickerHandler(tickerId)} />
       </Grid>
-  ), [onDeleteTickerHandler]);
+  ), [onDeleteTickerHandler, onClickTickerView]);
 
   const onCloseDeleteFailureErrorHandler = () => {
     dispatch(clearApi(DELETE_TICKERS));

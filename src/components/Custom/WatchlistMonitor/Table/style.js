@@ -63,7 +63,11 @@ export const ViewButton = withStyles(({
         padding: '0px', 
         marginRight: '5px', 
         minWidth: '35px', 
-        height:'30px'
+        height:'30px',
+        outline: 'none',
+        '&:focus':{
+            outline: 'none'
+        }
     }
 }))(Button);
 

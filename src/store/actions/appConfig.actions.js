@@ -28,7 +28,7 @@ export const fetchAppConfig = () => {
                 },
                 selectOptions: {
                     sectors: sectorOptions,
-                    countries: [...countriesOptions, {value: 'SYR', label: 'SYR'}]
+                    countries: countriesOptions
                 }
             }));
             dispatch(setStrategyFilters({

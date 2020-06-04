@@ -12,6 +12,7 @@ import { DELETE_TICKERS } from 'store/types';
 import { clearApi } from 'store/actions/api.actions';
 import { setTickerId } from 'store/actions/resources.actions';
 import { clearTickerDetails } from 'store/actions/ticker.actions';
+import { FETCH_TICKER_DETAILS } from 'store/types';
 import history from '../../../../history';
 
 const CustomizePortfolio = ({onDeleteTicker}) => {
@@ -41,6 +42,7 @@ const CustomizePortfolio = ({onDeleteTicker}) => {
   }, [onDeleteTicker]);
 
   const onClickTickerView = useCallback((tickerId) => () => {
+    dispatch(clearApi(FETCH_TICKER_DETAILS));
     dispatch(clearTickerDetails());
     dispatch(setTickerId(tickerId));
     history.push('/ticker/monitor');

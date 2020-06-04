@@ -49,7 +49,7 @@ export default (tickerDetails) => {
             }))
             const categories = Object.keys(dailyPrice);
             detailsData.dailyPrice = {
-                data: {name: 'Company prices', data},
+                data: {name: 'Company price', data},
                 categories,
             }
         }

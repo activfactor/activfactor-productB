@@ -6,6 +6,8 @@ export const StyledTableCell = withStyles((theme) => ({
         fontWeight: 500,
         fontSize: '13px',
         borderColor: theme.palette.background.default,
+        maxWidth: '150px !important',
+        textOverflow: 'ellipsis !important'
     },
     head: {
         color: theme.palette.common.black,

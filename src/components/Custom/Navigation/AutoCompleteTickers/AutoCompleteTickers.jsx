@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { List } from "react-virtualized";
 import { setTickerId } from 'store/actions/resources.actions';
 import { clearTickerDetails } from 'store/actions/ticker.actions';
+import { FETCH_TICKER_DETAILS } from 'store/types';
+import { clearApi } from 'store/actions/api.actions';
 import history from '../../../../history';
 
 const ListboxComponent = React.forwardRef((props, ref) => {
@@ -47,6 +49,7 @@ const AutoCompleteTickers = ({noMargin}) => {
 
   const onChangeHandler = (event, value) =>{
     if (value && value.tradingitemid){
+      dispatch(clearApi(FETCH_TICKER_DETAILS));
       dispatch(clearTickerDetails());
       dispatch(setTickerId(value.tradingitemid));
       history.push('/ticker/monitor')

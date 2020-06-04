@@ -12,6 +12,7 @@ import { CardListing, ChartCard } from 'components/Custom/common';
 import { TickerCard } from 'components/Custom/common';
 import Transformer from './Service/transformer.service';
 import { isEmpty } from 'utils/app.utils';
+import { FeedBackAlert } from 'components/Custom/common';
 
 const TickerMonitor = () => {
     const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const TickerMonitor = () => {
         );
     } else if (error){
         return (
-            <h1>{error}</h1>
+            <FeedBackAlert message={error || 'No data to display'} isError={true} />
         )
     } else if (done && !isEmpty(detailsData)) {
         return (
@@ -80,10 +81,12 @@ const TickerMonitor = () => {
             </ChartCard>
           </>
         );
-    } else {
+    } else if (done && isEmpty(detailsData)) {
         return (
-            <h1>Something wrong</h1>
+            <FeedBackAlert message={error || 'No data to display'} isError={!isEmpty(error)} />
         )
+    } else {
+        return <TickerMonitorSkeleton />
     }
 };
 

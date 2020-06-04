@@ -6,22 +6,22 @@ export default (tickerDetails) => {
     
         if (valuation){
             detailsData.valuation = valuation.map(obj => (
-                [{value: obj.ratio},{value: obj.company, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
+                [{value: obj.ratio},{value: obj.ticker, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
             ))
         }
         if (profitability){
             detailsData.profitability = profitability.map(obj => (
-                [{value: obj.ratio},{value: obj.company, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
+                [{value: obj.ratio},{value: obj.ticker, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
             ))
         }
         if (technical){
             detailsData.technical = technical.map(obj => (
-                [{value: obj.ratio},{value: obj.company, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
+                [{value: obj.ratio},{value: obj.ticker, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
             ))
         }
         if (risk){
             detailsData.risk = risk.map(obj => (
-                [{value: obj.ratio},{value: obj.company, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
+                [{value: obj.ratio},{value: obj.ticker, unit: '%'},{value: obj.sector, unit: '%'},{value: obj.industry, unit: '%'}]
             ))
         }
         if(factorRanking){

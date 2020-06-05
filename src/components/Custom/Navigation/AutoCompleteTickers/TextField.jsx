@@ -3,11 +3,12 @@ import { TextField, CircularProgress } from "@material-ui/core";
 import { Search as SearchIcon } from "@material-ui/icons";
 import { useStyles } from './style';
 
-const TextInput = ({ params, loading, noMargin, placeholder = "Search for stocks" }) => {
+const TextInput = ({ params, loading, noMargin, placeholder = "Search for stocks", value }) => {
     const classes = useStyles();
   return (
     <TextField
       {...params}
+      value={value}
       style={{ margin: noMargin ? "0px" : "0px 20px"}}
       label={placeholder}
       variant="outlined"

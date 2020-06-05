@@ -38,6 +38,7 @@ const ListboxComponent = React.forwardRef((props, ref) => {
 const AutoCompleteTickers = ({noMargin}) => {
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
   const { tickers } = useSelector((state) => state.navigation);
   const dispatch = useDispatch();
 
@@ -49,17 +50,24 @@ const AutoCompleteTickers = ({noMargin}) => {
 
   const onChangeHandler = (event, value) =>{
     if (value && value.tradingitemid){
+      setInputValue('');
       dispatch(clearApi(FETCH_TICKER_DETAILS));
       dispatch(clearTickerDetails());
       dispatch(setTickerId(value.tradingitemid));
       history.push('/ticker/monitor')
     }
   }
-
+  const onInputChangeHandler = (e) => {
+    if (e){
+      setInputValue(e.target.value);
+    }
+  }
   const loading = useMemo(() => open && options.length === 0, [open, options]);
   return (
     <Wrapper>
       <Autocomplete
+        onInputChange={onInputChangeHandler}
+        inputValue={inputValue}
         onChange={onChangeHandler}
         style={{margin: '0px'}}
         id="autocomplete-tickers"
@@ -82,7 +90,7 @@ const AutoCompleteTickers = ({noMargin}) => {
         )}
         ListboxComponent={ListboxComponent}
         renderInput={(params) => (
-          <TextField noMargin={noMargin} params={params} loading={loading}/>
+          <TextField noMargin={noMargin} params={params} loading={loading} value={inputValue} />
         )}
       />
     </Wrapper>

@@ -1,6 +1,6 @@
 import { FETCH_APP_CONFIG, SET_APP_CONFIG } from '../types';
 import { apiAction } from '../middleware/api.middleware.helper';
-import { endPoints, requestMethods, INITIAL_STRATEGY_FILTERS, SUPPORTED_COINTRIES } from 'config/appConfig'
+import { endPoints, requestMethods, INITIAL_STRATEGY_FILTERS } from 'config/appConfig'
 import { setStrategyFilters } from './strategyBuilder.actions';
 
 export const fetchAppConfig = () => {

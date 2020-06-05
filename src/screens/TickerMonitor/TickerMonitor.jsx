@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import history from '../../history';
 import TopHeader from './TopHeader';
 import { ColumnChart } from 'components/Charts';
-import LineChart from 'components/Custom/SingleSerieLineChart';
+import AreaChart from 'components/Custom/TickerPricesAreaChart';
 import { CardListing, ChartCard } from 'components/Custom/common';
 import { TickerCard } from 'components/Custom/common';
 import Transformer from './Service/transformer.service';
@@ -70,13 +70,12 @@ const TickerMonitor = () => {
               <TickerCard title="Risk" tableData={detailsData.risk} />
             </CardListing>
             <ChartCard title="Company prices" margin="20px 0px">
-              <LineChart
+              <AreaChart
+                tickInterval={60}
                 showLegends={false}
-                showFullXLabel={true}
                 data={detailsData.dailyPrice.data}
                 categories={detailsData.dailyPrice.categories}
                 name="Company prices"
-                showXaxisLabel={true}
               />
             </ChartCard>
           </>

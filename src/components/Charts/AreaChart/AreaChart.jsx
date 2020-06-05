@@ -36,7 +36,7 @@ const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
                 },
                 stops: [
                     [0, '#358ff0'],
-                    [1, 'rgba(96, 223, 200, 0.1)']
+                    [1, 'rgba(104, 173, 247, 0.1)']
                 ]
             },
             color: '#358ff0'

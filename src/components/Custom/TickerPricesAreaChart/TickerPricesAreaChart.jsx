@@ -1,23 +1,33 @@
 import React from 'react';
 import Highcharts from 'highcharts/highcharts';
 import HighChartsReact from 'highcharts-react-official';
-import { formatNumberWithCommas, formatDecimal, convertToK } from 'utils/app.utils';
+import { formatNumberWithCommas, convertToK } from 'utils/app.utils';
 import PropTypes from 'prop-types';
 import { size } from '../../Charts/charts.constants';
-import { useTheme } from '@material-ui/core';
 
-const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, variant, showFullXLabel, showLegends}) => {
-    const theme = useTheme();
+const AreaChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, tickInterval, showLegends}) => {
     const dataToDisplay = [
         {
             ...data,
-            showInLegend: true,
-            color: theme.palette.primary.light,
-        },
+            showInLegend: showLegends,
+            fillColor: {
+                linearGradient: {
+                    x1: 1,
+                    y1: 1,
+                    x2: 0.5,
+                    y2: 0.8
+                },
+                stops: [
+                    [0, '#358ff0'],
+                    [1, 'rgba(104, 173, 247, 0.1)']
+                ]
+            },
+            color: '#358ff0'
+        }
     ]
     const options = {
         chart:{
-            type: "line",
+            type: "areaspline",
             ...size
         },
         credits:{
@@ -25,9 +35,6 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
         },
         tooltip: {
           formatter: function(){
-              if (variant==='drawdown'){
-                return `<b>${this.key}</b><br><p>${this.series.name} ${formatDecimal(this.y, 0)}%</p>`
-              }
             return `<b>${this.key}</b><br><p>${this.series.name} $${formatNumberWithCommas(this.y)}</p>`
           }
         },
@@ -39,10 +46,7 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
             },
             labels: {
                 formatter: function() {
-                    if (variant==='drawdown'){
-                        return `${this.value}%`
-                    }
-                    return `$${convertToK(this.value)}`
+                    return convertToK(this.value)
                 },
             }
             
@@ -55,18 +59,11 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
           },
           labels: {
             formatter: function() {
-                if (showFullXLabel){
-                    return this.value;
-                }
-                const date = this.value.split('-');
-                return date[1] || this.value
+              return this.value
             },
           },
           categories: categories,
-          tickInterval: 5
-        },
-        legend: {
-            enabled: showLegends
+          tickInterval: tickInterval
         },
         title: {
           text: ''
@@ -90,7 +87,7 @@ const LineChart = ({data,categories,xTitle, yTitle, showyAxis, showxAxis, varian
     );
 }
 
-LineChart.propTypes = {
+AreaChart.propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
     xTitle: PropTypes.string,
     yTitle: PropTypes.string,
@@ -98,14 +95,12 @@ LineChart.propTypes = {
     showyAxis: PropTypes.bool,
     showxAxis: PropTypes.bool,
     variant: PropTypes.oneOf(['drawdown']),
-    showFullXLabel: PropTypes.bool,
-    showLegends: PropTypes.bool
+    tickInterval: PropTypes.number
 }
 
-LineChart.defaultProps = {
+AreaChart.defaultProps = {
   showxAxis: true,
-  showyAxis: true,
-  showLegends: true
+  showyAxis: true
 }
 
-export default LineChart;
+export default AreaChart;

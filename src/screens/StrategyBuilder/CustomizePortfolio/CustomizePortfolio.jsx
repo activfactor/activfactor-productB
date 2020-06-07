@@ -87,7 +87,7 @@ const CustomizePortfolio = ({onAnalyzeResults}) => {
             <Grid item md={6} sm={6} xs={12}>
               <ButtonWrapper>
                 <Button
-                  label="Analuze Results"
+                  label="Analyse Results"
                   onClick={onAnalyzeResults}
                   variant="outlined"
                   color="primary"

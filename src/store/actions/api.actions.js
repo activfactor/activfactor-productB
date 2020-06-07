@@ -13,7 +13,7 @@ export const apiEnd = label => ({
 export const apiError = (error, label) => ({
   type: API_ERROR,
   label,
-  error
+  error: error
 });
 
 export const clearApi = (label) => ({

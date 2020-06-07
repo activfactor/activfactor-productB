@@ -28,9 +28,12 @@ export default (state = INITIAL_STATE.api, action) => {
             let error = action.error;
             let statusCode;
             const {response} = action.error;
+            const {message} = action.error;
             if (response){
                 error = response.data.message
                 statusCode = response.status
+            } else {
+                error = message;
             }
             return {
                 ...state,

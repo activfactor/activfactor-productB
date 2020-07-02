@@ -1,14 +1,14 @@
 import { FETCH_ALL_DASHBOARD_DATA, SET_HISTORICAL_PERFORMANCE_DATA, FETCH_HISTORICAL_PERFORMANCE } from '../types';
 import { apiAction } from '../middleware/api.middleware.helper';
-import { endPoints, initialParams, requestMethods } from '../../config/appConfig';
+import { endPoints, requestMethods } from '../../config/appConfig';
 import { setWatchLists } from './watchlist.actions';
 import { setStrategies } from './strategies.actions';
 
-export const fetchAllDashboardData = () => {
+export const fetchAllDashboardData = (country) => {
     return apiAction({
         label: FETCH_ALL_DASHBOARD_DATA,
         requests: [
-            {url: endPoints.fetchDashboard, method: requestMethods.GET, data: initialParams.historicalPerformance},
+            {url: endPoints.fetchDashboard, method: requestMethods.GET, data: {country}},
             {url: endPoints.fetchWatchlists, method:requestMethods.GET},
             {url: endPoints.fetchStrategies, method:requestMethods.GET}
         ],
@@ -20,13 +20,15 @@ export const fetchAllDashboardData = () => {
     })
 }
 
-export const fetchHistoricalPerformanceData = () => {
+export const fetchHistoricalPerformanceData = (country) => {
     return apiAction({
         url: endPoints.fetchDashboard,
         method: requestMethods.GET,
         apiVersion: "2",
         label: FETCH_HISTORICAL_PERFORMANCE,
-        dataToSend: initialParams.historicalPerformance,
+        dataToSend: {
+            country,
+        },
         onSuccess: ({data}) => dispatch => {
             dispatch(setHistoricalPerformanceData(data));
         }

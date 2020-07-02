@@ -50,9 +50,16 @@ const DashboardTable = () => {
 
   useEffect(() => {
     if (!historicalPerformance) {
-      dispatch(fetchHistoricalPerformanceData());
+      if (selectOptions){
+        const {countries} = selectOptions;
+        if (countries && countries.length>0){
+          const transformedCountries = countries.map(country => country.value.toLowerCase());
+          console.log(transformedCountries, transformedCountries.join(','));
+          dispatch(fetchHistoricalPerformanceData(transformedCountries.join(',')));
+        }
+      }
     }
-  }, [dispatch, historicalPerformance]);
+  }, [dispatch, historicalPerformance, selectOptions]);
 
   const onChangeHandler = useCallback(
     (e) => {
@@ -169,7 +176,7 @@ const DashboardTable = () => {
       renderHeader={renderSectionHeader}
       renderContent={renderSectionContent}
     />
-  ) : isLoading ? (
+  ) : isLoading || !selectOptions.countries.length>0 ? (
     <HistoricalPerformanceSkeleton />
   ) : error ? (
     <h1>error</h1>

@@ -12,13 +12,17 @@ import { getTickersList } from 'store/actions/navigation.actions';
 const Header = () => {
     const [opened, setOpened] = useState(false);
     const dispatch = useDispatch();
-    const {tickers} = useSelector(state => state.navigation);
+    const {tickers, selectOptions} = useSelector(state => ({...state.navigation, ...state.appConfig}));
 
     useEffect(() => {
-        if (!tickers){
-            dispatch(getTickersList())
+        if (!tickers && selectOptions){
+            const {countries} = selectOptions;
+            if (countries && countries.length>0){
+                const transformedCountries = countries.map(country => country.value.toLowerCase());
+                dispatch(getTickersList(transformedCountries.join(',')))
+            }
         }
-    }, [dispatch, tickers]);
+    }, [dispatch, tickers, selectOptions]);
 
     const toggleDrawer = useCallback((open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

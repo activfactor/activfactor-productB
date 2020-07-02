@@ -1,12 +1,14 @@
 import { FETCH_TICKERS_DATA, SET_TICKERS_DATA } from '../types';
 import { apiAction } from '../middleware/api.middleware.helper';
-import { endPoints, initialParams, requestMethods } from '../../config/appConfig';
+import { endPoints, requestMethods } from '../../config/appConfig';
 
-export const getTickersList = () => {
+export const getTickersList = (countries) => {
     return apiAction({
         url: endPoints.fetchTickers,
         method: requestMethods.GET,
-        dataToSend: initialParams.tickers,
+        dataToSend: {
+            countries
+        },
         label: FETCH_TICKERS_DATA,
         onSuccess: (response) => {
             return {

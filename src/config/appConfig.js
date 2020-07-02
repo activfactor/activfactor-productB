@@ -64,15 +64,6 @@ export const API_CONFIG = {
     }
 }
 
-export const initialParams = {
-    tickers: {
-        countries: 'usa,uae,uk,can'
-    },
-    historicalPerformance: {
-        country: 'usa,uk,can,uae'
-    }
-}
-
 export const INITIAL_STRATEGY_FILTERS = {
     country: INITIAL_COUNTRY,
     halal: 0,

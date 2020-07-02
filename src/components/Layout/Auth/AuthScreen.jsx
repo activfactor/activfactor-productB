@@ -5,21 +5,24 @@ import PropTypes from 'prop-types';
 
 const AuthScreen = ({imageSrc, children}) => {
     return (
-        <section>
-            <IconWrapper>
-                <BigLogo width="250px" height="100px" iconSize="custom"/>
-            </IconWrapper>
+      <section>
+        <IconWrapper>
+          <BigLogo width="250px" height="100px" iconSize="custom" />
+        </IconWrapper>
         <FullWidthWrapper component="section">
-            <Container>
-                <ContentContainer>
-                    {children}
-                </ContentContainer>
-                <ImageWrapper>
-                    <img width="100%" height="auto" src={imageSrc} alt="login wealthface" />
-                </ImageWrapper>
-            </Container>
+          <Container>
+            <ContentContainer>{children}</ContentContainer>
+            <ImageWrapper>
+              <img
+                width="100%"
+                height="auto"
+                src={imageSrc}
+                alt="login wealthface"
+              />
+            </ImageWrapper>
+          </Container>
         </FullWidthWrapper>
-        </section>
+      </section>
     );
 };
 

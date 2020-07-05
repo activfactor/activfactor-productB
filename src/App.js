@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
-import {Router, Route, Switch, Redirect} from "react-router-dom";
+import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Header from "components/Header";
 import SectionPage from 'components/MaterialUIs/SectionPage';
-import Login from 'screens/AuthScreen/Login';
-import Signup from "./screens/AuthScreen/Singup";
+// import Login from 'screens/AuthScreen/Login';
+// import Signup from "./screens/AuthScreen/Singup";
 import Logout from 'screens/AuthScreen/Logout';
 import Dashboard from "screens/Dashboard";
 import Footer from "./components/Footer";
@@ -33,9 +33,9 @@ const App = () => {
           <Switch>
             <Redirect exact path="/" from="/" to="/dashboard" />
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/login" component={Login} />
+            {/* <Route path="/login" component={Login} /> */}
             <Route path="/logout" component={Logout} />
-            <Route path="/signup" component={Signup} />
+            {/* <Route path="/signup" component={Signup} /> */}
             <Route exact path="/strategy/builder" component={StrategyBuilder} />
             <Route exact path="/strategies/monitor" component={StrategyMonitor} />
             <Route exact path="/watchlists/monitor" component={WatchlistMonitor} />

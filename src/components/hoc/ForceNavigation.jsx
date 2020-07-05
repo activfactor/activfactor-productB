@@ -27,7 +27,7 @@ export default ChildComponent => {
     }
 
     shouldLogin() {
-        window.location.href=URL.login;
+        window.top.location.href=URL.login;
     }
 
     shouldGoToDashboard(){

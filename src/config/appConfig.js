@@ -38,7 +38,7 @@ export const requestMethods = {
 }
 
 export const URL = {
-    login: '/login'
+    login: '/auth'
 }
 
 export const routes = [

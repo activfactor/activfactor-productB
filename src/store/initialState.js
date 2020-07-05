@@ -1,10 +1,8 @@
 import { INITIAL_COUNTRY } from 'config/appConfig';
-const token = window.localStorage.getItem('token');
-const userId = window.localStorage.getItem('userId');
+const token = window.localStorage.getItem('af_token');
 export default {
     auth: {
         token,
-        userId
     },
     api: {
         isLoading: false

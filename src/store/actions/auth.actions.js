@@ -5,7 +5,6 @@ import {
 import { endPoints, requestMethods } from "config/appConfig";
 import CLIENTS from "config/clients";
 import { apiAction, setAuthentication } from '../middleware/api.middleware.helper';
-import history from '../../history';
 
 export function signin () {
   return apiAction({
@@ -26,7 +25,6 @@ export function signin () {
 
 export const signOut = () => dispatch => {
   dispatch({type: SIGN_OUT});
-  window.localStorage.removeItem("token");
-  window.localStorage.removeItem("userId");
-  history.push('/login')
+  window.localStorage.removeItem("af_token");
+  window.top.location.href="/auth"
 };

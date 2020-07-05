@@ -2,6 +2,7 @@
   "name": "wealthface",
   "version": "1.1.0",
   "private": true,
+  "homepage": "/trading",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
@@ -41,6 +42,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "prepare": "rm -rf buildToProd/* && cp -r build/ buildToProd/",
+    "prepublish": "npm run build && npm run prepare",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },

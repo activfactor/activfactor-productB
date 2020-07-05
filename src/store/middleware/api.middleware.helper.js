@@ -29,12 +29,11 @@ export const apiAction = ({
   }
 
 export const setAuthentication = (token, userId) => {
-    const storedToken = window.localStorage.getItem('token');
+    const storedToken = window.localStorage.getItem('af_token');
     const type = process.env.REACT_APP_TOKEN_TYPE || tokenTypes.bearer
     if (token){
         axios.defaults.headers.common['Authorization'] = `${type} ${token}`
-        window.localStorage.setItem('token', token);
-        window.localStorage.setItem('userId', userId);
+        window.localStorage.setItem('af_token', token);
     } else if (storedToken){
         axios.defaults.headers.common['Authorization'] = `${type} ${storedToken}`
     }
@@ -104,9 +103,8 @@ const handleSuccess = (response) => {
 }
 
 const handleError = (error) => {
-  if (error && error.response && [422].includes(error.response.status)){
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('userId');
+  if (error && error.response && [422, 401, 403].includes(error.response.status)){
+    window.localStorage.removeItem('wf_token');
     window.location.href="/logout";
   }
   return Promise.reject(error);

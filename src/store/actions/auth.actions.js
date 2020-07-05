@@ -26,5 +26,5 @@ export function signin () {
 export const signOut = () => dispatch => {
   dispatch({type: SIGN_OUT});
   window.localStorage.removeItem("af_token");
-  window.top.location.href="/auth"
+  window.top.location.href="/auth/#/login"
 };

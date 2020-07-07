@@ -2,9 +2,7 @@ import React, {useEffect} from "react";
 import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Header from "components/Header";
 import SectionPage from 'components/MaterialUIs/SectionPage';
-// import Login from 'screens/AuthScreen/Login';
-// import Signup from "./screens/AuthScreen/Singup";
-import Logout from 'screens/AuthScreen/Logout';
+import Logout from 'screens/Logout';
 import Dashboard from "screens/Dashboard";
 import Footer from "./components/Footer";
 import StrategyBuilder from "./screens/StrategyBuilder";
@@ -12,7 +10,6 @@ import StrategyMonitor from "./screens/StrategyMonitor";
 import WatchlistMonitor from './screens/WatchlistMonitor';
 import TickerMonitor from './screens/TickerMonitor';
 import history from "./history";
-import AuthFooter from 'components/Custom/AuthFooter';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAppConfig } from './store/actions/appConfig.actions';
 
@@ -33,9 +30,7 @@ const App = () => {
           <Switch>
             <Redirect exact path="/" from="/" to="/dashboard" />
             <Route path="/dashboard" component={Dashboard} />
-            {/* <Route path="/login" component={Login} /> */}
             <Route path="/logout" component={Logout} />
-            {/* <Route path="/signup" component={Signup} /> */}
             <Route exact path="/strategy/builder" component={StrategyBuilder} />
             <Route exact path="/strategies/monitor" component={StrategyMonitor} />
             <Route exact path="/watchlists/monitor" component={WatchlistMonitor} />
@@ -43,7 +38,7 @@ const App = () => {
           </Switch>
         </SectionPage>
 
-        {token ? <Footer /> : <AuthFooter label="© Wealthface 2020"/>}
+        {token ? <Footer /> : ''}
       </Router>
     );
 }

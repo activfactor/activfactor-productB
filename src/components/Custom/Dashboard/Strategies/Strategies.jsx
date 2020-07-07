@@ -17,7 +17,8 @@ const Strategies = () => {
     const dispatch = useDispatch();
     const [isLoading, error, done] = useApiInfo(FETCH_STRATEGIES);
     const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     // fetch all strategies in dashboard
     useEffect(() => {
@@ -56,7 +57,8 @@ const Strategies = () => {
     const renderContent = () => {
         const {userStrategyPerformance} = list;
         const dashboardStrategies = userStrategyPerformance && userStrategyPerformance.length>0 && userStrategyPerformance.slice(0, 3);
-        const numberOfAddButtons = 3 - (dashboardStrategies.length | 0);
+        const initialNumberOfAddButtons = isMobile ? 1 : isTablet ? 2 : 3;
+        const numberOfAddButtons = initialNumberOfAddButtons - (dashboardStrategies.length | 0);
         return (
             <>
             <CardListing repeat={3}>
@@ -77,7 +79,7 @@ const Strategies = () => {
                         />
                     )
                 })}
-                {numberOfAddButtons > 0 && !isMobile && Array.from(Array(numberOfAddButtons), (e,i) => {
+                {numberOfAddButtons > 0 && Array.from(Array(numberOfAddButtons), (e,i) => {
                     return (
                         <AddButton key={`${i}_strategy`} onClick={onAddStrategyClick} />
                     )

@@ -32,7 +32,7 @@ export const DesktopNavigationContainer = withStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             display: 'none'
         }
     }
@@ -41,7 +41,7 @@ export const DesktopNavigationContainer = withStyles((theme) => ({
 export const MobileNavigationContainer = withStyles((theme) => ({
     root: {
         display: 'none',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             width: '100%',
             display: 'flex',
             justifyContent: 'flex-end'

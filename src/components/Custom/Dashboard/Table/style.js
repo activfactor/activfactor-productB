@@ -8,7 +8,12 @@ import {
 
 export const StyledTableCell = withStyles((theme) => ({
     root: {
-        color: props => props.color ? props.color : theme.palette.text.secondary
+        color: props => props.color ? props.color : theme.palette.text.secondary,
+        textAlign: 'center',
+        '&:first-child': {
+          textAlign: 'left',
+          minWidth: '200px'
+        }
     },
   body: {
     fontSize: 14,

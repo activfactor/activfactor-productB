@@ -10,7 +10,7 @@ export const INITIAL_COUNTRY = 'USA'
 export const endPoints = {
     authenticate: 'authenticate',
     fetchTickers: 'tickers',
-    fetchDashboard: 'insights/performance/historical',
+    fetchDashboard: 'portfoliostemplate/performance/historical',
     fetchWatchlists: 'watchlists',
     sectorsDescription: 'sectorslist',
     firmsizeDescription: 'firmsizelist',

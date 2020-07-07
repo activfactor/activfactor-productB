@@ -14,7 +14,8 @@ import { useTheme, useMediaQuery, Grid } from '@material-ui/core';
 
 const Strategies = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const { list } = useSelector((state) => state.watchlists);
   const dispatch = useDispatch();
   const [isLoading, error, done] = useApiInfo(FETCH_WATCHLISTS);
@@ -65,7 +66,8 @@ const Strategies = () => {
       userWatchlistPerformance &&
       userWatchlistPerformance.length > 0 &&
       userWatchlistPerformance.slice(0, 4);
-    const numberOfAddButtons = 4 - (dashboardWatchlists.length || 0);
+    const initialNumberOfAddButtons =isMobile ? 1 : isTablet ? 2 : 4;
+    const numberOfAddButtons = initialNumberOfAddButtons - (dashboardWatchlists.length || 0);
     return (
       <>
         <CardListing repeat={4}>
@@ -88,7 +90,7 @@ const Strategies = () => {
                   />
               );
             })}
-          {numberOfAddButtons > 0 && !isMobile &&
+          {numberOfAddButtons > 0 &&
             Array.from(Array(numberOfAddButtons), (e, i) => {
               return (
                 <AddButton

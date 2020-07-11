@@ -73,3 +73,20 @@ export const TickerWrapper = withStyles(({
         justifyContent: 'flex-start'
     }
 }))(Box);
+
+export const TabsWrapper = withStyles(({
+    root: {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        marginBottom: '10px',
+        marginTop: '10px'
+    }
+}))(Box);
+
+export const Container = withStyles(({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%'
+    }
+}))(Box);

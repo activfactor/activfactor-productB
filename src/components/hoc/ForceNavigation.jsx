@@ -8,19 +8,19 @@ export default ChildComponent => {
       error: null,
       errorInfo: null
     }
-    componentDidMount() {
-        const pathname = window.location.pathname;
-        if (!this.props.token && pathname!=='/login'){
-          this.shouldLogin();
-        } else if (this.props.token && pathname==='/login'){
-          this.shouldGoToDashboard();
-        }
-    }
+    // componentDidMount() {
+    //     const pathname = window.location.pathname;
+    //     if (!this.props.token && pathname!=='/login'){
+    //       // this.shouldLogin();
+    //     } else if (this.props.token && pathname==='/login'){
+    //       this.shouldGoToDashboard();
+    //     }
+    // }
 
     componentDidUpdate(){
       const pathname = window.location.pathname;
       if (!this.props.token && pathname!=='/login'){
-        this.shouldLogin();
+        // this.shouldLogin();
       } else if (this.props.token && pathname==='/login'){
         this.shouldGoToDashboard();
       }

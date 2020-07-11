@@ -105,7 +105,7 @@ const handleSuccess = (response) => {
 const handleError = (error) => {
   if (error && error.response && [422, 401, 403].includes(error.response.status)){
     window.localStorage.removeItem('wf_token');
-    window.location.href="/logout";
+    history.push('/logout');
   }
   return Promise.reject(error);
 }

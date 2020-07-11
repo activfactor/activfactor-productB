@@ -8,9 +8,6 @@ export default ChildComponent => {
       error: null,
       errorInfo: null
     }
-    componentDidMount() {
-      this.shouldNavigateAway();
-    }
 
     componentDidUpdate(){
       const pathname = window.location.pathname;

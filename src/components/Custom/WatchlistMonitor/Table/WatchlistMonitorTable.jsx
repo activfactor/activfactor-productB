@@ -1,7 +1,7 @@
-import React, {useCallback} from 'react';
-import { Table, Snackbar } from '../../../MaterialUIs';
+import React, {useCallback, useState} from 'react';
+import { Table, Snackbar, Tabs } from '../../../MaterialUIs';
 import { useSelector , useDispatch} from 'react-redux';
-import { Cell, TickerDescription, TickerName, TickerWrapper, StyledDeleteIcon, ViewButton, StyledProgress, ProgressWrapper } from './style';
+import { Cell, TickerDescription, TickerName, TickerWrapper, StyledDeleteIcon, ViewButton, StyledProgress, ProgressWrapper, Container, TabsWrapper } from './style';
 import { getColor, getValue, formatDecimal } from 'utils/app.utils';
 import { TableRow } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
@@ -18,9 +18,11 @@ import history from '../../../../history';
 const CustomizePortfolio = ({onDeleteTicker}) => {
     const { oneWatchlistDetails } = useSelector(state => state.watchlists);
     const [isLoading, error, done] = useApiInfo(DELETE_TICKERS);
+    const [performanceValue, setPerformanceValue] = useState('1D');
+    const tabsOptions = [{value: '1D', label: '1D'},{value: 'WTD', label: 'WTD'},{value: 'MTD', label: 'MTD'}];
     const dispatch = useDispatch();
 
-    const headers = ['ticker','Sector','Firm size','1D','WTD','MTD','Value','Size','Volatility','Momentum','Profitability','Investment',''];
+    const headers = ['ticker','Sector','Firm size','Performance','Value','Size','Volatility','Momentum','Profitability','Investment',''];
 
     const renderHeaders = useCallback(() => 
      (
@@ -31,6 +33,10 @@ const CustomizePortfolio = ({onDeleteTicker}) => {
       </>
     )
   , [headers]);
+
+  const onChangeTabHandler = (value) => {
+    setPerformanceValue(value);
+  }
 
   const getRowValue = useCallback((value, roundTo,  unit='') => {
     let formatedValue = formatDecimal(getValue(value), roundTo);
@@ -64,7 +70,7 @@ const renderRows = useCallback(() => {
         const {actual: {members}} = oneWatchlistDetails;
         if (members && members.length>0){
             return members.map((member, index) => {
-              const {ticker, companyname,  sector, WTD, MTD, firm_size, value, size, volatility, momentum, profitability, investment, tradingitemid} = member;
+              const {ticker, companyname,  sector, firm_size, value, size, volatility, momentum, profitability, investment, tradingitemid} = member;
                 return (
                     <React.Fragment key={`${ticker}_${index}`}>
                   <TableRow>
@@ -76,9 +82,7 @@ const renderRows = useCallback(() => {
                     </Cell>
                     <Cell variant="body" align="center">{sector}</Cell>
                     <Cell variant="body" align="center" >{firm_size}</Cell>
-                    <Cell variant="body" align="center" color={getColor(member['1D'])}>{getValue(member['1D'])}%</Cell>
-                    <Cell variant="body" align="center" color={getColor(WTD)}>{getValue(WTD)}%</Cell>
-                    <Cell variant="body" align="center" color={getColor(MTD)}>{getValue(MTD)}%</Cell>
+                    <Cell variant="body" align="center" color={getColor(member[performanceValue])}>{getValue(member[performanceValue])}%</Cell>
                     <Cell variant="body" align="center" color={getColor(value)}>{getRowValue(value, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(size)}>{getRowValue(size, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(volatility)}>{getRowValue(volatility, 0)}</Cell>
@@ -92,13 +96,10 @@ const renderRows = useCallback(() => {
             })
         }
     }
-}, [getRowValue, oneWatchlistDetails, renderActions]);
+}, [getRowValue, oneWatchlistDetails, renderActions, performanceValue]);
 
     return (
         <>
-        {isLoading && !error & !done && (<ProgressWrapper>
-            <StyledProgress color="secondary"/>
-        </ProgressWrapper>)}
         {done && error && !isLoading && (
             <Snackbar
                 open={true}
@@ -112,7 +113,15 @@ const renderRows = useCallback(() => {
                 onClose={onCloseDeleteFailureErrorHandler}
             />
         )}
-        <Table stickyHeader={true} theme="secondary" renderHeaders={renderHeaders} renderRows={renderRows} minWidth="800px" maxHeight="600px"/>
+        <Container>
+          <TabsWrapper>
+            <Tabs options={tabsOptions} theme="primary" initialValue={performanceValue} handleTabClick={onChangeTabHandler}/>
+          </TabsWrapper>
+          {isLoading && !error & !done && (<ProgressWrapper>
+            <StyledProgress color="secondary"/>
+          </ProgressWrapper>)}
+          <Table stickyHeader={true} theme="secondary" renderHeaders={renderHeaders} renderRows={renderRows} minWidth="100%" maxHeight="600px"/>
+        </Container>
         </>
     );
 };

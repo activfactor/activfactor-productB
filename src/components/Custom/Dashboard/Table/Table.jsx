@@ -151,7 +151,7 @@ const DashboardTable = () => {
       <>
         <div>
           <HeaderTitle component="h2">
-            Top quantile factor portfolios
+            Portfolios templates
           </HeaderTitle>
           {historicalPerformance && historicalPerformance.lastRebalancing && (
             <div>

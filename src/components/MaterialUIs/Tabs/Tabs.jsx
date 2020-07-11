@@ -3,11 +3,9 @@ import { StyledPrimaryTab, StyledPrimaryTabs, StyledSecondaryTabs, StyledSeconda
 import PropTypes from 'prop-types';
 
 const CustomizedTabs = ({theme, options, handleTabClick, initialValue, minWidth}) => {
-  const [value, setValue] = React.useState(initialValue);
 
   const handleChange = (event, newValue) => {
     handleTabClick(newValue);
-    setValue(newValue);
   };
 
   const Tabs = useMemo(() => theme === 'primary' ? StyledPrimaryTabs : theme === 'secondary' ? StyledSecondaryTabs : '', [theme]);
@@ -15,7 +13,7 @@ const CustomizedTabs = ({theme, options, handleTabClick, initialValue, minWidth}
 
   return (
       <Tabs
-        value={value}
+        value={initialValue}
         indicatorColor="primary"
         textColor="primary"
         onChange={handleChange}

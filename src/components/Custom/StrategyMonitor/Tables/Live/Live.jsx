@@ -1,16 +1,27 @@
-import React, {useCallback} from 'react';
-import { Table } from '../../../../MaterialUIs';
-import { useSelector } from 'react-redux';
-import { Cell, TickerDescription, TickerName, TickerWrapper, ViewButton } from './style';
+import React, {useCallback, useState} from 'react';
+import { Table, Tabs } from '../../../../MaterialUIs';
+import { useSelector, useDispatch } from 'react-redux';
+import { Cell, TickerDescription, TickerName, TickerWrapper, ViewButton, Container, TabsWrapper } from './style';
 import { getColor, getValue, formatDecimal } from 'utils/app.utils';
 import { TableRow, Grid } from '@material-ui/core';
 import { Visibility } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import { clearApi } from 'store/actions/api.actions';
+import { clearTickerDetails } from 'store/actions/ticker.actions';
+import { setTickerId } from 'store/actions/resources.actions';
+import { FETCH_TICKER_DETAILS } from 'store/types';
+import history from '../../../../../history';
 
 const CustomizePortfolio = () => {
     const { oneStrategyDetails } = useSelector(state => state.strategies);
+    const dispatch = useDispatch();
+    const [performanceValue, setPerformanceValue] = useState('1D');
+    const tabsOptions = [{value: '1D', label: '1D'},{value: 'WTD', label: 'WTD'},{value: 'MTD', label: 'MTD'}];
+    const headers = ['ticker','Sector','Firm size','Performance','Value','Size','Volatility','Momentum','Profitability','Investment','weight',''];
 
-    const headers = ['ticker','Sector','Firm size','1D','WTD','MTD','Value','Size','Volatility','Momentum','Profitability','Investment','weight',''];
+    const onChangeTabHandler = (value) => {
+      setPerformanceValue(value);
+    }
 
     const renderHeaders = useCallback(() => 
      (
@@ -27,18 +38,25 @@ const CustomizePortfolio = () => {
     return `${formatedValue}${unit}`
   }, []);
 
-  const renderActions = useCallback(() => (
+  const onClickTickerView = useCallback((tickerId) => () => {
+    dispatch(clearApi(FETCH_TICKER_DETAILS));
+    dispatch(clearTickerDetails());
+    dispatch(setTickerId(tickerId));
+    history.push('/ticker/monitor');
+  }, [dispatch]);
+
+  const renderActions = useCallback((tickerId) => (
     <Grid container direction="row" alignItems="center" justify="center" wrap="nowrap">
-        <ViewButton variant="outlined" color="primary"><Visibility /></ViewButton>
+        <ViewButton onClick={onClickTickerView(tickerId)} variant="outlined" color="primary"><Visibility /></ViewButton>
       </Grid>
-  ), []);
+  ), [onClickTickerView]);
 
 const renderRows = useCallback(() => {
     if (oneStrategyDetails){
         const {strategy: {actual: {members}}} = oneStrategyDetails;
         if (members && members.length>0){
             return members.map((member, index) => {
-              const {ticker, companyname,  sector, WTD, MTD, firm_size, value, size, volatility, momentum, profitability, investment, weight} = member;
+              const {ticker, companyname,  sector, firm_size, value, size, volatility, momentum, profitability, investment, weight, tradingitemid} = member;
                 return (
                   <TableRow key={`${ticker}_${index}`}>
                     <Cell align="left">
@@ -49,9 +67,7 @@ const renderRows = useCallback(() => {
                     </Cell>
                     <Cell variant="body" align="center">{sector}</Cell>
                     <Cell variant="body" align="center" >{firm_size}</Cell>
-                    <Cell variant="body" align="center" color={getColor(member['1D'])}>{getValue(member['1D'])}%</Cell>
-                    <Cell variant="body" align="center" color={getColor(WTD)}>{getValue(WTD)}%</Cell>
-                    <Cell variant="body" align="center" color={getColor(MTD)}>{getValue(MTD)}%</Cell>
+                    <Cell variant="body" align="center" color={getColor(member[performanceValue])}>{getValue(member[performanceValue])}%</Cell>
                     <Cell variant="body" align="center" color={getColor(value)}>{getRowValue(value,0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(size)}>{getRowValue(size, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(volatility)}>{getRowValue(volatility, 0)}</Cell>
@@ -59,16 +75,21 @@ const renderRows = useCallback(() => {
                     <Cell variant="body" align="center" color={getColor(profitability)}>{getRowValue(profitability, 0)}</Cell>
                     <Cell variant="body" align="center" color={getColor(investment)}>{getRowValue(investment, 0)}</Cell>
                     <Cell variant="body" align="center">{getRowValue(weight,2,'%')}</Cell>
-                    <Cell variant="body" align="center">{renderActions()}</Cell>
+                    <Cell variant="body" align="center">{renderActions(tradingitemid)}</Cell>
                   </TableRow>
                 );
             })
         }
     }
-}, [getRowValue, oneStrategyDetails, renderActions]);
+}, [getRowValue, oneStrategyDetails, renderActions, performanceValue]);
 
     return (
+      <Container>
+        <TabsWrapper>
+          <Tabs theme="primary" options={tabsOptions} initialValue={performanceValue} handleTabClick={onChangeTabHandler}/>
+        </TabsWrapper>
         <Table stickyHeader={true} theme="secondary" renderHeaders={renderHeaders} renderRows={renderRows} minWidth="800px" maxHeight="600px"/>
+      </Container>
     );
 };
 

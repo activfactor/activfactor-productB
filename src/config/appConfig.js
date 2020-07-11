@@ -55,8 +55,8 @@ export const tokenTypes = {
 
 export const API_CONFIG = {
     baseURL: {
-        v1: 'https://api.activfactor.com',
-        v2: 'https://api.activfactor.com'
+        v1: process.env.NODE_ENV!=='development' ? 'https://api.activfactor.com' : 'http://api.activfactor.com',
+        v2: process.env.NODE_ENV!=='development' ? 'https://api.activfactor.com' : 'http://api.activfactor.com',
     },
     API_HEADERS_COMMON_CONFIG: {
         "Content-Type" : "application/json",

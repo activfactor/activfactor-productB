@@ -20,7 +20,7 @@ export default ChildComponent => {
     componentDidUpdate(){
       const pathname = window.location.pathname;
       if (!this.props.token && pathname!=='/login'){
-        // this.shouldLogin();
+        this.shouldLogin();
       } else if (this.props.token && pathname==='/login'){
         this.shouldGoToDashboard();
       }
